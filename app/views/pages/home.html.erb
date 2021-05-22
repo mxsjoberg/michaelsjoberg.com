@@ -1,0 +1,25 @@
+<%= render 'header' %> 
+<%= render 'navigation' %> 
+
+<div class="container p-md-5 p-sm-3">
+    <div class="row justify-content-center">
+        <!-- recent -->
+        <div class="col-12 col-lg-8">
+            <div class="row justify-content-center">
+                <!-- recent:item -->
+                <% @recent.keys.each do |date| %>
+                    <div class="col-12 col-lg-4 mb-3">
+                        <p class="small text-muted mb-0"><%= Date.parse(date).strftime("%B %d, %Y") %></p>
+                        <a href="<%= @recent[date]["url"] %>"><%= @recent[date]["title"] %></a>
+                    </div>
+                <% end %>
+                <div class="col-6 col-lg-4"><div class="divider--bold my-5"></div></div>
+            </div>
+        </div><!-- ./recent -->
+
+        <%= render 'post' %> 
+
+    </div>
+</div>
+
+<%= render 'footer' %> 

@@ -1,0 +1,66 @@
+{   
+    "Evert.AI (idea stage)": {
+        "description": [
+            "Automated DevOps for AI applications."
+        ],
+        "date": "2021-",
+        "url": "http://evert.ai",
+        "tags": ["automated reasoning", "internet of things"]
+    },
+    "Stockstack (previously Open Terminal; in development)": {
+        "description": [
+            "Web/desktop-based financial data platform with advanced portfolio management tools."
+        ],
+        "date": "2020-",
+        "url": "",
+        "tags": ["finance", "python", "vue.js"]
+    },
+    "pawa (pascal-to-wat)": {
+        "description": [
+            "A prototype compiler implemented in Rust for Pascal and targeting WebAssembly text-format."
+        ],
+        "date": "2020-",
+        "url": "https://github.com/michaelsjoeberg/pawa",
+        "tags": ["compiler", "rust"]
+    },
+    // "Holans (Holans Sweden Trading Partnership)": {
+    //     "description": [
+    //         "Nutrition supplement product (for sale in Sweden and Norway)"
+    //     ],
+    //     "date": "2014-",
+    //     "url": "https://www.holans.com/",
+    //     "tags": ["nutrition supplement", "fitness", "retail"]
+    // },
+    "raknalang (räknalang)": {
+        "description": [
+            "A simple arithmetic programming language aimed at learning basic mathematics in native language. Interpreter implemented in Python."
+        ],
+        "date": "2020",
+        "url": "https://github.com/michaelsjoeberg/raknalang",
+        "tags": ["programming language", "python"]
+    },
+    "EQZEN": {
+        "description": [
+            "Web-based stock portfolio tracker."
+        ],
+        "date": "2018-2020",
+        "url": "https://eqzen.com",
+        "tags": ["finance", "Python"]
+    },
+    "LearnHub": {
+        "description": [
+            "Web-based platform and skill tracker for self-learners."
+        ],
+        "date": "2018",
+        "url": "https://web.archive.org/web/20210126153704/https://learnhub.io/login",
+        "tags": ["self-learning", "platform", "python"]
+    },
+    "Give Trees (Plant for Earth LTD)": {
+        "description": [
+            "Mobile-first application and game targeting charitable donations (Android and iOS, both discontinued)."]
+        ,
+        "date": "2014-2017",
+        "url": "https://web.archive.org/web/20190205052959/https://www.givetrees.co/",
+        "tags": ["mobile application", "PHP", "lua"]
+    }
+}

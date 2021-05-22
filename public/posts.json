@@ -1,0 +1,14 @@
+{   
+	"20201110": {
+        "title": "No BS Computer Science Curriculum",
+        "tags": ["Computer Science", "Education"]
+    },
+    "20200516": {
+        "title": "A few notes on value investing",
+        "tags": ["Investing"]
+    },
+    "20181219": {
+        "title": "How to get HTTPS working on AWS and Heroku",
+        "tags": ["Technology", "Web Development"]
+    }
+}

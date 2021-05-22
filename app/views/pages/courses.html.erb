@@ -1,0 +1,83 @@
+<%= render 'navigation' %> 
+<%= render 'navigation_about' %>
+
+<div class="container p-md-5 p-sm-3">
+    <!-- header -->
+    <div class="row justify-content-center">
+        <!-- title -->
+        <div class="col-12 col-lg-6">
+            <h1><%= @meta_title %></h1>
+        </div>
+        <!-- search -->
+        <div class="col-12 col-lg-6 text-md-right">
+            <input id="search" class="pl-3" name="search" placeholder="Search" type="text" data-list=".list" autocomplete="off" style="margin-top:9px;min-width:100%;">
+        </div>
+        <!-- divider -->
+        <div class="col-12"><div class="divider"></div></div>
+    </div>
+    <!-- summary -->
+    <div class="row justify-content-center mb-3">
+        <div class="col-12" style="column-count: 1;">
+            <p class="font-family-serif">This is a list with completed coursework from various universities, sorted per year with most recent at top.</p>
+
+            <p class="font-family-serif mb-0">Levels: Postgraduate (PG), Undergraduate (UG), and Preparatory (PREP).</p>
+        </div>
+    </div>
+
+    <!-- render course list -->
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="container-fluid">
+                <div class="row list">
+                    <% @courses.keys.each do |course| %>
+                    <!-- header -->
+                    <% if @courses[course]['date'].equal?(@courses.keys.first['date']) %>
+                    <% @header = @courses[course]['date'] %>
+                    <li class="list_header col-12 mb-3" style="background:rgba(23, 23, 23, 0.1);">
+                        <p class="mt-2 mb-2"><%= @header %></p>
+                    </li>
+                    <% end %>
+                    <!-- update header -->
+                    <% if @courses[course]['date'] != @header %>
+                    <% @header = @courses[course]['date'] %>
+                    <li class="list_header col-12 mb-3" style="background:rgba(23, 23, 23, 0.1);">
+                        <p class="mt-2 mb-2"><%= @header %></p>
+                    </li>
+                    <% end %>
+                    <!-- item -->
+                    <li class="col-12 mb-3">
+                        <div class="container-fluid">
+                            <div class="row py-3" style="border:1px solid rgba(23, 23, 23, 0.1);">
+                                <!-- course -->
+                                <div class="col-12 col-md-8">
+                                    <!-- name -->
+                                    <% unless @courses[course]['url'] == "" %>
+                                        <a href="<%= @courses[course]['url'] %>" target="_blank"><%= course %></a>
+                                    <% else %>
+                                        <p class="text-muted m-0"><%= course %></p>
+                                    <% end %>
+                                    <!-- description -->
+                                    <p class="m-0"><%= @courses[course]['description'] %></p>
+                                </div>
+                                <!-- meta -->
+                                <div class="col-12 col-md-4 text-md-right mt-3 mt-md-0">
+                                    <!-- school -->
+                                    <p class="text-muted m-0"><%= @courses[course]['school'] %></p>
+                                    <!-- credits -->
+                                    <% unless @courses[course]['ects'].nil? %>
+                                        <p class="text-muted m-0"><%= @courses[course]['ects'] %> ECTS</p>
+                                    <% end %>
+                                    <!-- grade -->
+                                    <% unless @courses[course]['grade'].nil? %>
+                                        <p class="text-muted m-0"><%= @courses[course]['grade'] %></p>
+                                    <% end %>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

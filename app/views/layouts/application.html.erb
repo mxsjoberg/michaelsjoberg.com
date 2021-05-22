@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<% if Range.new(Time.local(@time.year, @time.month, @time.day, 8), Time.local(@time.year, @time.month, @time.day, 18)) === @time %>
+<html class="" data-time="<%= @time %>">
+<% else %>
+<html class="" data-time="<%= @time %>">
+<% end %>
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114686677-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-114686677-1');
+        </script>
+        <script type="text/javascript">
+            window.$crisp=[];window.CRISP_WEBSITE_ID="8f82fbc2-de2c-4e6e-a2a1-48fa1d1a2206";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();
+        </script>
+        <title><%= @meta_title %></title>
+        <%= favicon_link_tag 'fav.png' %>
+        <%= csrf_meta_tags %>
+        <%= csp_meta_tag %>
+        <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= stylesheet_link_tag 'https://use.fontawesome.com/releases/v5.4.2/css/all.css' %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+        <!-- mobile -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Facebook META -->
+        <meta property="og:title" content="<%= @meta_title %>">
+        <meta property="og:description" content="<%= @meta_description %>">
+        <meta property="og:image" content="<%= @meta_image %>">
+        <meta property="og:url" content="<%= @meta_url %>">
+        <meta property="og:site_name" content="<%= @meta_site_name %>">
+        <!-- Twitter META -->
+        <meta name="twitter:card" content="<%= @meta_card_type %>">
+        <meta name="twitter:image:alt" content="<%= @meta_description %>">
+        <meta name="twitter:creator" content="<%= @meta_author %>">
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="container-fluid p-0"><%= yield %></div>
+        </div>
+    </body>
+</html>

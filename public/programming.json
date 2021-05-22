@@ -1,0 +1,255 @@
+{
+    "python": {
+        "basics": {
+            "path": "https://raw.githubusercontent.com/michaelsjoeberg/programming/master/python/",
+            "url": "https://github.com/michaelsjoeberg/programming/blob/master/python/",
+            "format": ".py",
+            "files": [
+                "intro",
+                "variables",
+                "arithmetics",
+                "logical-operators",
+                "strings",
+                "lists",
+                "tuples",
+                "dictionaries",
+                "sets",
+                "if-else",
+                "for-loop",
+                "while-loop",
+                "functions",
+                "classes",
+                "files",
+                "exceptions",
+                "date-and-time",
+                "mathematical-operators",
+                "recursion",
+                "regular-expression"
+            ]
+        },
+        "data-science": {
+            "path": "https://raw.githubusercontent.com/michaelsjoeberg/programming/master/python/",
+            "url": "https://github.com/michaelsjoeberg/programming/blob/master/python/",
+            "format": ".py",
+            "files": [
+                "pandas-series",
+                "numpy-arrays",
+                "numpy-indexing",
+                "numpy-masking",
+                "numpy-operations",
+                "binary-trees",
+                "k-dimensional-trees",
+                "enumerate",
+                "combinations"
+            ]
+        }, 
+        "machine-learning": {
+            "path": "https://raw.githubusercontent.com/michaelsjoeberg/programming/master/python/",
+            "url": "https://github.com/michaelsjoeberg/programming/blob/master/python/",
+            "format": ".py",
+            "files": [
+                "delta-learning-algorithm",
+                "widrow-hoff-learning-algorithm",
+                "k-nearest-neighbors-classification",
+                "convolutional-neural-network-with-keras",
+                "multilayer-perceptron-layers-with-keras",
+                "linear-threshold-units"
+            ]
+        },
+        "project-euler-problems": {
+            "path": "https://raw.githubusercontent.com/michaelsjoeberg/programming/master/python/",
+            "url": "https://github.com/michaelsjoeberg/programming/blob/master/python/",
+            "format": ".py",
+            "files": [
+                "multiples-of-3-and-5",
+                "even-fibonacci-numbers",
+                "largest-prime-factor",
+                "largest-palindrome-product",
+                "smallest-multiple",
+                "sum-square-difference",
+                "10001st-prime",
+                "largest-product-in-a-series",
+                "special-pythagorean-triplet",
+                "summation-of-primes",
+                "largest-product-in-grid"
+            ]
+        },
+        "other": {
+            "path": "https://raw.githubusercontent.com/michaelsjoeberg/programming/master/python/",
+            "url": "https://github.com/michaelsjoeberg/programming/blob/master/python/",
+            "format": ".py",
+            "files": [
+                "graphs",
+                "fermats-last-theorem-checker",
+                "word-counting-with-mrjob",
+                "gradient-descent-algorithm",
+                "dijkstra-shortest-path-algorithm",
+                "prim-minimum-spanning-tree-algorithm",
+                "erlang-b-calculator",
+                "bubble-sort-algorithm",
+                "genetic-algorithm-optimization"
+            ]
+        }
+    },
+    "c": {
+        "basics": {
+            "path": "https://raw.githubusercontent.com/michaelsjoeberg/programming/master/c/",
+            "url": "https://github.com/michaelsjoeberg/programming/blob/master/c/",
+            "format": ".c",
+            "files": [
+                "intro",
+                "arithmetics",
+                "constants",
+                "error-handling",
+                "files",
+                "for-loop",
+                "variables",
+                "pointers",
+                "logical-operators",
+                "strings",
+                "arrays",
+                "structures",
+                "unions",
+                "if-else",
+                "switch",
+                "while-loop",
+                "functions",
+                "header",
+                "macros",
+                "memory-management",
+                "recursion"
+            ]
+        },
+        "other": {
+            "path": "https://raw.githubusercontent.com/michaelsjoeberg/programming/master/c/",
+            "url": "https://github.com/michaelsjoeberg/programming/blob/master/c/",
+            "format": ".c",
+            "files": [
+                "temperature-converter",
+                "square-root-calculator"
+            ]
+        }
+    },
+    "c++": {
+        "basics": {
+            "path": "https://raw.githubusercontent.com/michaelsjoeberg/programming/master/cpp/",
+            "url": "https://github.com/michaelsjoeberg/programming/blob/master/cpp/",
+            "format": ".cpp",
+            "files": [
+                "intro",
+                "arithmetics",
+                "arrays",
+                "classes",
+                "constants",
+                "date-and-time",
+                "exceptions",
+                "files",
+                "for-loop",
+                "functions",
+                "if-else",
+                "logical-operators",
+                "macros",
+                "math",
+                "namespaces",
+                "pointers",
+                "read-and-write",
+                "strings",
+                "structures",
+                "switch",
+                "variables",
+                "while-loop"
+            ]
+        },
+        "other": {
+            "path": "https://raw.githubusercontent.com/michaelsjoeberg/programming/master/cpp/",
+            "url": "https://github.com/michaelsjoeberg/programming/blob/master/cpp/",
+            "format": ".cpp",
+            "files": [
+                "bubble-sort-algorithm",
+                "multithreading",
+                "signals",
+                "vectors"
+            ]
+        }
+    },
+    "scala": {
+        "basics": {
+            "path": "https://raw.githubusercontent.com/michaelsjoeberg/programming/master/scala/",
+            "url": "https://github.com/michaelsjoeberg/programming/blob/master/scala/",
+            "format": ".scala",
+            "files": [
+                "intro",
+                "arithmetics",
+                "classes",
+                "date-and-time",
+                "exceptions",
+                "files",
+                "for-loop",
+                "functions",
+                "if-else",
+                "lists",
+                "logical-operators",
+                "maps",
+                "math",
+                "sets",
+                "strings",
+                "tuples",
+                "variables",
+                "while-loop"
+            ]
+        }
+    },
+    "prolog": {
+        "basics": {
+            "path": "https://raw.githubusercontent.com/michaelsjoeberg/programming/master/prolog/",
+            "url": "https://github.com/michaelsjoeberg/programming/blob/master/prolog/",
+            "format": ".pl",
+            "files": [
+                "intro",
+                "arithmetics",
+                "directives",
+                "facts",
+                "files",
+                "lists",
+                "math",
+                "predicates",
+                "queries",
+                "random",
+                "read-and-write",
+                "recursion",
+                "rules",
+                "sets"
+            ]
+        },
+        "other": {
+            "path": "https://raw.githubusercontent.com/michaelsjoeberg/programming/master/prolog/",
+            "url": "https://github.com/michaelsjoeberg/programming/blob/master/prolog/",
+            "format": ".pl",
+            "files": [
+                "collatz-conjecture",
+                "combinatorial-optimization",
+                "expert-systems",
+                "graphs",
+                "integer-arithmetic",
+                "trace"
+            ]
+        }
+    },
+    "pascal": {
+        "basics": {
+            "path": "https://raw.githubusercontent.com/michaelsjoeberg/programming/master/pascal/",
+            "url": "https://github.com/michaelsjoeberg/programming/blob/master/pascal/",
+            "format": ".pas",
+            "files": [
+                "intro",
+                "arithmetics",
+                "variables",
+                "constants",
+                "logical-operators",
+                "arrays",
+                "records",
+                "sets"
+            ]
+        }
+    }
+}
