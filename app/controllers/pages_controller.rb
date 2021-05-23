@@ -1,8 +1,8 @@
 class PagesController < ApplicationController
-    before_action :get_time, :set_meta, :get_twitter#, :get_github
+    before_action :get_time, :set_meta#, :get_github, :get_twitter
 
     # version
-    $version = "3.0.0"
+    $version = "4.0.0"
 
     # GET /
     def home
@@ -10,26 +10,26 @@ class PagesController < ApplicationController
         @meta_title = "Michael Sjöberg"
         # intro
         @intro = JSON.parse(File.read(Rails.public_path + 'intro.json'))
-        @typewriter = @intro['intro']
+        # @typewriter = @intro['intro']
         # recent
         @recent = @intro['recent']
         # post
-        @posts = JSON.parse(File.read(Rails.public_path + 'posts.json'))
-        @post = @posts.keys.first
-        @file = @post + '.md'
-        @date = @post
-        @title = @posts[@date]['title']
-        @tags = @posts[@date]['tags']
-        @lines = File.readlines(Rails.public_path + 'posts/' + @file)
-        @updated = @lines[3]
+        # @posts = JSON.parse(File.read(Rails.public_path + 'posts.json'))
+        # @post = @posts.keys.first
+        # @file = @post + '.md'
+        # @date = @post
+        # @title = @posts[@date]['title']
+        # @tags = @posts[@date]['tags']
+        # @lines = File.readlines(Rails.public_path + 'posts/' + @file)
+        # @updated = @lines[3]
         # count words
-        @words = 0
-        @lines.drop(4).each do |line|
-            words = line.split(' ')
-            words.each do |word|
-                @words += 1
-            end
-        end
+        # @words = 0
+        # @lines.drop(4).each do |line|
+        #     words = line.split(' ')
+        #     words.each do |word|
+        #         @words += 1
+        #     end
+        # end
     end
 
     # GET /programming
@@ -50,17 +50,25 @@ class PagesController < ApplicationController
             @format = @programming[@category][@group]["format"]
             # get raw file content from github
             begin
-                @content = HTTParty.get(@path + "#{@group}/#{@file}" + @format).parsed_response
+                @file_content = HTTParty.get(@path + "#{@group}/#{@file}" + @format).parsed_response
             rescue
-                @content = nil
+                @file_content = nil
             end
         end
     end
 
-    # GET /posts
-    def posts
-        @route_path = "posts"
-        @meta_title = "Posts"
+    # GET /projects
+    def projects
+        @route_path = "projects"
+        @meta_title = "Projects"
+        # projects
+        @projects = JSON.parse(File.read(Rails.public_path + 'projects.json'))
+    end
+
+    # GET /writing
+    def writing
+        @route_path = "writing"
+        @meta_title = "Writing"
         @post = params[:post]
         # post
         @posts = JSON.parse(File.read(Rails.public_path + 'posts.json'))
@@ -89,18 +97,19 @@ class PagesController < ApplicationController
                 @date = post
                 @title = @posts[@date]['title']
                 @tags = @posts[@date]['tags']
-                @posts_array[@date] = { title: @title, tags: @tags,  }
+                @updated = @posts[@date]['updated']
+                @posts_array[@date] = { title: @title, tags: @tags, updated: @updated }
             end
         end
     end
 
     # GET /about
-    def about
-        @route_path = "about"
-        @meta_title = "About"
-        # projects
-        @projects = JSON.parse(File.read(Rails.public_path + 'projects.json'))
-    end
+    # def about
+    #     @route_path = "about"
+    #     @meta_title = "About"
+    #     # projects
+    #     @projects = JSON.parse(File.read(Rails.public_path + 'projects.json'))
+    # end
 
     # GET /about/courses
     def courses
@@ -130,20 +139,20 @@ class PagesController < ApplicationController
         # end
         
         # twitter api
-        def get_twitter
-            begin
-                twitter_client = Twitter::REST::Client.new do |config|
-                    config.consumer_key = ENV['TWITTER_CONSUMER_KEY']
-                    config.consumer_secret = ENV['TWITTER_CONSUMER_SECRET']
-                    config.access_token = ENV['TWITTER_ACCESS_TOKEN']
-                    config.access_token_secret = ENV['TWITTER_ACCESS_SECRET']
-                end
-                @tweets = twitter_client.user_timeline("sjoebergco")
-                @location = @tweets[0].user.location
-                @description = (@tweets[0].user.description).split('--')[0]
-            rescue
-                @tweets = nil
-                @location = nil
-            end
-        end
+        # def get_twitter
+        #     begin
+        #         twitter_client = Twitter::REST::Client.new do |config|
+        #             config.consumer_key = ENV['TWITTER_CONSUMER_KEY']
+        #             config.consumer_secret = ENV['TWITTER_CONSUMER_SECRET']
+        #             config.access_token = ENV['TWITTER_ACCESS_TOKEN']
+        #             config.access_token_secret = ENV['TWITTER_ACCESS_SECRET']
+        #         end
+        #         @tweets = twitter_client.user_timeline("sjoebergco")
+        #         @location = @tweets[0].user.location
+        #         @description = (@tweets[0].user.description).split('--')[0]
+        #     rescue
+        #         @tweets = nil
+        #         @location = nil
+        #     end
+        # end
 end

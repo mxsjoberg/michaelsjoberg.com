@@ -1,19 +1,19 @@
 {
     "intro":  [
-    	"michael sjoeberg"
+        "michael sjoeberg"
     ],
     "recent": {
         "20210324": {
             "title": "Largest Product in Grid in Python",
             "url": "/programming/python/project-euler-problems/largest-product-in-grid"
         },
-    	"20201104": {
-    		"title": "Genetic Algorithm Optimization in Python",
-    		"url": "/programming/python/other/genetic-algorithm-optimization"
-    	},
-    	"20201102": {
-    		"title": "Basics and Other in C++",
-    		"url": "/programming#c++"
-    	}
+        "20201110": {
+            "title": "No BS Computer Science Curriculum",
+            "url": "/writing/20201110"
+        },
+        "20201104": {
+            "title": "Genetic Algorithm Optimization in Python",
+            "url": "/programming/python/other/genetic-algorithm-optimization"
+        }
     }
 }

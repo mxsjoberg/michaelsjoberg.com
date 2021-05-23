@@ -1,40 +1,43 @@
 <!-- post -->
-<div class="col-12 col-lg-10">
-    <div class="row">
-        <div class="col-12">
-            <!-- title -->
-            <h1 class="font-family-serif font-weight-bold">
-                <a href="/<%= @route_path %>/<%= @date %>"><%= @title %></a>
-            </h1>
-            <!-- meta -->
-            <p class="text-muted m-0">
-                <!-- date -->
-                <span><%= Date.parse(@date).strftime("%b %d, %Y") %> (updated: <%= Date.parse(@updated).strftime("%b %d, %Y") %>)</span>
-                <!-- words -->
-                <span>&#9642; <%= @words / 75 %> min read</span>
-                <!-- tags -->
-                <span class="float-right">
-                    <% @tags.each do |tag| %>
-                        <span><%= tag %><% unless tag.equal?(@tags.last) %> / <% end %></span>
-                    <% end %>
-                </span>
-            </p>
-        </div>
-        <!-- divider -->
-        <div class="col-12"><div class="divider mb-0"></div></div>
-        <!-- body -->
-        <div class="col-12 mt-3 font-family-serif">
-            <% @lines.drop(4).each do |line| %>
-                <%= CommonMarker.render_html(line).html_safe %>
-            <% end %>
-        </div>
-        <!-- divider -->
-        <div class="col-12"><div class="divider mt-0"></div></div>
+<div class="row justify-content-center">
+    <div class="col-12 col-lg-<%= @size %>">
+        <!-- title -->
+        <h1 class="font-family-serif font-weight-bold">
+            <a href="/<%= @route_path %>/<%= @date %>"><%= @title %></a>
+        </h1>
+        <!-- meta -->
+        <p class="text-muted m-0">
+            <!-- date -->
+            <span><%= Date.parse(@date).strftime("%b %d, %Y") %> (updated: <%= Date.parse(@updated).strftime("%b %d, %Y") %>)</span>
+            <!-- words -->
+            <span>&#9642; <%= @words / 75 %> min read</span>
+            <!-- tags -->
+            <!-- <span>
+                &#9642;
+                <% @tags.each do |tag| %>
+                    <span>
+                        <% if tag == tag.upcase %>
+                            <%= tag %>
+                        <% elsif tag.include?('.') %>
+                            <%= tag.capitalize %>
+                        <% else %>
+                            <%= tag.titleize %>
+                        <% end %>
+                        <% unless tag.equal?(@tags.last) %> / <% end %>
+                    </span>
+                <% end %>
+            </span> -->
+        </p>
     </div>
-    <!-- browse all -->
-    <div class="row">
-        <div class="col-12 text-md-center">
-            <p class="m-0"><a href="/posts">Browse all</a></p>
-        </div>
+    <%= render 'divider', locals: { size: @size } %>
+    <div class="col-12 col-lg-<%= @size %> font-family-serif">
+        <% @lines.drop(4).each do |line| %>
+            <%= CommonMarker.render_html(line).html_safe %>
+        <% end %>
     </div>
-</div><!-- ./post -->
+    <%= render 'divider' %>
+    <div class="col-12 col-lg-<%= @size %> text-md-center">
+        <p class="m-0"><a href="/posts">Browse all posts</a></p>
+    </div>
+</div>
+<!-- ./post -->

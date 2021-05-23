@@ -1,25 +1,69 @@
-<%= render 'header' %> 
-<%= render 'navigation' %> 
+<%= render 'header' %>
 
-<div class="container p-md-5 p-sm-3">
+<!-- navigation -->
+<div class="row justify-content-center hidden-until-md">
+    <div class="col-12 p-0">
+        <nav class="navbar navbar-expand-md p-0">
+            <ul class="navbar-nav mr-auto ml-auto">
+                <!-- / -->
+                <li class="nav-item <% if request.path == '/' %>show<% end %>">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <!-- /projects -->
+                <li class="nav-item <% if request.path == '/projects' %>show<% end %>">
+                    <a class="nav-link" href="/projects">Projects</a>
+                </li>
+                <!-- /writing -->
+                <li class="nav-item <% if request.path == '/writing' %>show<% end %>">
+                    <a class="nav-link" href="/writing">Writing</a>
+                </li>
+                <!-- /programming -->
+                <li class="nav-item <% if request.path == '/programming' %>show<% end %>">
+                    <a class="nav-link" href="/programming">Programming</a>
+                </li>
+                <!-- github -->
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/michaelsjoeberg"><i class="fab fa-github"></i> GitHub</a>
+                </li>
+                <!-- linkedin -->
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.linkedin.com/in/sjoebergco"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+<!-- ./navigation -->
+
+<% @size = 10 %>
+<div class="container">
+    <!-- intro -->
     <div class="row justify-content-center">
-        <!-- recent -->
-        <div class="col-12 col-lg-8">
+        <%= render 'divider', locals: { size: @size / 2 } %>
+        <!-- two columns -->
+        <div class="col-12 col-lg-<%= @size %> hidden-until-md" style="column-count: 2;">
+            <%= render 'intro' %>
+        </div>
+        <!-- single column -->
+        <div class="col-12 col-lg-<%= @size %> hidden-from-md">
+            <%= render 'intro' %>
+        </div>
+        <%= render 'divider', locals: { size: @size / 2 } %>
+    </div>
+    <!-- ./intro -->
+
+    <!-- recent -->
+    <div class="row justify-content-center mt-2 mb-5">
+        <div class="col-12 col-lg-<%= @size %>">
             <div class="row justify-content-center">
-                <!-- recent:item -->
                 <% @recent.keys.each do |date| %>
-                    <div class="col-12 col-lg-4 mb-3">
+                    <div class="col-12 col-md-6 col-lg-4 mb-3">
                         <p class="small text-muted mb-0"><%= Date.parse(date).strftime("%B %d, %Y") %></p>
                         <a href="<%= @recent[date]["url"] %>"><%= @recent[date]["title"] %></a>
                     </div>
                 <% end %>
-                <div class="col-6 col-lg-4"><div class="divider--bold my-5"></div></div>
             </div>
-        </div><!-- ./recent -->
-
-        <%= render 'post' %> 
-
+        </div>
     </div>
+    <!-- ./recent -->
 </div>
-
-<%= render 'footer' %> 

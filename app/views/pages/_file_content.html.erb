@@ -1,0 +1,23 @@
+<!-- file_content -->
+<div class="row justify-content-center mb-3">
+    <!-- header -->
+    <div class="col-12 col-lg-<%= @size %> mb-3">
+        <!-- title -->
+        <h1>
+            <a href="/<%= @route_path %>/<%= @category %>/<%= @group %>/<%= @file %>"><%= @file.gsub('-', ' ').titleize %></a>
+        </h1>
+        <!-- link navigation -->
+        <p class="m-0">
+            <a href="/<%= @route_path %>#<%= @category %>" data-turbolinks="false"><%= @category.titleize %></a> / <a href="/<%= @route_path %>#<%= @category %>_<%= @group.gsub('-', '_')%>" data-turbolinks="false"><%= @group.gsub('-', ' ').titleize %></a>
+        </p>
+    </div>
+    <!-- content -->
+    <div class="col-12 col-lg-<%= @size %> mb-3">
+        <pre class="prettyprint <%= @category %> p-3 mb-3"><%= @file_content %></pre>
+    </div>
+    <!-- github -->
+    <div class="col-12 col-lg-<%= @size %> text-md-center">
+        <p class="m-0"><a href="<%= @url %><%= @group %>/<%= @file %><%= @format %>" target="_blank">View on GitHub</a></p>
+    </div>
+</div>
+<!-- ./file_content -->

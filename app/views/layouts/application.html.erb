@@ -1,9 +1,5 @@
 <!DOCTYPE html>
-<% if Range.new(Time.local(@time.year, @time.month, @time.day, 8), Time.local(@time.year, @time.month, @time.day, 18)) === @time %>
-<html class="" data-time="<%= @time %>">
-<% else %>
-<html class="" data-time="<%= @time %>">
-<% end %>
+<html>
     <head>
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114686677-1"></script>
@@ -13,10 +9,9 @@
             gtag('js', new Date());
             gtag('config', 'UA-114686677-1');
         </script>
-        <script type="text/javascript">
-            window.$crisp=[];window.CRISP_WEBSITE_ID="8f82fbc2-de2c-4e6e-a2a1-48fa1d1a2206";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();
-        </script>
+        <!-- title -->
         <title><%= @meta_title %></title>
+        <!-- meta -->
         <%= favicon_link_tag 'fav.png' %>
         <%= csrf_meta_tags %>
         <%= csp_meta_tag %>
@@ -37,8 +32,49 @@
         <meta name="twitter:creator" content="<%= @meta_author %>">
     </head>
     <body>
-        <div class="wrapper">
-            <div class="container-fluid p-0"><%= yield %></div>
+        <!-- wrapper -->
+        <div class="wrapper <% if request.path == '/' %>center<% end %>">
+            <div class="container-fluid">
+                <%= yield %>
+            </div>
         </div>
+        <!-- ./wrapper -->
+        <!-- mobile-navigation -->
+        <button id="modal-mobile-navigation" type="button" class="btn btn-primary fixed hidden-from-md" data-toggle="modal" data-target="#mobile-navigation"><i class="fa fa-bars"></i></button>
+        <div class="modal fade" id="mobile-navigation" tabindex="-1" role="dialog" aria-labelledby="mobile-navigation" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body text-center">
+                        <ul class="navbar-nav mr-auto ml-auto">
+                            <!-- / -->
+                            <li class="nav-item">
+                                <a class="nav-link p-3 my-3 no-decoration" href="/">Home</a>
+                            </li>
+                            <!-- /projects -->
+                            <li class="nav-item">
+                                <a class="nav-link p-3 my-3 no-decoration" href="/projects">Projects</a>
+                            </li>
+                            <!-- /writing -->
+                            <li class="nav-item">
+                                <a class="nav-link p-3 my-3 no-decoration" href="/writing">Writing</a>
+                            </li>
+                            <!-- /programming -->
+                            <li class="nav-item">
+                                <a class="nav-link p-3 my-3 no-decoration" href="/programming">Programming</a>
+                            </li>
+                            <!-- /github -->
+                            <li class="nav-item">
+                                <a class="nav-link p-3 my-3 no-decoration" href="https://github.com/michaelsjoeberg"><i class="fab fa-github"></i> GitHub</a>
+                            </li>
+                            <!-- /linkedin -->
+                            <li class="nav-item">
+                                <a class="nav-link p-3 my-3 no-decoration" href="https://www.linkedin.com/in/sjoebergco"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ./mobile-navigation -->
     </body>
 </html>

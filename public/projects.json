@@ -1,53 +1,45 @@
 {   
     "Evert.AI (idea stage)": {
         "description": [
-            "Automated DevOps for AI applications."
+            "No-code platform for building machine learning algorithms. Looking for co-founder(s)."
         ],
         "date": "2021-",
-        "url": "http://evert.ai",
-        "tags": ["automated reasoning", "internet of things"]
+        "url": "",
+        "tags": ["machine learning", "no-code"]
     },
-    "Stockstack (previously Open Terminal; in development)": {
+    "Stockstack (beta in Q3/Q4 2021)": {
         "description": [
-            "Web/desktop-based financial data platform with advanced portfolio management tools."
+            "Desktop-first and customizable financial data platform to make investment research distraction-free."
         ],
         "date": "2020-",
         "url": "",
         "tags": ["finance", "python", "vue.js"]
     },
-    "pawa (pascal-to-wat)": {
+    "pas2wat (pascal-to-wat)": {
         "description": [
-            "A prototype compiler implemented in Rust for Pascal and targeting WebAssembly text-format."
+            "A prototype compiler in Rust to translate Pascal into WebAssembly (text-format)."
         ],
         "date": "2020-",
-        "url": "https://github.com/michaelsjoeberg/pawa",
+        "url": "https://github.com/michaelsjoeberg/pas2wat",
         "tags": ["compiler", "rust"]
     },
-    // "Holans (Holans Sweden Trading Partnership)": {
-    //     "description": [
-    //         "Nutrition supplement product (for sale in Sweden and Norway)"
-    //     ],
-    //     "date": "2014-",
-    //     "url": "https://www.holans.com/",
-    //     "tags": ["nutrition supplement", "fitness", "retail"]
-    // },
     "raknalang (räknalang)": {
         "description": [
-            "A simple arithmetic programming language aimed at learning basic mathematics in native language. Interpreter implemented in Python."
+            "A simple arithmetic programming language aimed at learning basic mathematics in native languages. Interpreter implemented in Python."
         ],
         "date": "2020",
         "url": "https://github.com/michaelsjoeberg/raknalang",
         "tags": ["programming language", "python"]
     },
-    "EQZEN": {
+    "EQZEN (migrating to Stockstack)": {
         "description": [
-            "Web-based stock portfolio tracker."
+            "Web-based and collaborative stock portfolio manager."
         ],
         "date": "2018-2020",
         "url": "https://eqzen.com",
         "tags": ["finance", "Python"]
     },
-    "LearnHub": {
+    "LearnHub (discontinued)": {
         "description": [
             "Web-based platform and skill tracker for self-learners."
         ],
@@ -55,12 +47,12 @@
         "url": "https://web.archive.org/web/20210126153704/https://learnhub.io/login",
         "tags": ["self-learning", "platform", "python"]
     },
-    "Give Trees (Plant for Earth LTD)": {
+    "Give Trees (Plant for Earth LTD; discontinued)": {
         "description": [
-            "Mobile-first application and game targeting charitable donations (Android and iOS, both discontinued)."]
+            "Developer of mobile-first applications to gamify charitable donations (Android and iOS)."]
         ,
         "date": "2014-2017",
         "url": "https://web.archive.org/web/20190205052959/https://www.givetrees.co/",
-        "tags": ["mobile application", "PHP", "lua"]
+        "tags": ["mobile applications", "PHP", "lua"]
     }
 }

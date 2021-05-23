@@ -1,0 +1,69 @@
+<%= render 'navigation' %>
+
+<% @size = 8 %>
+<div class="container py-5 top--margin-1x">
+    <!-- post -->
+    <% if @post != nil %>
+        <%= render 'post', locals: { size: @size } %> 
+    <!-- otherwise -->
+    <% else %>
+        <!-- header -->
+        <div class="row justify-content-center">
+            <!-- title -->
+            <div class="col-12 col-lg-<%= @size %>">
+                <h1><%= @meta_title %></h1>
+            </div>
+            <!-- search -->
+            <!-- <div class="col-12 col-lg-<%= @size / 2 %> text-md-right">
+                <input id="search" class="pl-3" name="search" placeholder="Search" type="text" data-list=".list" autocomplete="off">
+            </div> -->
+        </div>
+        <!-- summary -->
+        <div class="row justify-content-center">
+            <%= render 'divider', locals: { size: @size } %>
+            <!-- description -->
+            <!--<div class="col-12 col-lg-<%= @size %>">
+                <p class="font-family-serif mb-0">This is a collection of infrequent writings; mostly notes on technology, programming, or investing.</p>
+            </div>-->
+        </div>
+        <!-- list all posts -->
+        <div class="row justify-content-center mb-3">
+            <div class="col-12 col-lg-<%= @size %>">
+                <div class="row list">
+                    <% @posts_array.keys.each do |post| %>
+                    <!-- item -->
+                    <li class="col-12 mb-3">
+                        <!-- post:title -->
+                        <h2 class="font-family-serif font-weight-bold">
+                            <a href="/<%= @route_path %>/<%= post %>">
+                                <%= @posts_array[post][:title] %>
+                            </a>
+                        </h2>
+                        <!-- tags -->
+                        <p class="text-muted mb-3">
+                            <!-- date -->
+                            <span><%= Date.parse(post).strftime("%B %d, %Y") %> (updated: <%= Date.parse(@posts_array[post][:updated]).strftime("%B %d, %Y") %>)</span>
+                            <!-- tags -->
+                            <!-- <span>
+                                &#9642;
+                                <% @posts_array[post][:tags].each do |tag| %>
+                                    <span>
+                                        <% if tag == tag.upcase %>
+                                            <%= tag %>
+                                        <% elsif tag.include?('.') %>
+                                            <%= tag.capitalize %>
+                                        <% else %>
+                                            <%= tag.titleize %>
+                                        <% end %>
+                                        <% unless tag.equal?(@posts_array[post][:tags].last) %> / <% end %>
+                                    </span>
+                                <% end %>
+                            </span> -->
+                        </p>
+                    </li>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    <% end %>
+</div>

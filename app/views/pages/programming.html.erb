@@ -1,8 +1,8 @@
 <%= render 'navigation' %>
 
-<!-- sub-navigation -->
-<div class="row justify-content-center hidden-until-md">
-    <div class="col-12">
+<!-- page-navigation -->
+<div class="row justify-content-center hidden-until-md top--margin-1x fixed">
+    <div class="col-12 p-0">
         <nav class="navbar navbar-expand-md p-0 background--primary">
             <ul class="navbar-nav mr-auto ml-auto">
                 <% @programming.keys.each do |category| %>
@@ -14,75 +14,58 @@
         </nav>
     </div>
 </div>
-<!-- body -->
-<div class="container p-md-5 p-sm-3">
-    <!-- render file -->
-    <% if @content != nil %>
-    <div class="row justify-content-center mb-3">
-        <!-- header -->
-        <div class="col-12 mb-3">
-            <!-- title -->
-            <h1>
-                <a href="/<%= @route_path %>/<%= @category %>/<%= @group %>/<%= @file %>"><%= @file.gsub('-', ' ').titleize %></a>
-                <a href="https://twitter.com/intent/tweet" class="twitter-share-button" data-via="<%= @meta_author[1..99] %>"></a>
-            </h1>
-            <!-- link navigation -->
-            <p class="m-0">
-                <a href="/<%= @route_path %>#<%= @category %>" data-turbolinks="false"><%= @category.titleize %></a> / <a href="/<%= @route_path %>#<%= @category %>_<%= @group.gsub('-', '_')%>" data-turbolinks="false"><%= @group.gsub('-', ' ').titleize %></a>
-            </p>
-        </div>
-        <!-- file content -->
-        <div class="col-12 mb-3">
-            <pre class="prettyprint <%= @category %> p-3 mb-3"><%= @content %>
-            </pre>
-        </div>
-        <!-- view on github -->
-        <div class="col-12 text-md-center mb-3">
-            <p class="m-0">
-                <a href="<%= @url %><%= @group %>/<%= @file %><%= @format %>" target="_blank"><p class="m-0">View on GitHub</a>
-            </p>
-        </div>
-    </div>
-    <!-- else render categories and groups -->
+<!-- ./page-navigation -->
+
+<% @size = 12 %>
+<div class="container py-5 top--margin-2x">
+    <!-- content -->
+    <% if @file_content != nil %>
+        <%= render 'file_content', locals: { size: @size } %>
+    <!-- otherwise -->
     <% else %>
         <!-- header -->
         <div class="row justify-content-center">
-            <!-- title -->
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-lg-<%= @size / 2 %>">
                 <h1><%= @meta_title %></h1>
             </div>
-            <!-- search -->
-            <div class="col-12 col-md-6 text-md-right">
-                <input id="search" class="pl-3" name="search" placeholder="Search" type="text" data-list=".list" autocomplete="off" style="margin-top:9px;min-width:100%;">
+            <div class="col-12 col-lg-<%= @size / 2 %> text-md-right">
+                <input id="search" class="pl-3" name="search" placeholder="Search" type="text" data-list=".list" autocomplete="off">
             </div>
         </div>
         <!-- summary -->
         <div class="row justify-content-center">
-            <!-- divider -->
-            <div class="col-12"><div class="divider"></div></div>
-            <!-- intro -->
-            <div class="col-12" style="column-count: 1;">
-                <p class="font-family-serif mb-0">This is collection of programming language syntax, algorithm implementations, and smaller programs (~100 LOC) for self-learning or reference.</p>
+            <%= render 'divider', locals: { size: @size } %>
+            <!-- description -->
+            <div class="col-12 col-lg-<%= @size %>">
+                <p class="font-family-serif mb-0">This is a collection of language-specific syntax, algorithms, and smaller programs (~100 LOC) in various programming languages for self-learning or reference.</p>
             </div>
-            <!-- divider -->
-            <div class="col-12 hidden-until-lg"><div class="divider"></div></div>
+            <%= render 'divider', locals: { size: @size } %>
         </div>
         <!-- list -->
         <% @programming.keys.each do |category| %>
         <div class="row justify-content-center mb-3">
-            <!-- title -->
-            <div class="col-12 mb-3">
+            <!-- category -->
+            <div class="col-12 col-lg-<%= @size %> mb-3">
                 <h2 id="<%= category %>" class="font-weight-bold">
                     <a href="#<%= category %>" data-turbolinks="false"><%= category.titleize %></a>
                 </h2>
             </div>
-            <!-- file list -->
-            <div class="col-12">
+            <% if category == 'python' %>
+            <div class="col-12 col-lg-<%= @size %> mb-3">
+                <p class="m-0">See also: <a href="https://michaelsjoeberg.github.io/A-Python-Primer-and-Cheat-Sheet/" target="_blank">A Python Primer and Cheat Sheet</a></p>
+            </div>
+            <% elsif category == 'scala' %>
+            <div class="col-12 col-lg-<%= @size %> mb-3">
+                <p class="m-0">See also: <a href="https://michaelsjoeberg.github.io/A-Scala-Primer-and-Cheat-Sheet/" target="_blank">A Scala Primer and Cheat Sheet</a></p>
+            </div>
+            <% end %>
+            <!-- group -->
+            <div class="col-12 col-lg-<%= @size %>">
                 <div class="container-fluid">
-                    <div class="row list" style="border:1px solid rgba(23, 23, 23, 0.1);">
+                    <div class="row list border-solid--grey">
                     <% @programming[category].keys.each do |group| %>
                         <!-- header -->
-                        <li class="list_header col-12 mb-3" style="background:rgba(23, 23, 23, 0.1);">
+                        <li class="list_header background--grey col-12 mb-3">
                             <p id="<%= category %>_<%= group.gsub('-', '_') %>" class="mt-2 mb-2"><%= group.titleize %></p>
                         </li>
                         <!-- intro file first -->
@@ -93,7 +76,7 @@
                         <% end %>
                         <% @programming[category][group]["files"].each do |file| %>
                         <!-- file -->
-                        <li class="col-6 col-md-4 list-item mb-3">
+                        <li class="col-12 col-lg-6 list-item mb-3">
                             <a href="/<%= @route_path %>/<%= category %>/<%= group %>/<%= file %>">
                                 <span><%= file.titleize %></span>
                             </a>

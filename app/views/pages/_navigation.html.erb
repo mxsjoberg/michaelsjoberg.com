@@ -1,76 +1,34 @@
 <!-- navigation -->
-<div class="row justify-content-center hidden-until-md">
-    <div class="col-12">
+<div class="row justify-content-center hidden-until-md fixed">
+    <div class="col-12 p-0">
         <nav class="navbar navbar-expand-md p-0">
             <ul class="navbar-nav mr-auto ml-auto">
                 <!-- / -->
-                <li class="nav-item">
+                <li class="nav-item <% if request.path == '/' %>show<% end %>">
                     <a class="nav-link" href="/">Home</a>
                 </li>
-                <!-- /posts -->
-                <li class="nav-item">
-                    <a class="nav-link" href="/posts">Posts</a>
+                <!-- /projects -->
+                <li class="nav-item <% if request.path == '/projects' %>show<% end %>">
+                    <a class="nav-link" href="/projects">Projects</a>
+                </li>
+                <!-- /writing -->
+                <li class="nav-item <% if request.path == '/writing' %>show<% end %>">
+                    <a class="nav-link" href="/writing">Writing</a>
                 </li>
                 <!-- /programming -->
-                <li class="nav-item">
+                <li class="nav-item <% if request.path == '/programming' %>show<% end %>">
                     <a class="nav-link" href="/programming">Programming</a>
-                </li>
-                <!-- /about -->
-                <li class="nav-item">
-                    <a class="nav-link" href="/about">About</a>
                 </li>
                 <!-- github -->
                 <li class="nav-item">
-                    <a class="nav-link" href="https://github.com/michaelsjoeberg">
-                        <i class="fab fa-github"></i> GitHub
-                    </a>
+                    <a class="nav-link" href="https://github.com/michaelsjoeberg"><i class="fab fa-github"></i> GitHub</a>
                 </li>
                 <!-- linkedin -->
                 <li class="nav-item">
-                    <a class="nav-link" href="https://www.linkedin.com/in/sjoebergco">
-                        <i class="fab fa-linkedin"></i> LinkedIn
-                    </a>
+                    <a class="nav-link" href="https://www.linkedin.com/in/sjoebergco"><i class="fab fa-linkedin"></i> LinkedIn</a>
                 </li>
             </ul>
         </nav>
     </div>
-</div><!-- ./navigation -->
-
-<!-- mobile button -->
-<button id="modal-mobile-navigation" type="button" class="btn btn-primary fixed hidden-from-md" data-toggle="modal" data-target="#mobile-navigation"><i class="fa fa-bars"></i></button>
-
-<!-- mobile navigation -->
-<div class="modal fade" id="mobile-navigation" tabindex="-1" role="dialog" aria-labelledby="mobile-navigation" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-body text-center">
-                <ul class="navbar-nav mr-auto ml-auto">
-                    <!-- / -->
-                    <li class="nav-item">
-                        <a class="nav-link p-3 no-decoration" href="/">Home</a>
-                    </li>
-                    <!-- /posts -->
-                    <li class="nav-item">
-                        <a class="nav-link p-3 no-decoration" href="/posts">Posts</a>
-                    </li>
-                    <!-- /programming -->
-                    <li class="nav-item">
-                        <a class="nav-link p-3 no-decoration" href="/programming">Programming</a>
-                    </li>
-                    <!-- /about -->
-                    <li class="nav-item">
-                        <a class="nav-link p-3 no-decoration" href="/about">About</a>
-                    </li>
-                    <!-- /github -->
-                    <li class="nav-item">
-                        <a class="nav-link p-3 no-decoration" href="https://github.com/michaelsjoeberg"><i class="fab fa-github"></i> GitHub</a>
-                    </li>
-                    <!-- /linkedin -->
-                    <li class="nav-item">
-                        <a class="nav-link p-3 no-decoration" href="https://www.linkedin.com/in/sjoebergco"><i class="fab fa-linkedin"></i> LinkedIn</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div><!-- ./mobile navigation -->
+</div>
+<!-- ./navigation -->

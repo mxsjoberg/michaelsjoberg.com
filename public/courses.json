@@ -1,322 +1,380 @@
 {   
+    "Financial strategy": {
+        "description": "Project financing and valuation (NPV, IRR), discounted cash flow, market multiples, corporate governance, mergers and acquisitions (M&A).",
+        "school": "The Open University Business School",
+        "url": "http://www.openuniversity.edu/courses/postgraduate/modules/b859",
+        "ects": "15",
+        "level": "PG",
+        "date": "2021",
+        "grade": null
+    },
+    "Investment and portfolio management": {
+        "description": "Asset allocation and investment objectives, fixed income and bond pricing, equity valuation, derivatives and structured products, behavioural finance.",
+        "school": "The Open University Business School",
+        "url": "http://www.openuniversity.edu/courses/postgraduate/modules/b861",
+        "ects": "15",
+        "level": "PG",
+        "date": "2021",
+        "grade": null
+    },
     "Introduction to corporate finance": {
-        "description": "Financial statements and ratio analysis, financial forecasting and planning, estimating risk and return, efficient-market hypothesis (EMH), capital structure and cost of capital (WACC), dividend policy, raising finance.",
-        "school": "The Open University Business School, PG",
+        "description": "Financial statements and ratio analysis, financial forecasting and planning, estimating risk and return, efficient-market hypothesis (EMH), capital structure and cost of capital (WACC), dividend policy.",
+        "school": "The Open University Business School",
         "url": "http://www.openuniversity.edu/courses/postgraduate/modules/b858",
-        "ects": "30",
+        "ects": "15",
+        "level": "PG",
         "date": "2021",
         "grade": null
     },
     "Research methods for finance": {
         "description": "Research methods in finance, time series, panel data, probability distributions, linear and multiple regression, binary regression models.",
-        "school": "The Open University Business School, PG",
+        "school": "The Open University Business School",
         "url": "http://www.openuniversity.edu/courses/postgraduate/modules/b860",
-        "ects": "30",
+        "ects": "15",
+        "level": "PG",
         "date": "2021",
         "grade": null
     },
     "Network Theory": {
         "description": "Graph theory, small world phenomenon and distributions, probabilistic models (information flow), queuing systems and networks, markov chain and decision process, network optimisation and mathematical modeling, optimisation problems (convex, lagrangian, integer programming, heuristics, greedy algorithms).",
-        "school": "King's College London, PG",
+        "school": "King's College London",
         "url": "https://www.kcl.ac.uk/study/courses-data/modules/7/Network-Theory-7CCSMNTH",
-        "ects": "15",
+        "ects": "7.5",
+        "level": "PG",
         "date": "2020",
-        "grade": ""
+        "grade": null
     },
     "Pattern recognition, neural networks, and deep learning": {
         "description": "Classifier design and methods, discriminant functions, learning algorithms, neural networks (artifical, multilayer, feedforward), deep discriminative and generative neural networks, feature extraction, support vector machines, clustering.",
-        "school": "King's College London, PG",
+        "school": "King's College London",
         "url": "https://www.kcl.ac.uk/abroad/module-options/module?id=9ac7e105-daec-4860-adbb-5c4cff922255",
-        "ects": "15",
+        "ects": "7.5",
+        "level": "PG",
         "date": "2020",
         "grade": "Merit"
     },
     "Nature inspired learning algorithms": {
         "description": "Analytical and numerical optimisation, random-based optimisation, binary genetic algorithms, continuous genetic algorithms, evolution strategies, ant colony optimisation, particle swarm optimisation, differential evolution.",
-        "school": "King's College London, PG",
+        "school": "King's College London",
         "url": "https://www.kcl.ac.uk/abroad/module-options/module?id=84064412-6c13-44fd-97c2-5858e4996854",
-        "ects": "15",
+        "ects": "7.5",
+        "level": "PG",
         "date": "2020",
         "grade": "Distinction"
     },
     "Big Data technologies": {
         "description": "Distributed software and database systems, MapReduce, OLTP/OLAP, Apache Spark, data streaming.",
-        "school": "King's College London, PG",
-        "url": "",
-        "ects": "15",
+        "school": "King's College London",
+        "url": null,
+        "ects": "7.5",
+        "level": "PG",
         "date": "2020",
         "grade": "Distinction"
     },
     "Security engineering": {
         "description": "Low-level programming in C and x86 Assembly, application security, implementation errors and exploits, static and dynamic analysis, privilege management and access control.",
-        "school": "King's College London, PG",
+        "school": "King's College London",
         "url": "https://www.kcl.ac.uk/abroad/module-options/module?id=f2607e0d-9506-4b90-947e-f90b569e8f05",
-        "ects": "15",
+        "ects": "7.5",
+        "level": "PG",
         "date": "2019",
-        "grade": ""
+        "grade": null
     },
     "Computer vision": {
         "description": "Image formation (physics, geometry, human visual system), filtering and convolution, feature detection, grouping and segmentation, object categorization and recognition, MATLAB.",
-        "school": "King's College London, PG",
+        "school": "King's College London",
         "url": "https://www.kcl.ac.uk/study/courses-data/modules/6/Computer-Vision-6CCS3COV",
         "ects": "15",
+        "level": "PG",
         "date": "2019",
         "grade": ""
     },
     "Agents and multi-agent systems": {
         "description": "Intelligent and autonomous agents, BDI, reactive and hybrid agent architectures, auctions and negotiations.",
-        "school": "King's College London, PG",
+        "school": "King's College London",
         "url": "https://www.kcl.ac.uk/study/courses-data/modules/7/agents-and-multi-agent-systems-7ccsmams",
-        "ects": "15",
+        "ects": "7.5",
+        "level": "PG",
         "date": "2019",
-        "grade": ""
+        "grade": null
     },
     "Artificial Intelligence: reasoning and decision making": {
         "description": "Knowledge representation, probabilistic reasoning (MDP), temporal probabilistic reasoning, sequential decision making, game theory, argumentation, machine learning.",
-        "school": "King's College London, PG",
+        "school": "King's College London",
         "url": "https://www.kcl.ac.uk/study/courses-data/modules/6/Artificial-Intelligence-6ccs3ain1",
-        "ects": "15",
+        "ects": "7.5",
+        "level": "PG",
         "date": "2019",
         "grade": "Merit"
     },
     "Introducing statistics": {
         "description": "Descriptive statistics, regression and surveys, hypothesis testing, association and estimation, experiments and clinical trials.",
-        "school": "The Open University, UG",
+        "school": "The Open University",
         "url": "https://www.open.ac.uk/library/digital-archive/module/xcri:M140/study",
         "ects": "15",
+        "level": "UG",
         "date": "2019",
-        "grade": ""
+        "grade": null
     },
     "Configuring Linux Web Servers": {
         "description": "Linux fundamentals, virtual machines, and PostgreSQL.",
         "school": "Udacity",
         "url": "https://eu.udacity.com/course/configuring-linux-web-servers--ud299",
         "ects": null,
+        "level": "MOOC",
         "date": "2018",
-        "grade": ""
+        "grade": null
     },
     "Mathematical methods": {
         "description": "Linear algebra, multivariable calculus, vector fields, first and second-order ordinary differential equations, partial differential equations.",
-        "school": "The Open University, UG",
+        "school": "The Open University",
         "url": "https://www.open.ac.uk/library/digital-archive/module/xcri:MST224/study",
         "ects": "15",
+        "level": "UG",
         "date": "2018",
         "grade": "Distinction"
     },
     "Software engineering": {
         "description": "Software architecture, agile methods, design patterns, domain modeling and analysis (UML).",
-        "school": "The Open University, UG",
+        "school": "The Open University",
         "url": "https://www.open.ac.uk/library/digital-archive/module/xcri:TM354/study",
         "ects": "15",
+        "level": "UG",
         "date": "2018",
-        "grade": ""
+        "grade": null
     },
     "Data management and analysis": {
         "description": "Databases and data architectures, real-world dataset analysis (Python, SQL, MapReduce) and visualization (matplotlib), individual research and report writing.",
-        "school": "The Open University, UG",
+        "school": "The Open University",
         "url": "https://www.open.ac.uk/library/digital-archive/module/xcri:TM351/study",
         "ects": "15",
+        "level": "UG",
         "date": "2018",
-        "grade": ""
+        "grade": null
     },
     "Web, mobile and cloud technologies": {
         "description": "Web standards and protocols, distributed architectures (REST, SOAP), mobile frameworks (Java, Android), cloud infrastructure and operations (OpenStack).",
-        "school": "The Open University, UG",
+        "school": "The Open University",
         "url": "https://www.open.ac.uk/library/digital-archive/module/xcri:TM352/study",
         "ects": "15",
+        "level": "UG",
         "date": "2017",
         "grade": "Distinction"
     },
     "Essential mathematics II": {
         "description": "Number theory, geometric transformations, differential equations, combinatorics, eigenvalues and eigenvectors, mathematical language and proof.",
-        "school": "The Open University, UG",
+        "school": "The Open University",
         "url": "https://www.open.ac.uk/library/digital-archive/module/xcri:MST125/study",
         "ects": "15",
+        "level": "UG",
         "date": "2017",
-        "grade": ""
+        "grade": null
     },
     "Introduction to C++": {
         "description": "Introduction to programming with C++.",
-        "school": "Microsoft Corporation (edX)",
+        "school": "Microsoft Corporation",
         "url": "https://www.edx.org/course/introduction-to-c-5",
         "ects": null,
+        "level": "MOOC",
         "date": "2017",
-        "grade": ""
+        "grade": null
     },
     "Algorithms, data structures and computability": {
         "description": "Search and sorting algorithms (Python), binary trees, mathematical notation (sets, functions, logic, and proof), computational complexity.",
-        "school": "The Open University, UG",
+        "school": "The Open University",
         "url": "https://www.open.ac.uk/library/digital-archive/module/xcri:M269/study",
         "ects": "15",
+        "level": "UG",
         "date": "2017",
-        "grade": ""
+        "grade": null
     },
     "IT project and service management": {
         "description": "Software quality, team working, project and service management techniques (ITIL).",
-        "school": "The Open University, UG",
+        "school": "The Open University",
         "url": "https://www.open.ac.uk/library/digital-archive/module/xcri:M258/study",
         "ects": "15",
+        "level": "UG",
         "date": "2017",
-        "grade": ""
+        "grade": null
     },
     "Web technologies": {
         "description": "Client-server architecture, content markup (HTML, CSS, XML), usability and security (HTTPS), client and server side implementation languages (JavaScript, PHP, SQL).",
-        "school": "The Open University, UG",
+        "school": "The Open University",
         "url": "https://www.open.ac.uk/library/digital-archive/module/xcri:TT284/study",
         "ects": "15",
+        "level": "UG",
         "date": "2016",
         "grade": "Distinction"
     },
     "Object-oriented Java programming": {
         "description": "Object-oriented concepts and principles with Java.",
-        "school": "The Open University, UG",
+        "school": "The Open University",
         "url": "https://www.open.ac.uk/library/digital-archive/module/xcri:M250/study",
         "ects": "15",
+        "level": "UG",
         "date": "2016",
-        "grade": ""
+        "grade": null
     },
     "Technologies in practice": {
         "description": "Computer architecture, networking, operating systems (Linux).",
-        "school": "The Open University, UG",
+        "school": "The Open University",
         "url": "https://www.open.ac.uk/library/digital-archive/module/xcri:TM129/study",
         "ects": "15",
+        "level": "UG",
         "date": "2016",
         "grade": "Distinction"
     },
     "Essential mathematics I": {
         "description": "Trigonometric functions, vectors and matrices, differentiation and integration, sequences, complex numbers.",
-        "school": "The Open University, UG",
+        "school": "The Open University",
         "url": "https://www.open.ac.uk/library/digital-archive/module/xcri:MST124/study",
         "ects": "15",
+        "level": "UG",
         "date": "2016",
-        "grade": ""
+        "grade": null
     },
-    "Data Analysis: Take it to the MAX()": {
+    "Data Analysis": {
         "description": "Spreadsheet techniques and best practices (PivotTables, VLOOKUPS, what-if analyses, graphs).",
-        "school": "Delft University of Technology (edX)",
+        "school": "Delft University of Technology",
         "url": "https://www.edx.org/course/data-analysis-take-it-to-the-max-3",
         "ects": null,
+        "level": "MOOC",
         "date": "2016",
-        "grade": ""
+        "grade": null
     },
     "Introduction to Python for Data Science": {
         "description": "Introduction to data analysis with Python (Numpy, Matplotlib, Pandas).",
-        "school": "Microsoft Corporation (edX)",
+        "school": "Microsoft Corporation",
         "url": "https://www.edx.org/course/introduction-to-python-for-data-science-3",
         "ects": null,
+        "level": "MOOC",
         "date": "2016",
-        "grade": ""
+        "grade": null
     },
     "My digital life": {
         "description": "Introduction to undergraduate-level computing and information technology.",
-        "school": "The Open University, UG",
+        "school": "The Open University",
         "url": "https://www.open.ac.uk/library/digital-archive/module/xcri:TU100/study",
         "ects": "15",
+        "level": "UG",
         "date": "2015",
-        "grade": ""
+        "grade": null
     },
     "An introduction to business studies": {
         "description": "Introduction to undergraduate-level business studies.",
-        "school": "The Open University, UG",
+        "school": "The Open University",
         "url": "https://www.open.ac.uk/library/digital-archive/module/xcri:BYFL120/study",
         "ects": "15",
+        "level": "UG",
         "date": "2015",
-        "grade": ""
+        "grade": null
     },
     "Discovering mathematics": {
         "description": "Introduction to undergraduate-level mathematics and statistics.",
-        "school": "The Open University, UG",
+        "school": "The Open University",
         "url": "https://www.open.ac.uk/library/digital-archive/module/xcri:MU123/study",
         "ects": "15",
+        "level": "UG",
         "date": "2015",
-        "grade": ""
+        "grade": null
     },
     "Intro to Programming": {
         "description": "Introduction to programming with  HTML, CSS, and Python.",
         "school": "Udacity",
         "url": "https://eu.udacity.com/course/intro-to-programming-nanodegree--nd000",
         "ects": null,
+        "level": "MOOC",
         "date": "2015",
-        "grade": ""
+        "grade": null
     },
     "Intro to HTML and CSS": {
         "description": "Web development fundamentals, best practices, and professional problem-solving techniques using Developer Tools.",
         "school": "Udacity",
         "url": "https://www.udacity.com/course/intro-to-html-and-css--ud001",
         "ects": null,
+        "level": "MOOC",
         "date": "2015",
-        "grade": ""
+        "grade": null
     },
     "Introduction to Programming and Thinking in Computer Science": {
         "description": "Introduction to programming concepts and ideas.",
-        "school": "Stockholm University, UG",
-        "url": "",
+        "school": "Stockholm University",
+        "url": null,
         "ects": "3",
+        "level": "UG",
         "date": "2013",
-        "grade": ""
+        "grade": null
     },
     "Basic Programming with C": {
         "description": "Introduction to programming with C.",
-        "school": "Luleå University of Technology, UG",
+        "school": "Luleå University of Technology",
         "url": "https://www.ltu.se/edu/course/L00/L0002B/L0002B-Introduktion-till-programmering-och-C-1.68374",
         "ects": "7.5",
+        "level": "UG",
         "date": "2013",
-        "grade": ""
+        "grade": null
     },
-    "Mathematics II (preparatory)": {
+    "Mathematics II": {
         "description": "Introduction to undergraduate-level mathematics (in Swedish).",
-        "school": "Karlstad University, PREP",
-        "url": "",
+        "school": "Karlstad University",
+        "url": null,
         "ects": "6",
+        "level": "PREP",
         "date": "2013",
-        "grade": ""
+        "grade": null
     },
     "Spanish: Beginner Course I": {
         "description": "Introduction to Spanish language and culture.",
-        "school": "Karlstad University, UG",
-        "url": "",
+        "school": "Karlstad University",
+        "url": null,
         "ects": "15",
+        "level": "UG",
         "date": "2013",
-        "grade": ""
+        "grade": null
     },
-    "Physics I (preparatory)": {
+    "Physics I": {
         "description": "Introduction to undergraduate-level physics.",
-        "school": "Karlstad University, PREP",
-        "url": "",
+        "school": "Karlstad University",
+        "url": null,
         "ects": "7",
+        "level": "PREP",
         "date": "2013",
-        "grade": ""
+        "grade": null
     },
-    "Chemistry I (preparatory)": {
+    "Chemistry I": {
         "description": "Introduction to undergraduate-level chemistry.",
-        "school": "Karlstad University, PREP",
-        "url": "",
+        "school": "Karlstad University",
+        "url": null,
         "ects": "7",
+        "level": "PREP",
         "date": "2013",
-        "grade": ""
+        "grade": null
     },
     "Evolution of Life": {
         "description": "Introduction to evolutionary biology, ecology, and geology.",
-        "school": "Stockholm University, UG",
+        "school": "Stockholm University",
         "url": "https://www.su.se/geo/svenska/utbildning/v%C3%A5ra-utbildningar/livsl%C3%A5ngt-l%C3%A4rande/livets-utveckling-1.365728",
         "ects": "7.5",
+        "level": "UG",
         "date": "2013",
-        "grade": ""
+        "grade": null
     },
-    "Mathematics I (preparatory)": {
+    "Mathematics I": {
         "description": "Introduction to undergraduate-level mathematics (in Swedish).",
-        "school": "Karlstad University, PREP",
-        "url": "",
+        "school": "Karlstad University",
+        "url": null,
         "ects": "10",
+        "level": "PREP",
         "date": "2012",
-        "grade": ""
+        "grade": null
     },
-    "Biology I (preparatory)": {
+    "Biology I": {
         "description": "Introduction to undergraduate-level biology.",
-        "school": "Karlstad University, PREP",
-        "url": "",
+        "school": "Karlstad University",
+        "url": null,
         "ects": "6",
+        "level": "PREP",
         "date": "2012",
-        "grade": ""
+        "grade": null
     }
 }
