@@ -47,7 +47,7 @@
     "Pattern recognition, neural networks, and deep learning": {
         "description": "Classifier design and methods, discriminant functions, learning algorithms, neural networks (artifical, multilayer, feedforward), deep discriminative and generative neural networks, feature extraction, support vector machines, clustering.",
         "school": "King's College London",
-        "url": "https://www.kcl.ac.uk/abroad/module-options/module?id=9ac7e105-daec-4860-adbb-5c4cff922255",
+        "url": "https://www.kcl.ac.uk/study/courses-data/modules/7/pattern-recognition-7ccsmpnn",
         "ects": "7.5",
         "level": "PG",
         "date": "2020",
@@ -84,10 +84,10 @@
         "description": "Image formation (physics, geometry, human visual system), filtering and convolution, feature detection, grouping and segmentation, object categorization and recognition, MATLAB.",
         "school": "King's College London",
         "url": "https://www.kcl.ac.uk/study/courses-data/modules/6/Computer-Vision-6CCS3COV",
-        "ects": "15",
+        "ects": "7.5",
         "level": "PG",
         "date": "2019",
-        "grade": ""
+        "grade": null
     },
     "Agents and multi-agent systems": {
         "description": "Intelligent and autonomous agents, BDI, reactive and hybrid agent architectures, auctions and negotiations.",
