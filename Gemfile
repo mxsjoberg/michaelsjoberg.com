@@ -17,8 +17,8 @@ gem 'httparty'
 # jQuery
 gem 'jquery-rails'
 # Bootstrap
-# gem 'bootstrap', '~> 4.1.3'
-gem 'bootstrap', '>= 4.3.1'
+gem 'bootstrap', '~> 4.1.3'
+# gem 'bootstrap', '>= 4.3.1'
 
 # Twitter
 gem 'twitter'
