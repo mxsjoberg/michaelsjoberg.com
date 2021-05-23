@@ -4,7 +4,7 @@
 <div class="row justify-content-center hidden-until-md top--margin-1x fixed">
     <div class="col-12 p-0">
         <nav class="navbar navbar-expand-md p-0 background--primary">
-            <ul class="navbar-nav justify-content-center">
+            <ul class="navbar-nav ml-auto mr-auto">
                 <% @programming.keys.each do |category| %>
                     <li class="nav-item">
                         <a href="/<%= @route_path %>#<%= category %>" class="nav-link" data-turbolinks="false"><%= category.titleize %></a>

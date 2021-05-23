@@ -94,7 +94,7 @@ hr,
     margin-top              : 1rem;
     margin-bottom           : 1rem;
     border                  : 0;
-    border-top              : 1px solid $COLOR_DARK_LIGHT !important;
+    border-top              : 1px solid $COLOR_DARK_LIGHT;
 }
 
 .divider--bold {
@@ -267,11 +267,11 @@ input#search:focus {
     background-color        : $WHITE_BASE;
 
     // strange issue with heroku
-    position: relative;
-    display: block;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
+    // position: relative;
+    // display: block;
+    // flex-wrap: wrap;
+    // align-items: center;
+    // justify-content: space-between;
 }
 
 .navbar .nav-item { 
