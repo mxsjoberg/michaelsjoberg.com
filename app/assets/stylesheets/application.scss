@@ -265,6 +265,13 @@ input#search:focus {
     font-family             : $FONT_FAMILY_BASE;
     color                   : $COLOR_DARK_BASE;
     background-color        : $WHITE_BASE;
+
+    // strange issue with heroku
+    position: relative;
+    display: block;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .navbar .nav-item { 
