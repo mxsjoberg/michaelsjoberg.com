@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-    before_action :get_time, :set_meta#, :get_github, :get_twitter
+    before_action :set_meta#, :get_time, :get_github, :get_twitter
 
     # version
     $version = "4.0.0"
@@ -121,9 +121,9 @@ class PagesController < ApplicationController
 
     private
         # get time
-        def get_time
-            @time = Time.now
-        end
+        # def get_time
+        #     @time = Time.now
+        # end
         # meta
         def set_meta
             @meta_image = ""
