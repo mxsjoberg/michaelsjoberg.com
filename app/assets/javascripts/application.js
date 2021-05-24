@@ -20,12 +20,7 @@
 
 $(document).on('turbolinks:load', function() {
 
-    // highlight
-    // document.addEventListener('DOMContentLoaded', (event) => {
-    //   document.querySelectorAll('pre').forEach((block) => {
-    //     hljs.highlightBlock(block);
-    //   });
-    // });
+    // highlight.js
     $('pre').each(function() {
         hljs.highlightBlock(this);
     });
@@ -42,32 +37,26 @@ $(document).on('turbolinks:load', function() {
         e.preventDefault();
     })
 
-    // $('a[data-toggle="popover"]').popover();
-
     $('a[data-toggle="popover"]').popover({
         trigger: 'focus'
     });
 
-    // reload twitter button
-    //twttr.widgets.load();
-
-    // toggle icons
-    // $('#navbar-navigation').on('hidden.bs.collapse', function () {
-    //     $('button[data-target="#navbar-navigation"] i').removeClass('fa-caret-down').addClass('fa-caret-right');
-    // });
-    // $('#navbar-navigation').on('show.bs.collapse', function () {
-    //     $('button[data-target="#navbar-navigation"] i').removeClass('fa-caret-right').addClass('fa-caret-down');
-    // });
-    // $('#navbar-footer').on('hidden.bs.collapse', function () {
-    //     $('button[data-target="#navbar-footer"] i').removeClass('fa-caret-down').addClass('fa-caret-right');
-    // });
-    // $('#navbar-footer').on('show.bs.collapse', function () {
-    //     $('button[data-target="#navbar-footer"] i').removeClass('fa-caret-right').addClass('fa-caret-down');
-    // });
     $('#mobile-navigation').on('show.bs.modal', function () {
         $('button#modal-mobile-navigation i').removeClass('fa-bars').addClass('fa-times');
     });
     $('#mobile-navigation').on('hidden.bs.modal', function () {
         $('button#modal-mobile-navigation i').removeClass('fa-times').addClass('fa-bars');
+    });
+
+    $('#toggle-dark-mode').on('click', function () {
+        if ($('html').hasClass('dark')) {
+            $('html').removeClass('dark');
+            // change icon
+            $('#toggle-dark-mode i').removeClass('fa-sun').addClass('fa-moon');
+        } else {
+            $('html').addClass('dark');
+            // change icon
+            $('#toggle-dark-mode i').removeClass('fa-moon').addClass('fa-sun');
+        }
     });
 });
