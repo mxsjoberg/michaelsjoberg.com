@@ -62,26 +62,31 @@
             <!-- group -->
             <div class="col-12 col-lg-<%= @size %>">
                 <div class="container-fluid">
-                    <div class="row list border-solid--grey">
+                    <div class="row list">
                     <% @programming[category].keys.each do |group| %>
                         <!-- header -->
-                        <li class="list_header background--grey col-12 mb-3">
+                        <li class="list_header background--grey col-12">
                             <p id="<%= category %>_<%= group.gsub('-', '_') %>" class="mt-2 mb-2"><%= group.titleize %></p>
                         </li>
-                        <!-- intro file first -->
-                        <% if @programming[category][group]["files"].include? "intro" %>
-                            <% @programming[category][group]["files"][1..@programming[category][group]["files"].length()] = @programming[category][group]["files"][1..@programming[category][group]["files"].length()].sort! %>
-                        <% else %>
-                            <% @programming[category][group]["files"] = @programming[category][group]["files"].sort! %>
-                        <% end %>
-                        <% @programming[category][group]["files"].each do |file| %>
-                        <!-- file -->
-                        <li class="col-12 col-lg-6 list-item mb-3">
-                            <a href="/<%= @route_path %>/<%= category %>/<%= group %>/<%= file %>">
-                                <span><%= file.titleize %></span>
-                            </a>
-                        </li>
-                        <% end %>
+                        <!-- list items -->
+                        <div class="container-fluid">
+                            <div class="row list border-solid--grey pt-3">
+                                <!-- intro file first -->
+                                <% if @programming[category][group]["files"].include? "intro" %>
+                                    <% @programming[category][group]["files"][1..@programming[category][group]["files"].length()] = @programming[category][group]["files"][1..@programming[category][group]["files"].length()].sort! %>
+                                <% else %>
+                                    <% @programming[category][group]["files"] = @programming[category][group]["files"].sort! %>
+                                <% end %>
+                                <% @programming[category][group]["files"].each do |file| %>
+                                <!-- file -->
+                                <li class="col-12 col-lg-6 list-item mb-3">
+                                    <a href="/<%= @route_path %>/<%= category %>/<%= group %>/<%= file %>">
+                                        <span><%= file.titleize %></span>
+                                    </a>
+                                </li>
+                                <% end %>
+                            </div>
+                        </div>
                     <% end %>
                     </div>
                 </div>
