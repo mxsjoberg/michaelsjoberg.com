@@ -1,5 +1,7 @@
 <%= render 'header' %>
 
+<% @size = 10 %>
+
 <!-- navigation -->
 <div class="row justify-content-center hidden-until-md">
     <div class="col-12 p-0">
@@ -35,7 +37,6 @@
 </div>
 <!-- ./navigation -->
 
-<% @size = 10 %>
 <div class="container">
     <!-- intro -->
     <div class="row justify-content-center">
@@ -54,10 +55,10 @@
 
     <!-- recent -->
     <div class="row justify-content-center mt-2 mb-5">
-        <div class="col-12 col-lg-<%= @size %>">
+        <div class="col-12 col-lg-<%= @size / 10 * 8 %>">
             <div class="row justify-content-center">
                 <% @recent.keys.each do |date| %>
-                    <div class="col-12 col-md-6 col-lg-4 mb-3">
+                    <div class="col-12 col-lg-4 mb-3">
                         <p class="small text-muted mb-0"><%= Date.parse(date).strftime("%B %d, %Y") %></p>
                         <a href="<%= @recent[date]["url"] %>"><%= @recent[date]["title"] %></a>
                     </div>
