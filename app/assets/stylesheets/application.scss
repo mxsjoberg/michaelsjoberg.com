@@ -24,35 +24,31 @@
 $FONT_FAMILY_BASE       : "Muli", sans-serif;
 $FONT_FAMILY_MONO       : "Source Code Pro", monospace;
 $FONT_FAMILY_SERIF      : "Merriweather", serif;
-$FONT_SIZE_LARGER       : 2.625rem;     // +1.500
-$FONT_SIZE_LARGE        : 2.125rem;     // +1.000
-$FONT_SIZE_MEDIUM       : 1.625rem;     // +0.500
-$FONT_SIZE_BASE_PLUS    : 1.250rem;     // +0.125
+$FONT_SIZE_LARGER       : 2.625rem; // +1.500
+$FONT_SIZE_LARGE        : 2.125rem; // +1.000
+$FONT_SIZE_MEDIUM       : 1.625rem; // +0.500
+$FONT_SIZE_BASE_PLUS    : 1.250rem; // +0.125
 $FONT_SIZE_BASE         : 1.125rem; 
-$FONT_SIZE_SMALL        : 0.875rem;     // -0.250
+$FONT_SIZE_SMALL        : 0.875rem; // -0.250
 $FONT_WEIGHT_THIN       : 300;
 $FONT_WEIGHT_BASE       : 400;
 $FONT_WEIGHT_BOLD       : 700;
 
-// COLORS
-$LAPIS_LAZULI       : #2976A9;
-$BLEU_DE_FRANCE     : #37A1E8;
-$TANGERINE          : #F18F01;
-$YELLOW_ORANGE      : #F4AD46;
-$SNOW               : #FAFAFA;
-$ANDROID_GREEN      : #99C24D;
-$EERIE_BLACK        : #171717;
-// dark
+// colors
+$COLOR_BLUE         : #0070FF;
+$COLOR_PURPLE       : #DE09F7;
+$COLOR_GREEN        : #17D50A;
+$COLOR_ORANGE       : #FF8200;
+$COLOR_RED          : #D50000;
+
+// system
 $COLOR_DARK_BASE    : #000000;
 $COLOR_DARK_MUTED   : rgba($COLOR_DARK_BASE, 0.5);
 $COLOR_DARK_LIGHT   : rgba($COLOR_DARK_BASE, 0.1);
-// categories
-$COLOR_PRIMARY      : #0070FF;
-$COLOR_SECONDARY    : #00d608;
-$COLOR_CONTRAST     : #CE2700;
-// system
+$COLOR_PRIMARY      : $COLOR_BLUE;
+$COLOR_CONTRAST     : $COLOR_RED;
 $WHITE_BASE         : #FFFFFF;
-$WHITE_SHADED       : $SNOW;
+$WHITE_SHADED       : #FAFAFA;
 
 // BASE 
 // --------------------------------------------------------
@@ -74,11 +70,8 @@ body {
 .wrapper {
     position                : absolute;
     top                     : 0;
-    // bottom                  : 0;
     left                    : 0;
     right                   : 0;
-    // overflow-y              : auto;
-    // overflow-x              : hidden;
 }
 
 div.fixed {
@@ -169,8 +162,8 @@ li { list-style: none; }
 // SEARCH 
 // --------------------------------------------------------
 input#search {
+    background-color        : $WHITE_BASE;
     font-family             : $FONT_FAMILY_BASE; 
-    background-color        : transparent;
     color                   : $COLOR_DARK_MUTED; 
     border                  : 1px solid $COLOR_DARK_LIGHT; 
     outline                 : 0;
@@ -188,11 +181,7 @@ input#search {
 }
 
 input#search:hover {
-    background-color        : transparent;
-    color                   : $COLOR_DARK_BASE; 
-    -webkit-transition      : all .15s;
-    -moz-transition         : all .15s; 
-    transition              : all .15s;
+    color                   : $COLOR_DARK_BASE;
 
     &::-webkit-input-placeholder    { color: $COLOR_DARK_BASE; }
     &::-moz-placeholder             { color: $COLOR_DARK_BASE; }
@@ -204,9 +193,6 @@ input#search:focus {
     background-color        : $COLOR_CONTRAST;
     color                   : $WHITE_BASE;
     border-color            : $COLOR_CONTRAST;
-    -webkit-transition      : all .15s;
-    -moz-transition         : all .15s; 
-    transition              : all .15s;
 
     &::-webkit-input-placeholder    { color: $WHITE_BASE; }
     &::-moz-placeholder             { color: $WHITE_BASE; }
@@ -251,7 +237,6 @@ input#search:focus {
 
 .border-left { 
     border-left             : 0.25rem solid $COLOR_DARK_LIGHT !important;
-    background-color        : transparent;
     -webkit-transition      : all .15s;
     -moz-transition         : all .15s; 
     transition              : all .15s;
@@ -265,13 +250,6 @@ input#search:focus {
     font-family             : $FONT_FAMILY_BASE;
     color                   : $COLOR_DARK_BASE;
     background-color        : $WHITE_BASE;
-
-    // strange issue with heroku
-    // position: relative;
-    // display: block;
-    // flex-wrap: wrap;
-    // align-items: center;
-    // justify-content: space-between;
 }
 
 .navbar .nav-item { 
@@ -394,7 +372,7 @@ input#search:focus {
     box-shadow              : none !important;
 }
 
-// TYPOGRAPHY 
+// TYPOGRAPHY
 // --------------------------------------------------------
 h1 { font-size: $FONT_SIZE_LARGE; }
 h2 { font-size: $FONT_SIZE_MEDIUM; }
@@ -528,7 +506,7 @@ a:focus {
 }
 
 a:hover { 
-    color                   : $COLOR_SECONDARY;
+    color                   : $COLOR_GREEN;
     text-decoration         : none !important;
 }
 
@@ -545,70 +523,57 @@ a.no-decoration:hover { text-decoration: none !important; }
 
 // highlight.js
 pre.prettyprint { 
-    background          : $COLOR_DARK_LIGHT;
-    border              : 0 !important;
     max-width           : 100%;
+    padding             : 1rem;
     white-space         : pre-wrap;
-    padding-left        : 1rem !important;
     margin              : 0; 
 }
 
 pre.prettyprint,
-pre.prettyprint span { 
+pre.prettyprint span {
+    color               : $COLOR_DARK_BASE;
     font-family         : $FONT_FAMILY_MONO;
     font-weight         : $FONT_WEIGHT_BASE;
     font-size           : $FONT_SIZE_BASE; 
 }
 
 @media screen {
-    // plaintext
-    .pln,
-    .hljs-meta,
+    .hljs-meta { color: $COLOR_DARK_BASE !important; }
+
+    // parameters
     .hljs-params { color: $COLOR_DARK_BASE !important; }
-    // string
-    .str,
     .hljs-regexp,
-    .hljs-string { color: $COLOR_PRIMARY !important; }
-    // keyword
-    .kwd,
+
+    // string
+    .hljs-string { color: $COLOR_GREEN !important; }
+
+    // keywords
     .hljs-keyword,
-    .hljs-built_in,
-    .hljs-function { color: $COLOR_PRIMARY !important; }
+    .hljs-selector-tag,
+    .hljs-subst { color: $COLOR_PURPLE !important; }
+
+    // built-in
+    .hljs-built_in { color: $COLOR_PRIMARY !important; }
+
     // comment
-    .com,
-    .hljs-comment { color: $COLOR_DARK_MUTED !important; }
+    .hljs-comment,
+    .hljs-quote { color: $COLOR_DARK_MUTED !important; }
+    
     // type
-    .typ,
     .hljs-type { color: $COLOR_DARK_BASE !important; }
+    
     // symbols
-    .lit,
     .hljs-number,
-    .hljs-symbol { color: $COLOR_CONTRAST !important; }
-
-    .pun { color: $COLOR_DARK_BASE !important; }
+    .hljs-symbol { color: $COLOR_ORANGE !important; }
     
-    .opn { color: $COLOR_DARK_MUTED !important; }
-    
-    .clo { color: $COLOR_DARK_MUTED !important; }
-    
-    .tag { color: $COLOR_DARK_BASE !important; }
-    
-    .atn { color: $COLOR_DARK_BASE !important; }
-    
-    .atv { color: $COLOR_DARK_BASE !important; }
-    
-    .dec { color: $COLOR_DARK_BASE !important; }
-
-    .var { color: $COLOR_DARK_BASE !important; }
+    // literal
+    .hljs-literal { color: $COLOR_RED !important; }
 
     // function
-    .fun,
     .hljs-function .hljs-title,
-    .hljs-class .hljs-title { 
-        color: $COLOR_DARK_BASE !important;
-        font-weight: $FONT_WEIGHT_BOLD !important;
-    }
+    .hljs-class .hljs-title { color: $COLOR_PRIMARY !important; }
 
+    // nested
     .hljs-function .hljs-keyword,
     .hljs-meta .hljs-meta-keyword,
     .hljs-meta .hljs-meta-string,
@@ -618,6 +583,8 @@ pre.prettyprint span {
 // DARK THEME
 // --------------------------------------------------------
 html.dark { background-color: $COLOR_DARK_BASE; }
+
+html.dark .navbar { background-color: $COLOR_DARK_BASE; }
 
 html.dark a.color-primary span,
 html.dark a.color-primary:focus span { color: $WHITE_SHADED; }
@@ -629,8 +596,21 @@ html.dark .navbar { color: $WHITE_SHADED; }
 html.dark .navbar a { color: $WHITE_SHADED; }
 
 html.dark p,
-html.dark ul,
-html.dark span { color: $WHITE_SHADED; }
+html.dark ul { color: $WHITE_SHADED; }
+
+html.dark .text-muted { color: rgba($WHITE_SHADED, 0.5) !important; }
+
+html.dark hr,
+html.dark .divider { border-top: 1px solid rgba($WHITE_SHADED, 0.2); }
+
+html.dark .border-left {
+    border-left: 0.25rem solid rgba($WHITE_SHADED, 0.2) !important;
+}
+
+html.dark .background--grey { background: rgba($WHITE_SHADED, 0.2); }
+html.dark .border-solid--grey { border: 1px solid rgba($WHITE_SHADED, 0.2); }
+
+html.dark li.list-item::marker { color: $WHITE_SHADED; }
 
 html.dark h1,
 html.dark h2,
@@ -645,41 +625,26 @@ html.dark button.navbar-toggler {
         color                   : $COLOR_DARK_BASE; 
     }
 
+    a {
+        color                   : $WHITE_SHADED;
+        text-decoration         : none !important; 
+    }
+
+    a:hover,
+    a:focus { 
+        color                   : $COLOR_PRIMARY;
+        text-decoration         : none !important; 
+    }
+
 }
 
 html.dark .border-solid { border-color: $WHITE_SHADED !important; }
 html.dark .border-solid:hover,
 html.dark .border-solid:focus { border-color: $COLOR_PRIMARY !important; }
+
 html.dark .border-solid p,
 html.dark .border-solid span,
 html.dark .border-solid a { color: $WHITE_SHADED; }
-
-html.dark input#search:hover {
-    color                   : $WHITE_SHADED; 
-    border-color            : $WHITE_SHADED;
-
-    &::-webkit-input-placeholder    { color: $WHITE_SHADED; }
-    &::-moz-placeholder             { color: $WHITE_SHADED; }
-    &:-ms-input-placeholder         { color: $WHITE_SHADED; }
-    &:-moz-placeholder              { color: $WHITE_SHADED; }
-}
-
-html.dark input#search:focus {
-    background-color        : $WHITE_SHADED;
-    color                   : $COLOR_DARK_BASE;
-    border-color            : $WHITE_SHADED;
-
-    &::-webkit-input-placeholder    { color: $COLOR_DARK_BASE; }
-    &::-moz-placeholder             { color: $COLOR_DARK_BASE; }
-    &:-ms-input-placeholder         { color: $COLOR_DARK_BASE; }
-    &:-moz-placeholder              { color: $COLOR_DARK_BASE; }
-}
-
-html.dark .btn.btn-primary {
-    background-color        : $WHITE_SHADED;
-    color                   : $COLOR_DARK_BASE; 
-    border-color            : $WHITE_SHADED;
-}
 
 html.dark .btn.btn-primary:hover,
 html.dark .btn.btn-primary:focus,
@@ -693,53 +658,112 @@ html.dark .modal .modal-dialog .modal-content {
     background-color        : $COLOR_DARK_BASE; 
 }
 
+html.dark input#search {
+    background-color        : $COLOR_DARK_BASE;
+    color                   : rgba($WHITE_SHADED, 0.5); 
+    border                  : 1px solid rgba($WHITE_SHADED, 0.2); 
+
+    &::-webkit-input-placeholder    { color: rgba($WHITE_SHADED, 0.5); }
+    &::-moz-placeholder             { color: rgba($WHITE_SHADED, 0.5); }
+    &:-ms-input-placeholder         { color: rgba($WHITE_SHADED, 0.5); }
+    &:-moz-placeholder              { color: rgba($WHITE_SHADED, 0.5); }
+}
+
+html.dark input#search:hover {
+    color                   : $COLOR_DARK_BASE;
+
+    &::-webkit-input-placeholder    { color: rgba($WHITE_SHADED, 0.5); }
+    &::-moz-placeholder             { color: rgba($WHITE_SHADED, 0.5); }
+    &:-ms-input-placeholder         { color: rgba($WHITE_SHADED, 0.5); }
+    &:-moz-placeholder              { color: rgba($WHITE_SHADED, 0.5); }
+}
+
+html.dark input#search:focus {
+    background-color        : $COLOR_CONTRAST;
+    color                   : $WHITE_BASE;
+    border-color            : $COLOR_CONTRAST;
+
+    &::-webkit-input-placeholder    { color: $WHITE_SHADED; }
+    &::-moz-placeholder             { color: $WHITE_SHADED; }
+    &:-ms-input-placeholder         { color: $WHITE_SHADED; }
+    &:-moz-placeholder              { color: $WHITE_SHADED; }
+}
+
+html.dark pre.prettyprint,
+html.dark pre.prettyprint span { color: $WHITE_SHADED; }
+
 @media screen {
-    html.dark .pln { color: $WHITE_SHADED !important; }
-    html.dark .str { color: $COLOR_PRIMARY !important; }
-    html.dark .kwd { color: $WHITE_SHADED !important; }
-    html.dark .com { color: $COLOR_DARK_MUTED !important; }
-    html.dark .typ { color: $WHITE_SHADED !important; }
-    html.dark .lit { color: $COLOR_CONTRAST !important; }
-    html.dark .pun { color: $WHITE_SHADED !important; }
-    html.dark .opn { color: $COLOR_DARK_MUTED !important; }
-    html.dark .clo { color: $COLOR_DARK_MUTED !important; }
-    html.dark .tag { color: $WHITE_SHADED !important; }
-    html.dark .atn { color: $WHITE_SHADED !important; }
-    html.dark .atv { color: $WHITE_SHADED !important; }
-    html.dark .dec { color: $WHITE_SHADED !important; }
-    html.dark .var { color: $WHITE_SHADED !important; }
-    html.dark .fun { color: $WHITE_SHADED !important; }
+    html.dark .hljs-meta { color: $WHITE_SHADED !important; }
+
+    // parameters
+    html.dark .hljs-params { color: $WHITE_SHADED !important; }
+    html.dark .hljs-regexp,
+
+    // string
+    html.dark .hljs-string { color: $COLOR_GREEN !important; }
+
+    // keywords
+    html.dark .hljs-keyword,
+    html.dark .hljs-selector-tag,
+    html.dark .hljs-subst { color: $COLOR_PURPLE !important; }
+
+    // built-in
+    html.dark .hljs-built_in { color: $COLOR_PRIMARY !important; }
+
+    // comment
+    html.dark .hljs-comment,
+    html.dark .hljs-quote { color: rgba($WHITE_SHADED, 0.5) !important; }
+    
+    // type
+    html.dark .hljs-type { color: $WHITE_SHADED !important; }
+    
+    // symbols
+    html.dark .hljs-number,
+    html.dark .hljs-symbol { color: $COLOR_ORANGE !important; }
+    
+    // literal
+    html.dark .hljs-literal { color: $COLOR_RED !important; }
+
+    // function
+    html.dark .hljs-function .hljs-title,
+    html.dark .hljs-class .hljs-title { color: $COLOR_PRIMARY !important; }
+
+    // nested
+    html.dark .hljs-function .hljs-keyword,
+    html.dark .hljs-meta .hljs-meta-keyword,
+    html.dark .hljs-meta .hljs-meta-string,
+    html.dark .hljs-class .hljs-keyword { color: $WHITE_SHADED !important; }
 }
 
 // --------------------------------------------------------
 
 /* typewriter animation */
-.typewriter { display: inline-block; }
+// .typewriter { display: inline-block; }
 
-.typewriter-text {
-    display                 : inline-block;
-    overflow                : hidden;
-    letter-spacing          : 1px;
-    white-space             : nowrap;
-    border-right            : 0.25rem solid $WHITE_BASE;
-    box-sizing              : border-box;
-}
+// .typewriter-text {
+//     display                 : inline-block;
+//     overflow                : hidden;
+//     letter-spacing          : 1px;
+//     white-space             : nowrap;
+//     border-right            : 0.25rem solid $WHITE_BASE;
+//     box-sizing              : border-box;
+// }
 
-@keyframes typing {
-    0% { width: 0%; }
-    20% { width: 0%; }
-    40% { width: 100%; }
-    100% { width: 100%; }
-}
+// @keyframes typing {
+//     0% { width: 0%; }
+//     20% { width: 0%; }
+//     40% { width: 100%; }
+//     100% { width: 100%; }
+// }
 
-@keyframes blink {
-    0% { border-color: transparent; }
-    50% { border-color: $WHITE_BASE; }
-    100% { border-color: transparent; }
-}
+// @keyframes blink {
+//     0% { border-color: transparent; }
+//     50% { border-color: $WHITE_BASE; }
+//     100% { border-color: transparent; }
+// }
 
-@keyframes breathe {
-    0% { border-color: $COLOR_DARK_LIGHT; }
-    50% { border-color: $COLOR_PRIMARY; }
-    100% { border-color: $COLOR_DARK_LIGHT; }
-}
+// @keyframes breathe {
+//     0% { border-color: $COLOR_DARK_LIGHT; }
+//     50% { border-color: $COLOR_PRIMARY; }
+//     100% { border-color: $COLOR_DARK_LIGHT; }
+// }
