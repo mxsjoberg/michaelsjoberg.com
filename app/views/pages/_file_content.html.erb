@@ -5,19 +5,31 @@
         <!-- title -->
         <h1>
             <a href="/<%= @route_path %>/<%= @category %>/<%= @group %>/<%= @file %>"><%= @file.gsub('-', ' ').titleize %></a>
+            <!-- <span class="muted">in <%= @category.capitalize %></span> -->
         </h1>
         <!-- link navigation -->
         <p class="m-0">
-            <a href="/<%= @route_path %>#<%= @category %>" data-turbolinks="false"><%= @category.titleize %></a> / <a href="/<%= @route_path %>#<%= @category %>_<%= @group.gsub('-', '_')%>" data-turbolinks="false"><%= @group.gsub('-', ' ').titleize %></a>
+            <a href="/<%= @route_path %>#<%= @category %>" data-turbolinks="true"><%= @category.titleize %></a> / <a href="/<%= @route_path %>#<%= @category %>_<%= @group.gsub('-', '_')%>" data-turbolinks="true"><%= @group.gsub('-', ' ').titleize %></a>
         </p>
     </div>
     <!-- content -->
     <div class="col-12 col-lg-<%= @size %> mb-3">
-        <pre class="prettyprint <%= @category %> p-3 mb-3"><%= @file_content %></pre>
+        <div class="container-fluid">
+            <div class="row">
+                <!-- header -->
+                <div class="col-12 background--grey">
+                    <p class="mt-2 mb-2"><%= @file %><%= @format %></p>
+                </div>
+                <!-- body -->
+                <div class="col-12 p-0 border-solid--grey">
+                    <pre class="prettyprint lang-<%= @category %>"><%= @file_content %></pre>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- github -->
     <div class="col-12 col-lg-<%= @size %> text-md-center">
         <p class="m-0"><a href="<%= @url %><%= @group %>/<%= @file %><%= @format %>" target="_blank">View on GitHub</a></p>
     </div>
 </div>
-<!-- ./file_content -->
+<!-- ./file_content
