@@ -135,7 +135,7 @@ li { list-style: none; }
 .hidden-until-md { display: none; }
 .hidden-until-lg { display: none; }
 
-.hidden-from-md { display: block;}
+.hidden-from-md { display: block; }
 
 .p-sm-3 { padding: 1rem; }
 
@@ -541,8 +541,8 @@ pre.prettyprint span {
     .hljs-meta { color: $COLOR_DARK_BASE !important; }
 
     // parameters
-    .hljs-params { color: $COLOR_DARK_BASE !important; }
-    .hljs-regexp,
+    .hljs-params,
+    .hljs-regexp { color: $COLOR_DARK_BASE !important; }
 
     // string
     .hljs-string { color: $COLOR_GREEN !important; }
@@ -696,8 +696,8 @@ html.dark pre.prettyprint span { color: $WHITE_SHADED; }
     html.dark .hljs-meta { color: $WHITE_SHADED !important; }
 
     // parameters
-    html.dark .hljs-params { color: $WHITE_SHADED !important; }
-    html.dark .hljs-regexp,
+    html.dark .hljs-params,
+    html.dark .hljs-regexp { color: $WHITE_SHADED !important; }
 
     // string
     html.dark .hljs-string { color: $COLOR_GREEN !important; }
