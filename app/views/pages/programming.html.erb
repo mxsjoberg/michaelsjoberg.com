@@ -71,13 +71,16 @@
                         <!-- list items -->
                         <div class="container-fluid">
                             <div class="row list border-solid--grey pt-3">
-                                <!-- intro file first -->
+                                <!-- intro file at top -->
                                 <% if @programming[category][group]["files"].include? "intro" %>
-                                    <% @programming[category][group]["files"][1..@programming[category][group]["files"].length()] = @programming[category][group]["files"][1..@programming[category][group]["files"].length()].sort! %>
-                                <% else %>
-                                    <% @programming[category][group]["files"] = @programming[category][group]["files"].sort! %>
+                                    <li class="col-12 col-lg-6 list-item mb-3">
+                                        <a href="/<%= @route_path %>/<%= category %>/<%= group %>/intro">
+                                            <span><%= "READ ME FIRST" %></span>
+                                        </a>
+                                    </li>
+                                    <% @programming[category][group]["files"].delete("intro") %>
                                 <% end %>
-                                <% @programming[category][group]["files"].each do |file| %>
+                                <% @programming[category][group]["files"].sort!.each do |file| %>
                                 <!-- file -->
                                 <li class="col-12 col-lg-6 list-item mb-3">
                                     <a href="/<%= @route_path %>/<%= category %>/<%= group %>/<%= file %>">
