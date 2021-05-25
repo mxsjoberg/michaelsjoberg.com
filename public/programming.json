@@ -243,14 +243,18 @@
             "files": [
                 "arithmetic-operators",
                 "arrays",
+                "case-else",
                 "constants",
-                "if-else",
+                "for-loop",
+                "if-then-else",
                 "intro",
                 "logical-operators",
                 "read-and-write",
                 "records",
+                "repeat-until-loop",
                 "sets",
-                "variables"
+                "variables",
+                "while-loop"
             ]
         }
     }
