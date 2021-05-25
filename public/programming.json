@@ -241,14 +241,16 @@
             "url": "https://github.com/michaelsjoeberg/programming/blob/master/pascal/",
             "format": ".pas",
             "files": [
-                "intro",
-                "arithmetics",
-                "variables",
-                "constants",
-                "logical-operators",
+                "arithmetic-operators",
                 "arrays",
+                "constants",
+                "if-else",
+                "intro",
+                "logical-operators",
+                "read-and-write",
                 "records",
-                "sets"
+                "sets",
+                "variables"
             ]
         }
     }
