@@ -245,16 +245,29 @@
                 "arrays",
                 "case-else",
                 "constants",
+                "date-and-time",
+                "files",
                 "for-loop",
+                "functions",
                 "if-then-else",
                 "intro",
                 "logical-operators",
+                "procedures",
                 "read-and-write",
                 "records",
                 "repeat-until-loop",
                 "sets",
+                "strings",
                 "variables",
                 "while-loop"
+            ]
+        },
+        "other": {
+            "path": "https://raw.githubusercontent.com/michaelsjoeberg/programming/master/pascal/",
+            "url": "https://github.com/michaelsjoeberg/programming/blob/master/pascal/",
+            "format": ".pas",
+            "files": [
+                "bubble-sort"
             ]
         }
     }
