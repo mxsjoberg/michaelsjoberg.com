@@ -267,7 +267,8 @@
             "url": "https://github.com/michaelsjoeberg/programming/blob/master/pascal/",
             "format": ".pas",
             "files": [
-                "bubble-sort"
+                "bubble-sort",
+                "insertion-sort"
             ]
         }
     }
