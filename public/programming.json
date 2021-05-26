@@ -270,7 +270,10 @@
             "url": "https://github.com/michaelsjoeberg/programming/blob/master/rust/",
             "format": ".rs",
             "files": [
-                "intro"
+                "arithmetic-operators",
+                "arrays",
+                "intro",
+                "variables"
             ]
         }
     }
