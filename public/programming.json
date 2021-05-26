@@ -272,7 +272,9 @@
             "files": [
                 "arithmetic-operators",
                 "arrays",
+                "functions",
                 "intro",
+                "tuples",
                 "variables"
             ]
         }
