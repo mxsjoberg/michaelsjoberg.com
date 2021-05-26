@@ -119,15 +119,6 @@
                 "memory-management",
                 "recursion"
             ]
-        },
-        "other": {
-            "path": "https://raw.githubusercontent.com/michaelsjoeberg/programming/master/c/",
-            "url": "https://github.com/michaelsjoeberg/programming/blob/master/c/",
-            "format": ".c",
-            "files": [
-                "temperature-converter",
-                "square-root-calculator"
-            ]
         }
     },
     "c++": {
