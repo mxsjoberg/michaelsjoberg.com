@@ -51,7 +51,7 @@
                 "keras-convolutional-neural-network",
                 "keras-multilayer-perceptron",
                 "linear-threshold-unit",
-                "sklearn-knn-classifier",
+                "sklearn-KNN-classifier",
                 "widrow-hoff-learning-algorithm"
             ]
         },
@@ -78,15 +78,15 @@
             "url": "https://github.com/michaelsjoeberg/programming/blob/master/python/",
             "format": ".py",
             "files": [
-                "graphs",
-                "fermats-last-theorem-checker",
-                "word-counting-with-mrjob",
-                "gradient-descent-algorithm",
+                "bubble-sort",
                 "dijkstra-shortest-path-algorithm",
-                "prim-minimum-spanning-tree-algorithm",
-                "erlang-b-calculator",
-                "bubble-sort-algorithm",
+                "erlang-b-formula",
+                "fermats-last-theorem",
                 "genetic-algorithm-optimization",
+                "gradient-descent-algorithm",
+                "graphs",
+                "mrjob-word-counting",
+                "prim-MST-algorithm",
                 "recursion"
             ]
         }
