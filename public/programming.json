@@ -51,7 +51,7 @@
                 "keras-convolutional-neural-network",
                 "keras-multilayer-perceptron",
                 "linear-threshold-unit",
-                "sklearn-KNN-classifier",
+                "sklearn-k-nearest-neighbors-classifier",
                 "widrow-hoff-learning-algorithm"
             ]
         },
@@ -86,7 +86,7 @@
                 "gradient-descent-algorithm",
                 "graphs",
                 "mrjob-word-counting",
-                "prim-MST-algorithm",
+                "prim-minimum-spanning-tree-algorithm",
                 "recursion"
             ]
         }
@@ -237,6 +237,7 @@
                 "case-else",
                 "constants",
                 "date-and-time",
+                "exceptions",
                 "files",
                 "for-loop",
                 "functions",
