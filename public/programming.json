@@ -60,17 +60,17 @@
             "url": "https://github.com/michaelsjoeberg/programming/blob/master/python/",
             "format": ".py",
             "files": [
-                "multiples-of-3-and-5",
-                "even-fibonacci-numbers",
-                "largest-prime-factor",
-                "largest-palindrome-product",
-                "smallest-multiple",
-                "sum-square-difference",
                 "10001st-prime",
+                "even-fibonacci-numbers",
+                "largest-palindrome-product",
+                "largest-prime-factor",
                 "largest-product-in-a-series",
+                "largest-product-in-grid",
+                "multiples-of-3-and-5",
+                "smallest-multiple",
                 "special-pythagorean-triplet",
-                "summation-of-primes",
-                "largest-product-in-grid"
+                "sum-square-difference",
+                "summation-of-primes"
             ]
         },
         "other": {
