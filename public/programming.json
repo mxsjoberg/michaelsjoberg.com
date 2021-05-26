@@ -262,5 +262,15 @@
                 "insertion-sort"
             ]
         }
+    },
+    "rust": {
+        "basics": {
+            "path": "https://raw.githubusercontent.com/michaelsjoeberg/programming/master/rust/",
+            "url": "https://github.com/michaelsjoeberg/programming/blob/master/rust/",
+            "format": ".rs",
+            "files": [
+                "intro"
+            ]
+        }
     }
 }
