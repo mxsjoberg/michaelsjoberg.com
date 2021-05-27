@@ -279,5 +279,15 @@
                 "variables"
             ]
         }
+    },
+    "assembly": {
+        "x86": {
+            "path": "https://raw.githubusercontent.com/michaelsjoeberg/programming/master/assembly/",
+            "url": "https://github.com/michaelsjoeberg/programming/blob/master/assembly/",
+            "format": ".asm",
+            "files": [
+                "intro"
+            ]
+        }
     }
 }
