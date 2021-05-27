@@ -538,7 +538,9 @@ pre.prettyprint span {
 }
 
 @media screen {
-    .hljs-meta { color: $COLOR_DARK_BASE !important; }
+    .hljs-meta,
+    .hljs-meta .hljs-meta-keyword,
+    .hljs-meta .hljs-meta-string, { color: $COLOR_RED !important; }
 
     // parameters
     .hljs-params,
@@ -553,7 +555,8 @@ pre.prettyprint span {
     .hljs-subst { color: $COLOR_PURPLE !important; }
 
     // built-in
-    .hljs-built_in { color: $COLOR_PRIMARY !important; }
+    // .hljs-built_in { color: $COLOR_PRIMARY !important; }
+    .hljs-built_in { color: $COLOR_DARK_BASE !important; }
 
     // comment
     .hljs-comment,
@@ -563,11 +566,11 @@ pre.prettyprint span {
     .hljs-type { color: $COLOR_DARK_BASE !important; }
     
     // symbols
-    .hljs-number,
-    .hljs-symbol { color: $COLOR_ORANGE !important; }
+    .hljs-number { color: $COLOR_ORANGE !important; }
     
     // literal
-    .hljs-literal { color: $COLOR_RED !important; }
+    .hljs-literal,
+    .hljs-symbol { color: $COLOR_RED !important; }
 
     // function
     .hljs-function .hljs-title,
@@ -575,8 +578,6 @@ pre.prettyprint span {
 
     // nested
     .hljs-function .hljs-keyword,
-    .hljs-meta .hljs-meta-keyword,
-    .hljs-meta .hljs-meta-string,
     .hljs-class .hljs-keyword { color: $COLOR_DARK_BASE !important; }
 }
 
