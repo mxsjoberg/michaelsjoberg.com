@@ -1,22 +1,22 @@
 {   
-    "Financial strategy": {
-        "description": "Project financing and valuation (NPV, IRR), discounted cash flow, market multiples, corporate governance, mergers and acquisitions (M&A).",
-        "school": "The Open University Business School",
-        "url": "http://www.openuniversity.edu/courses/postgraduate/modules/b859",
-        "ects": "15",
-        "level": "PG",
-        "date": "2021",
-        "grade": null
-    },
-    "Investment and portfolio management": {
-        "description": "Asset allocation and investment objectives, fixed income and bond pricing, equity valuation, derivatives and structured products, behavioural finance.",
-        "school": "The Open University Business School",
-        "url": "http://www.openuniversity.edu/courses/postgraduate/modules/b861",
-        "ects": "15",
-        "level": "PG",
-        "date": "2021",
-        "grade": null
-    },
+    // "Financial strategy": {
+    //     "description": "Project financing and valuation (NPV, IRR), discounted cash flow, market multiples, corporate governance, mergers and acquisitions (M&A).",
+    //     "school": "The Open University Business School",
+    //     "url": "http://www.openuniversity.edu/courses/postgraduate/modules/b859",
+    //     "ects": "15",
+    //     "level": "PG",
+    //     "date": "2021",
+    //     "grade": null
+    // },
+    // "Investment and portfolio management": {
+    //     "description": "Asset allocation and investment objectives, fixed income and bond pricing, equity valuation, derivatives and structured products, behavioural finance.",
+    //     "school": "The Open University Business School",
+    //     "url": "http://www.openuniversity.edu/courses/postgraduate/modules/b861",
+    //     "ects": "15",
+    //     "level": "PG",
+    //     "date": "2021",
+    //     "grade": null
+    // },
     "Introduction to corporate finance": {
         "description": "Financial statements and ratio analysis, financial forecasting and planning, estimating risk and return, efficient-market hypothesis (EMH), capital structure and cost of capital (WACC), dividend policy.",
         "school": "The Open University Business School",
@@ -27,13 +27,13 @@
         "grade": null
     },
     "Research methods for finance": {
-        "description": "Research methods in finance, time series, panel data, probability distributions, linear and multiple regression, binary regression models.",
+        "description": "Research methods and methodology in finance, time series, panel data, probability distributions, linear and multiple regression, binary regression models.",
         "school": "The Open University Business School",
         "url": "http://www.openuniversity.edu/courses/postgraduate/modules/b860",
         "ects": "15",
         "level": "PG",
         "date": "2021",
-        "grade": null
+        "grade": "Merit"
     },
     "Network Theory": {
         "description": "Graph theory, small world phenomenon and distributions, probabilistic models (information flow), queuing systems and networks, markov chain and decision process, network optimisation and mathematical modeling, optimisation problems (convex, lagrangian, integer programming, heuristics, greedy algorithms).",
