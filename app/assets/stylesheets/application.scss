@@ -346,10 +346,10 @@ input#search:focus {
     border-radius           : 0;
     font-size               : 1.125rem;
     box-shadow              : none;
-    background-color        : $COLOR_DARK_BASE;
-    color                   : $WHITE_BASE; 
+    background-color        : $WHITE_BASE;
+    color                   : $COLOR_DARK_BASE; 
     border                  : 0; 
-    border-color            : $COLOR_DARK_BASE;
+    border-color            : $WHITE_BASE;
     line-height             : 0;
     padding                 : 1rem;
 
@@ -540,11 +540,16 @@ pre.prettyprint span {
 @media screen {
     .hljs-meta,
     .hljs-meta .hljs-meta-keyword,
-    .hljs-meta .hljs-meta-string, { color: $COLOR_RED !important; }
+    .hljs-meta .hljs-meta-string,
+    .hljs-meta .hljs-keyword,
+    .hljs-meta .hljs-string { color: $COLOR_RED !important; }
 
     // parameters
     .hljs-params,
     .hljs-regexp { color: $COLOR_DARK_BASE !important; }
+
+    // parameter type
+    .hljs-params .hljs-type { color: $COLOR_RED !important; }
 
     // string
     .hljs-string { color: $COLOR_GREEN !important; }
@@ -555,15 +560,16 @@ pre.prettyprint span {
     .hljs-subst { color: $COLOR_PURPLE !important; }
 
     // built-in
-    // .hljs-built_in { color: $COLOR_PRIMARY !important; }
-    .hljs-built_in { color: $COLOR_DARK_BASE !important; }
+    // .hljs-built_in { color: $COLOR_DARK_BASE !important; }
+    .hljs-built_in { color: $COLOR_PURPLE !important; }
 
     // comment
     .hljs-comment,
+    .hljs-doctag,
     .hljs-quote { color: $COLOR_DARK_MUTED !important; }
     
     // type
-    .hljs-type { color: $COLOR_DARK_BASE !important; }
+    .hljs-type { color: $COLOR_PURPLE !important; }
     
     // symbols
     .hljs-number { color: $COLOR_ORANGE !important; }
@@ -573,6 +579,9 @@ pre.prettyprint span {
     .hljs-symbol { color: $COLOR_RED !important; }
 
     // function
+    .hljs-title,
+    .hljs-function,
+    .hljs-class,
     .hljs-function .hljs-title,
     .hljs-class .hljs-title { color: $COLOR_PRIMARY !important; }
 
@@ -602,14 +611,14 @@ html.dark ul { color: $WHITE_SHADED; }
 html.dark .text-muted { color: rgba($WHITE_SHADED, 0.5) !important; }
 
 html.dark hr,
-html.dark .divider { border-top: 1px solid rgba($WHITE_SHADED, 0.2); }
+html.dark .divider { border-top: 1px solid rgba($WHITE_SHADED, 0.1); }
 
 html.dark .border-left {
-    border-left: 0.25rem solid rgba($WHITE_SHADED, 0.2) !important;
+    border-left: 0.25rem solid rgba($WHITE_SHADED, 0.1) !important;
 }
 
-html.dark .background--grey { background: rgba($WHITE_SHADED, 0.2); }
-html.dark .border-solid--grey { border: 1px solid rgba($WHITE_SHADED, 0.2); }
+html.dark .background--grey { background: rgba($WHITE_SHADED, 0.1); }
+html.dark .border-solid--grey { border: 1px solid rgba($WHITE_SHADED, 0.1); }
 
 html.dark li.list-item::marker { color: $WHITE_SHADED; }
 
@@ -647,12 +656,18 @@ html.dark .border-solid p,
 html.dark .border-solid span,
 html.dark .border-solid a { color: $WHITE_SHADED; }
 
+html.dark .btn.btn-primary {
+    background-color        : $COLOR_DARK_BASE;
+    color                   : $WHITE_BASE; 
+    border-color            : $COLOR_DARK_BASE;
+}
+
 html.dark .btn.btn-primary:hover,
 html.dark .btn.btn-primary:focus,
 html.dark .btn.btn-primary:active { 
-    background-color        : $WHITE_SHADED !important;
+    background-color        : $WHITE_BASE !important;
     color                   : $COLOR_DARK_BASE !important; 
-    border-color            : $WHITE_SHADED !important;
+    border-color            : $WHITE_BASE !important;
 }
 
 html.dark .modal .modal-dialog .modal-content {
@@ -662,7 +677,7 @@ html.dark .modal .modal-dialog .modal-content {
 html.dark input#search {
     background-color        : $COLOR_DARK_BASE;
     color                   : rgba($WHITE_SHADED, 0.5); 
-    border                  : 1px solid rgba($WHITE_SHADED, 0.2); 
+    border                  : 1px solid rgba($WHITE_SHADED, 0.1); 
 
     &::-webkit-input-placeholder    { color: rgba($WHITE_SHADED, 0.5); }
     &::-moz-placeholder             { color: rgba($WHITE_SHADED, 0.5); }
@@ -693,12 +708,20 @@ html.dark input#search:focus {
 html.dark pre.prettyprint,
 html.dark pre.prettyprint span { color: $WHITE_SHADED; }
 
+
 @media screen {
-    html.dark .hljs-meta { color: $WHITE_SHADED !important; }
+    html.dark .hljs-meta,
+    html.dark .hljs-meta .hljs-meta-keyword,
+    html.dark .hljs-meta .hljs-meta-string,
+    html.dark .hljs-meta .hljs-keyword,
+    html.dark .hljs-meta .hljs-string { color: $COLOR_RED !important; }
 
     // parameters
     html.dark .hljs-params,
     html.dark .hljs-regexp { color: $WHITE_SHADED !important; }
+
+    // parameter type
+    html.dark .hljs-params .hljs-type { color: $COLOR_RED !important; }
 
     // string
     html.dark .hljs-string { color: $COLOR_GREEN !important; }
@@ -709,62 +732,33 @@ html.dark pre.prettyprint span { color: $WHITE_SHADED; }
     html.dark .hljs-subst { color: $COLOR_PURPLE !important; }
 
     // built-in
-    html.dark .hljs-built_in { color: $COLOR_PRIMARY !important; }
+    // html.dark .hljs-built_in { color: $WHITE_SHADED !important; }
+    html.dark .hljs-built_in { color: $COLOR_PURPLE !important; }
 
     // comment
     html.dark .hljs-comment,
+    html.dark .hljs-doctag,
     html.dark .hljs-quote { color: rgba($WHITE_SHADED, 0.5) !important; }
-    
+
     // type
-    html.dark .hljs-type { color: $WHITE_SHADED !important; }
-    
+    html.dark .hljs-type { color: $COLOR_PURPLE !important; }
+
     // symbols
-    html.dark .hljs-number,
-    html.dark .hljs-symbol { color: $COLOR_ORANGE !important; }
-    
+    html.dark .hljs-number { color: $COLOR_ORANGE !important; }
+
     // literal
-    html.dark .hljs-literal { color: $COLOR_RED !important; }
+    html.dark .hljs-literal,
+    html.dark .hljs-symbol { color: $COLOR_RED !important; }
 
     // function
+    html.dark .hljs-title,
+    html.dark .hljs-function,
+    html.dark .hljs-class,
     html.dark .hljs-function .hljs-title,
     html.dark .hljs-class .hljs-title { color: $COLOR_PRIMARY !important; }
 
     // nested
     html.dark .hljs-function .hljs-keyword,
-    html.dark .hljs-meta .hljs-meta-keyword,
-    html.dark .hljs-meta .hljs-meta-string,
     html.dark .hljs-class .hljs-keyword { color: $WHITE_SHADED !important; }
 }
-
 // --------------------------------------------------------
-
-/* typewriter animation */
-// .typewriter { display: inline-block; }
-
-// .typewriter-text {
-//     display                 : inline-block;
-//     overflow                : hidden;
-//     letter-spacing          : 1px;
-//     white-space             : nowrap;
-//     border-right            : 0.25rem solid $WHITE_BASE;
-//     box-sizing              : border-box;
-// }
-
-// @keyframes typing {
-//     0% { width: 0%; }
-//     20% { width: 0%; }
-//     40% { width: 100%; }
-//     100% { width: 100%; }
-// }
-
-// @keyframes blink {
-//     0% { border-color: transparent; }
-//     50% { border-color: $WHITE_BASE; }
-//     100% { border-color: transparent; }
-// }
-
-// @keyframes breathe {
-//     0% { border-color: $COLOR_DARK_LIGHT; }
-//     50% { border-color: $COLOR_PRIMARY; }
-//     100% { border-color: $COLOR_DARK_LIGHT; }
-// }
