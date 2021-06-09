@@ -42,7 +42,7 @@
                         <!-- tags -->
                         <p class="text-muted mb-3">
                             <!-- date -->
-                            <span><%= Date.parse(post).strftime("%B %d, %Y") %> (updated: <%= Date.parse(@posts_array[post][:updated]).strftime("%B %d, %Y") %>)</span>
+                            <span><%= Date.parse(@posts_array[post][:date]).strftime("%B %d, %Y") %> (updated: <%= Date.parse(@posts_array[post][:updated]).strftime("%B %d, %Y") %>)</span>
                             <!-- tags -->
                             <!-- <span>
                                 &#9642;
