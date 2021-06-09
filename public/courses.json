@@ -121,7 +121,7 @@
         "school": "Udacity",
         "url": "https://eu.udacity.com/course/configuring-linux-web-servers--ud299",
         "ects": null,
-        "level": "MOOC",
+        "level": null,
         "date": "2018",
         "grade": null
     },
@@ -175,7 +175,7 @@
         "school": "Microsoft Corporation",
         "url": "https://www.edx.org/course/introduction-to-c-5",
         "ects": null,
-        "level": "MOOC",
+        "level": null,
         "date": "2017",
         "grade": null
     },
@@ -238,7 +238,7 @@
         "school": "Delft University of Technology",
         "url": "https://www.edx.org/course/data-analysis-take-it-to-the-max-3",
         "ects": null,
-        "level": "MOOC",
+        "level": null,
         "date": "2016",
         "grade": null
     },
@@ -247,7 +247,7 @@
         "school": "Microsoft Corporation",
         "url": "https://www.edx.org/course/introduction-to-python-for-data-science-3",
         "ects": null,
-        "level": "MOOC",
+        "level": null,
         "date": "2016",
         "grade": null
     },
@@ -283,7 +283,7 @@
         "school": "Udacity",
         "url": "https://eu.udacity.com/course/intro-to-programming-nanodegree--nd000",
         "ects": null,
-        "level": "MOOC",
+        "level": null,
         "date": "2015",
         "grade": null
     },
@@ -292,7 +292,7 @@
         "school": "Udacity",
         "url": "https://www.udacity.com/course/intro-to-html-and-css--ud001",
         "ects": null,
-        "level": "MOOC",
+        "level": null,
         "date": "2015",
         "grade": null
     },
@@ -319,7 +319,7 @@
         "school": "Karlstad University",
         "url": null,
         "ects": "6",
-        "level": "PREP",
+        "level": "PRE",
         "date": "2013",
         "grade": null
     },
@@ -337,7 +337,7 @@
         "school": "Karlstad University",
         "url": null,
         "ects": "7",
-        "level": "PREP",
+        "level": "PRE",
         "date": "2013",
         "grade": null
     },
@@ -346,7 +346,7 @@
         "school": "Karlstad University",
         "url": null,
         "ects": "7",
-        "level": "PREP",
+        "level": "PRE",
         "date": "2013",
         "grade": null
     },
@@ -364,7 +364,7 @@
         "school": "Karlstad University",
         "url": null,
         "ects": "10",
-        "level": "PREP",
+        "level": "PRE",
         "date": "2012",
         "grade": null
     },
@@ -373,7 +373,7 @@
         "school": "Karlstad University",
         "url": null,
         "ects": "6",
-        "level": "PREP",
+        "level": "PRE",
         "date": "2012",
         "grade": null
     }
