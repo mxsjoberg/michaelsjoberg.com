@@ -74,9 +74,10 @@ class PagesController < ApplicationController
         @posts = JSON.parse(File.read(Rails.public_path + 'posts.json'))
         unless (@post.nil?)
             @file = @post + '.md'
-            @date = @post
-            @title = @posts[@date]['title']
-            @tags = @posts[@date]['tags']
+            # @date = @post
+            @date = @posts[@post]['date']
+            @title = @posts[@post]['title']
+            @tags = @posts[@post]['tags']
             @lines = File.readlines(Rails.public_path + 'posts/' + @file)
             @updated = @lines[3]
             # override meta
@@ -94,11 +95,12 @@ class PagesController < ApplicationController
             @posts_array = Hash.new
             @posts.keys.each do |post|
                 @file = post + '.md'
-                @date = post
-                @title = @posts[@date]['title']
-                @tags = @posts[@date]['tags']
-                @updated = @posts[@date]['updated']
-                @posts_array[@date] = { title: @title, tags: @tags, updated: @updated }
+                # @date = post
+                @date = @posts[post]['date']
+                @title = @posts[post]['title']
+                @tags = @posts[post]['tags']
+                @updated = @posts[post]['updated']
+                @posts_array[post] = { title: @title, tags: @tags, date: @date, updated: @updated }
             end
         end
     end
