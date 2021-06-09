@@ -280,6 +280,17 @@
             ]
         }
     },
+    "verilog": {
+        "basics": {
+            "path": "https://raw.githubusercontent.com/michaelsjoeberg/programming/master/verilog/",
+            "url": "https://github.com/michaelsjoeberg/programming/blob/master/verilog/",
+            "format": ".v",
+            "files": [
+                "intro",
+                "nand"
+            ]
+        }
+    },
     "assembly": {
         "x86": {
             "path": "https://raw.githubusercontent.com/michaelsjoeberg/programming/master/assembly/",
