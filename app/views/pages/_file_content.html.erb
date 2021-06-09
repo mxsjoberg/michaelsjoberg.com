@@ -4,7 +4,7 @@
     <div class="col-12 col-lg-<%= @size %> mb-3">
         <!-- title -->
         <h1>
-            <a href="/<%= @route_path %>/<%= @category %>/<%= @group %>/<%= @file %>"><%= @file.gsub('-', ' ').titleize %></a>
+            <a href="/<%= @route_path %>/<%= @category %>/<%= @group %>/<%= @file %>" data-turbolinks="true"><%= @file.gsub('-', ' ').titleize %></a>
             <!-- <span class="muted">in <%= @category.capitalize %></span> -->
         </h1>
         <!-- link navigation -->

@@ -37,7 +37,7 @@
                 <% @recent.keys.each do |date| %>
                     <div class="col-12 col-lg-4 mb-3">
                         <p class="small text-muted mb-0"><%= Date.parse(date).strftime("%B %d, %Y") %></p>
-                        <a href="<%= @recent[date]["url"] %>"><%= @recent[date]["title"] %></a>
+                        <a href="<%= @recent[date]["url"] %>" data-turbolinks="true"><%= @recent[date]["title"] %></a>
                     </div>
                 <% end %>
             </div>

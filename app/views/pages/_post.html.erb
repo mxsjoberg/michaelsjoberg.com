@@ -3,7 +3,7 @@
     <div class="col-12 col-lg-<%= @size %>">
         <!-- title -->
         <h1 class="font-family-serif font-weight-bold">
-            <a href="/<%= @route_path %>/<%= @post %>"><%= @title %></a>
+            <a href="/<%= @route_path %>/<%= @post %>" data-turbolinks="true"><%= @title %></a>
         </h1>
         <!-- meta -->
         <p class="text-muted m-0">
@@ -37,7 +37,7 @@
     </div>
     <%= render 'divider' %>
     <div class="col-12 col-lg-<%= @size %> text-md-center">
-        <p class="m-0"><a href="/writing">Browse all posts</a></p>
+        <p class="m-0"><a href="/writing" data-turbolinks="true">Browse all posts</a></p>
     </div>
 </div>
 <!-- ./post -->
