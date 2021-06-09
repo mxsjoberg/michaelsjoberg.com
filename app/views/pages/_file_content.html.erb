@@ -22,7 +22,8 @@
                 </div>
                 <!-- body -->
                 <div class="col-12 p-0 border-solid--grey">
-                    <pre class="prettyprint lang-<% if @category == 'pascal' %>delphi<% elsif @group == 'x86'%>x86asm<% else %><%= @category %><% end %>"><%= @file_content %></pre>
+                    <pre class="prettyprint language-<% if @category == 'pascal' %>delphi<% elsif @category == 'c++' %>cpp<% elsif @group == 'x86'%>x86asm<% else %><%= @category %><% end %>"><%= @file_content %>
+                    </pre>
                 </div>
             </div>
         </div>
