@@ -19,6 +19,13 @@
 //= require_tree .
 
 $(document).on('turbolinks:load', function() {
+    // dark mode
+    var dark = localStorage.getItem('dark');
+    if (dark === 'true') {
+        $('html').addClass('dark');
+        // icon
+        $('#toggle-dark-mode i').removeClass('fa-moon').addClass('fa-sun');
+    }
 
     // highlight.js
     $('pre').each(function() {
@@ -51,11 +58,14 @@ $(document).on('turbolinks:load', function() {
     $('#toggle-dark-mode').on('click', function () {
         if ($('html').hasClass('dark')) {
             $('html').removeClass('dark');
-            // change icon
+            // localStorage
+            localStorage.setItem('dark', false);
+            // icon
             $('#toggle-dark-mode i').removeClass('fa-sun').addClass('fa-moon');
         } else {
             $('html').addClass('dark');
-            // change icon
+            localStorage.setItem('dark', true);
+            // icon
             $('#toggle-dark-mode i').removeClass('fa-moon').addClass('fa-sun');
         }
     });
