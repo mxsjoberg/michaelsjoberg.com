@@ -1,7 +1,7 @@
 No-BS Computer Science Curriculum  
 Michael Sjoeberg  
 November 10, 2020  
-June 9, 2021
+June 10, 2021
 
 This is a work-in-progress list with recommended learning material and programming languages for computer science students. It works well on its own (for self-learners) or as a complement to the typical undergraduate degree in computer science, which is often lacking some lower-level details and mathematical content. The goal is to provide a more solid foundation to build upon. This list will be updated whenever I find that something is missing, incorrect, or to add additional learning material.
 
@@ -13,7 +13,7 @@ Programming is the constant in most tasks related to computer science and comput
 
 ### Foundation
 
-The goal is to get comfortable with programming and to understand the software abstraction model (via Assembly, C/C++, and Python; from low-level to high-level, with Python representing the highest-level of abstraction). You probably don't need to be fluent in Assembly (or any specific architecture), but it's a good idea to understand enough to be able to read and find errors. Recommended learning material: [Computer Systems: A Programmer's Perspective](https://www.amazon.com/Computer-Systems-OHallaron-Randal-Bryant/dp/1292101768), [The Art of Assembly Language](https://www.amazon.com/Art-Assembly-Language-2nd/dp/1593272073), [C Programming Language](https://www.amazon.com/Programming-Language-2nd-Brian-Kernighan/dp/0131103628), [A Tour of C++](https://www.amazon.com/Tour-2nd-Depth-Bjarne-Stroustrup/dp/0134997832), [Python Crash Course](https://www.amazon.com/Python-Crash-Course-2nd-Edition/dp/1593279280).
+The goal is to get comfortable with programming and to understand the software abstraction model (via Assembly, C/C++, and Python; from low-level to high-level, with Python representing the highest-level of abstraction). You probably don't need to be fluent in Assembly (or any specific architecture), but it's a good idea to understand enough to be able to read and find errors.
 
 **Assembly**
 
@@ -37,9 +37,11 @@ The goal is to get comfortable with programming and to understand the software a
 
 - **Bonus:** Experiment with some quantum libraries (maybe [Qiskit](https://qiskit.org/), or [TensorFlow Quantum](https://www.tensorflow.org/quantum))
 
+Recommended learning material: [Computer Systems: A Programmer's Perspective](https://www.amazon.com/Computer-Systems-OHallaron-Randal-Bryant/dp/1292101768), [The Art of Assembly Language](https://www.amazon.com/Art-Assembly-Language-2nd/dp/1593272073), [C Programming Language](https://www.amazon.com/Programming-Language-2nd-Brian-Kernighan/dp/0131103628), [A Tour of C++](https://www.amazon.com/Tour-2nd-Depth-Bjarne-Stroustrup/dp/0134997832), [Python Crash Course](https://www.amazon.com/Python-Crash-Course-2nd-Edition/dp/1593279280).
+
 ### Paradigm exposure
 
-The goal is to get familiar with a range of programming paradigms and to understand parts of the hardware abstraction model (via Verilog). The previous programming languages are all multi-paradigm, as in supporting more than one paradigm, but still considered imperative and structured (no jump instructions, read this: [Edgar Dijkstra: Go To Statement Considered Harmful](https://homepages.cwi.nl/~storm/teaching/reader/Dijkstra68.pdf)), wheres Assembly is imperative and unstructured. Recommended learning material: [Thinking Functionally with Haskell](https://www.amazon.com/Thinking-Functionally-Haskell-Richard-Bird/dp/1107452643), [The Elements of Computing Systems](https://www.amazon.com/Elements-Computing-Systems-Building-Principles/dp/0262640686).
+The goal is to get familiar with a range of programming paradigms and to understand parts of the hardware abstraction model (via Verilog). C/C++ and Python are generally considered multi-paradigm (as in supporting more than one style), but more specifically imperative and structured (i.e. there are limited jump instructions, read this: [Edgar Dijkstra: Go To Statement Considered Harmful](https://homepages.cwi.nl/~storm/teaching/reader/Dijkstra68.pdf)).
 
 **Haskell**
 
@@ -47,9 +49,15 @@ The goal is to get familiar with a range of programming paradigms and to underst
 
 - Try to build a compiler, transpiler, or parser; see [Building a modern functional compiler from first principles](http://dev.stephendiehl.com/fun/)
 
+**Prolog**
+
+- Logic-based
+
+- Probably most popular logic programming language (could also explore Clojure.core.logic if more appropriate, see [clojure/core.logic](https://github.com/clojure/core.logic))
+
 **Coq** (Gallina)
 
-- Functional
+- Dependently-typed functional
 
 - Probably most popular proof assistant; see [Coq in a Hurry](https://arxiv.org/abs/cs/0603118)
 
@@ -59,17 +67,21 @@ The goal is to get familiar with a range of programming paradigms and to underst
 
 - Try to implement designs at different abstraction levels (gate-level, register-transfer-level, behavioural-level); see [Verilog Tutorial](https://www.javatpoint.com/verilog)
 
+Recommended learning material: [Thinking Functionally with Haskell](https://www.amazon.com/Thinking-Functionally-Haskell-Richard-Bird/dp/1107452643), [The Elements of Computing Systems](https://www.amazon.com/Elements-Computing-Systems-Building-Principles/dp/0262640686).
+
 What about object-oriented programming? This is a quote by Paul Graham (Viaweb, Y Combinator): "*[at] big companies, software tends to be written by large (and frequently changing) teams of mediocre programmers. Object-oriented programming imposes a discipline on these programmers that prevents any one of them from doing too much damage*", read this: [Why Arc Isn't Especially Object-Oriented](http://www.paulgraham.com/noop.html).
 
 ### Machine learning
 
-The goal is to get exposed to machine learning and the idea that output is based on data instead of design, watch this: [Building the Software 2.0 Stack](https://databricks.com/session/keynote-from-tesla). Recommended learning material: [The Hundred-Page Machine Learning Book](https://www.amazon.com/Hundred-Page-Machine-Learning-Book/dp/199957950X).
+The goal is to get exposed to machine learning and the idea that output is based on data instead of design, watch this: [Building the Software 2.0 Stack](https://databricks.com/session/keynote-from-tesla).
 
 **Neural Networks** (Python)
 
 - Get familiar with Keras, TensorFlow, and PyTorch; try challenges at [Kaggle: Competitions](https://www.kaggle.com/competitions) (or look at solutions if stuck)
 
 - Try to build a neural network from scratch; see [How to build your own Neural Network from scratch in Python](https://towardsdatascience.com/how-to-build-your-own-neural-network-from-scratch-in-python-68998a08e4f6)
+
+Recommended learning material: [The Hundred-Page Machine Learning Book](https://www.amazon.com/Hundred-Page-Machine-Learning-Book/dp/199957950X).
 
 ### "Modern" languages
 
@@ -97,22 +109,6 @@ The above topics provides familiarity with different paradigms and modern develo
 
 - Memory safe C (if you don't like Rust, could also explore Dart)
 
-### Other languages
-
-The programming languages below could be useful in specific situations (or just for fun).
-	
-**Prolog**
-
-- Declarative
-
-- Probably most popular logic-based programming language, could also explore ASP or Clojure.core.logic (relational programming library for Clojure, see [clojure/core.logic](https://github.com/clojure/core.logic))
-
-**JavaScript**
-
-- Event-driven, as in control flow based on events (click, scroll, and so on)
-
-- Get familiar if you ever want to build web applications, could also explore any of the other \*Script languages (TypeScript, CoffeeScript, or maybe AssemblyScript)
-
 ---
 
 ## Mathematics
@@ -121,7 +117,7 @@ Mathematics has a central role in any computer science curriculum. A solid found
 
 ### Foundation
 
-The Goal is to get familiar with data structures and theory of computation, some topics could be covered in recommended learning material for some programming languages. Recommended learning material: [Discrete Mathematics](https://www.amazon.com/Discrete-Mathematics-Gary-Chartrand/dp/1577667301).
+The Goal is to get familiar with data structures and theory of computation, some topics could be covered in recommended learning material for some programming languages.
 
 **Discrete Mathematics**
 
@@ -135,9 +131,11 @@ The Goal is to get familiar with data structures and theory of computation, some
 
 - **Bonus**: Try to implement concepts based on stochastic processes (maybe MDP solver), could also explore game theory if interested in AI applications
 
+Recommended learning material: [Discrete Mathematics](https://www.amazon.com/Discrete-Mathematics-Gary-Chartrand/dp/1577667301).
+
 ### General topics
 
-The goal is to build a strong general background in mathematics, such as typically taught in undergraduate science-related degrees. Many topics are useful in several tasks related to computer science, but in particular ML, computer vision, and scientifc computing. Recommended learning material: [Calculus: Early Transcendentals](https://www.amazon.com/Calculus-Early-Transcendentals-James-Stewart/dp/1285741552), [No bullshit guide to linear algebra](https://www.amazon.com/No-bullshit-guide-linear-algebra/dp/0992001021), [Ordinary Differential Equations](https://www.amazon.com/Ordinary-Differential-Equations-Dover-Mathematics/dp/0486649407), [Elementary Analysis: The Theory of Calculus](https://www.amazon.com/Elementary-Analysis-Calculus-Undergraduate-Mathematics/dp/1461462703), [Number Theory](https://www.amazon.com/Number-Theory-Dover-Books-Mathematics/dp/0486682528).
+The goal is to build a strong general background in mathematics, such as typically taught in undergraduate science-related degrees. Many topics are useful in several tasks related to computer science, but in particular ML, computer vision, and scientifc computing.
 
 **Calculus**
 
@@ -161,6 +159,8 @@ The goal is to build a strong general background in mathematics, such as typical
 
 - Try to solve computational problems; see [Project Euler](https://projecteuler.net/)
 
+Recommended learning material: [Calculus: Early Transcendentals](https://www.amazon.com/Calculus-Early-Transcendentals-James-Stewart/dp/1285741552), [No bullshit guide to linear algebra](https://www.amazon.com/No-bullshit-guide-linear-algebra/dp/0992001021), [Ordinary Differential Equations](https://www.amazon.com/Ordinary-Differential-Equations-Dover-Mathematics/dp/0486649407), [Elementary Analysis: The Theory of Calculus](https://www.amazon.com/Elementary-Analysis-Calculus-Undergraduate-Mathematics/dp/1461462703), [Number Theory](https://www.amazon.com/Number-Theory-Dover-Books-Mathematics/dp/0486682528).
+
 ---
 
 ## Other
@@ -176,5 +176,11 @@ This section contains additional topics and commonly used tools, it's somewhat b
 - Domain-specific command language (Unix shell)
 
 - Get familiar with frequently used commands at [Bash scripting cheatsheet](https://devhints.io/bash)
+
+**JavaScript**
+
+- Event-driven (control flow based on events)
+
+- Get familiar if you ever want to build web applications, could also explore any of the other \*Script languages (TypeScript, CoffeeScript, or maybe AssemblyScript)
 
 It's also a good idea to get familiar with virtual machines, such as Vagrant or Docker, build systems, such as Make, and cloud computing platforms, such as AWS or Google Cloud. Finally, learning basics of working with notebooks is probably a good idea, such as Jupyter (Python), which is a very popular development environment for ML and deep learning.
