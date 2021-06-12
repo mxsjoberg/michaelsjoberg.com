@@ -287,7 +287,9 @@
             "format": ".v",
             "files": [
                 "intro",
-                "nand"
+                "mux",
+                "nand",
+                "xor"
             ]
         }
     },
