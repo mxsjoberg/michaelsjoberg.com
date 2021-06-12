@@ -147,7 +147,7 @@ The goal is to build a strong general background in mathematics, such as typical
 
 - Get familiar with vectors, spaces, matrix transformations, and related concepts
 
-- Get familiar with inverse, determinant, and transpose (get fluent if interested in computer vision)
+- Learn basics of inverse, determinant, and transpose (get fluent if interested in computer vision)
 
 **Differential Equations**
 
@@ -155,9 +155,9 @@ The goal is to build a strong general background in mathematics, such as typical
 
 **Number Theory**
 
-- Get familiar with common algorithms and related concepts; see [List of number theory topics](https://en.wikipedia.org/wiki/List_of_number_theory_topics)
+- Get familiar with topics in number theory (whichever interesting); see [List of number theory topics](https://en.wikipedia.org/wiki/List_of_number_theory_topics)
 
-- Try to solve computational problems; see [Project Euler](https://projecteuler.net/)
+- **Bonus**: Try to solve computational problems; see [Project Euler](https://projecteuler.net/)
 
 Recommended learning material: [Calculus: Early Transcendentals](https://www.amazon.com/Calculus-Early-Transcendentals-James-Stewart/dp/1285741552), [No bullshit guide to linear algebra](https://www.amazon.com/No-bullshit-guide-linear-algebra/dp/0992001021), [Ordinary Differential Equations](https://www.amazon.com/Ordinary-Differential-Equations-Dover-Mathematics/dp/0486649407), [Elementary Analysis: The Theory of Calculus](https://www.amazon.com/Elementary-Analysis-Calculus-Undergraduate-Mathematics/dp/1461462703), [Number Theory](https://www.amazon.com/Number-Theory-Dover-Books-Mathematics/dp/0486682528).
 
