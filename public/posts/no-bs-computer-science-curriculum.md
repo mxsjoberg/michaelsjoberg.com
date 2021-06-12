@@ -1,7 +1,7 @@
 No-BS Computer Science Curriculum  
 Michael Sjoeberg  
 November 10, 2020  
-June 10, 2021
+June 13, 2021
 
 This is a work-in-progress list with recommended learning material and programming languages for computer science students. It works well on its own (for self-learners) or as a complement to the typical undergraduate degree in computer science, which is often lacking some lower-level details and mathematical content. The goal is to provide a more solid foundation to build upon. This list will be updated whenever I find that something is missing, incorrect, or to add additional learning material.
 
@@ -41,7 +41,7 @@ Recommended learning material: [Computer Systems: A Programmer's Perspective](ht
 
 ### Paradigm exposure
 
-The goal is to get familiar with a range of programming paradigms and to understand parts of the hardware abstraction model (via Verilog). C/C++ and Python are generally considered multi-paradigm (as in supporting more than one style), but more specifically imperative and structured (i.e. there are limited jump instructions, read this: [Edgar Dijkstra: Go To Statement Considered Harmful](https://homepages.cwi.nl/~storm/teaching/reader/Dijkstra68.pdf)).
+The goal is to get familiar with a range of programming paradigms, understand parts of the hardware abstraction model (via Verilog), and become a more confident computer scientist in general (via more advanced reading). A few notes on programming languages: C/C++ and Python are considered multi-paradigm (as in supporting more than one style), but more specifically imperative and structured (i.e. there are limited jump instructions, read this: [Edgar Dijkstra: Go To Statement Considered Harmful](https://homepages.cwi.nl/~storm/teaching/reader/Dijkstra68.pdf)).
 
 **Haskell**
 
@@ -67,7 +67,7 @@ The goal is to get familiar with a range of programming paradigms and to underst
 
 - Try to implement designs at different abstraction levels (gate-level, register-transfer-level, behavioural-level); see [Verilog Tutorial](https://www.javatpoint.com/verilog)
 
-Recommended learning material: [Thinking Functionally with Haskell](https://www.amazon.com/Thinking-Functionally-Haskell-Richard-Bird/dp/1107452643), [The Elements of Computing Systems](https://www.amazon.com/Elements-Computing-Systems-Building-Principles/dp/0262640686).
+Recommended learning material: [Thinking Functionally with Haskell](https://www.amazon.com/Thinking-Functionally-Haskell-Richard-Bird/dp/1107452643), [The Elements of Computing Systems](https://www.amazon.com/Elements-Computing-Systems-Building-Principles/dp/0262640686), [Structure and Interpretation of Computer Programs](https://www.amazon.com/Structure-Interpretation-Computer-Programs-Engineering/dp/0262510871).
 
 What about object-oriented programming? This is a quote by Paul Graham (Viaweb, Y Combinator): "*[at] big companies, software tends to be written by large (and frequently changing) teams of mediocre programmers. Object-oriented programming imposes a discipline on these programmers that prevents any one of them from doing too much damage*", read this: [Why Arc Isn't Especially Object-Oriented](http://www.paulgraham.com/noop.html).
 
