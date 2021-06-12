@@ -117,21 +117,21 @@ Mathematics has a central role in any computer science curriculum. A solid found
 
 ### Foundation
 
-The Goal is to get familiar with data structures and theory of computation, some topics could be covered in recommended learning material for some programming languages.
+The Goal is to get familiar with data structures and theory of computation, these topics could also be covered in recommended learning material for some programming languages.
 
 **Discrete Mathematics**
 
-- Get familar with sets, permutations, graphs, networks, and related concepts
+- Get familar with sets, permutations, trees, graphs, and related concepts
 
-- Try to apply concepts from computational complexity to familar algorithms (see [The Algorithms](https://github.com/TheAlgorithms)); optimize implementations based on different conditions
+- Try to implement common algorithms in different programming languages (optimize based on different conditions); get ideas at [The Algorithms](https://github.com/TheAlgorithms)
 
 **Probability Theory**
 
 - Learn basics of probability distributions and conditionality; see [Khan Academy: Statistics and probability](https://www.khanacademy.org/math/statistics-probability)
 
-- **Bonus**: Try to implement concepts based on stochastic processes (maybe MDP solver), could also explore game theory if interested in AI applications
+- **Bonus**: Try to implement concepts based on random processes (maybe MDP solver, see [aimacode](https://github.com/aimacode)), could also explore game theory if interested in AI applications
 
-Recommended learning material: [Discrete Mathematics](https://www.amazon.com/Discrete-Mathematics-Gary-Chartrand/dp/1577667301).
+Recommended learning material: [Discrete Mathematics](https://www.amazon.com/Discrete-Mathematics-Gary-Chartrand/dp/1577667301), [Introduction to Algorithms](https://www.amazon.com/Introduction-Algorithms-3rd-MIT-Press/dp/0262033844).
 
 ### General topics
 
@@ -183,4 +183,4 @@ This section contains additional topics and commonly used tools, it's somewhat b
 
 - Get familiar if you ever want to build web applications, could also explore any of the other \*Script languages (TypeScript, CoffeeScript, or maybe AssemblyScript)
 
-It's also a good idea to get familiar with virtual machines, such as Vagrant or Docker, build systems, such as Make, and cloud computing platforms, such as AWS or Google Cloud. Finally, learning basics of working with notebooks is probably a good idea, such as Jupyter (Python), which is a very popular development environment for ML and deep learning.
+It's also a good idea to get familiar with virtual machines, such as Vagrant or Docker, build systems, such as Make, cloud platforms, such as AWS or Google Cloud, and parallel computing, such as CUDA or OpenCL. Finally, learning basics of working with notebooks is probably a good idea, such as Jupyter (Python), which is a very popular development environment for ML and deep learning.
