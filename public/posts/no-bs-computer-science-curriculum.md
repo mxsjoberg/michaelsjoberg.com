@@ -13,7 +13,7 @@ Programming is the constant in most tasks related to computer science and comput
 
 ### Foundation
 
-The goal is to get comfortable with programming and to understand the software abstraction model (via Assembly, C/C++, and Python; from low-level to high-level, with Python representing the highest-level of abstraction). You probably don't need to be fluent in Assembly (or any specific architecture), but it's a good idea to understand enough to be able to read and find errors.
+The goal is to get comfortable with programming and to understand the software abstraction model (via Assembly, C/C++, and Python; low-level to high-level, with Python representing the highest-level of abstraction). You probably don't need to be fluent in Assembly (or any specific architecture), but it's a good idea to understand enough to be able to read and find errors.
 
 **Assembly**
 
