@@ -286,6 +286,7 @@
             "url": "https://github.com/michaelsjoeberg/programming/blob/master/verilog/",
             "format": ".v",
             "files": [
+                "dmux",
                 "intro",
                 "mux",
                 "nand",
