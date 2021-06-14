@@ -290,6 +290,7 @@
                 "intro",
                 "mux",
                 "nand",
+                "not16",
                 "xor"
             ]
         }
