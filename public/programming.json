@@ -292,6 +292,7 @@
                 "intro",
                 "mux",
                 "mux16",
+                "mux4way16",
                 "nand",
                 "not",
                 "not16",
