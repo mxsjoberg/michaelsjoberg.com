@@ -287,13 +287,17 @@
             "format": ".v",
             "files": [
                 "and",
+                "and16",
                 "dmux",
                 "intro",
                 "mux",
+                "mux16",
                 "nand",
                 "not",
                 "not16",
                 "or",
+                "or16",
+                "or8way",
                 "xor"
             ]
         }
