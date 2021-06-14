@@ -286,11 +286,14 @@
             "url": "https://github.com/michaelsjoeberg/programming/blob/master/verilog/",
             "format": ".v",
             "files": [
+                "and",
                 "dmux",
                 "intro",
                 "mux",
                 "nand",
+                "not",
                 "not16",
+                "or",
                 "xor"
             ]
         }
