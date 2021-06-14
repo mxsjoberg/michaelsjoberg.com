@@ -293,6 +293,7 @@
                 "mux",
                 "mux16",
                 "mux4way16",
+                "mux8way16",
                 "nand",
                 "not",
                 "not16",
