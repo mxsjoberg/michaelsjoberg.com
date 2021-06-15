@@ -286,12 +286,19 @@
             "url": "https://github.com/michaelsjoeberg/programming/blob/master/verilog/",
             "format": ".v",
             "files": [
+                "intro"
+            ]
+        },
+        "gates": {
+            "path": "https://raw.githubusercontent.com/michaelsjoeberg/programming/master/verilog/",
+            "url": "https://github.com/michaelsjoeberg/programming/blob/master/verilog/",
+            "format": ".v",
+            "files": [
                 "and",
                 "and16",
                 "dmux",
                 "dmux4way",
                 "dmux8way",
-                "intro",
                 "mux",
                 "mux16",
                 "mux4way16",
