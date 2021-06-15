@@ -289,6 +289,8 @@
                 "and",
                 "and16",
                 "dmux",
+                "dmux4way",
+                "dmux8way",
                 "intro",
                 "mux",
                 "mux16",
