@@ -47,6 +47,7 @@
             "url": "https://github.com/michaelsjoeberg/programming/blob/master/python/",
             "format": ".py",
             "files": [
+                "backpropagation.py",
                 "delta-learning-algorithm",
                 "keras-convolutional-neural-network",
                 "keras-multilayer-perceptron",
