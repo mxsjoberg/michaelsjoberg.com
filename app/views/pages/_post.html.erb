@@ -8,7 +8,7 @@
         <!-- meta -->
         <p class="text-muted m-0">
             <!-- date -->
-            <span><%= Date.parse(@date).strftime("%b %d, %Y") %> (updated: <%= Date.parse(@updated).strftime("%b %d, %Y") %>)</span>
+            <span><%= Date.parse(@date).strftime("%b %d, %Y") %> <% unless Date.parse(@date) == Date.parse(@updated) %>(updated: <%= Date.parse(@updated).strftime("%b %d, %Y") %>)<% end %></span>
             <!-- words -->
             <span>&#9642; <%= @words / 75 %> min read</span>
             <!-- tags -->
