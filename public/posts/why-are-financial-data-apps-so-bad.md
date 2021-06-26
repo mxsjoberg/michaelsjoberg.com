@@ -7,7 +7,7 @@ Ok, some apps are good (but this title is more catchy). I actively maintain abou
 
 ## Why is Yahoo Finance better?
 
-The first thing I do on a new financial app (read: financial data aggregator) is to check availability of data; such as searching for tickers, and most return some pre-selected data on US-listed companies, but fewer results for companies such as Tencent, the seventh-largest company in the world (according to [CompaniesMarketCap](https://companiesmarketcap.com/); as of today), as well as Capcom, NAVER, Kakao, or Prosus. These are not really small companies, and they are all public, most apps just fail to provide that data, forcing me to go back to Yahoo Finance. Anyway, below are what I believe the best non-professional financial data apps:
+The first thing I do on a new financial app (read: financial data aggregator) is to check availability of data; such as searching for tickers, and most return some pre-selected data on US-listed companies, but fewer results for companies such as Tencent, the seventh-largest company in the world (according to [CompaniesMarketCap](https://companiesmarketcap.com/); as of today), as well as Capcom, NAVER, Kakao, or Prosus. These are not really small companies, and they are all public, most apps just fail to provide that data, forcing me to go back to Yahoo Finance. Anyway, below are in my opinion the best non-professional financial data apps:
 
 **Finviz**
 
