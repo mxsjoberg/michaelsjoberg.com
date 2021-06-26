@@ -27,7 +27,7 @@ Tradingview is a very popular charting tool, and show correct results for non-US
 
 **Finbox**
 
-Finbox is probably the best of the above, provide most data, as well as support for customizing the interface (hide and show widgets). However, plan starts at USD 19 per month with only US-listed companies, and very few additional features, such as fair value estimates (which I strongly believe is misleading and impossible, but not important for this comparison), adding more regions increase the price a lot. I would probably use this app if I ever wanted the additional features (highly unlikely), but otherwise very steep price for data. For example, adding all regions to plan is USD 99 per month (compared with [Marketstack API](https://marketstack.com/product) with 70 exchanges for USD 9.99 per month, or USD 0 with limited usage).
+Finbox is probably the best of the above, provide most data, as well as support for customizing the interface (hide and show widgets). However, plan starts at USD 19 per month with only US-listed companies, and very few additional features, such as fair value estimates (which I strongly believe is misleading and impossible, but not important for this comparison), adding more regions increase the price a lot. I would probably use this app if I ever wanted the additional features (highly unlikely), but otherwise very steep price for data. For example, adding all regions to plan is USD 99 per month (compared with [Marketstack API](https://marketstack.com/product) with 70 exchanges for USD 9.99 per month, or free with limited usage).
 
 ## What I want
 
