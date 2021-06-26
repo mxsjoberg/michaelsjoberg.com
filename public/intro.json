@@ -3,17 +3,17 @@
         "michael sjoeberg"
     ],
     "recent": {
-        "20210324": {
-            "title": "Largest Product in Grid in Python",
-            "url": "/programming/python/project-euler-problems/largest-product-in-grid"
+        "20210626": {
+            "title": "Why are financial data apps so bad?",
+            "url": "/writing/why-are-financial-data-apps-so-bad"
         },
-        "20201110": {
+        "20210613": {
             "title": "No-BS Computer Science Curriculum",
             "url": "/writing/no-bs-computer-science-curriculum"
         },
-        "20201104": {
-            "title": "Genetic Algorithm Optimization in Python",
-            "url": "/programming/python/other/genetic-algorithm-optimization"
-        }
+        "20210523": {
+            "title": "A few notes on investing",
+            "url": "/writing/a-few-notes-on-investing"
+        },
     }
 }
