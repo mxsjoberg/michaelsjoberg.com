@@ -1,22 +1,4 @@
 {   
-    // "Financial strategy": {
-    //     "description": "Project financing and valuation (NPV, IRR), discounted cash flow, market multiples, corporate governance, mergers and acquisitions (M&A).",
-    //     "school": "The Open University Business School",
-    //     "url": "http://www.openuniversity.edu/courses/postgraduate/modules/b859",
-    //     "ects": "15",
-    //     "level": "PG",
-    //     "date": "2021",
-    //     "grade": null
-    // },
-    // "Investment and portfolio management": {
-    //     "description": "Asset allocation and investment objectives, fixed income and bond pricing, equity valuation, derivatives and structured products, behavioural finance.",
-    //     "school": "The Open University Business School",
-    //     "url": "http://www.openuniversity.edu/courses/postgraduate/modules/b861",
-    //     "ects": "15",
-    //     "level": "PG",
-    //     "date": "2021",
-    //     "grade": null
-    // },
     "Introduction to corporate finance": {
         "description": "Financial statements and ratio analysis, financial forecasting and planning, estimating risk and return, efficient-market hypothesis (EMH), capital structure and cost of capital (WACC), dividend policy.",
         "school": "The Open University Business School",
