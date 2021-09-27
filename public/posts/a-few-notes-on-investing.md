@@ -1,23 +1,17 @@
 A few notes on investing  
 Michael Sjoeberg  
 May 16, 2020  
-May 23, 2021
-
-## TLDR
-
-- Don't mix speculation with investing; Do determine present value based on future earnings
-
-- Buy when price is lower than present value of future earnings; Sell when price is higher (or within some margin of safety)
+Sep 27, 2021
 
 ## Price is not equal to value
 
-This is an important realisation that is easy to forget; simply because something is bought or sold at a certain price doesn't mean that's its value. There are several famous quotes on this (such as by Warren Buffet), but what this basically means is that you can pay a low price for something with a high value, but also pay too much for something with a low value.
+This is an important realisation that is easy to forget; simply because something is bought or sold at a certain price doesn't mean that's its value (most investors expect what they buy to increase in value, or at least be worth more than what they paid). There are several famous quotes on this (such as by Warren Buffet), but what this basically means is that you can pay a low price for something with a high value, but also pay too much for something with a low value.
 
-True value can only be determined by each person. I might value something a lot higher than someone else, especially when it would provide me with something it wouldn't necessary provide someone else (productivity and similar services are good examples). However, and in the context of investing, it's somewhat safe to assume that most rational people want to increase their overall wealth (not always in monetary terms).
+True value can only be determined by each person (read more about [subjective theory of value](https://en.wikipedia.org/wiki/Subjective_theory_of_value)). I might value something a lot higher than someone else, especially when it would provide me with something it wouldn't necessary provide someone else (productivity and similar services are good examples). However, and in the context of investing, it's somewhat safe to assume that most rational people want to increase their overall wealth (not always in monetary terms).
 
 **How to determine value?**
 
-According to the [efficient-market hypothesis](https://en.wikipedia.org/wiki/Efficient-market_hypothesis) (or EMH), the current market price for a security is a good measurement of its value. Basically, an investor shouldn't be able to beat the market by finding undervalued companies, and the only way to gain value is from random movements or cheating. The EMH solves various issues in markets and pricing, but it's also disputed by several unquestionably smart people. So, it's fairly safe to ignore this, and assume markets are at least somewhat inefficient (there exist some information asymmetries).
+According to the [efficient-market hypothesis](https://en.wikipedia.org/wiki/Efficient-market_hypothesis) (or EMH), the current market price for a security is a good measurement of its value. Basically, an investor shouldn't be able to beat the market by finding undervalued companies, and the only way to gain value is from random movements or cheating. The EMH solves various issues in markets and pricing, but it's also disputed by several unquestionably smart people. So, it's fairly safe to ignore its stronger form, and assume markets are at least somewhat inefficient (there exist some information asymmetries).
 
 Determining value is the fundamental problem for all investors, and it's more similar to a process than systematic method, which also means it's hard to automate. It's also important to mention that most investors have their own unique approach. The basics: when buying or starting a business, the investor or founder own all of the shares. In this case, its value could be whatever the investor paid for the shares, or all its assets, but more realistically, it would be a combination of its assets and potential future earnings (often adjusted to inflation and risk). It's common to estimate earnings a few years into the future, based on consensus or otherwise, then assume a set growth rate forever (which could be negative, read more about [terminal value](https://en.wikipedia.org/wiki/Terminal_value_(finance))).
 
@@ -25,23 +19,23 @@ Determining value is the fundamental problem for all investors, and it's more si
 
 A simple method to estimate future earnings is to represent earnings as a function of revenue and cost, and margins should get better over time, so usually safe to assume slowing growth but improved margins, which results in better earnings. You should almost exclusively use the company reported figures to build a model (as described in the next section).
 
-The income statement has all the figures needed to estimate earnings, where revenue is the key metric, but can often itself be a function of other reported metrics, such as products sold, or number of users combined with average revenue per user. It's also important to keep an eye on potential non-cash expenses, which can be somewhat confusing, but common to add back to operating expenses (as it shouldn't impact earnings). Ratios can be used to make sure that the estimation is realistic, such as [Gross Margin](https://en.wikipedia.org/wiki/Gross_margin), [Operating Margin](https://en.wikipedia.org/wiki/Operating_margin), and [Tax Rate](https://en.wikipedia.org/wiki/Tax_rate), as well as determining year-on-year change in revenue and operating expenses (ratios shouldn't be surprising and typically doesn't fluctuate much).
+The income statement has all the figures needed to estimate earnings, where revenue is the key metric, but can often itself be a function of other reported metrics, such as products sold, or number of users combined with average revenue per user. It's also important to keep an eye on potential non-cash expenses, which can be somewhat confusing (such as [stock-based compensation](https://en.wikipedia.org/wiki/Employee_stock_option)), but common to add back to operating expenses when significant (otherwise the impact on earnings could be misleading). Ratios can be used to make sure that the estimation is realistic, such as [gross margin](https://en.wikipedia.org/wiki/Gross_margin), [operating margin](https://en.wikipedia.org/wiki/Operating_margin), and [tax rate](https://en.wikipedia.org/wiki/Tax_rate), as well as determining year-on-year change in revenue and various operating expenses (ratios shouldn't be surprising and typically doesn't fluctuate too much). Over time, it's common to assume gross margin to decrease with competition and operating margin to increase with maturity.
 
 The balance sheet is sometimes useful to make sure that the company has enough cash to cover its short-term liabilities, in particular debt, which otherwise could result in a very bad investment. The cash flow statement is also primarily used to make sure that the company is healthy, where cash flow generated by the company should approximate its reported earnings over time (read more about [Free cash flow](https://en.wikipedia.org/wiki/Free_cash_flow)).
 
 **How to build a financial model?**
 
-Microsoft Excel is the only tool needed to build a financial model (it's also the most used AFAIK), where each quarter or annual report can be entered into columns (e.g. one column per quarter), it's generally a good idea to include several years of previous earnings before attempting to estimate future earnings. This process can be very time consuming, but forecasting does become easier with specific knowledge in whatever industry the company is operating in; investors need to consider likelihood of various events, sales targets, new product impact, and so on. A good model should estimate revenue and expenses for at least a couple of years into the future, then assume zero or negative growth until earnings are close to zero (this could be many more years into the future).
+Microsoft Excel is the only tool needed to build a financial model (it's also the most used AFAIK), where each quarter or annual report can be entered into columns (e.g. one column per quarter), it's generally a good idea to include several years of previous earnings before attempting to estimate future earnings. This process can be very time consuming, but forecasting does become easier with specific knowledge in whatever industry the company is operating in; investors need to consider likelihood of various events, sales targets, new products, and so on. A good model should estimate revenue and expenses for at least a couple of years into the future, then assume zero or negative growth until earnings are close to zero (this could be many more years into the future).
 
 **How to determine net present value?**
 
-The [net present value](https://en.wikipedia.org/wiki/Net_present_value) (or NPV) is the sum of the [discounted cash flow](https://en.wikipedia.org/wiki/Discounted_cash_flow) (this is the estimated future earnings). The discount rate should generally be in the 0-10% range and represents the perceived risk (as compared with alternatives, including not investing at all). An appropriate discount rate should be the [risk-free rate](https://en.wikipedia.org/wiki/Risk-free_interest_rate) (time preference) plus some risk premium, and should reflect the likelihood that estimated future earnings does not happen, minimum expected return, or relative risk compared with peers (again, this is probably different for each investor). The discount rate should be higher than any interest paid on bonds or other debt in the company, which are senior to common stock and so lower risk.
+The [net present value](https://en.wikipedia.org/wiki/Net_present_value) (or NPV) is the sum of the [discounted cash flow](https://en.wikipedia.org/wiki/Discounted_cash_flow) (this is the estimated future earnings). The discount rate should generally be in the 0-10% range and represents the perceived risk (as compared with alternatives, including not investing at all). An appropriate discount rate should be the [risk-free rate](https://en.wikipedia.org/wiki/Risk-free_interest_rate) (time preference) plus some risk premium, and should reflect the likelihood that estimated future earnings does not happen, minimum expected return, or relative risk compared with peers (again, this is different for each investor). The discount rate should be higher than any interest paid on bonds or other debt in the company, which typically ranks higher than common stock, and so marginally lower risk.
 
-The calculated NPV is then added to net cash, which is cash and marketable securities minus debt (as found on the balance sheet). This is what you should pay for the company or divided by shares outstanding to get price per share, which can be both higher and lower than current market price.
+The calculated NPV is then added to net cash, which is cash and marketable securities minus debt (as found on the balance sheet). This is what you should pay for the company, or divided by shares outstanding to get price per share, which can be both higher and lower than current market price.
 
 ## Buying and selling
 
-This is fairly straightforward; buy when the financial model seems appropriate, risk is tolerable, and current market price is lower than estimated price per share, or lower than estimated price plus a [margin of safety](https://www.investopedia.com/terms/m/marginofsafety.asp). This also means sell, or [short sell](https://en.wikipedia.org/wiki/Short_(finance)), when current market price is higher than estimated price per share.
+This is fairly straightforward; buy when the financial model seems appropriate, risk is tolerable, and current market price is lower than estimated price per share, or lower than estimated price with some [margin of safety](https://en.wikipedia.org/wiki/Margin_of_safety_(financial)). This also means sell, or [short sell](https://en.wikipedia.org/wiki/Short_(finance)), when current market price is higher than estimated price per share.
 
 ---
 
@@ -55,4 +49,4 @@ This is fairly straightforward; buy when the financial model seems appropriate, 
 
 **Disclaimer**
 
-This is not investment advice. I am not suggesting that anyone should do anything mentioned in this post (nor invest in any stock or other financial instrument).
+This is not financial advice. I am not suggesting that anyone should do anything mentioned in this post (nor invest in any stock or other financial instrument).
