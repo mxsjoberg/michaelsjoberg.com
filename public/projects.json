@@ -7,12 +7,12 @@
         "url": "",
         "tags": ["machine learning", "no-code"]
     },
-    "Stockstack (beta in Q3/Q4 2021)": {
+    "Stockstack": {
         "description": [
-            "Desktop-first and highly customizable financial data platform to make investment research distraction-free."
+            "Web-based and highly customizable financial data aggregator to make investment research distraction-free."
         ],
         "date": "2020-",
-        "url": "",
+        "url": "https://stockstack.io",
         "tags": ["finance", "python", "vue.js"]
     },
     "pas2wat (pascal-to-wat)": {
@@ -25,7 +25,7 @@
     },
     "raknalang (räknalang)": {
         "description": [
-            "A simple arithmetic programming language aimed at learning basic mathematics in native languages. Interpreter implemented in Python."
+            "A simple educational programming language for learning basic arithmetics in native language. Interpreter implemented in Python."
         ],
         "date": "2020",
         "url": "https://github.com/michaelsjoeberg/raknalang",
