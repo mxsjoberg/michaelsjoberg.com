@@ -1,18 +1,18 @@
 {   
-    "Evert.AI (idea stage)": {
+    "Evert.AI (idea)": {
         "description": [
-            "No-code platform for building machine learning algorithms. Looking for co-founder(s)."
+            "Visual programming language (block-based) and low-code environment for learning different machine learning frameworks."
         ],
-        "date": "2021-",
+        "date": "",
         "url": "",
-        "tags": ["machine learning", "no-code"]
+        "tags": ["machine learning", "low-code"]
     },
-    "Stockstack": {
+    "Frozenfork (previously Stockstack.io)": {
         "description": [
-            "Web-based and highly customizable financial data aggregator to make investment research distraction-free."
+            "Software development company building productivity tools for finance."
         ],
         "date": "2020-",
-        "url": "https://stockstack.io",
+        "url": "https://frozenfork.com",
         "tags": ["finance", "python", "vue.js"]
     },
     "pas2wat (pascal-to-wat)": {
