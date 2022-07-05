@@ -1,13 +1,13 @@
 Why are financial data apps so bad?  
 Michael Sjoeberg  
 June 26, 2021  
-Sep 27, 2021
+July 5, 2022
 
-Ok, some apps are fairly good (but this title is more catchy). I actively maintain about 50 financial models, primarily companies with products in the internet and internet-software domains (think Google and Microsoft, but not Apple). I frequently try new apps, and made multiple attempts to build myself. There are however two constants that seem irreplaceable: [EDGAR](https://www.sec.gov/edgar/searchedgar/companysearch.html) (company filings, sometimes replacable with well-designed investor relations page) and [Yahoo Finance](https://finance.yahoo.com/) (for everything else, it's the most reliable data provider).
+Ok, some apps are fairly good (but this title is more catchy). I actively maintain about 50 financial models, primarily companies with products in the internet and internet-software domains (think Google and Microsoft, but not Apple). I frequently try new apps, and made multiple attempts to build myself. There are however two constants that seem irreplaceable: [EDGAR](https://www.sec.gov/edgar/searchedgar/companysearch.html) (company filings, sometimes replacable with well-designed and trustworthy investor relations page) and [Yahoo Finance](https://finance.yahoo.com/) (for everything else, it's the most reliable data provider).
 
 ## Alternatives to Yahoo Finance
 
-The first thing I do when trying a new financial app (read: financial data aggregator) is to check range and availability of data; such as searching for tickers, and most have support for US exchanges, but not all support foreign exchanges, such as searching for Tencent, one of the largest companies in the world, and even fewer support Capcom, NAVER, Kakao, or Prosus (also very large non-US companies). Yahoo Finance support all of these.
+The first thing I do when trying a new financial data app is to check range and availability of data; such as searching for tickers, and most have support for US exchanges, but not all support foreign exchanges, such as searching for Tencent, one of the largest companies in the world, and even fewer support Capcom, NAVER, Kakao, or Prosus (also very large non-US companies). Yahoo Finance support all of these.
 
 **[Finviz](https://finviz.com/)**
 
@@ -31,24 +31,22 @@ I want useful data (and preferably not more than that), as fast and cheap as pos
 
 A good alternative would let users select and subscribe to data separately (data is considered useful), the app simply show what the user want in view. The user-interface is customizable as much as *feasible* (if something could be based on user-defined templates it should), including data (similar to formulas in spreadsheets).
 
-**[Stockstack](https://stockstack.io)**
+**Stockstack (now at [terminal.frozenfork.com](https://terminal.frozenfork.com))**
 
-I have made several attempts to build apps to improve my own workflow (equity research), first to move portfolio management tasks from spreadsheets to web (Modelmode.io, then EQZEN.com, both discontinued and reverted back to spreadsheets), then data aggregation tasks (an attempt to solve the previously-mentioned issues with alternatives to Yahoo Finance). Stockstack is the most recent attempt and started as a solution to view financial data on desktop (not in browser, similar to a terminal), using data provided by IEX Cloud (US-listed companies), and basically added features and additional data when needed (such as non-US companies via an unofficial Yahoo Finance API).
+I have made several attempts to build apps to improve my own workflow (equity research), first to move portfolio management tasks from spreadsheets to web (Modelmode.io, then EQZEN.com, both discontinued and reverted back to spreadsheets), then data aggregation tasks (an attempt to solve the previously-mentioned issues with alternatives to Yahoo Finance). This is the most recent attempt and started as a solution to view financial data on desktop (not in browser, similar to a terminal), using data provided by IEX Cloud (US-listed companies), and basically added features and additional data when needed (such as non-US companies via an unofficial Yahoo Finance API).
 
 I then started to use an early version of this desktop-app for almost all data needs (only went to Yahoo Finance for data not yet implemented), and gives correct results for US and non-US companies, as well as currencies, and some crypto. It was initially designed to provide me with the data I most commonly want in a single view (no clicking around), but later transformed into providing *any* (available) data I want in the view (based on customizable templates).
 
-The current state of Stockstack (private beta):
+The current state (as of July 5, 2022):
 
-- Data availability depends on provided API key (subscribed to separately). Pricing not based on data.
+- Stock market data, watchlist, charts, news and other widgets in customizable views, each view is a combination of widgets and columns (subscribers only: all-in-one view to show widgets from all views)
 
-- Modular and customizable interface (hide/show and move widgets, hide/show data in widget).
+- Select widgets and toggle data to show in each widget to make your views distraction-free. Additional widgets are available with your own API keys: Currently IEX Cloud (default and free), Yahoo Finance and SeekingAlpha via RapidAPI, and CoinMarketCap.
 
-Next steps:
+- Batch mode: Enter more than two symbols in search to use batch mode, show all data for a list of symbols (subscribers only)
 
-- Support for additional data providers (currently only IEX Cloud). **This improves amount of useful data available to users**
+- Tracker: Track symbol to show all data (persistent batch mode), convert non-base currency, and use portfolio features – set non-zero number to move symbol to portfolio
 
-- Change style and format of data, and create new data. **This improves usability and gives users more tools for customization**
+Subscription starting at USD 19.90 per month and increase limits on symbols in watchlist and tracker, chart range and interval, news items per symbol, up to ten views (both home and data pages), as well as batch mode.
 
-- Batch request data for list of symbols (similar Finviz screener). **This improves usability**
-
-I'm aiming to make the beta available in Q3/Q4 2021 (more than one data provider; US and non-US companies; desktop and web). Pricing during beta is reduced to USD 5 per month (otherwise USD 15 per month). In the future, pricing will likely include free-plan (single API-key), USD 10-20 per month (multiple API-keys), and USD 1000-2000 + USD 25 per month for custom API integration.
+Try for free here: [terminal.frozenfork.com](https://terminal.frozenfork.com).
