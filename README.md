@@ -1,3 +1,5 @@
-# michaelsjoeberg.com 4.0.0
+# michaelsjoeberg.com
+
+Personal website with programming examples in multiple programming languages.
 
 Hosted at [michaelsjoeberg.com](https://michaelsjoeberg.com).
