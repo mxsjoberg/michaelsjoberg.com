@@ -1,18 +1,18 @@
 {   
     "Evert.AI (idea)": {
         "description": [
-            "Visual programming language (block-based) and low-code environment for learning different machine learning frameworks."
+            "Visual programming language (block-based) and low-code environment targeting machine learning frameworks."
         ],
         "date": "",
         "url": "",
         "tags": ["machine learning", "low-code"]
     },
-    "Frozenfork (previously Stockstack.io)": {
+    "terminal.frozenfork.com (previously Stockstack.io)": {
         "description": [
-            "Software development company building productivity tools for finance."
+            "A stock market data dashboard with customizable widget-based user interface."
         ],
         "date": "2020-",
-        "url": "https://frozenfork.com",
+        "url": "https://terminal.frozenfork.com",
         "tags": ["finance", "python", "vue.js"]
     },
     "pas2wat (pascal-to-wat)": {
@@ -29,30 +29,38 @@
         ],
         "date": "2020",
         "url": "https://github.com/michaelsjoeberg/raknalang",
-        "tags": ["programming language", "python"]
+        "tags": ["programming language"]
     },
-    "EQZEN (migrating to Stockstack)": {
+    "EQZEN": {
         "description": [
-            "Web-based and collaborative stock portfolio manager."
+            "A collaborative portfolio management application. Discontinued."
         ],
         "date": "2018-2020",
-        "url": "https://eqzen.com",
+        "url": "https://web.archive.org/web/20200302140415/https://eqzen.com/",
         "tags": ["finance", "Python"]
     },
-    "LearnHub (discontinued)": {
+    "learnhub.io (archived)": {
         "description": [
             "Web-based platform and skill tracker for self-learners."
         ],
         "date": "2018",
-        "url": "https://web.archive.org/web/20210126153704/https://learnhub.io/login",
-        "tags": ["self-learning", "platform", "python"]
+        "url": "https://github.com/michaelsjoeberg/learnhub.io",
+        "tags": ["platform", "python"]
     },
-    "Give Trees (Plant for Earth LTD; discontinued)": {
+    "Give Trees": {
         "description": [
-            "Developer of mobile-first applications to gamify charitable donations (Android and iOS)."]
+            "Android application for charitable donations. Discontinued."]
         ,
         "date": "2014-2017",
         "url": "https://web.archive.org/web/20190205052959/https://www.givetrees.co/",
-        "tags": ["mobile applications", "PHP", "lua"]
+        "tags": ["Android", "PHP", "lua"]
+    },
+    "doolio.co (archived)": {
+        "description": [
+            "Online interactive resume."
+        ],
+        "date": "2017",
+        "url": "https://github.com/michaelsjoeberg/doolio.co",
+        "tags": ["platform", "PHP"]
     }
 }
