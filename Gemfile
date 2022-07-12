@@ -35,8 +35,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 # github markdown reader
-gem 'commonmarker'
 #gem 'github-markup', '~> 3.0.4'
+# gem 'redcarpet'
+gem 'commonmarker'
 
 # github security notifications
 gem "actionview", ">= 5.2.4.4"
