@@ -54,6 +54,8 @@ $COLOR_CONTRAST     : $COLOR_RED;
 $WHITE_BASE         : #FFFFFF;
 $WHITE_SHADED       : #FAFAFA;
 
+$COLOR_DARK_BLUE    : #010E1F;
+
 // BASE 
 // --------------------------------------------------------
 html { background-color: $WHITE_BASE; }
@@ -379,9 +381,7 @@ input#search:focus {
 
 .btn.btn-primary i { min-width: 20px; }
 
-.btn.btn-primary:hover,
-.btn.btn-primary:focus,
-.btn.btn-primary:active { 
+.btn.btn-primary:hover { 
     background-color        : $COLOR_DARK_BASE !important;
     color                   : $WHITE_BASE !important; 
     border-color            : $COLOR_DARK_BASE !important;
@@ -445,12 +445,19 @@ a { word-break: break-word !important; }
 a.break-all { word-break: break-all !important; }
 
 // paragraph
-p a { font-weight: $FONT_WEIGHT_BOLD; }
+p a {
+    font-weight             : $FONT_WEIGHT_BOLD;
+    display                 : inline !important;
+}
 
 p a:hover,
 p a:focus {
     color                   : $WHITE_BASE;
     background-color        : $COLOR_PRIMARY;
+}
+
+p a:hover::before {
+    content: none !important;
 }
 
 .font-size-medium { font-size: $FONT_SIZE_MEDIUM; }
@@ -537,12 +544,25 @@ a,
 a:focus { 
     color                   : $COLOR_PRIMARY;
     text-decoration         : none;
+    display                 : inline-block;
 }
+
+// .dark a,
+// .dark a:focus { 
+//     color                   : $COLOR_PURPLE;
+//     text-decoration         : none;
+// }
 
 a:hover { 
     color                   : $COLOR_GREEN;
     text-decoration         : none !important;
 }
+
+// a:hover::before {
+//     content                 : "> ";
+//     position                : absolute;
+//     left                    : 0;
+// }
 
 a.underline,
 a.underline p,
@@ -626,9 +646,9 @@ pre.prettyprint span {
 
 // DARK THEME
 // --------------------------------------------------------
-html.dark { background-color: $COLOR_DARK_BASE; }
+html.dark { background-color: $COLOR_DARK_BLUE; }
 
-html.dark .navbar { background-color: $COLOR_DARK_BASE; }
+html.dark .navbar { background-color: $COLOR_DARK_BLUE; }
 
 html.dark a.color-primary span,
 html.dark a.color-primary:focus span { color: $WHITE_SHADED; }
@@ -666,7 +686,7 @@ html.dark button.navbar-toggler {
 
     span { 
         background-color        : $WHITE_SHADED; 
-        color                   : $COLOR_DARK_BASE; 
+        color                   : $COLOR_DARK_BLUE; 
     }
 
     a {
@@ -691,25 +711,23 @@ html.dark .border-solid span,
 html.dark .border-solid a { color: $WHITE_SHADED; }
 
 html.dark .btn.btn-primary {
-    background-color        : $COLOR_DARK_BASE;
+    background-color        : $COLOR_DARK_BLUE;
     color                   : $WHITE_BASE; 
-    border-color            : $COLOR_DARK_BASE;
+    border-color            : $COLOR_DARK_BLUE;
 }
 
-html.dark .btn.btn-primary:hover,
-html.dark .btn.btn-primary:focus,
-html.dark .btn.btn-primary:active { 
+html.dark .btn.btn-primary:hover { 
     background-color        : $WHITE_BASE !important;
-    color                   : $COLOR_DARK_BASE !important; 
+    color                   : $COLOR_DARK_BLUE !important; 
     border-color            : $WHITE_BASE !important;
 }
 
 html.dark .modal .modal-dialog .modal-content {
-    background-color        : $COLOR_DARK_BASE; 
+    background-color        : $COLOR_DARK_BLUE; 
 }
 
 html.dark input#search {
-    background-color        : $COLOR_DARK_BASE;
+    background-color        : $COLOR_DARK_BLUE;
     color                   : rgba($WHITE_SHADED, 0.5); 
     border                  : 1px solid rgba($WHITE_SHADED, 0.1); 
 
@@ -720,7 +738,7 @@ html.dark input#search {
 }
 
 html.dark input#search:hover {
-    color                   : $COLOR_DARK_BASE;
+    color                   : $COLOR_DARK_BLUE;
 
     &::-webkit-input-placeholder    { color: rgba($WHITE_SHADED, 0.5); }
     &::-moz-placeholder             { color: rgba($WHITE_SHADED, 0.5); }
