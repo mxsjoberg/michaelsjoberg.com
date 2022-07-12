@@ -36,17 +36,17 @@
         <div class="row justify-content-center">
             <%= render 'divider', locals: { size: @size } %>
             <!-- description -->
-            <div class="col-12 col-lg-<%= @size %>">
+            <!-- <div class="col-12 col-lg-<%= @size %>">
                 <p class="font-family-serif mb-0">This is a collection of language-specific syntax, algorithms, and smaller programs (~100 LOC) in various programming languages for self-learning or reference.</p>
-            </div>
-            <%= render 'divider', locals: { size: @size } %>
+            </div> -->
         </div>
         <!-- list -->
         <% @programming.keys.each do |category| %>
         <div class="row justify-content-center mb-3">
             <!-- category -->
             <div class="col-12 col-lg-<%= @size %> mb-3">
-                <h2 id="<%= category %>" class="font-weight-bold">
+                <a name="<%= category %>" class="anchor-2"></a>
+                <h2 class="font-weight-bold">
                     <a href="#<%= category %>" data-turbolinks="true"><%= category.titleize %></a>
                 </h2>
             </div>
@@ -66,7 +66,8 @@
                     <% @programming[category].keys.each do |group| %>
                         <!-- header -->
                         <li class="list_header background--grey col-12">
-                            <p id="<%= category %>_<%= group.gsub('-', '_') %>" class="mt-2 mb-2"><%= group.titleize %></p>
+                            <a name="<%= category %>_<%= group.gsub('-', '_') %>" class="anchor-2"></a>
+                            <p class="mt-2 mb-2"><%= group.titleize %></p>
                         </li>
                         <!-- list items -->
                         <div class="container-fluid">
