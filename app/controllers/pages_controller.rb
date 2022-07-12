@@ -2,7 +2,7 @@ class PagesController < ApplicationController
     before_action :set_meta#, :get_time, :get_github, :get_twitter
 
     # version
-    $version = "4.0.0"
+    $version = "4.5.0"
 
     # GET /
     def home
@@ -75,11 +75,17 @@ class PagesController < ApplicationController
         unless (@post.nil?)
             @file = @post + '.md'
             # @date = @post
-            @date = @posts[@post]['date']
             @title = @posts[@post]['title']
             @tags = @posts[@post]['tags']
+            @date = @posts[@post]['date']
+            @updated = @posts[@post]['updated']
+            @draft = @posts[@post]['draft']
             @lines = File.readlines(Rails.public_path + 'posts/' + @file)
-            @updated = @lines[3]
+            # @updated = @lines[3]
+            @skip = @lines[4].to_i
+            unless (@skip == 0)
+                @toc = @lines[5..@skip]
+            end
             # override meta
             @meta_title = @title
             # count words
@@ -90,17 +96,21 @@ class PagesController < ApplicationController
                     @words += 1
                 end
             end
+            # content
+            # to render full file
+            # @content = @lines.drop(4).join("\n")
         # all posts
         else
             @posts_array = Hash.new
             @posts.keys.each do |post|
                 @file = post + '.md'
                 # @date = post
-                @date = @posts[post]['date']
                 @title = @posts[post]['title']
                 @tags = @posts[post]['tags']
+                @date = @posts[post]['date']
                 @updated = @posts[post]['updated']
-                @posts_array[post] = { title: @title, tags: @tags, date: @date, updated: @updated }
+                @draft = @posts[post]['draft']
+                @posts_array[post] = { title: @title, tags: @tags, date: @date, updated: @updated, draft: @draft }
             end
         end
     end
