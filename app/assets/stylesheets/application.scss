@@ -54,7 +54,7 @@ $COLOR_CONTRAST     : $COLOR_RED;
 $WHITE_BASE         : #FFFFFF;
 $WHITE_SHADED       : #FAFAFA;
 
-$COLOR_DARK_BLUE    : #010E1F;
+$COLOR_DARK_BLUE    : #0B0823;
 
 // BASE 
 // --------------------------------------------------------
@@ -120,7 +120,14 @@ hr,
 a.anchor {
     display: block;
     position: relative;
-    top: -50px;
+    top: calc(-50px - 1rem);
+    visability: hidden;
+}
+
+a.anchor-2 {
+    display: block;
+    position: relative;
+    top: calc(-100px - 1rem);
     visability: hidden;
 }
 
@@ -208,9 +215,9 @@ input#search:hover {
 }
 
 input#search:focus {
-    background-color        : $COLOR_CONTRAST;
+    background-color        : $COLOR_DARK_BASE;
     color                   : $WHITE_BASE;
-    border-color            : $COLOR_CONTRAST;
+    border-color            : $COLOR_DARK_BASE;
 
     &::-webkit-input-placeholder    { color: $WHITE_BASE; }
     &::-moz-placeholder             { color: $WHITE_BASE; }
@@ -728,7 +735,7 @@ html.dark .modal .modal-dialog .modal-content {
 
 html.dark input#search {
     background-color        : $COLOR_DARK_BLUE;
-    color                   : rgba($WHITE_SHADED, 0.5); 
+    color                   : rgba($WHITE_SHADED, 0.5);
     border                  : 1px solid rgba($WHITE_SHADED, 0.1); 
 
     &::-webkit-input-placeholder    { color: rgba($WHITE_SHADED, 0.5); }
@@ -738,7 +745,7 @@ html.dark input#search {
 }
 
 html.dark input#search:hover {
-    color                   : $COLOR_DARK_BLUE;
+    color                   : $WHITE_BASE;
 
     &::-webkit-input-placeholder    { color: rgba($WHITE_SHADED, 0.5); }
     &::-moz-placeholder             { color: rgba($WHITE_SHADED, 0.5); }
@@ -747,14 +754,14 @@ html.dark input#search:hover {
 }
 
 html.dark input#search:focus {
-    background-color        : $COLOR_CONTRAST;
-    color                   : $WHITE_BASE;
-    border-color            : $COLOR_CONTRAST;
+    background-color        : $WHITE_BASE;
+    color                   : $COLOR_DARK_BLUE;
+    border-color            : $WHITE_BASE;
 
-    &::-webkit-input-placeholder    { color: $WHITE_SHADED; }
-    &::-moz-placeholder             { color: $WHITE_SHADED; }
-    &:-ms-input-placeholder         { color: $WHITE_SHADED; }
-    &:-moz-placeholder              { color: $WHITE_SHADED; }
+    &::-webkit-input-placeholder    { color: $WHITE_BASE; }
+    &::-moz-placeholder             { color: $WHITE_BASE; }
+    &:-ms-input-placeholder         { color: $WHITE_BASE; }
+    &:-moz-placeholder              { color: $WHITE_BASE; }
 }
 
 html.dark pre.prettyprint,
