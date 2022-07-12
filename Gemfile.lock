@@ -275,8 +275,5 @@ DEPENDENCIES
   web-console (>= 3.3.0)
   websocket-extensions (>= 0.1.5)
 
-RUBY VERSION
-   ruby 3.1.2p20
-
 BUNDLED WITH
    2.3.7
