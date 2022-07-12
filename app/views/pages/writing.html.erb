@@ -36,13 +36,16 @@
                         <!-- post:title -->
                         <h2 class="font-family-serif font-weight-bold">
                             <a href="/<%= @route_path %>/<%= post %>" data-turbolinks="true">
+                                <% if @posts_array[post][:draft] %>[DRAFT]<% end %>
                                 <%= @posts_array[post][:title] %>
                             </a>
                         </h2>
                         <!-- tags -->
                         <p class="text-muted mb-3">
                             <!-- date -->
+                            <% unless @posts_array[post][:draft] %>
                             <span><%= Date.parse(@posts_array[post][:date]).strftime("%B %d, %Y") %> <% unless @posts_array[post][:date] == @posts_array[post][:updated] %>(updated: <%= Date.parse(@posts_array[post][:updated]).strftime("%B %d, %Y") %>)<% end %></span>
+                            <% end %>
                             <!-- tags -->
                             <!-- <span>
                                 &#9642;
