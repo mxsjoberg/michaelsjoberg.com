@@ -17,7 +17,9 @@ July 8, 2022
 
 ## <a name="1" class="anchor"></a> Introduction
 
-In this section: [Vision is an ill-posed problem](#1.2), [Inference](#1.3)
+In this section: [What is computer vision?](#1.1), [Vision is an ill-posed problem](#1.2), [Inference](#1.3)
+
+### <a name="1.1" class="anchor"></a> What is computer vision?
 
 Computer vision has many definitions, but generally means *extracting information from images*. Related disciplines are image processing (manipulation of an image), computer graphics (digitally synthesizing images), pattern recognition (recognising and classifying stimuli in images and other datasets), photogrammetry (obtaining measurements from images), and biological vision (understanding visual perception). Note that image processing is *image* to *image*, computer graphics is *description* to *image*, and computer vision is *image* to *description*.
 
