@@ -98,6 +98,7 @@ GEM
     commonmarker (0.23.5)
     concurrent-ruby (1.1.10)
     crass (1.0.6)
+    digest (3.1.0)
     erubi (1.10.0)
     execjs (2.8.1)
     ffi (1.15.5)
@@ -134,6 +135,12 @@ GEM
     minitest (5.16.2)
     msgpack (1.5.3)
     multi_xml (0.6.0)
+    net-protocol (0.1.3)
+      timeout
+    net-smtp (0.3.1)
+      digest
+      net-protocol
+      timeout
     nio4r (2.5.8)
     nokogiri (1.13.7-x86_64-darwin)
       racc (~> 1.4)
@@ -216,6 +223,7 @@ GEM
     sqlite3 (1.4.4)
     thor (1.2.1)
     tilt (2.0.10)
+    timeout (0.3.0)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
@@ -245,7 +253,7 @@ DEPENDENCIES
   actionview (>= 5.2.4.4)
   activestorage (>= 5.2.4.3)
   activesupport (>= 5.2.4.3)
-  bootsnap (>= 1.2.0)
+  bootsnap (>= 1.1.0)
   bootstrap (~> 4.1.3)
   byebug
   capybara (>= 2.15)
@@ -257,6 +265,7 @@ DEPENDENCIES
   jquery-rails
   listen (>= 3.0.5, < 3.2)
   loofah (>= 2.3.1)
+  net-smtp
   nokogiri (>= 1.10.8)
   pg
   puma (>= 4.3.5)
@@ -276,7 +285,7 @@ DEPENDENCIES
   websocket-extensions (>= 0.1.5)
 
 RUBY VERSION
-   ruby 3.1.0p0
+   ruby 3.1.2p20
 
 BUNDLED WITH
-   2.3.3
+   2.3.7
