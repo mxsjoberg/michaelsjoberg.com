@@ -1,20 +1,30 @@
 {   
+    "Computer-Vision-in-a-Hurry": {
+        "title": "Computer Vision in a Hurry",
+        "tags": [],
+        "date": "",
+        "updated": "",
+        "draft": true
+    },
     "why-are-financial-data-apps-so-bad": {
         "title": "Why are financial data apps so bad?",
         "tags": ["finance", "investing"],
         "date": "20210626",
-        "updated": "20220705"
+        "updated": "20220705",
+        "draft": false
     },
     "a-few-notes-on-investing": {
         "title": "A few notes on investing",
         "tags": ["finance", "investing"],
         "date": "20200516",
-        "updated": "20210927"
+        "updated": "20210927",
+        "draft": false
     },
 	"no-bs-computer-science-curriculum": {
         "title": "No-BS Computer Science Curriculum",
         "tags": ["self-learning", "computer science"],
         "date": "20201110",
-        "updated": "20220705"
+        "updated": "20220705",
+        "draft": false
     }
 }
