@@ -14,14 +14,18 @@
  *= require_self
  */
 
-@import url('https://fonts.googleapis.com/css?family=Muli:400,700');
-@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700');
-@import url('https://fonts.googleapis.com/css?family=Merriweather:300,700');
+// @import url('https://fonts.googleapis.com/css?family=Muli:400,700');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&display=swap');
+// @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap');
+// @import url('https://fonts.googleapis.com/css?family=Merriweather:300,700');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;700&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300;700&display=swap');
 @import "bootstrap";
 
 // CONSTANTS 
 // --------------------------------------------------------
-$FONT_FAMILY_BASE       : "Muli", sans-serif;
+$FONT_FAMILY_BASE       : "Mulish", sans-serif;
 $FONT_FAMILY_MONO       : "Source Code Pro", monospace;
 $FONT_FAMILY_SERIF      : "Merriweather", serif;
 $FONT_SIZE_LARGER       : 2.625rem; // +1.500
@@ -110,6 +114,18 @@ hr,
 .background--grey { 
     background              : $COLOR_DARK_LIGHT;
 }
+
+a.anchor {
+    display: block;
+    position: relative;
+    top: -50px;
+    visability: hidden;
+}
+
+// em {
+//     padding-right: 0.250rem;
+//     padding-left: 0.250rem;
+// }
 
 .text-muted { color: $COLOR_DARK_MUTED !important; }
 .text-lowercase { text-transform: lowercase !important; }
@@ -442,8 +458,9 @@ p a:focus {
 ol, ul, dl { 
     margin                  : 0 !important;
     padding                 : 0;
-    padding-left            : 2rem; 
 }
+ol { padding-left: 0; }
+ul, dl { padding-left: 2rem; }
 
 .font-family-serif ul li,
 li.list-item {
@@ -452,7 +469,24 @@ li.list-item {
     list-style-position     : inherit;
 }
 
-.font-family-serif ul li { margin-bottom: 1rem !important; }
+#toc.font-family-serif ul li,
+li.list-item {
+    display                 : list-item;
+    list-style-type         : none;
+    list-style-position     : inherit;
+}
+
+#toc ul, dl {
+    padding-left: 1rem;
+}
+
+// span.sublist ul li {
+//     list-style: none;
+//     display: none;
+// }
+
+.font-family-serif ul li,
+.font-family-serif ol li { margin-bottom: 1rem !important; }
 
 .font-family-mono { 
     font-family             : $FONT_FAMILY_MONO !important;
