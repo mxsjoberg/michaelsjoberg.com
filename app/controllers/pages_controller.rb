@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-    before_action :set_meta#, :get_time, :get_github, :get_twitter
+    before_action :set_meta
 
     # version
     $version = "4.5.0"
@@ -8,28 +8,10 @@ class PagesController < ApplicationController
     def home
         @route_path = "posts"
         @meta_title = "Michael Sjöberg"
-        # intro
+        # intro.json
         @intro = JSON.parse(File.read(Rails.public_path + 'intro.json'))
-        # @typewriter = @intro['intro']
         # recent
         @recent = @intro['recent']
-        # post
-        # @posts = JSON.parse(File.read(Rails.public_path + 'posts.json'))
-        # @post = @posts.keys.first
-        # @file = @post + '.md'
-        # @date = @post
-        # @title = @posts[@date]['title']
-        # @tags = @posts[@date]['tags']
-        # @lines = File.readlines(Rails.public_path + 'posts/' + @file)
-        # @updated = @lines[3]
-        # count words
-        # @words = 0
-        # @lines.drop(4).each do |line|
-        #     words = line.split(' ')
-        #     words.each do |word|
-        #         @words += 1
-        #     end
-        # end
     end
 
     # GET /programming
@@ -39,7 +21,7 @@ class PagesController < ApplicationController
         @category = params[:category]
         @group = params[:group]
         @file = params[:file]
-        # programming
+        # programming.json
         json_file = File.read(Rails.public_path + 'programming.json')
         @programming = JSON.parse(json_file)
         unless (@file.nil?)
@@ -61,7 +43,7 @@ class PagesController < ApplicationController
     def projects
         @route_path = "projects"
         @meta_title = "Projects"
-        # projects
+        # projects.json
         @projects = JSON.parse(File.read(Rails.public_path + 'projects.json'))
     end
 
@@ -70,18 +52,17 @@ class PagesController < ApplicationController
         @route_path = "writing"
         @meta_title = "Writing"
         @post = params[:post]
-        # post
+        # posts.json
         @posts = JSON.parse(File.read(Rails.public_path + 'posts.json'))
+        # post
         unless (@post.nil?)
             @file = @post + '.md'
-            # @date = @post
             @title = @posts[@post]['title']
             @tags = @posts[@post]['tags']
             @date = @posts[@post]['date']
             @updated = @posts[@post]['updated']
             @draft = @posts[@post]['draft']
             @lines = File.readlines(Rails.public_path + 'posts/' + @file)
-            # @updated = @lines[3]
             @skip = @lines[4].to_i
             unless (@skip == 0)
                 @toc = @lines[5..@skip]
@@ -132,10 +113,6 @@ class PagesController < ApplicationController
     end
 
     private
-        # get time
-        # def get_time
-        #     @time = Time.now
-        # end
         # meta
         def set_meta
             @meta_image = ""
@@ -143,28 +120,4 @@ class PagesController < ApplicationController
             @meta_card_type = "summary"
             @meta_author = "@sjoebergco"
         end
-        
-        # github api
-        # def get_github
-        #     url = "https://api.github.com/users/michaelsjoeberg/events/public?client_id=#{ENV['GITHUB_CLIENT_ID']}&client_secret=#{ENV['GITHUB_CLIENT_SECRET']}"
-        #     @commits = HTTParty.get(url).parsed_response
-        # end
-        
-        # twitter api
-        # def get_twitter
-        #     begin
-        #         twitter_client = Twitter::REST::Client.new do |config|
-        #             config.consumer_key = ENV['TWITTER_CONSUMER_KEY']
-        #             config.consumer_secret = ENV['TWITTER_CONSUMER_SECRET']
-        #             config.access_token = ENV['TWITTER_ACCESS_TOKEN']
-        #             config.access_token_secret = ENV['TWITTER_ACCESS_SECRET']
-        #         end
-        #         @tweets = twitter_client.user_timeline("sjoebergco")
-        #         @location = @tweets[0].user.location
-        #         @description = (@tweets[0].user.description).split('--')[0]
-        #     rescue
-        #         @tweets = nil
-        #         @location = nil
-        #     end
-        # end
 end
