@@ -245,7 +245,7 @@ DEPENDENCIES
   actionview (>= 5.2.4.4)
   activestorage (>= 5.2.4.3)
   activesupport (>= 5.2.4.3)
-  bootsnap (>= 1.1.0)
+  bootsnap (>= 1.2.0)
   bootstrap (~> 4.1.3)
   byebug
   capybara (>= 2.15)
