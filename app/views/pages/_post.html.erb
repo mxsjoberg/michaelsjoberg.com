@@ -1,5 +1,8 @@
 <!-- post -->
 <div class="row justify-content-center">
+    <% unless @toc.nil? %>
+    <% @size = 12 %>
+    <% end %>
     <div class="col-12 col-lg-<%= @size %>">
         <!-- title -->
         <h1 class="font-family-serif font-weight-bold">
@@ -7,10 +10,26 @@
         </h1>
         <!-- meta -->
         <p class="text-muted m-0">
+            <!-- draft -->
+            <% if @draft %>
+            <span>DRAFT &#9642;</span>
+            <% end %>
             <!-- date -->
-            <span><%= Date.parse(@date).strftime("%b %d, %Y") %> <% unless Date.parse(@date) == Date.parse(@updated) %>(updated: <%= Date.parse(@updated).strftime("%b %d, %Y") %>)<% end %></span>
+            <% unless @draft %>
+            <span><%= Date.parse(@date).strftime("%b %d, %Y") %> <% unless Date.parse(@date) == Date.parse(@updated) %>(updated: <%= Date.parse(@updated).strftime("%b %d, %Y") %>)<% end %> &#9642;</span>
+            <% end %>
             <!-- words -->
-            <span>&#9642; <%= @words / 75 %> min read</span>
+            <!-- <span>&#9642; ~<%= @words / 100 * 100 %></span> -->
+            <!-- time to read -->
+            <% @time_to_read = @words / 75 %>
+            <!--
+            <% if @time_to_read > 60 %>
+                <% @min = @time_to_read % 60 %>
+                <% @hour = (@time_to_read - @min) / 60 %>
+            <% end %>
+            <%= @hour %>h <%= @min %>min read
+            -->
+            <span><%= @time_to_read %> min read</span>
             <!-- tags -->
             <!-- <span>
                 &#9642;
@@ -29,15 +48,31 @@
             </span> -->
         </p>
     </div>
-    <%= render 'divider', locals: { size: @size } %>
-    <div class="col-12 col-lg-<%= @size %> font-family-serif">
-        <% @lines.drop(4).each do |line| %>
-            <%= CommonMarker.render_html(line).html_safe %>
+        <!-- toc  -->
+        <% unless @toc.nil? %>
+        <%= render 'divider', locals: { size: @size } %>
+        <div id="toc" class="col-4 font-family-serif" style="position:sticky;top:50px;height:100%;">
+            <% @toc.each do |link| %>
+                <%= CommonMarker.render_html(link, :UNSAFE, [:table, :autolink]).html_safe %>
+            <% end %>
+        </div>
+        <div class="col-8 font-family-serif">
+            <% @lines.drop(@skip).each do |line| %>
+                <%= CommonMarker.render_html(line, :UNSAFE, [:table, :autolink]).html_safe %>
+            <% end %>
+        </div>
+        <!-- no toc -->
+        <% else %>
+        <%= render 'divider', locals: { size: @size } %>
+        <div class="col-12 col-lg-<%= @size %> font-family-serif">
+            <% @lines.drop(4).each do |line| %>
+                <%= CommonMarker.render_html(line, :UNSAFE, [:table, :autolink]).html_safe %>
+            <% end %>
+        </div>
         <% end %>
-    </div>
     <%= render 'divider' %>
     <div class="col-12 col-lg-<%= @size %> text-md-center">
         <p class="m-0"><a href="/writing" data-turbolinks="true">Browse all posts</a></p>
     </div>
 </div>
-<!-- ./post -->
+<!-- ./post
