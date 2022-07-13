@@ -8,7 +8,7 @@
     },
     "why-are-financial-data-apps-so-bad": {
         "title": "Why are financial data apps so bad?",
-        "tags": ["finance", "investing"],
+        "tags": ["finance", "software"],
         "date": "20210626",
         "updated": "20220705",
         "draft": false
@@ -22,9 +22,9 @@
     },
 	"no-bs-computer-science-curriculum": {
         "title": "No-BS Computer Science Curriculum",
-        "tags": ["self-learning", "computer science"],
+        "tags": ["education", "computer science"],
         "date": "20201110",
-        "updated": "20220705",
+        "updated": "20220713",
         "draft": false
     }
 }
