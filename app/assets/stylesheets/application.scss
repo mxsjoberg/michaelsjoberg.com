@@ -157,6 +157,18 @@ p.post { font-family: $FONT_FAMILY_SERIF; }
 
 li { list-style: none; }
 
+table {
+    margin-bottom: 1rem;
+    display: inline-block;
+    vertical-align: top;
+}
+td {
+    padding: 0.5rem 1rem;
+    border: 1px solid $COLOR_DARK_LIGHT;
+    text-align: center;
+    vertical-align: middle;
+}
+
 .hidden-until-md { display: none; }
 .hidden-until-lg { display: none; }
 
