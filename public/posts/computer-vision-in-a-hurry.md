@@ -191,7 +191,7 @@ The process of applying a filter, or mask, to an image is called *convolution*, 
 
 - sum products to get new pixel value
 
-Example, see: [Example of 2D Convolution](http://www.songho.ca/dsp/convolution/convolution2d_example.html)
+For convolution examples, see: [Example of 2D Convolution](http://www.songho.ca/dsp/convolution/convolution2d_example.html)
 
 Note that a 2D convolution is *separable* if *H* is a convolution of two vectors, which is much more efficient, *H = h<sub>1</sub>h<sub>2</sub>* (transposed).
 
@@ -199,15 +199,15 @@ Note that a 2D convolution is *separable* if *H* is a convolution of two vectors
 
 A filter, or *mask*, is a point-spread function, image with isolated white dots on black bakground would superimpose mask at each pixel. A *mask* is a template, convolution output is maximum when large image values are multiplied with large mask values (mask respond most strongly at features similar to rotated mask) and rotated mask can be used as template to find image features.
 
-Example 1: each pixel replaced by itself
+**Example 1:** each pixel replaced by itself
 
 <table><tr><td>0</td><td>0</td><td>0</td></tr><tr><td>0</td><td>1</td><td>0</td></tr><tr><td>0</td><td>0</td><td>0</td></tr></table>
 
-Example 2: each pixel replaced by the one to the left
+**Example 2:** each pixel replaced by the one to the left
 
 <table><tr><td>0</td><td>0</td><td>0</td></tr><tr><td>0</td><td>0</td><td>1</td></tr><tr><td>0</td><td>0</td><td>0</td></tr></table>
 
-Example 4: each pixel replaced by average of itself and its eight neighbors, or smoothing, also called *mean filter*, or *box mask* (weights add up to one to preserve average grey levels)
+**Example 3:** each pixel replaced by average of itself and its eight neighbors, or smoothing, also called *mean filter*, or *box mask* (weights add up to one to preserve average grey levels)
 
 <table><tr><td>1/9</td><td>1/9</td><td>1/9</td></tr><tr><td>1/9</td><td>1/9</td><td>1/9</td></tr><tr><td>1/9</td><td>1/9</td><td>1/9</td></tr></table>
 
@@ -219,7 +219,7 @@ A [Gaussian mask](https://en.wikipedia.org/wiki/Gaussian_blur) gives more weight
 
 A *difference mask* is used to calculate differences instead of averages. The difference between pixel values gives gradient of intensity values (smoothing approximate mathematical integration, difference approximate differentiation) and highlight locations with intensity changes.
 
-Example: [Laplacian mask](https://en.wikipedia.org/wiki/Discrete_Laplace_operator#Image_processing) weights add up to zero to generate zero response to constant image regions
+**Example:** [Laplacian mask](https://en.wikipedia.org/wiki/Discrete_Laplace_operator#Image_processing) weights add up to zero to generate zero response to constant image regions
 
 <table><tr><td>-1</td><td>-1</td><td>-1</td></tr><tr><td>-1</td><td>8</td><td>-1</td></tr><tr><td>-1</td><td>-1</td><td>-1</td></tr></table>
 
@@ -237,7 +237,7 @@ An *edge* is often where intensity changes in an image, also called *discontinui
 
 The *Laplacian mask* is a combination of difference masks in each direction and detects intensity discontinuities at all orientations (sensitive to noise). Edges are most efficiently detected using both *differencing mask* and *smoothing mask*, one approach is *Gaussian smoothing* combined with a *Laplacian* operator, or *Laplacian of Gaussian (LoG)*.
 
-Example: *Laplacian of Gaussian* mask
+**Example:** *Laplacian of Gaussian* mask
 
 <table><tr><td>1/8</td><td>1/8</td><td>1/8</td></tr><tr><td>1/8</td><td>1</td><td>1/8</td></tr><tr><td>1/8</td><td>1/8</td><td>1/8</td></tr></table>
 
@@ -363,7 +363,7 @@ Note that results often missing parts in figure (edges with missing pixels), or 
 
 A *morphological operation* is used to clean up results of thresholding, such as neighbor is defined by *structuring element* (matrix), *dilation* expand area of foreground pixels to fill gaps (background pixels that neighbor foreground pixel is changed from 0 to 1), *erosion* shrink area of foreground pixels to remove unwanted pixels (bridges, branches, foreground pixels that neighbor background pixel is changed from 1 to 0) and can be used in combination to remove and fill gaps. To close a gap, *dilation* into *erosion* (*closed*, foreground gaps are filled), and to remove noise, *erosion* into *dilation* (*opened*, background noise is removed).
 
-Example 1: *region growing*
+**Example 1:** *region growing*
 
 - seed pixel choosen randomly, set region label
 - check unlabelled pixels that are neighbors, if whithin similarity threshold to seed, give region label
@@ -371,14 +371,14 @@ Example 1: *region growing*
 - pick another unlabelled seed pixel
 - repeat until all pixels assigned to a region
 
-Example 2: *region merging* (result depends on order of merging due to averaging merged pixels)
+**Example 2:** *region merging* (result depends on order of merging due to averaging merged pixels)
 
 - set unique label to each pixel, or region
 - compare region proeprties with neigbbor regions, if match, merge into a larger region, set label to same, set properties to average
 - continue merging until no more match, mark as final
 - repeat until all image regions are final
 
-Example 3: *split and merge*
+**Example 3:** *split and merge*
 
 - set same label to all pixels, or region (all pixels belong to same region)
 - for each region, if all pixels are not similar, split into four regions, set separate labels, repeat until regions are similar (all pixels in regions are similar)
@@ -395,7 +395,7 @@ A *partitional clustering* algorithm divide data into non-overlapping subsets, o
 
 *Hierarchical clustering* produce a set of nested clusters organised as a tree, such as *divisive clustering*, where data is regarded as single cluster and then recursively split, and *agglomerative clustering*, where each data point is regarded as cluster and then recursively merged with most similar cluster.
 	
-Example: *agglomerative clustering*
+**Example:** *agglomerative clustering*
 
 - each data point is cluster
 - compute proximity matrix (different approached to determine distance)
@@ -482,7 +482,7 @@ The [Harris corner detector](https://en.wikipedia.org/wiki/Harris_corner_detecto
 - *R* is large for corner, negative with large magnitude for edge, and *| R |* is small for flat regions
 - corner is where *R* is greater than some threshold, *local maxima* of *R* as interest points, use *non-maximum supression* to find *local maxima*
 
-Example: *non-maximum supression*
+**Example:** *non-maximum supression*
 
 <table><tr><td>1</td><td>2</td><td>2</td><td>2</td></tr><tr><td>0</td><td>1</td><td>4</td><td>3</td></tr><tr><td>0</td><td>2</td><td>2</td><td>2</td></tr><tr><td>0</td><td>1</td><td>1</td><td>0</td></tr></table>
 
@@ -630,7 +630,7 @@ The [aperture problem](https://en.wikipedia.org/wiki/Motion_perception#The_apert
 
 An optic flow is measured to estimate layout of environment, such as depth and orientation of surfaces, estimating ego motion (camera velocity relative to visual frame of reference), estimating object motion relative to visual frame of reference or environment frame of reference, and to predict information for control of action.
 
-Example 1: recovering depth from velocity if direction of motion is perpendicular to optical axis and velocity of camera is known
+**Example 1:** recovering depth from velocity if direction of motion is perpendicular to optical axis and velocity of camera is known
 
 - *x = fX / Z*, where *Z = fX<sub>1</sub> / x<sub>1</sub> = fX<sub>2</sub> / x<sub>2</sub>* and *x = (x<sub>2</sub> - x<sub>1</sub>) / t*
 - *X<sub>1</sub> x<sub>2</sub> = X<sub>2</sub> x<sub>1</sub>*
@@ -639,14 +639,14 @@ Example 1: recovering depth from velocity if direction of motion is perpendicula
 - *X<sub>1</sub> = (-V x<sub>1</sub>) / x*
 - *Z = fX<sub>1</sub> / x<sub>1</sub> = - fV / x*
 
-Example 2: recovering depth from velocity if direction of motion is along optical axis and velocity of camera is known
+**Example 2:** recovering depth from velocity if direction of motion is along optical axis and velocity of camera is known
 
 - *x = fX / Z*, where *fX = x<sub>1</sub> Z<sub>1</sub> = x<sub>2</sub> Z<sub>2</sub>* and *x = (x<sub>2</sub> - x<sub>1</sub>) / t*
 - *x<sub>1</sub> (Z<sub>2</sub> + Vt) = x<sub>2</sub> Z<sub>2</sub>*
 - *x<sub>1</sub> Vt = (x<sub>2</sub> - x<sub>1</sub>) Z<sub>2</sub>*
 - *Z<sub>2</sub> = (V x<sub>1</sub>) / x*
 
-Example 3: recovering depth from velocity if direction of motion is along optical axis and velocity of camera is not known (time-to-collision if velocity is constant, used by birds to catch prey and land without crashing into surfaces)
+**Example 3:** recovering depth from velocity if direction of motion is along optical axis and velocity of camera is not known (time-to-collision if velocity is constant, used by birds to catch prey and land without crashing into surfaces)
 
 - *Z<sub>2</sub> = (V x<sub>1</sub>) / x*
 - *Z<sub>2</sub> / V = x<sub>1</sub> / x*
@@ -676,7 +676,7 @@ Segmentation from motion can be done using optic flow discontinuities, optic flo
 
 In *background subtraction*, new objects that are temporarily stationary is seen as foreground, dilation and erosion can be used to clean result, so if *B(x, y)* and *I(x, y, t)*, then *ABS(I(x, y, t) - B(x, y)) > T*, where *T* is some threshold.
 
-Example: *background subtraction* algorithm
+**Example:** *background subtraction* algorithm
 
 - for each frame (t = 1:N), update background model *B(x, y) = (1 - beta) B (x, y) + beta I(x, y, t)*
 
@@ -819,7 +819,7 @@ The [Bayes Theorem](https://en.wikipedia.org/wiki/Bayes%27_theorem) describe an 
 
 - probability that image is observed given 3D object, this is a forward problem and easier, *P(image | object)*, so *P(object | image) = P(image | object)P(object) / P(image)*, or posterior is likelihood times prior divided by evidence, where *posterior* is something we want to know, *likelihood* is something we already know, *prior* is something we know from prior experience, and *evidence* is something we can ignore
 
-Example 1: using *conditional probability* to solve inverse problem to find which object is most likely to have produced an image (line-of-sight, multiple possible objects could produce the same image)
+**Example 1:** using *conditional probability* to solve inverse problem to find which object is most likely to have produced an image (line-of-sight, multiple possible objects could produce the same image)
 
 - evidence is *P(image) = 1*
 
@@ -830,3 +830,12 @@ Example 1: using *conditional probability* to solve inverse problem to find whic
 - posterior is *P(object<sub>i</sub> | image) = P(image | object<sub>i</sub>)P(object<sub>i</sub>)*, so *P(object<sub>1</sub> | image) = 0.09 x 0.01 = 0.0009*, *P(object<sub>2</sub> | image) = 0.09 x 0.01 = 0.0009*, and *P(object<sub>3</sub> | image) = 0.09 x 0.1  = 0.009*, where highest posterior probability is object most likely to have produced image
 
 - probability that image contain object is *P(object | image) / P(not(object) | image) = P(image | object) / P(image | not(object)) x P(object) / P(not(object))*, or *posterior ratio* is *likelihood ratio* times *prior ratio*, such as *P(image | zebra) = 0.07* and *P(zebra) = 0.01*, so *P(image | not(zebra)) = 0.0005*, *P(not(zebra)) = 0.99*, and *P(zebra | image) / P(not(zebra) | image) = (0.07 / 0.0005) x (0.01 / 0.99) = 1.41*, where 1.41 is greater than 1, so zebra is likely in image
+
+---
+
+Next steps:
+
+- [OpenCV](https://docs.opencv.org/4.x/index.html)
+- [Computer Vision with C++ (Eigen)](http://eigen.tuxfamily.org/index.php?title=Main_Page)
+- [Google Cloud Vision API with Python](https://codelabs.developers.google.com/codelabs/cloud-vision-api-python#0)
+- [Datasets (Computer Vision Online)](https://computervisiononline.com/datasets)
