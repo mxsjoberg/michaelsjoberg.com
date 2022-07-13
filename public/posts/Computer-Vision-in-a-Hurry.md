@@ -1,7 +1,7 @@
 Cumputer Vision in a Hurry
 Michael Sjoeberg
-July 8, 2022
-July 8, 2022
+July 13, 2022
+July 13, 2022
 16 
 
 1. [Introduction](#1)
@@ -77,7 +77,9 @@ All the above examples are often referred to as *illusions*, which is from assum
 
 ## <a name="2" class="anchor"></a> Image formation
 
-In this section: [Geometry](#2.2), [Digital images](#2.3), [The eye basics](#2.4), [Centre-surround RF function](#2.5)
+In this section: [Physics](#2.1), [Geometry](#2.2), [Digital images](#2.3), [The eye basics](#2.4), [Centre-surround RF function](#2.5)
+
+### <a name="2.1" class="anchor"></a> Physics
 
 An image is formed when a *sensor* registers radiation that has interacted with a physical object. An image that is formed is affected by two parameters:
 
@@ -187,7 +189,9 @@ A centre-surround *receptive field (RF)* measure change in intensity, or contras
 
 ## <a name="3" class="anchor"></a> Low-level artificial vision
 
-In this section: [Filtering](#3.2), [Edge and feature detection](#3.3)
+In this section: [Convolution](#3.1), [Filtering](#3.2), [Edge and feature detection](#3.3)
+
+### <a name="3.1" class="anchor"></a> Convolution
 
 The process of applying a filter, or mask, to an image is called *convolution*, where each location in an image *(i, j)* is the weighted sum of pixel values in adjacent locations (range defined by *k* and *l*), so *I'(i, j) = IH* = *sum(I(i - k, j - l) H (k, l))*. Note that convolution is commutative, *IH = HI*, and associative, *(IH)G = IHG)*. So, for each pixel:
 
@@ -265,7 +269,9 @@ An *image feature* can be found at different scales by applying filters of diffe
 
 ## <a name="4" class="anchor"></a> Low and mid-level biological vision
 
-In this section: [Primary visual cortex (V1)](#4.2), [Mid-level vision](#4.3)
+In this section: [Biological visual system](#4.1), [Primary visual cortex (V1)](#4.2), [Mid-level vision](#4.3)
+
+### <a name="4.1" class="anchor"></a> Biological visual system
 
 The pathway from *retina* to *cortex* is fairly complex, and the cerebral cortex is responsible for all higher cognitive functions, such as perception, learning, language, memory, and reasoning:
 
@@ -341,7 +347,9 @@ Note that an object's *border-ownership* is decided in *V2*, which comes after *
 
 ## <a name="5" class="anchor"></a> Mid-level artificial vision
 
-In this section: [Segmentation](#5.2), [Clustering methods](#5.3), [Graph cutting methods](#5.4), [Fitting methods](#5.5), [Active contours methods](#5.6)
+In this section: [Features and feature space](#5.1), [Segmentation](#5.2), [Clustering methods](#5.3), [Graph cutting methods](#5.4), [Fitting methods](#5.5), [Active contours methods](#5.6)
+
+### <a name="5.1" class="anchor"></a> Features and feature space
 
 A *feature* is used to determine what elements that belong together (individually or combination, based on *Gestalt laws*), such as location–*proximity*, color–*similarity*, texture–*similarity*, size–*similarity*, depth, motion–*common fate*), not separated by contour–*common region*, and form a known shape (top-down approach).
 
@@ -459,7 +467,9 @@ Minimising energy of a snake result in a curve that is short, smooth, and close 
 
 ## <a name="6" class="anchor"></a> Correspondence
 
-In this section: [Interest points](#6.2), [Matching](#6.3)
+In this section: [Multiple images](#6.1), [Interest points](#6.2), [Matching](#6.3)
+
+### <a name="6.1" class="anchor"></a> Multiple images
 
 A *multiple image* is from using  *multiple cameras*, two or more images taken at same time using different cameras (stereo, recover 3D information), *multiple times*, two or more images taken at different times by same camera (video, motion tracking), and *object recognition*, current image and training images.
 
@@ -539,7 +549,9 @@ A *match* that is correct belong to *inliners*, incorrect are *outliers*, and us
 
 ## <a name="7" class="anchor"></a> Stereo and depth
 
-In this section: [Coplanar cameras](#7.2), [Non-coplanar cameras](#7.3)
+In this section: [Stereo vision](#7.1), [Coplanar cameras](#7.2), [Non-coplanar cameras](#7.3)
+
+### <a name="7.1" class="anchor"></a> Stereo vision
 
 A camera projects a *3D* point onto a *2D* plane, so all *3D* points on the same line-of-sight has the same *2D* image location and depth information is lost, *x' = (f' / Z<sub>1</sub>) X<sub>1</sub> = (f' / Z<sub>2</sub>) X<sub>2</sub>*. A *stereo* image (two images), can be used to recover depth information, where points project to same location in one image but to different locations in the other image. Two images can be used to measure how far each point are from each other in each image (different viewpoint, need to solve *correspondence problem*). This is useful for:
 
@@ -618,7 +630,9 @@ How to recognize depth in images:
 
 ## <a name="8" class="anchor"></a> Video and motion
 
-In this setion: [Tracking](#8.2), [Segmentation](#8.3)
+In this setion: [Optic flow](#8.1), [Tracking](#8.2), [Segmentation](#8.3)
+
+### <a name="8.1" class="anchor"></a> Optic flow
 
 A *video* is a series of *n*-images, or *frames*, at discrete time instants. A *static image* has intensity of pixel as function of spatial coordinates *x*, *y*, so *I(x, y)*, whereas a *video* has intensity of pixel as function of spatial coordinates *x*, *y* and time *t*, so *I(x, y, t)*.
 
@@ -694,7 +708,9 @@ Example: *background subtraction* algorithm
 
 ## <a name="9" class="anchor"></a> Artificial recognition
 
-In this section: [Object recognition methods](#9.2), [Geometric invariants](#9.3), [Additional notes on object recognition](#9.4)
+In this section: [Object recognition tasks](#9.1), [Object recognition methods](#9.2), [Geometric invariants](#9.3), [Additional notes on object recognition](#9.4)
+
+### <a name="9.1" class="anchor"></a> Object recognition tasks
 
 An *identification* task is to determine identity of individual instance of an object, such as recognising different phone models, or people. A *classification* task is to determine category of an object, such as human vs ape, or phone vs calculator, where each category has a different level:
 
@@ -781,7 +797,9 @@ Note that in local representation it is hard to distinguish between similar obje
 
 ## <a name="10" class="anchor"></a> Biological recognition
 
-In this section: [Cortical processing (neuroscience)](#10.2), [Bayesian inference](#10.3)
+In this section: [Object recognition theories (psychology)](10.1), [Cortical processing (neuroscience)](#10.2), [Bayesian inference](#10.3)
+
+### <a name="10.1" class="anchor"></a> Object recognition theories (psychology)
 
 In *object-based theory*, or *recognition-by-components*, each object is represented by 3D model with an object-centered reference frame, objects are stored in our brain as *structural descriptions* (parts and configuration), and each object is a collection of shapes, where our head and body could be represented as a cube shape above a cylinder shape:
 
