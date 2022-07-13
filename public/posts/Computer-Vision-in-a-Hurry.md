@@ -2,7 +2,7 @@ Cumputer Vision in a Hurry
 Michael Sjoeberg
 July 13, 2022
 July 13, 2022
-16 
+16
 
 1. [Introduction](#1)
 2. [Image formation](#2)
