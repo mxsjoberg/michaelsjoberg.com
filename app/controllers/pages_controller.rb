@@ -12,6 +12,8 @@ class PagesController < ApplicationController
         @intro = JSON.parse(File.read(Rails.public_path + 'intro.json'))
         # recent
         @recent = @intro['recent']
+        # highlight
+        @highlight = @intro['highlight']
     end
 
     # GET /programming
