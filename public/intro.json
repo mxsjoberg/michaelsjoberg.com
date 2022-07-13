@@ -2,7 +2,17 @@
     "intro":  [
         "michael sjoeberg"
     ],
+    "highlight": {
+        "title": "Computer Vision in a Hurry",
+        "url": "/writing/computer-vision-in-a-hurry",
+        "date": "20220713",
+        "updated": "20220713"
+    },
     "recent": {
+        "20220713": {
+            "title": "Computer Vision in a Hurry",
+            "url": "/writing/computer-vision-in-a-hurry"
+        },
         "2022070502": {
             "title": "Why are financial data apps so bad?",
             "url": "/writing/why-are-financial-data-apps-so-bad"
