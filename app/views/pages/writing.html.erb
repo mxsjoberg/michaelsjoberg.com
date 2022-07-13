@@ -21,10 +21,6 @@
         <!-- summary -->
         <div class="row justify-content-center">
             <%= render 'divider', locals: { size: @size } %>
-            <!-- description -->
-            <!--<div class="col-12 col-lg-<%= @size %>">
-                <p class="font-family-serif mb-0">This is a collection of infrequent writings; mostly notes on technology, programming, or investing.</p>
-            </div>-->
         </div>
         <!-- list all posts -->
         <div class="row justify-content-center mb-3">
@@ -40,13 +36,15 @@
                                 <%= @posts_array[post][:title] %>
                             </a>
                         </h2>
-                        <!-- tags -->
+                        <!-- post:meta -->
                         <p class="text-muted mb-3">
-                            <!-- date -->
+                            <!-- post:date -->
                             <% unless @posts_array[post][:draft] %>
-                            <span><%= Date.parse(@posts_array[post][:date]).strftime("%B %d, %Y") %> <% unless @posts_array[post][:date] == @posts_array[post][:updated] %>(updated: <%= Date.parse(@posts_array[post][:updated]).strftime("%B %d, %Y") %>)<% end %></span>
+                            <span><%= Date.parse(@posts_array[post][:date]).strftime("%B %d, %Y") %> <% unless @posts_array[post][:date] == @posts_array[post][:updated] %>
+                                <!--(updated: <%= Date.parse(@posts_array[post][:updated]).strftime("%B %d, %Y") %>)-->
+                                <% end %></span>
                             <% end %>
-                            <!-- tags -->
+                            <!-- post:tags -->
                             <!-- <span>
                                 &#9642;
                                 <% @posts_array[post][:tags].each do |tag| %>
