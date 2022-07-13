@@ -1,10 +1,10 @@
 {   
-    "Computer-Vision-in-a-Hurry": {
+    "computer-vision-in-a-hurry": {
         "title": "Computer Vision in a Hurry",
-        "tags": [],
-        "date": "",
-        "updated": "",
-        "draft": true
+        "tags": ["computer vision"],
+        "date": "20220713",
+        "updated": "20220713",
+        "draft": false
     },
     "why-are-financial-data-apps-so-bad": {
         "title": "Why are financial data apps so bad?",
