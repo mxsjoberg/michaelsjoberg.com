@@ -164,9 +164,15 @@ table {
 }
 td {
     padding: 0.5rem 1rem;
+    color: $COLOR_DARK_BASE;
     border: 1px solid $COLOR_DARK_LIGHT;
     text-align: center;
     vertical-align: middle;
+}
+
+html.dark td {
+    color: $WHITE_BASE;
+    border: 1px solid rgba($WHITE_SHADED, 0.1);
 }
 
 .hidden-until-md { display: none; }
