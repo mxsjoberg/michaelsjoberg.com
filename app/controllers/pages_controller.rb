@@ -54,6 +54,10 @@ class PagesController < ApplicationController
         @route_path = "writing"
         @meta_title = "Writing"
         @post = params[:post]
+        # redirects
+        if @post == "a-few-notes-on-investing"
+            @post = "investing-in-stocks-like-a-pro"
+        end
         # posts.json
         @posts = JSON.parse(File.read(Rails.public_path + 'posts.json'))
         # post
