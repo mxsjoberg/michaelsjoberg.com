@@ -9,5 +9,6 @@ Rails.application.routes.draw do
     # get "/posts"                                        => "pages#posts", as: "posts"
     # get "/posts/:post"                                  => "pages#posts", as: "post"
     get "/writing"                                      => "pages#writing", as: "writing"
+    # post
     get "/writing/:post"                                => "pages#writing", as: "post"
 end
