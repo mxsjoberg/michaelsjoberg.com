@@ -17,11 +17,11 @@
         <div class="container-fluid">
             <div class="row">
                 <!-- header -->
-                <div class="col-12 background--grey">
+                <div class="col-12 background--grey d-none">
                     <p class="mt-2 mb-2"><%= @file %><%= @format %></p>
                 </div>
                 <!-- body -->
-                <div class="col-12 p-0 border-solid--grey">
+                <div class="col-12 p-0 background--grey">
                     <pre class="prettyprint language-<% if @category == 'pascal' %>delphi<% elsif @category == 'c++' %>cpp<% elsif @group == 'x86'%>x86asm<% else %><%= @category %><% end %>"><%= @file_content %>
                     </pre>
                 </div>
