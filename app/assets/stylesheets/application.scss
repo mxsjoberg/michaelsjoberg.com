@@ -114,7 +114,9 @@ hr,
 }
 
 .background--grey { 
-    background              : $COLOR_DARK_LIGHT;
+    // background              : $COLOR_DARK_LIGHT;
+    background              : $WHITE_BASE;
+    border                  : 1px solid $COLOR_DARK_LIGHT;
 }
 
 a.anchor {
