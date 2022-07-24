@@ -119,6 +119,10 @@ hr,
     border                  : 1px solid $COLOR_DARK_LIGHT;
 }
 
+.list_header.background--grey {
+    background              : $COLOR_DARK_LIGHT;
+}
+
 a.anchor {
     display: block;
     position: relative;
