@@ -113,15 +113,9 @@ hr,
     color                   : $WHITE_BASE;
 }
 
-.background--grey { 
-    // background              : $COLOR_DARK_LIGHT;
-    background              : $WHITE_BASE;
-    border                  : 1px solid $COLOR_DARK_LIGHT;
-}
+.background--grey { background: $COLOR_DARK_LIGHT; }
 
-.list_header.background--grey {
-    background              : $COLOR_DARK_LIGHT;
-}
+.prettyprint.background--grey { border: 1px solid $COLOR_DARK_LIGHT; }
 
 a.anchor {
     display: block;
@@ -702,7 +696,9 @@ html.dark .border-left {
     border-left: 0.25rem solid rgba($WHITE_SHADED, 0.1) !important;
 }
 
-html.dark .background--grey { background: rgba($WHITE_SHADED, 0.1); }
+html.dark .background--grey,
+html.dark .prettyprint.background--grey { background: rgba($WHITE_SHADED, 0.1); }
+
 html.dark .border-solid--grey { border: 1px solid rgba($WHITE_SHADED, 0.1); }
 
 html.dark li.list-item::marker { color: $WHITE_SHADED; }
