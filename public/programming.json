@@ -88,7 +88,8 @@
                 "graphs",
                 "mrjob-word-counting",
                 "prim-minimum-spanning-tree-algorithm",
-                "recursion"
+                "recursion",
+                "shunting-yard-algorithm"
             ]
         }
     },
