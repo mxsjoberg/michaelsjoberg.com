@@ -71,7 +71,8 @@
                 "smallest-multiple",
                 "special-pythagorean-triplet",
                 "sum-square-difference",
-                "summation-of-primes"
+                "summation-of-primes",
+                "highly-divisible-triangular-number"
             ]
         },
         "other": {
