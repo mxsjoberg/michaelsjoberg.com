@@ -76,7 +76,8 @@
                 "large-sum",
                 "longest-collatz-sequence",
                 "lattice-paths",
-                "power-digit-sum"
+                "power-digit-sum",
+                "number-letter-counts"
             ]
         },
         "other": {
