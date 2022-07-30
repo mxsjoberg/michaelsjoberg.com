@@ -73,7 +73,8 @@
                 "sum-square-difference",
                 "summation-of-primes",
                 "highly-divisible-triangular-number",
-                "large-sum"
+                "large-sum",
+                "longest-collatz-sequence"
             ]
         },
         "other": {
