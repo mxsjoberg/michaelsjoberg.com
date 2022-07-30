@@ -75,7 +75,8 @@
                 "highly-divisible-triangular-number",
                 "large-sum",
                 "longest-collatz-sequence",
-                "lattice-paths"
+                "lattice-paths",
+                "power-digit-sum"
             ]
         },
         "other": {
