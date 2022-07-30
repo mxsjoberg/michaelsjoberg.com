@@ -72,7 +72,8 @@
                 "special-pythagorean-triplet",
                 "sum-square-difference",
                 "summation-of-primes",
-                "highly-divisible-triangular-number"
+                "highly-divisible-triangular-number",
+                "large-sum"
             ]
         },
         "other": {
