@@ -74,7 +74,8 @@
                 "summation-of-primes",
                 "highly-divisible-triangular-number",
                 "large-sum",
-                "longest-collatz-sequence"
+                "longest-collatz-sequence",
+                "lattice-paths"
             ]
         },
         "other": {
