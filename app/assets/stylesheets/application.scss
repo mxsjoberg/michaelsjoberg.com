@@ -156,7 +156,7 @@ a.color-primary:focus span {
 
 a.color-primary:hover span { color: $COLOR_CONTRAST !important; }
 
-p.post { font-family: $FONT_FAMILY_SERIF; }
+// p.post { font-family: $FONT_FAMILY_SERIF; }
 
 li { list-style: none; }
 
@@ -532,8 +532,8 @@ li.list-item {
     line-height             : 2;
 }
 .font-family-serif { 
-    font-family             : $FONT_FAMILY_SERIF !important;
-    font-weight             : $FONT_WEIGHT_THIN;
+    // font-family             : $FONT_FAMILY_SERIF !important;
+    // font-weight             : $FONT_WEIGHT_THIN;
     line-height             : 2;
 }
 
@@ -542,7 +542,7 @@ li.list-item {
 .font-family-serif h3,
 .font-family-serif h4,
 .font-family-serif h5 {
-    font-family             : $FONT_FAMILY_SERIF !important;
+    // font-family             : $FONT_FAMILY_SERIF !important;
     font-weight             : $FONT_WEIGHT_BOLD;
     line-height             : 2;
 }
