@@ -1,21 +1,21 @@
 Cumputer Vision in a Hurry
 Michael Sjoeberg
 July 13, 2022
-July 13, 2022
+Aug 18, 2022
 16
 
-1. [Introduction](#1)
-2. [Image formation](#2)
-3. [Low-level artificial vision](#3)
-4. [Low and mid-level biological vision](#4)
-5. [Mid-level artificial vision](#5)
-6. [Correspondence](#6)
-7. [Stereo and depth](#7)
-8. [Video and motion](#8)
-9. [Artificial recognition](#9)
-10. [Biological recognition](#10)
+1. [1. Introduction](#1)
+2. [2. Image formation](#2)
+3. [3. Low-level artificial vision](#3)
+4. [4. Low and mid-level biological vision](#4)
+5. [5. Mid-level artificial vision](#5)
+6. [6. Correspondence](#6)
+7. [7. Stereo and depth](#7)
+8. [8. Video and motion](#8)
+9. [9. Artificial recognition](#9)
+10. [10. Biological recognition](#10)
 
-## <a name="1" class="anchor"></a> Introduction
+## <a name="1" class="anchor"></a> [1. Introduction](#1)
 
 In this section: [What is computer vision?](#1.1), [Vision is an ill-posed problem](#1.2), [Inference](#1.3)
 
@@ -73,7 +73,7 @@ All the above examples are often referred to as *illusions*, which is from assum
 
 - current context, such as objects surrounding visual scene, and concurrent input
 
-## <a name="2" class="anchor"></a> Image formation
+## <a name="2" class="anchor"></a> [2. Image formation](#2)
 
 In this section: [Physics](#2.1), [Geometry](#2.2), [Digital images](#2.3), [The eye basics](#2.4), [Centre-surround RF function](#2.5)
 
@@ -179,7 +179,7 @@ A centre-surround *receptive field (RF)* is an area of visual space from which n
 
 A centre-surround *receptive field (RF)* measure change in intensity, or contrast, between adjacent locations. The relative contrast should be independent of lightning conditions, so *illuminance* should be irrelevant.
 
-## <a name="3" class="anchor"></a> Low-level artificial vision
+## <a name="3" class="anchor"></a> [3. Low-level artificial vision](#3)
 
 In this section: [Convolution](#3.1), [Filtering](#3.2), [Edge and feature detection](#3.3)
 
@@ -251,7 +251,7 @@ An image feature can be found at different scales by applying filters of differe
 
 - *Laplacian pyramid* is a Laplacian mask applied recursively to a scaled image and useful to detect intensity discontinuities in scaled images
 
-## <a name="4" class="anchor"></a> Low and mid-level biological vision
+## <a name="4" class="anchor"></a> [4. Low and mid-level biological vision](#4)
 
 In this section: [Biological visual system](#4.1), [Primary visual cortex (V1)](#4.2), [Mid-level vision](#4.3)
 
@@ -327,7 +327,7 @@ An object grouped with another object is influenced by [Gestalt laws](https://en
 
 Note that an object's *border-ownership* is decided in *V2*, which comes after *V1*.
 
-## <a name="5" class="anchor"></a> Mid-level artificial vision
+## <a name="5" class="anchor"></a> [5. Mid-level artificial vision](#5)
 
 In this section: [Features and feature space](#5.1), [Segmentation](#5.2), [Clustering methods](#5.3), [Graph cutting methods](#5.4), [Fitting methods](#5.5), [Active contours methods](#5.6)
 
@@ -444,7 +444,7 @@ An *active contour* algorithm (or *snakes*) should produce result that is near t
 
 Minimising energy of a snake result in a curve that is short, smooth, and close to intensity discontinuities, but only work on shapes that are closed (no gaps), is sensitive to parameters (smooth vs short vs proximity), and dependent on initial position, which are often placed around object manually.
 
-## <a name="6" class="anchor"></a> Correspondence
+## <a name="6" class="anchor"></a> [6. Correspondence](#6)
 
 In this section: [Multiple images](#6.1), [Interest points](#6.2), [Matching](#6.3)
 
@@ -525,7 +525,7 @@ A match that is correct belong to *inliners*, incorrect are *outliers*, and used
 
 - simple and effective, works with different model fitting problems (segmentation, camera transformation, object trejectory), but sometimes requires many iterations with a lot of parameters
 
-## <a name="7" class="anchor"></a> Stereo and depth
+## <a name="7" class="anchor"></a> [7. Stereo and depth](#7)
 
 In this section: [Stereo vision](#7.1), [Coplanar cameras](#7.2), [Non-coplanar cameras](#7.3)
 
@@ -606,7 +606,7 @@ How to recognize depth in images:
 
 - *structure from motion (kinetic depth)*, movement of object or camera can induce perception of 3D structure (spinning cylinder in flat image)
 
-## <a name="8" class="anchor"></a> Video and motion
+## <a name="8" class="anchor"></a> [8. Video and motion](#8)
 
 In this setion: [Optic flow](#8.1), [Tracking](#8.2), [Segmentation](#8.3)
 
@@ -684,7 +684,7 @@ In *background subtraction*, new objects that are temporarily stationary is seen
 	
 - remove noise, *close(\*<sub>T</sub>)*
 
-## <a name="9" class="anchor"></a> Artificial recognition
+## <a name="9" class="anchor"></a> [9. Artificial recognition](#9)
 
 In this section: [Object recognition tasks](#9.1), [Object recognition methods](#9.2), [Geometric invariants](#9.3), [Additional notes on object recognition](#9.4)
 
@@ -769,7 +769,7 @@ An image is represented as:
 
 Note that in local representation it is hard to distinguish between similar objects (many false positives) and global representation is sensitive to viewpoint, occlusion (many false negatives), so one solution is to use intermediate complexity, between local and global, or hierarchy of features with range of complexities.
 
-## <a name="10" class="anchor"></a> Biological recognition
+## <a name="10" class="anchor"></a> [10. Biological recognition](#10)
 
 In this section: [Object recognition theories (psychology)](10.1), [Cortical processing (neuroscience)](#10.2), [Bayesian inference](#10.3)
 
