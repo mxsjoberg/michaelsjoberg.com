@@ -1,15 +1,21 @@
 No-BS Computer Science Curriculum  
 Michael Sjoeberg  
 November 10, 2020  
-July 13, 2022
+Aug 18, 2022
+10
 
-## <a name="1" class="anchor"></a> Introduction
+1. [1. Introduction](#1)
+2. [2. Programming](#2)
+3. [3. Mathematics](#3)
+4. [4. Other skills](#4)
 
-This is an evolving list with learning material and recommended programming languages for computer science students. It works well on its own (for self-learners) or on top of undergraduate degree in computer science (or related field). The goal is to provide a solid foundation to build upon, degree or no degree, and will be updated whenever there is something missing, incorrect, or to add update learning materials (to keep it up-to-date).
+## <a name="1" class="anchor"></a> [1. Introduction](#1)
 
-If you are interested in computer science and engineering (and have plenty of spare time), see [github.com/michaelsjoeberg/the-ultimate-computer-science-and-engineering-curriculum](https://github.com/michaelsjoeberg/the-ultimate-computer-science-and-engineering-curriculum).
+This is an evolving list with learning material and recommended programming languages for computer science students. It works well on its own (for self-learners) or in addition to an undergraduate degree in computer science (or related field). The goal is to provide a solid foundation to build upon, degree or no degree. It will be updated to fix broken links and to keep learning material up-to-date.
 
-## <a name="2" class="anchor"></a> Programming
+If you are interested in computer science and engineering (and have plenty of time to spare), see [github.com/michaelsjoeberg/the-ultimate-computer-science-and-engineering-curriculum](https://github.com/michaelsjoeberg/the-ultimate-computer-science-and-engineering-curriculum).
+
+## <a name="2" class="anchor"></a> [2. Programming](#2)
 
 In this section: [Foundation](#2.1), [Paradigm exposure](#2.2), [Machine learning](#2.3), ["Modern" languages](#2.4)
 
@@ -23,7 +29,7 @@ The goal is to get comfortable with programming and to understand the software a
 
 ***Python***
 
-- Get proficient or fluent (it's a very powerful programming language with a lot of support, look at some numerical libraries as well, especially NumPy)
+- Get proficient or fluent (very powerful programming language with a lot of support, look at some numerical libraries as well, especially NumPy)
 
 - Try to implement an interpreter; see [Let’s Build A Simple Interpreter](https://ruslanspivak.com/lsbasi-part1/)
 
@@ -33,7 +39,7 @@ The goal is to get comfortable with programming and to understand the software a
 
 - Learn basics of memory allocation and pointers; try to understand the assembly code generated for smaller programs (gcc -S option)
 
-- Get familiar with C++ (could also get proficient or fluent if appropriate, it's a very powerful programming language)
+- Get familiar with C++ (could also get proficient or fluent if appropriate)
 
 ***Assembly***
 
@@ -69,7 +75,7 @@ What about object-oriented programming? "*[at] big companies, software tends to 
 
 ### <a name="2.3" class="anchor"></a> Machine learning
 
-The goal is to get exposed to machine learning and the idea that output is based on data instead of design, watch this talk by Andrej Karpathy (Director of AI at Tesla): [Building the Software 2.0 Stack](https://databricks.com/session/keynote-from-tesla).
+The goal is to get exposed to machine learning and the idea that output is based on data instead of design, watch this talk by Andrej Karpathy (former director of AI at Tesla): [Building the Software 2.0 Stack](https://databricks.com/session/keynote-from-tesla).
 
 ***Neural Networks*** (Python)
 
@@ -95,17 +101,17 @@ The above topics provides familiarity with different paradigms and modern develo
 
 ***Nim***
 
-- Python-like but compiled, could also explore Lua if interested in embedded applications (or game development)
+- Python-like but compiled
 
 ***Kotlin***
 
-- Probably most popular language for Android development (see [Kotlin is now Google's preferred language for Android app development](https://techcrunch.com/2019/05/07/kotlin-is-now-googles-preferred-language-for-android-app-development)), compiles to JVM and JavaScript (could also explore JavaScript if more appropriate)
+- Probably most popular language for Android development (see [Kotlin is now Google's preferred language for Android app development](https://techcrunch.com/2019/05/07/kotlin-is-now-googles-preferred-language-for-android-app-development)), compiles to JVM and JavaScript (could also explore Lua if interested in embedded applications or game development)
 
 ***Go*** (backed by Google)
 
 - Memory safe C (if you don't like Rust, could also explore Dart)
 
-## <a name="3" class="anchor"></a> Mathematics
+## <a name="3" class="anchor"></a> [3. Mathematics](#3)
 
 In this section: [Basics](#3.1), [General topics](#3.2)
 
@@ -157,7 +163,7 @@ The goal is to build a strong general background in mathematics, such as typical
 
 Recommended learning material: [Calculus: Early Transcendentals](https://www.amazon.com/Calculus-Early-Transcendentals-James-Stewart/dp/1285741552), [No bullshit guide to linear algebra](https://www.amazon.com/No-bullshit-guide-linear-algebra/dp/0992001021), [Ordinary Differential Equations](https://www.amazon.com/Ordinary-Differential-Equations-Dover-Mathematics/dp/0486649407), [Elementary Analysis: The Theory of Calculus](https://www.amazon.com/Elementary-Analysis-Calculus-Undergraduate-Mathematics/dp/1461462703), [Number Theory](https://www.amazon.com/Number-Theory-Dover-Books-Mathematics/dp/0486682528).
 
-## <a name="4" class="anchor"></a> Other
+## <a name="4" class="anchor"></a> [4. Other skills](#4)
 
 This section contains additional topics and commonly used tools, somewhat based on the *"missing semester"* at MIT, see [The Missing Semester of Your CS Education](https://missing.csail.mit.edu/).
 
