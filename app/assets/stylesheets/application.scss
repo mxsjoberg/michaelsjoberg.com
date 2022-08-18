@@ -504,16 +504,20 @@ li.list-item {
     list-style-position     : inherit;
 }
 
-#toc.font-family-serif ul li,
-li.list-item {
-    display                 : list-item;
-    list-style-type         : none;
-    list-style-position     : inherit;
+#back-to-top {
+    cursor: pointer;
 }
 
-#toc ul, dl {
-    padding-left: 1rem;
-}
+// #toc.font-family-serif ul li,
+// li.list-item {
+//     display                 : list-item;
+//     list-style-type         : none;
+//     list-style-position     : inherit;
+// }
+
+// #toc ul, dl {
+//     padding-left: 1rem;
+// }
 
 // span.sublist ul li {
 //     list-style: none;
@@ -604,6 +608,9 @@ a.no-decoration:focus,
 a.no-decoration:hover { text-decoration: none !important; }
 
 // highlight.js
+// pre {
+//     margin-bottom: 0;
+// }
 pre.prettyprint { 
     max-width           : 100%;
     padding             : 1rem;

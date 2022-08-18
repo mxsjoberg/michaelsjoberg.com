@@ -19,6 +19,24 @@
 //= require_tree .
 
 $(document).on('turbolinks:load', function() {
+    // back to top
+    window.onscroll = function() {
+        var scrollLimit = 600;
+        if (window.scrollY >= scrollLimit) {
+            $('#back-to-top').removeClass('d-none');
+        } else {
+            if (!$('#back-to-top').hasClass('d-none')) {
+                $('#back-to-top').addClass('d-none');
+            }
+        }
+    };
+    $('#back-to-top').on('click', function(e) {
+        // safari
+        document.body.scrollTop = 0;
+        // chrome
+        document.documentElement.scrollTop = 0;
+    })
+
     // dark mode
     var dark = localStorage.getItem('dark');
     if (dark === 'true') {
