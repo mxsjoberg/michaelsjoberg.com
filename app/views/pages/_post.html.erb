@@ -1,8 +1,13 @@
 <!-- post -->
 <div class="row justify-content-center">
     <% unless @toc.nil? %>
-    <% @size = 12 %>
+    <% @size = 8 %>
     <% end %>
+    <div id="back-to-top" class="d-none" style="position:fixed;bottom:50px;right:50px">
+        <p class="text-muted m-0">
+            <span>Back to top</span>
+        </p>
+    </div>
     <div class="col-12 col-lg-<%= @size %>">
         <!-- title -->
         <h1 class="font-family-serif font-weight-bold">
@@ -50,13 +55,24 @@
     </div>
         <!-- toc  -->
         <% unless @toc.nil? %>
-        <%= render 'divider', locals: { size: @size } %>
+        <!--
         <div id="toc" class="col-4 font-family-serif" style="position:sticky;top:50px;height:100%;">
             <% @toc.each do |link| %>
                 <%= CommonMarker.render_html(link, :UNSAFE, [:table, :autolink]).html_safe %>
             <% end %>
         </div>
-        <div class="col-8 font-family-serif">
+        -->
+        <div class="col-12 col-lg-<%= @size %> font-family-serif">
+            <!-- TEST -->
+            <div class="container-fluid my-3 py-3">
+                <div class="row list border-solid--grey pt-3">
+                    <% @toc.each do |link| %>
+                    <div class="col-12 col-lg-6 list-item">
+                        <%= CommonMarker.render_html(link, :UNSAFE, [:table, :autolink]).html_safe %>
+                    </div>
+                    <% end %>
+                </div>
+            </div>
             <% @lines.drop(@skip).each do |line| %>
                 <%= CommonMarker.render_html(line, :UNSAFE, [:table, :autolink]).html_safe %>
             <% end %>
