@@ -71,7 +71,7 @@ class PagesController < ApplicationController
             @lines = File.readlines(Rails.public_path + 'posts/' + @file)
             @skip = @lines[4].to_i
             unless (@skip == 0)
-                @toc = @lines[5..@skip]
+                @toc = @lines[6..@skip]
             end
             # override meta
             @meta_title = @title
