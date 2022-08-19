@@ -90,8 +90,7 @@ div.fixed {
 
 hr,
 .divider {
-    margin-top              : 1rem;
-    margin-bottom           : 1rem;
+    margin                  : 2rem 0;
     border                  : 0;
     border-top              : 1px solid $COLOR_DARK_LIGHT;
 }
@@ -115,6 +114,7 @@ hr,
 
 .background--grey { background: $COLOR_DARK_LIGHT; }
 
+pre,
 .prettyprint.background--grey {
     background              : $WHITE_BASE;
     border                  : 1px solid $COLOR_DARK_LIGHT;
@@ -527,6 +527,10 @@ li.list-item {
 .font-family-serif ul li,
 .font-family-serif ol li { margin-bottom: 1rem !important; }
 
+ul li ul li {
+    list-style-type: circle !important;
+}
+
 .font-family-mono { 
     font-family             : $FONT_FAMILY_MONO !important;
     line-height             : 2;
@@ -611,6 +615,7 @@ a.no-decoration:hover { text-decoration: none !important; }
 // pre {
 //     margin-bottom: 0;
 // }
+pre,
 pre.prettyprint { 
     max-width           : 100%;
     padding             : 1rem;
@@ -618,12 +623,25 @@ pre.prettyprint {
     margin              : 0; 
 }
 
+pre,
 pre.prettyprint,
 pre.prettyprint span {
     color               : $COLOR_DARK_BASE;
     font-family         : $FONT_FAMILY_MONO;
     font-weight         : $FONT_WEIGHT_BASE;
     font-size           : $FONT_SIZE_BASE; 
+    line-height         : 1.5 !important;
+}
+
+code {
+    color               : $COLOR_CONTRAST;
+    font-family         : $FONT_FAMILY_SERIF;
+    font-weight         : $FONT_WEIGHT_BASE;
+    font-size           : $FONT_SIZE_BASE;
+    // margin              : 0 0.25rem;
+    padding             : 0 0.25rem;
+    // override
+    font-style          : normal;
 }
 
 @media screen {
