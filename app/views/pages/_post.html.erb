@@ -1,13 +1,10 @@
 <!-- post -->
 <div class="row justify-content-center">
-    <% unless @toc.nil? %>
-    <% @size = 8 %>
-    <% end %>
+    <!-- back-to-top -->
     <div id="back-to-top" class="d-none" style="position:fixed;bottom:50px;right:50px">
-        <p class="text-muted m-0">
-            <span>Back to top</span>
-        </p>
+        <p class="text-muted m-0"><span>Back to top</span></p>
     </div>
+    <!-- post details -->
     <div class="col-12 col-lg-<%= @size %>">
         <!-- title -->
         <h1 class="font-family-serif font-weight-bold">
@@ -21,20 +18,17 @@
             <% end %>
             <!-- date -->
             <% unless @draft %>
-            <span><%= Date.parse(@date).strftime("%b %d, %Y") %> <% unless Date.parse(@date) == Date.parse(@updated) %>(updated: <%= Date.parse(@updated).strftime("%b %d, %Y") %>)<% end %> &#9642;</span>
+            <span><%= Date.parse(@date).strftime("%b %d, %Y") %> &#9642;</span>
             <% end %>
             <!-- words -->
             <!-- <span>&#9642; ~<%= @words / 100 * 100 %></span> -->
             <!-- time to read -->
             <% @time_to_read = @words / 75 %>
-            <!--
-            <% if @time_to_read > 60 %>
-                <% @min = @time_to_read % 60 %>
-                <% @hour = (@time_to_read - @min) / 60 %>
-            <% end %>
-            <%= @hour %>h <%= @min %>min read
-            -->
             <span><%= @time_to_read %> min read</span>
+            <!-- updated -->
+            <% unless Date.parse(@date) == Date.parse(@updated) %>
+            <span>&#9642; <a href="https://github.com/michaelsjoeberg/michaelsjoeberg.com-4/commits/main/public/posts/<%= @post %>.md">Updated on <%= Date.parse(@updated).strftime("%b %d, %Y") %></a></span>
+            <% end %>
             <!-- tags -->
             <!-- <span>
                 &#9642;
@@ -53,42 +47,31 @@
             </span> -->
         </p>
     </div>
-        <!-- toc  -->
-        <% unless @toc.nil? %>
-        <!--
-        <div id="toc" class="col-4 font-family-serif" style="position:sticky;top:50px;height:100%;">
-            <% @toc.each do |link| %>
-                <%= CommonMarker.render_html(link, :UNSAFE, [:table, :autolink]).html_safe %>
-            <% end %>
-        </div>
-        -->
-        <div class="col-12 col-lg-<%= @size %> font-family-serif">
-            <!-- TEST -->
-            <div class="container-fluid my-3 py-3">
-                <div class="row list border-solid--grey pt-3">
-                    <% @toc.each do |link| %>
+    <% unless @toc %>
+        <%= render 'divider', locals: { size: @size } %>
+    <% end %>
+    <!-- post content -->
+    <div class="col-12 col-lg-<%= @size %> font-family-serif">
+        <!-- toc -->
+        <% if @toc %>
+        <div class="container-fluid my-3 py-3">
+            <div class="row list border-solid--grey pt-3">
+                <% @lines.each do |line| %>
+                    <% if line[0..2] == '## ' %>
                     <div class="col-12 col-lg-6 list-item">
-                        <%= CommonMarker.render_html(link, :UNSAFE, [:table, :autolink]).html_safe %>
+                        <%= CommonMarker.render_html("1. #{line.split('</a>')[1]}", :UNSAFE, [:table, :autolink]).html_safe %>
                     </div>
                     <% end %>
-                </div>
+                <% end %>
             </div>
-            <% @lines.drop(@skip).each do |line| %>
-                <%= CommonMarker.render_html(line, :UNSAFE, [:table, :autolink]).html_safe %>
-            <% end %>
-        </div>
-        <!-- no toc -->
-        <% else %>
-        <%= render 'divider', locals: { size: @size } %>
-        <div class="col-12 col-lg-<%= @size %> font-family-serif">
-            <% @lines.drop(4).each do |line| %>
-                <%= CommonMarker.render_html(line, :UNSAFE, [:table, :autolink]).html_safe %>
-            <% end %>
         </div>
         <% end %>
+        <!-- render -->
+        <%= CommonMarker.render_html(@all_lines, :UNSAFE, [:table, :autolink]).html_safe %>
+    </div>
     <%= render 'divider' %>
     <div class="col-12 col-lg-<%= @size %> text-md-center">
         <p class="m-0"><a href="/writing" data-turbolinks="true">Browse all posts</a></p>
     </div>
 </div>
-<!-- ./post
+<!-- ./post -->
