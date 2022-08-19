@@ -1,30 +1,34 @@
 {   
-    "computer-vision-in-a-hurry": {
-        "title": "Computer Vision in a Hurry",
+    "a-deep-dive-into-computer-vision": {
+        "title": "A Deep Dive into Computer Vision",
         "tags": ["computer vision"],
         "date": "20220713",
-        "updated": "20220818",
-        "draft": false
+        "updated": "20220819",
+        "draft": false,
+        "toc": true
     },
-    "why-are-financial-data-apps-so-bad": {
-        "title": "Why are financial data apps so bad?",
+    "building-an-alternative-to-yahoo-finance": {
+        "title": "Building an alternative to Yahoo Finance",
         "tags": ["finance", "software"],
         "date": "20210626",
-        "updated": "20220705",
-        "draft": false
+        "updated": "20220819",
+        "draft": false,
+        "toc": false
     },
     "investing-in-stocks-like-a-pro": {
         "title": "Investing in stocks (like-a-pro)",
         "tags": ["finance", "investing"],
         "date": "20200516",
-        "updated": "20220715",
-        "draft": false
+        "updated": "20220819",
+        "draft": false,
+        "toc": false
     },
 	"no-bs-computer-science-curriculum": {
         "title": "No-BS Computer Science Curriculum",
         "tags": ["education", "computer science"],
         "date": "20201110",
         "updated": "20220818",
-        "draft": false
+        "draft": false,
+        "toc": true
     }
 }
