@@ -58,6 +58,12 @@ class PagesController < ApplicationController
         if @post == "a-few-notes-on-investing"
             @post = "investing-in-stocks-like-a-pro"
         end
+        if @post == "computer-vision-in-a-hurry"
+            @post = "a-deep-dive-into-computer-vision"
+        end
+        if @post == "why-are-financial-data-apps-so-bad"
+            @post = "building-an-alternative-to-yahoo-finance"
+        end
         # posts.json
         @posts = JSON.parse(File.read(Rails.public_path + 'posts.json'))
         # post
@@ -68,11 +74,13 @@ class PagesController < ApplicationController
             @date = @posts[@post]['date']
             @updated = @posts[@post]['updated']
             @draft = @posts[@post]['draft']
+            @toc = @posts[@post]['toc']
+            @all_lines = File.read(Rails.public_path + 'posts/' + @file)
             @lines = File.readlines(Rails.public_path + 'posts/' + @file)
-            @skip = @lines[4].to_i
-            unless (@skip == 0)
-                @toc = @lines[6..@skip]
-            end
+            # @skip = @lines[4].to_i
+            # unless (@skip == 0)
+            #     @toc = @lines[6..@skip]
+            # end
             # override meta
             @meta_title = @title
             # count words
