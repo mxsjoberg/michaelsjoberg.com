@@ -19,16 +19,30 @@
 //= require_tree .
 
 $(document).on('turbolinks:load', function() {
-    // back to top
+    // scroll
     window.onscroll = function() {
+        // back to top
         var scrollLimit = 600;
         if (window.scrollY >= scrollLimit) {
             $('#back-to-top').removeClass('d-none');
+            $('#scroll-percent-wrapper').removeClass('d-none');
         } else {
             if (!$('#back-to-top').hasClass('d-none')) {
                 $('#back-to-top').addClass('d-none');
             }
+            if (!$('#scroll-percent-wrapper').hasClass('d-none')) {
+                $('#scroll-percent-wrapper').addClass('d-none');
+            }
         }
+        // percent
+        var height = document.documentElement, 
+            body = document.body,
+            st = 'scrollTop',
+            sh = 'scrollHeight';
+
+        var percent = (height[st]||body[st]) / ((height[sh] - 100||body[sh]) - height.clientHeight) * 100;
+    
+        document.getElementById('scroll-percent').textContent = Math.round(percent);
     };
     $('#back-to-top').on('click', function(e) {
         // safari
