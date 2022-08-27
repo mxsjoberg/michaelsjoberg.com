@@ -70,11 +70,13 @@ class PagesController < ApplicationController
         unless (@post.nil?)
             @file = @post + '.md'
             @title = @posts[@post]['title']
+            @short = @posts[@post]['short']
             @tags = @posts[@post]['tags']
             @date = @posts[@post]['date']
             @updated = @posts[@post]['updated']
             @draft = @posts[@post]['draft']
             @toc = @posts[@post]['toc']
+            @image = @posts[@post]['image']
             @all_lines = File.read(Rails.public_path + 'posts/' + @file)
             @lines = File.readlines(Rails.public_path + 'posts/' + @file)
             # @skip = @lines[4].to_i
