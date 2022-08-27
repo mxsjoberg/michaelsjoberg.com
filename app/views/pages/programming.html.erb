@@ -1,7 +1,7 @@
 <%= render 'navigation' %>
 
 <!-- page-navigation -->
-<div class="row justify-content-center hidden-until-md top--margin-1x fixed">
+<div class="row justify-content-center hidden-until-lg fixed">
     <div class="col-12 p-0">
         <nav class="navbar navbar-expand-md p-0 background--primary">
             <ul class="navbar-nav ml-auto mr-auto">
@@ -17,7 +17,7 @@
 <!-- ./page-navigation -->
 
 <% @size = 12 %>
-<div class="container py-5 top--margin-2x">
+<div class="container py-5">
     <!-- content -->
     <% if @file_content != nil %>
         <%= render 'file_content', locals: { size: @size } %>
