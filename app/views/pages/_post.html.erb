@@ -1,15 +1,11 @@
 <!-- post -->
 <div class="row justify-content-center">
-    <!-- back-to-top -->
-    <div id="back-to-top" class="d-none" style="position:fixed;bottom:50px;right:50px">
-        <p class="text-muted m-0"><span>Back to top</span></p>
-    </div>
+    <!-- scroll-percent-wrapper -->
+    <button id="scroll-percent-wrapper" class="d-none text-muted btn btn-primary no-hover" style="position:fixed;bottom:1rem;left:1rem;cursor:default;z-index:1000;">
+        <i style="font-style:normal;line-height:1;"><span id="scroll-percent"></span>%</i>
+    </button>
     <!-- post details -->
     <div class="col-12 col-lg-<%= @size %>">
-        <!-- title -->
-        <h1 class="font-family-serif font-weight-bold">
-            <a href="/<%= @route_path %>/<%= @post %>" data-turbolinks="true"><%= @title %></a>
-        </h1>
         <!-- meta -->
         <p class="text-muted m-0">
             <!-- draft -->
@@ -46,27 +42,60 @@
                 <% end %>
             </span> -->
         </p>
+        <!-- title -->
+        <h1 class="font-family-serif font-weight-bold">
+            <a href="/<%= @route_path %>/<%= @post %>" data-turbolinks="true"><%= @title %></a>
+        </h1>
+        <!-- short -->
+        <% if @short %>
+        <p class="text-medium text-muted mb-0"><%= @short %></p>
+        <% end %>
     </div>
-    <% unless @toc %>
-        <%= render 'divider', locals: { size: @size } %>
+    <!-- image -->
+    <% if @image %>
+    <div class="col-12 col-lg-<%= @size %> text-center mt-3 pt-3">
+        <img src="/images/<%= @image %>" style="width:100%;height:320px;object-fit:cover;filter:grayscale(1);" alt="<%= @title %>">
+        <span class="small text-muted">"<%= @title %>" as imagined by Stable Diffusion</span>
+    </div>
     <% end %>
-    <!-- post content -->
-    <div class="col-12 col-lg-<%= @size %> font-family-serif">
-        <!-- toc -->
-        <% if @toc %>
+    <!-- toc -->
+    <% if @toc %>
+    <div id="toc" class="col-12 col-lg-<%= @size %> font-family-serif">
         <div class="container-fluid my-3 py-3">
-            <div class="row list border-solid--grey pt-3">
+            <div class="row list border-solid--grey py-3 mb-3">
+                <div class="col-12 split-columns p-0">
+                <% @open = false %>
                 <% @lines.each do |line| %>
                     <% if line[0..2] == '## ' %>
-                    <div class="col-12 col-lg-6 list-item">
+                    <!-- main on main headings are closed -->
+                    <% if @open %>
+                        <% @open = false %>
+                    </div>
+                    <% end %>
+                    <!-- render main heading and open for potential subitems -->
+                    <div class="col-12 list-item">
+                    <% @open = true %>
                         <%= CommonMarker.render_html("1. #{line.split('</a>')[1]}", :UNSAFE, [:table, :autolink]).html_safe %>
+                    <!-- render subitem -->
+                    <% elsif line[0..3] == '### ' %>
+                    <div class="list-item subitem">
+                        <%= CommonMarker.render_html("- #{line.split('</a>')[1]}", :UNSAFE, [:table, :autolink]).html_safe %>
                     </div>
                     <% end %>
                 <% end %>
+                <!-- close at end -->
+                <% if @open %>
+                    </div>
+                <% end %>
+                </div>
             </div>
         </div>
-        <% end %>
-        <!-- render -->
+    </div>
+    <% else %>
+        <%= render 'divider', locals: { size: @size } %>
+    <% end %>
+    <!-- render post  -->
+    <div class="col-12 col-lg-<%= @size %> font-family-serif">
         <%= CommonMarker.render_html(@all_lines, :UNSAFE, [:table, :autolink]).html_safe %>
     </div>
     <%= render 'divider' %>
