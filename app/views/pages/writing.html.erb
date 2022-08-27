@@ -1,7 +1,8 @@
 <%= render 'navigation' %>
 
 <% @size = 8 %>
-<div class="container py-5 top--margin-1x">
+<!-- <div class="container py-5 top--margin-1x"> -->
+<div class="container py-5">
     <!-- post -->
     <% if @post != nil %>
         <%= render 'post', locals: { size: @size } %> 
@@ -43,6 +44,10 @@
                             <span><%= Date.parse(@posts_array[post][:date]).strftime("%B %d, %Y") %> <% unless @posts_array[post][:date] == @posts_array[post][:updated] %>
                                 <!--(updated: <%= Date.parse(@posts_array[post][:updated]).strftime("%B %d, %Y") %>)-->
                                 <% end %></span>
+                            <% end %>
+                            <!-- updated -->
+                            <% unless Date.parse(@posts_array[post][:date]) == Date.parse(@posts_array[post][:updated]) %>
+                            <span>&#9642; Updated on <%= Date.parse(@posts_array[post][:updated]).strftime("%b %d, %Y") %></span>
                             <% end %>
                             <!-- post:tags -->
                             <!-- <span>
