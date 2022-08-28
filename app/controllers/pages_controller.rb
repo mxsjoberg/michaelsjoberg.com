@@ -107,8 +107,11 @@ class PagesController < ApplicationController
                 @date = @posts[post]['date']
                 @updated = @posts[post]['updated']
                 @draft = @posts[post]['draft']
-                @posts_array[post] = { title: @title, tags: @tags, date: @date, updated: @updated, draft: @draft }
+                @read = @posts[post]['read']
+                @posts_array[post] = { title: @title, tags: @tags, date: @date, updated: @updated, draft: @draft, read: @read }
             end
+            # sort by date if not sorted already
+            @posts_array = @posts_array.sort_by{ |_,h| -h[:date].to_i }.to_h
         end
     end
 
