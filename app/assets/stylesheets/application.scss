@@ -678,7 +678,19 @@ a:focus {
     color                   : $COLOR_PRIMARY;
     text-decoration         : none;
     display                 : inline-block;
+
+    span {
+        color               : $COLOR_PRIMARY !important;
+    }
+
+    li.list-item {
+        color               : $COLOR_DARK_LIGHT;
+    }
 }
+
+// :not(html.dark) a li.list-item {
+//     color: $COLOR_DARK_LIGHT;
+// }
 
 // .dark a,
 // .dark a:focus { 
@@ -689,6 +701,14 @@ a:focus {
 a:hover { 
     color                   : $COLOR_GREEN;
     text-decoration         : none !important;
+
+    span {
+        color               : $COLOR_GREEN !important;
+    }
+
+    li.list-item {
+        color               : $COLOR_GREEN;
+    }
 }
 
 // a:hover::before {
@@ -807,6 +827,15 @@ code {
 // --------------------------------------------------------
 html.dark { background-color: $COLOR_DARK_BLUE; }
 
+html.dark a,
+html.dark a:focus {
+    li.list-item { color: rgba($WHITE_SHADED, 0.1); }
+}
+
+html.dark a:hover { 
+    li.list-item { color: $COLOR_GREEN; }
+}
+
 html.dark .navbar { background-color: $COLOR_DARK_BLUE; }
 
 html.dark a.color-primary span,
@@ -840,7 +869,7 @@ html.dark .prettyprint.background--grey {
 
 html.dark .border-solid--grey { border: 1px solid rgba($WHITE_SHADED, 0.1); }
 
-html.dark li.list-item::marker { color: $WHITE_SHADED; }
+// html.dark li.list-item::marker { color: $WHITE_SHADED; }
 
 html.dark h1,
 html.dark h2,
