@@ -1,5 +1,5 @@
 <!--
-    A Computer Systems Primer with notes on Security
+    Computer Systems and Low-Level Software Security
     Michael Sjöberg
     Aug 27, 2022
 -->
