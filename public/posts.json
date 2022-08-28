@@ -1,13 +1,13 @@
 {   
-    "a-computer-systems-primer-with-notes-on-vulnerabilities": {
-        "title": "A Computer Systems Primer with notes on Security",
+    "computer-systems-and-low-level-software-security": {
+        "title": "Computer Systems and Low-Level Software Security",
         "short": "Under the hood of computer programs",
         "tags": ["computer systems", "security"],
         "date": "20220827",
         "updated": "20220827",
         "draft": false,
         "toc": true,
-        "image": "cs1.png"
+        "image": false
     },
     "a-deep-dive-into-computer-vision": {
         "title": "A Deep Dive into Computer Vision",
