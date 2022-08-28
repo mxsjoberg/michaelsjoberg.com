@@ -74,20 +74,24 @@
                             <div class="row list border-solid--grey pt-3">
                                 <!-- intro file at top -->
                                 <% if @programming[category][group]["files"].include? "intro" %>
-                                    <li class="col-12 col-lg-6 list-item mb-3">
-                                        <a href="/<%= @route_path %>/<%= category %>/<%= group %>/intro" data-turbolinks="true">
+                                    <a href="/<%= @route_path %>/<%= category %>/<%= group %>/intro" data-turbolinks="true" class="col-12 col-lg-6">
+                                        <li class="list-item mb-3">
+                                        <!-- <a href="/<%= @route_path %>/<%= category %>/<%= group %>/intro" data-turbolinks="true"> -->
                                             <span><%= "READ ME FIRST" %></span>
-                                        </a>
-                                    </li>
+                                        <!-- </a> -->
+                                        </li>
+                                    </a>
                                     <% @programming[category][group]["files"].delete("intro") %>
                                 <% end %>
                                 <% @programming[category][group]["files"].sort!.each do |file| %>
                                 <!-- file -->
-                                <li class="col-12 col-lg-6 list-item mb-3">
-                                    <a href="/<%= @route_path %>/<%= category %>/<%= group %>/<%= file %>" data-turbolinks="true">
+                                <a href="/<%= @route_path %>/<%= category %>/<%= group %>/<%= file %>" data-turbolinks="true" class="col-12 col-lg-6">
+                                    <li class="list-item mb-3">
+                                    <!-- <a href="/<%= @route_path %>/<%= category %>/<%= group %>/<%= file %>" data-turbolinks="true"> -->
                                         <span><%= file.titleize %></span>
-                                    </a>
-                                </li>
+                                    <!-- </a> -->
+                                    </li>
+                                </a>
                                 <% end %>
                             </div>
                         </div>
