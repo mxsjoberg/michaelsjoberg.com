@@ -6,8 +6,6 @@ Rails.application.routes.draw do
     get "/projects"                                     => "pages#projects", as: "projects"
     # get "/about"                                        => "pages#about", as: "about"
     get "/about/courses"                                => "pages#courses", as: "courses"
-    # get "/posts"                                        => "pages#posts", as: "posts"
-    # get "/posts/:post"                                  => "pages#posts", as: "post"
     get "/writing"                                      => "pages#writing", as: "writing"
     get "/writing/:post"                                => "pages#writing", as: "post"
 end
