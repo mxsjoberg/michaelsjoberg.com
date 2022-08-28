@@ -40,7 +40,7 @@ $(document).on('turbolinks:load', function() {
             st = 'scrollTop',
             sh = 'scrollHeight';
 
-        var percent = (height[st]||body[st]) / ((height[sh] - 100||body[sh]) - height.clientHeight) * 100;
+        var percent = (height[st]||body[st]) / ((height[sh]||body[sh]) - height.clientHeight) * 100;
     
         document.getElementById('scroll-percent').textContent = Math.round(percent);
     };
