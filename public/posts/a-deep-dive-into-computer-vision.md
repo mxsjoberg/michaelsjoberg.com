@@ -6,7 +6,7 @@
 
 ## <a name="1" class="anchor"></a> [1. Introduction](#1)
 
-In this section: [What is computer vision?](#1.1), [Vision is an ill-posed problem](#1.2), [Inference](#1.3)
+In this section: *image processing*, *ill-posed problems*, *inference*, and *illusions*
 
 ### <a name="1.1" class="anchor"></a> [What is computer vision?](#1.1)
 
@@ -57,7 +57,7 @@ The examples listed above are often referred to as illusions, which is from assu
 
 ## <a name="2" class="anchor"></a> [2. Image formation](#2)
 
-In this section: [Physics](#2.1), [Geometry](#2.2), [Digital images](#2.3), [The eye basics](#2.4), [Centre-surround RF function](#2.5)
+In this section: *colors*, *light*, *external reference frame*, *CCD*, *human eye*, and *receptive fields*
 
 ### <a name="2.1" class="anchor"></a> [Physics](#2.1)
 
@@ -137,7 +137,7 @@ A centre-surround RF measure change in intensity, or contrast, between adjacent 
 
 ## <a name="3" class="anchor"></a> [3. Low-level artificial vision](#3)
 
-In this section: [Convolution](#3.1), [Filtering](#3.2), [Edge and feature detection](#3.3)
+In this section: *filters*, *Gaussian mask*, and *image features*
 
 ### <a name="3.1" class="anchor"></a> [Convolution](#3.1)
 
@@ -221,7 +221,7 @@ An image feature can be found at different scales by applying filters of differe
 
 ## <a name="4" class="anchor"></a> [4. Low and mid-level biological vision](#4)
 
-In this section: [Biological visual system](#4.1), [Gabor functions](#4.2), [Mid-level vision](#4.3)
+In this section: *visual cortex*, *2D Gabor function*, *image components*, and *object grouping*
 
 ### <a name="4.1" class="anchor"></a> [Biological visual system](#4.1)
 
@@ -277,7 +277,7 @@ An object grouped with another object is influenced by [Gestalt laws](https://en
 
 ## <a name="5" class="anchor"></a> [5. Mid-level artificial vision](#5)
 
-In this section: [Features and feature space](#5.1), [Segmentation](#5.2), [Clustering methods](#5.3), [Graph cutting methods](#5.4), [Fitting methods](#5.5), [Active contours methods](#5.6)
+In this section: *feature space*, *region growing*, *region merging*, *k-means clustering method*, *Hough transform*, and *snakes*
 
 ### <a name="5.1" class="anchor"></a> [Features and feature space](#5.1)
 
@@ -325,9 +325,9 @@ A morphological operation is used to clean up results of thresholding, such as n
     - if all pixels are not similar, split into four regions, set separate labels, repeat until regions are similar (all pixels in regions are similar)
 - for each region, compare with neighbors and merge similar regions, repeat until no more similar regions
 
-### <a name="5.3" class="anchor"></a> [Clustering methods](#5.3)
+### <a name="5.3" class="anchor"></a> [Clustering](#5.3)
 
-A partitional clustering algorithm divide data into non-overlapping subsets, or clusters, where each data point is in exctly one cluster. The k-means clusterin* algorithm assume ```k```-clusters as input (work best with equally sized clusters):
+A partitional clustering algorithm divide data into non-overlapping subsets, or clusters, where each data point is in exctly one cluster. The k-means clustering algorithm assume ```k```-clusters as input (work best with equally sized clusters):
 
 - randomly pick ```k```-cluster centres
 - allocate each element to nearest cluster centre
@@ -350,7 +350,7 @@ To determine similarity between clusters:
 - group-average, distance between clusters is average distance between its elements
 - centroid, distance between clusters is distance between average of feature vectors in each cluster (centroid is point in cluster)
 
-### <a name="5.4" class="anchor"></a> [Graph cutting methods](#5.4)
+### <a name="5.4" class="anchor"></a> [Graph cutting](#5.4)
 
 A feature space can be represented as a graph, ```G = (V, E)```, where vertices, ```V```, represent image elements (feature vector), edges, ```E```, represent connections between pair of vertices, and each edge is the similarity between the two connected elements. A graph cutting process involves:
 
@@ -360,7 +360,7 @@ A feature space can be represented as a graph, ```G = (V, E)```, where vertices,
 
 Normalised cuts (Ncuts) are used to avoid bias towards small subgraphs (cost of cutting graph). Finding set of nodes that produce minimum cut is a NP-hard problem and only approximations are possible for real images, with bias towards partitioning into equal segments.
 
-### <a name="5.5" class="anchor"></a> [Fitting methods](#5.5)
+### <a name="5.5" class="anchor"></a> [Fitting](#5.5)
 
 Fitting algorithms use mathematical models to represent a set of elements. A model of the outline of an object can be rotated and translated to compare with an image, and used to represent closely fit data points, or line segments, in an image, where data points that fit the model is grouped together.
 
@@ -377,7 +377,7 @@ A generalised Hough transform is an extension to express shapes that can not be 
 - for each point in image
     - assume it is at each edge location and vote for location of reference point
 
-### <a name="5.6" class="anchor"></a> [Active contours methods](#5.6)
+### <a name="5.6" class="anchor"></a> [Active contours](#5.6)
 
 An active contour algorithm, also called snakes, should produce result that is near the edge and smooth, where a snake is a curve that moves to minimise energy:
 
@@ -388,7 +388,7 @@ Minimising the energy of a snake results in a curve that is short, smooth, and c
 
 ## <a name="6" class="anchor"></a> [6. Correspondence](#6)
 
-In this section: [Multiple images](#6.1), [Interest points](#6.2), [Matching](#6.3)
+In this section: *occlusion*, *correspondence methods*, *Harris corner detector*, *image pyramid*, *SIFT*, and *RANSAC*
 
 ### <a name="6.1" class="anchor"></a> [Multiple images](#6.1)
 
@@ -474,7 +474,7 @@ A match that is correct belong to inliers, incorrect are outliers, and used to e
 
 ## <a name="7" class="anchor"></a> [7. Stereo and depth](#7)
 
-In this section: [Stereo vision](#7.1), [Coplanar cameras](#7.2), [Non-coplanar cameras](#7.3)
+In this section: *3D scene points*, *disparity*, *epipolar constraints*, and *depth*
 
 ### <a name="7.1" class="anchor"></a> [Stereo vision](#7.1)
 
@@ -549,7 +549,7 @@ Depth in images can be recognised using different methods:
 
 ## <a name="8" class="anchor"></a> [8. Video and motion](#8)
 
-In this setion: [Optic flow](#8.1), [Video segmentation](#8.2)
+In this section: *optic flow vector*, *aperture problem*, *track algorithm*, *image differencing*, and *background subtraction*
 
 ### <a name="8.1" class="anchor"></a> [Optic flow](#8.1)
 
@@ -615,7 +615,7 @@ In background subtraction, new objects that are temporarily stationary is seen a
 
 ## <a name="9" class="anchor"></a> [9. Artificial recognition](#9)
 
-In this section: [Object recognition tasks](#9.1), [Object recognition methods](#9.2), [Geometric invariants](#9.3), [Additional notes on object recognition](#9.4)
+In this section: *object identification*, *object localisation*, *template matching*, *sliding window method*, *edge-matching*, *intensity histograms*, *ISM*, *bag-of-words*, and *invariants*
 
 ### <a name="9.1" class="anchor"></a> [Object recognition tasks](#9.1)
 
@@ -698,6 +698,8 @@ In local representation, it is hard to distinguish between similar objects (many
 ## <a name="10" class="anchor"></a> [10. Biological recognition](#10)
 
 In this section: [Object recognition theories (psychology)](10.1), [Cortical processing (neuroscience)](#10.2), [Bayesian inference](#10.3)
+
+In this section: *object-based theory*, *image-based theory*, *cortical visual system*, *feedforward model*, *HMAX*, and *Bayes Theorem*
 
 ### <a name="10.1" class="anchor"></a> [Object recognition theories (psychology)](10.1)
 
