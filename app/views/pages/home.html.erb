@@ -43,9 +43,9 @@
                     <h2 class="font-family-serif font-weight-bold">
                         <a href="<%= @highlight["url"] %>" data-turbolinks="true"><%= @highlight["title"] %></a>
                     </h2>
-                    <p class="text-muted mb-3">
+                    <!-- <p class="text-muted mb-3">
                         <span><%= Date.parse(@highlight["date"]).strftime("%B %d, %Y") %> <% unless Date.parse(@highlight["updated"]).strftime("%B %d, %Y") %>(updated: <%= Date.parse(@highlight["updated"]).strftime("%B %d, %Y") %>)<% end %></span>
-                    </p>
+                    </p> -->
                 </div>
                 <!--<% @recent.keys.each do |date| %>
                     <div class="col-12 col-lg-4 mb-3">
