@@ -1,8 +1,9 @@
+<% if @post == nil %><%= render 'header' %><% end %>
 <%= render 'navigation' %>
 
 <% @size = 8 %>
 <!-- <div class="container py-5 top--margin-1x"> -->
-<div class="container py-5">
+<div class="container <% if @post != nil %>py-5<% else %>pb-5<% end %>">
     <!-- post -->
     <% if @post != nil %>
         <%= render 'post', locals: { size: @size } %> 
@@ -11,9 +12,9 @@
         <!-- header -->
         <div class="row justify-content-center">
             <!-- title -->
-            <div class="col-12 col-lg-<%= @size %>">
+            <!-- <div class="col-12 col-lg-<%= @size %>">
                 <h1><%= @meta_title %></h1>
-            </div>
+            </div> -->
             <!-- search -->
             <!-- <div class="col-12 col-lg-<%= @size / 2 %> text-md-right">
                 <input id="search" class="pl-3" name="search" placeholder="Search" type="text" data-list=".list" autocomplete="off">
@@ -23,21 +24,41 @@
         <div class="row justify-content-center">
             <%= render 'divider', locals: { size: @size } %>
         </div>
+        <!-- NEW list all posts -->
+        <div class="row justify-content-center mb-3">
+            <div class="col-12 col-lg-<%= @size %>">
+                <div class="row list">
+                    <% @posts_array.keys.each do |post| %>
+                    <% if @posts_array[post][:draft] == false %>
+                    <!-- item -->
+                        <!-- post:title -->
+                    <a href="/<%= @route_path %>/<%= post %>" data-turbolinks="true" style="min-width:100%;">
+                        <li class="list-item col-12 mb-3">
+                            <span><% if @posts_array[post][:draft] %>[DRAFT]<% end %> <%= @posts_array[post][:title] %></span>
+                        </li>
+                    </a>
+                    <% end %>
+                    <% end %>
+                </div>
+            </div>
+        </div>
         <!-- list all posts -->
+        <% if false %>
         <div class="row justify-content-center mb-3">
             <div class="col-12 col-lg-<%= @size %>">
                 <div class="row list">
                     <% @posts_array.keys.each do |post| %>
                     <!-- item -->
-                    <li class="col-12 mb-3">
+                    <li class="list-item col-12 mb-3">
                         <!-- post:title -->
-                        <h2 class="font-family-serif font-weight-bold">
+                        <h2 class="font-family-serif font-weight-bold mb-3">
                             <a href="/<%= @route_path %>/<%= post %>" data-turbolinks="true">
                                 <% if @posts_array[post][:draft] %>[DRAFT]<% end %>
                                 <%= @posts_array[post][:title] %>
                             </a>
                         </h2>
                         <!-- post:meta -->
+                        <% if false %>
                         <p class="text-muted mb-3">
                             <!-- post:date -->
                             <% unless @posts_array[post][:draft] %>
@@ -66,10 +87,12 @@
                                 <% end %>
                             </span> -->
                         </p>
+                        <% end %>
                     </li>
                     <% end %>
                 </div>
             </div>
         </div>
+        <% end %>
     <% end %>
 </div>
