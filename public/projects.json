@@ -1,66 +1,96 @@
 {   
-    "Evert.AI (idea)": {
+    "Evert.AI": {
         "description": [
-            "Visual programming language (block-based) and low-code environment targeting machine learning frameworks."
+            "Visual programming language (block-based) and low-code environment for machine learning frameworks."
         ],
         "date": "",
         "url": "",
-        "tags": ["machine learning", "low-code"]
+        "tags": [],
+        "archived": false,
+        "active": true,
+        "github": false,
+        "website": false
     },
-    "terminal.frozenfork.com (previously Stockstack.io)": {
+    "Terminal": {
         "description": [
-            "A stock market data dashboard with customizable widget-based user interface."
+            "Browser-based and highly customizable stock market data dashboard."
         ],
         "date": "2020-",
-        "url": "https://terminal.frozenfork.com",
-        "tags": ["finance", "python", "vue.js"]
+        "url": "",
+        "tags": [],
+        "archived": false,
+        "active": true,
+        "github": false,
+        "website": "https://terminal.frozenfork.com"
     },
     "pas2wat (pascal-to-wat)": {
         "description": [
-            "A prototype compiler in Rust to translate Pascal into WebAssembly (text-format)."
+            "Compiler for subset of Pascal targeting WebAssembly text-format."
         ],
         "date": "2020-",
-        "url": "https://github.com/michaelsjoeberg/pas2wat",
-        "tags": ["compiler", "rust"]
+        "url": "",
+        "tags": [],
+        "archived": false,
+        "active": true,
+        "github": "https://github.com/michaelsjoeberg/pas2wat",
+        "website": false
     },
     "raknalang (räknalang)": {
         "description": [
-            "A simple educational programming language for learning basic arithmetics in native language. Interpreter implemented in Python."
+            "A simple educational programming language for learning basic arithmetics in native languages."
         ],
         "date": "2020",
-        "url": "https://github.com/michaelsjoeberg/raknalang",
-        "tags": ["programming language"]
+        "url": "",
+        "tags": [],
+        "archived": false,
+        "active": true,
+        "github": "https://github.com/michaelsjoeberg/raknalang",
+        "website": false
     },
     "EQZEN": {
         "description": [
-            "A collaborative portfolio management application. Discontinued."
+            "Browser-based and collaborative portfolio management application; discontinued."
         ],
         "date": "2018-2020",
-        "url": "https://web.archive.org/web/20200302140415/https://eqzen.com/",
-        "tags": ["finance", "Python"]
+        "url": "",
+        "tags": [],
+        "archived": false,
+        "active": false,
+        "github": false,
+        "website": "https://web.archive.org/web/20200302140415/https://eqzen.com/"
     },
-    "learnhub.io (archived)": {
+    "Give Trees (Plant for Earth LTD; dissolved)": {
         "description": [
-            "Web-based platform and skill tracker for self-learners."
+            "Android application for charitable donations and unreleased iOS game; both discontinued."
+        ],
+        "date": "2014-2017",
+        "url": "",
+        "tags": [],
+        "archived": false,
+        "active": false,
+        "github": false,
+        "website": "https://web.archive.org/web/20190205052959/https://www.givetrees.co/"
+    },
+    "learnhub.io": {
+        "description": [
+            "Browser-based platform and skill tracker for self-learners."
         ],
         "date": "2018",
-        "url": "https://github.com/michaelsjoeberg/learnhub.io",
-        "tags": ["platform", "python"]
+        "url": "",
+        "tags": [],
+        "archived": true,
+        "active": false,
+        "github": "https://github.com/michaelsjoeberg/learnhub.io",
+        "website": false
     },
-    "Give Trees": {
-        "description": [
-            "Android application for charitable donations. Discontinued."]
-        ,
-        "date": "2014-2017",
-        "url": "https://web.archive.org/web/20190205052959/https://www.givetrees.co/",
-        "tags": ["Android", "PHP", "lua"]
-    },
-    "doolio.co (archived)": {
-        "description": [
-            "Online interactive resume."
-        ],
+    "doolio.co": {
+        "description": ["Online interactive resume."],
         "date": "2017",
-        "url": "https://github.com/michaelsjoeberg/doolio.co",
-        "tags": ["platform", "PHP"]
+        "url": "",
+        "tags": [],
+        "archived": true,
+        "active": false,
+        "github": "https://github.com/michaelsjoeberg/doolio.co",
+        "website": false
     }
 }
