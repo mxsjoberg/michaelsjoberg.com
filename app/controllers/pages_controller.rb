@@ -6,7 +6,7 @@ class PagesController < ApplicationController
 
     # GET /
     def home
-        @route_path = "posts"
+        @route_path = "home"
         @meta_title = "Michael Sjöberg"
         # intro.json
         @intro = JSON.parse(File.read(Rails.public_path + 'intro.json'))
@@ -41,6 +41,16 @@ class PagesController < ApplicationController
         end
     end
 
+    # GET /finance
+    def finance
+        @route_path = "finance"
+        @meta_title = "Finance"
+        # finance.json
+        @finance = JSON.parse(File.read(Rails.public_path + 'finance.json'))
+        @url = @finance["url"]
+        @format = @finance["format"]
+    end
+
     # GET /projects
     def projects
         @route_path = "projects"
@@ -55,14 +65,17 @@ class PagesController < ApplicationController
         @meta_title = "Writing"
         @post = params[:post]
         # redirects
-        if @post == "a-few-notes-on-investing"
-            @post = "investing-in-stocks-like-a-pro"
+        if @post == "a-few-notes-on-investing" || @post == "investing-in-stocks-like-a-pro"
+            @post = "how-to-invest-in-stocks-like-a-pro"
         end
         if @post == "computer-vision-in-a-hurry"
             @post = "a-deep-dive-into-computer-vision"
         end
         if @post == "why-are-financial-data-apps-so-bad"
             @post = "building-an-alternative-to-yahoo-finance"
+        end
+        if @post == "computer-systems-and-low-level-software-security"
+            @post = "a-computer-systems-primer-for-application-developers"
         end
         # posts.json
         @posts = JSON.parse(File.read(Rails.public_path + 'posts.json'))
@@ -71,6 +84,7 @@ class PagesController < ApplicationController
             @file = @post + '.md'
             @title = @posts[@post]['title']
             @short = @posts[@post]['short']
+            @note = @posts[@post]['note']
             @tags = @posts[@post]['tags']
             @date = @posts[@post]['date']
             @updated = @posts[@post]['updated']
@@ -103,12 +117,14 @@ class PagesController < ApplicationController
                 @file = post + '.md'
                 # @date = post
                 @title = @posts[post]['title']
+                @short = @posts[post]['short']
+                @note = @posts[post]['note']
                 @tags = @posts[post]['tags']
                 @date = @posts[post]['date']
                 @updated = @posts[post]['updated']
                 @draft = @posts[post]['draft']
                 @read = @posts[post]['read']
-                @posts_array[post] = { title: @title, tags: @tags, date: @date, updated: @updated, draft: @draft, read: @read }
+                @posts_array[post] = { title: @title, short: @short, note: @note, tags: @tags, date: @date, updated: @updated, draft: @draft, read: @read }
             end
             # sort by date if not sorted already
             @posts_array = @posts_array.sort_by{ |_,h| -h[:date].to_i }.to_h
