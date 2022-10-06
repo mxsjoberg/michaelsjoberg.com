@@ -8,4 +8,5 @@ Rails.application.routes.draw do
     get "/about/courses"                                => "pages#courses", as: "courses"
     get "/writing"                                      => "pages#writing", as: "writing"
     get "/writing/:post"                                => "pages#writing", as: "post"
+    get "/finance"                                  	=> "pages#finance", as: "finance"
 end
