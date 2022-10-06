@@ -1,27 +1,23 @@
 <%= render 'navigation' %> 
 
 <% @size = 8 %>
-<div class="container py-5 top--margin-1x">
+<div class="container pb-5">
     <!-- header -->
     <div class="row justify-content-center">
-        <!-- title -->
-        <div class="col-12 col-lg-<%= @size / 2 %>">
-            <h1><%= @meta_title %></h1>
-        </div>
         <!-- search -->
-        <div class="col-12 col-lg-<%= @size / 2 %> text-md-right">
+        <div class="col-12 col-lg-<%= @size %> text-md-right my-3 pt-3">
             <input id="search" class="pl-3" name="search" placeholder="Search" type="text" data-list=".list" autocomplete="off">
         </div>
     </div>
     <!-- summary -->
+    <% if false %>
     <div class="row justify-content-center">
-        <%= render 'divider', locals: { size: @size } %>
         <!-- description -->
         <div class="col-12 col-lg-<%= @size %>">
-            <p class="font-family-serif mb-0">This is a list with completed courseworks at various schools; sorted per year (most recent at top). Levels: Postgraduate (PG), Undergraduate (UG), and Preparatory (PRE).</p>
+            <p class="font-family-serif mb-0"><em>PG: postgraduate, UG: undergraduate, PRE: preparatory</em></p>
         </div>
-        <%= render 'divider', locals: { size: @size } %>
     </div>
+    <% end %>
 
     <!-- render course list -->
     <div class="row justify-content-center">
