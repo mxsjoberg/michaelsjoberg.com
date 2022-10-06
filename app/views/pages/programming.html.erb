@@ -1,3 +1,4 @@
+<% if false %><% if @file_content == nil %><%= render 'header' %><% end %><% end %>
 <%= render 'navigation' %>
 
 <!-- page-navigation -->
@@ -17,7 +18,7 @@
 <!-- ./page-navigation -->
 
 <% @size = 12 %>
-<div class="container py-5">
+<div class="container <% if @file_content != nil %>py-5<% else %>pb-5<% end %>">
     <!-- content -->
     <% if @file_content != nil %>
         <%= render 'file_content', locals: { size: @size } %>
@@ -25,21 +26,16 @@
     <% else %>
         <!-- header -->
         <div class="row justify-content-center">
-            <div class="col-12 col-lg-<%= @size / 2 %>">
-                <h1><%= @meta_title %></h1>
-            </div>
-            <div class="col-12 col-lg-<%= @size / 2 %> text-md-right">
+            <div class="col-12 col-lg-<%= @size %> text-md-right my-3 pt-3">
                 <input id="search" class="pl-3" name="search" placeholder="Search" type="text" data-list=".list" autocomplete="off">
             </div>
         </div>
         <!-- summary -->
+        <% if false %>
         <div class="row justify-content-center">
             <%= render 'divider', locals: { size: @size } %>
-            <!-- description -->
-            <!-- <div class="col-12 col-lg-<%= @size %>">
-                <p class="font-family-serif mb-0">This is a collection of language-specific syntax, algorithms, and smaller programs (~100 LOC) in various programming languages for self-learning or reference.</p>
-            </div> -->
         </div>
+        <% end %>
         <!-- list -->
         <% @programming.keys.each do |category| %>
         <div class="row justify-content-center mb-3">
@@ -74,7 +70,7 @@
                             <div class="row list border-solid--grey pt-3">
                                 <!-- intro file at top -->
                                 <% if @programming[category][group]["files"].include? "intro" %>
-                                    <a href="/<%= @route_path %>/<%= category %>/<%= group %>/intro" data-turbolinks="true" class="col-12 col-lg-6">
+                                    <a href="/<%= @route_path %>/<%= category %>/<%= group %>/intro" data-turbolinks="true" class="col-12 col-lg-4">
                                         <li class="list-item mb-3">
                                         <!-- <a href="/<%= @route_path %>/<%= category %>/<%= group %>/intro" data-turbolinks="true"> -->
                                             <span><%= "READ ME FIRST" %></span>
@@ -85,7 +81,7 @@
                                 <% end %>
                                 <% @programming[category][group]["files"].sort!.each do |file| %>
                                 <!-- file -->
-                                <a href="/<%= @route_path %>/<%= category %>/<%= group %>/<%= file %>" data-turbolinks="true" class="col-12 col-lg-6">
+                                <a href="/<%= @route_path %>/<%= category %>/<%= group %>/<%= file %>" data-turbolinks="true" class="col-12 col-lg-4">
                                     <li class="list-item mb-3">
                                     <!-- <a href="/<%= @route_path %>/<%= category %>/<%= group %>/<%= file %>" data-turbolinks="true"> -->
                                         <span><%= file.titleize %></span>
