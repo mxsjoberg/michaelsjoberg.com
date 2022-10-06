@@ -1,21 +1,35 @@
 {   
-    "computer-systems-and-low-level-software-security": {
-        "title": "Computer Systems and Low-Level Software Security",
-        "short": "Under the hood of computer programs",
-        "tags": ["computer systems", "security"],
+    "solving-optimisation-problems-using-nature-inspired-algorithms": {
+        "title": "Solving optimisation problems using nature-inspired algorithms",
+        "short": false,
+        "note": "This post was first written in 2020 and partly rewritten for this website.",
+        "tags": ["computer science"],
+        "date": "20220915",
+        "updated": "20220915",
+        "draft": true,
+        "toc": true,
+        "read": 0,
+        "image": false
+    },
+    "a-computer-systems-primer-for-application-developers": {
+        "title": "A Computer Systems Primer for Application Developers",
+        "short": false,
+        "note": "This post was first written in 2020 and partly rewritten for this website.",
+        "tags": ["computer systems"],
         "date": "20220827",
-        "updated": "20220827",
+        "updated": "20221005",
         "draft": false,
         "toc": true,
         "read": 69,
-        "image": "cs.png"
+        "image": false
     },
     "a-deep-dive-into-computer-vision": {
         "title": "A Deep Dive into Computer Vision",
-        "short": "Background, terminology, and applications",
-        "tags": ["computer vision"],
+        "short": false,
+        "note": "This post was first written in 2020 and partly rewritten for this website.",
+        "tags": ["computer science"],
         "date": "20220713",
-        "updated": "20220828",
+        "updated": "20221005",
         "draft": false,
         "toc": true,
         "read": 146,
@@ -23,7 +37,7 @@
     },
     "building-an-alternative-to-yahoo-finance": {
         "title": "Building an alternative to Yahoo Finance",
-        "tags": ["finance", "saas"],
+        "tags": false,
         "date": "20210626",
         "updated": "20220819",
         "draft": false,
@@ -32,16 +46,16 @@
     },
 	"no-bs-computer-science-curriculum": {
         "title": "No-BS Computer Science Curriculum",
-        "tags": ["education", "computer science"],
+        "tags": false,
         "date": "20201110",
-        "updated": "20220818",
+        "updated": "20221005",
         "draft": false,
         "toc": true,
         "read": 17
     },
-    "investing-in-stocks-like-a-pro": {
-        "title": "Investing in stocks (like-a-pro)",
-        "tags": ["finance", "investing"],
+    "how-to-invest-in-stocks-like-a-pro": {
+        "title": "How to invest in stocks (like-a-pro)",
+        "tags": ["finance"],
         "date": "20200516",
         "updated": "20220819",
         "draft": false,
