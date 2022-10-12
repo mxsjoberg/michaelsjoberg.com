@@ -111,7 +111,7 @@ An operation, as performed by the CPU, use main memory, register file, which is 
 
 ### <a name="1.3" class="anchor"></a> [1.3 Cache memory](#1.3)
 
-A cache memory is a memory device with different levels, or sizes (L1, L2, L3), which are used to store information that the processor might need in the near future, where smaller sizes are faster (note that locality can be used to make programs run faster).
+A cache memory is a memory device with different levels, or sizes (L1, L2, L3), where smaller sizes are faster (note that locality can be used to make programs run faster).
 
 |    |     |     |
 | -- | :-- | :-- |
@@ -122,6 +122,8 @@ A cache memory is a memory device with different levels, or sizes (L1, L2, L3), 
 | L4 | DRAM (main memory) | Main memory hold disk blocks from local disks |
 | L5 | Local secondary storage (local disks) | Local disks hold files copied from other disks or remote network storage |
 | L6 | Remote secondary storage |  |
+
+The different levels of memory is also referred to as [memory hierarchy](https://en.wikipedia.org/wiki/Memory_hierarchy), which is based on respons time, and where each level act as cache for the level before and top levels are used to store information that the processor might need in the near future.
 
 ### <a name="1.4" class="anchor"></a> [1.4 Operating systems](#1.4)
 
@@ -144,7 +146,7 @@ A system command is a command-line program (note that `system()` is a library fu
 
 - copy files with `cp`, such as `cp ~/file /dest` (note that `~` expands into `HOME` environment variable)
 
-A system call is a function executed by the operating system, such as accessing hard drive and creating processes, whereas system command is a program implementing functions (note that system calls can be used by programs to request services from the operating system).
+Note that a system call is a function executed by the operating system, such as accessing hard drive and creating processes, whereas system command is a program implementing functions (system calls are used by programs to request services from the operating system). In C, and most other programming languages, system commands, such as `write`, is wrapped in some other function, such as `printf`.
 
 #### <a name="1.4.1" class="anchor"></a> [Process](#1.4.1)
 
@@ -155,7 +157,7 @@ A process is an abstraction for processor, main memory, and I/O devices, and rep
 Virtual memory is an abstraction for main memory and local disks, which provides each program with a virtual address space to make it seem as if programs have exclusive use of memory:
 
 - program code and data, code begin at the same fixed address for all processes at bottom of virtual address space, followed by global variables, and is fixed size once process is running
-- heap expands and contracts its size dynamically at run-time using special routines, such as `malloc` and `free`
+- heap expands and contracts its size dynamically at run-time using special routines, such as `malloc` and `free` (or using garbage collection)
 - shared libraries, such as the C standard library, is near the middle of the virtual address space
 - stack is at top of user virtual address space and used by compiler to implement function calls, it expands and contracts its size dynamically at run-time (note that stack grows with each function call and contracts on return)
 - kernel virtual memory is at top of virtual memory space, which is reserved for kernel, programs have to call kernel to read or write in this space
