@@ -6,41 +6,30 @@
 
 ## <a name="1" class="anchor"></a> [1. Introduction](#1)
 
-*Keywords: image processing, ill-posed problems, inference, illusions*
-
 ### <a name="1.1" class="anchor"></a> [1.1 What is computer vision?](#1.1)
 
 Computer vision is a field of artificial intelligence and generally used to describe methods for extracting information from images. Related disciplines include (note that image processing is image to image and computer graphics is description to image, whereas computer vision is image to description):
 
 - image processing, manipulation of an image
 - computer graphics, digitally synthesizing images
-- pattern recognition, recognising and classifying stimuli in images and other datasets
+- pattern recognition, recognizing and classifying stimuli in images and other datasets
 - photogrammetry, obtaining measurements from images
 - biological vision, understanding visual perception
 
-Computer vision is needed when machines interact with the physical world, such as in robotics, or use machines to extract useful information from images (and images are everywhere). A few example applications:
-
-- industrial inspection, QA
-- robot navigation, mars rover use panorama stiching, 3D terrain modeling, obstacle detection, and position tracking
-- autonomous vehicles, driver assistance, such as lane assist, pedestrian detection, and automatic breaking
-- guiding tools and support for visually impaired
-- surveillance and security, such as face detection and recognition at airports, people tracking for crime detection
-- object recognition, text to speech, such as optical character recognition to convert scanned documents to text, automatic numberplate recognition, face detection in images, track objects in real-time
-- medical image analysis, such as MRI, CT, and ultrasound scanners
-- digital libraries and video search, such as content-based image retrieval (query by image)
+Computer vision is needed when machines interact with the physical world, such as in robotics, or use machines to extract useful information from images (and images are everywhere).
 
 ### <a name="1.2" class="anchor"></a> [1.2 Vision is an ill-posed problem](#1.2)
 
-A transformation of an image into a description is not obvious, it is an ill-posed problem. One image can have many interpretations, one object can result in many images, and this problem is exponentially large:
+A transformation of an image into a description is not obvious, it is an ill-posed problem. One image can have many interpretations, one object can result in many images, so this problem is exponentially large:
 
-- mapping from 3D to 2D is unique, problem is well-posed and forward (imaging)
-- mapping from 2D to 3D is not unique, problem is ill-posed and inverse (vision), many objects can generate similar image
+- imaging: mapping from 3D to 2D is unique, problem is well-posed and forward
+- vision: mapping from 2D to 3D is not unique, problem is ill-posed and inverse, many objects can generate similar image
 
-Computer vision systems use constraints and priors, as in prior knowledge, to make some interpretations more likely than others. Our brain produce one interpretation from many possible ones. In an image, an object can appear in any location, scale, orientation, and color, so the number of possible images of same object increases exponentially with the number of parameters. Parameters such as viewpoint, angle, illumination, such as light or dark, and deformations, such as smiling or tilting head, can affect appearance, which often results in images of same object with almost no visual similarity. A within-category variation (a calculator is more similar to modern phone than a modern phone is to an old phone) and other objects in the same image, such as background and clutter, can also result in images with no visual similarity.
+Most vision systems use constraints and priors, as in prior knowledge, to make some interpretations more likely than others. Our brain produces one interpretation from many possible ones. In an image, an object can appear in any location, scale, orientation, and color, so the number of possible images of same object increases exponentially with the number of these parameters. Viewpoint, angle, illumination (light or dark), and deformations (smiling or tilting head), can affect appearance, and often results in images of same the object with almost no visual similarity. A within-category variation (e.g., a calculator looks more like modern phone than modern phone looks like an old phone) and other objects in the same image, such as background and clutter, can also result in images with no visual similarity.
 
 #### <a name="1.2.1" class="anchor"></a> [Inference](#1.2.1)
 
-Human perception use inference, or prior information about the world, to constrain results and (sometimes) produce a more accurate interpretation:
+Human perception use inference, which is prior information about the world, to constrain results and (sometimes) produce a more accurate interpretation:
 
 - [checker board with added shadow](https://en.wikipedia.org/wiki/Checker_shadow_illusion) (illumination) can result in perceived intensity, not reflecting actual image intensity, making shadowed tiles look lighter than actual
 - [Ames Room illusion](https://en.wikipedia.org/wiki/Ames_room) (perspective)
@@ -49,15 +38,13 @@ Human perception use inference, or prior information about the world, to constra
 - exposure to an image makes it hard to spot changes to same image (prior exposure, [change blindness](https://en.wikipedia.org/wiki/Change_blindness)), such as removing an object from a scene in image
 - knowing context makes it easier to complete otherwise incomplete images, such as letter missing in common word
 
-The examples listed above are often referred to as illusions, which is from assumptions that our vision system makes to solve an under-constrained problem. Human perception is influenced by prior expectations, or priors:
+Human perception is influenced by prior expectations, or simply priors, and the examples listed above are illusions, which is from assumptions that our vision system makes to solve an under-constrained problem:
 
 - prior knowledge, or familiarity, such as previous experience with certain objects or knowledge about formation process in general
 - prior exposure, motion, or priming, which is recent or preceding input
 - current context, such as objects surrounding visual scene, and concurrent input
 
 ## <a name="2" class="anchor"></a> [2. Image formation](#2)
-
-*Keywords: colors, light, external reference frame, CCD, human eye, receptive fields*
 
 ### <a name="2.1" class="anchor"></a> [2.1 Physics](#2.1)
 
@@ -73,7 +60,7 @@ Colors are created from mixing light, or additive, adds illumination to increase
 - if illuminance of light changes, intensity of light also changes (luminance changes with illuminance)
 - if reflectance of light changes, intensity of light also changes (luminance changes with reflectance)
 
-The human eye seem to recover surface color, illuminance, since percieved colors remain unchanged with changes to illumination, such as looking at color of fruits in different lightning.
+The human eye seems to recover surface color, illuminance, since perceived colors remain unchanged with changes to illumination, such as looking at color of fruits in different lightning.
 
 ### <a name="2.2" class="anchor"></a>  [2.2 Geometry](#2.2)
 
@@ -84,49 +71,49 @@ Light spreads out from a point, where focus is light converging (restricting flo
 A lens can be used with large pinhole to produce a bright and sharp image, the lens keeps light from spreading out (light is refracted):
 
 - a lens is positioned between object and image
-	- light passing through optical centre is not refracted
-	- light passing in parallell to optical axis is refracted to pass through the image-side focal point
+	- light passing through optical center is not refracted
+	- light passing in parallel to optical axis is refracted to pass through the image-side focal point
 	- light passing through object-side focal point it refracted to pass in parallel to optical axis
 - the thin lens equation is $$\frac{1}{f} = \frac{1}{\|z\|} + \frac{1}{\|z'\|}$$ where $f$ is focal length
 	- distance between image-side focal point and object-side focal point, $z$ is object distance from lens, and $z'$ is image distance from lens
 
-A lens follow the pinhole model (also called perspective camera model) for objects that are in focus:
+A lens follows the pinhole model (also called perspective camera model) for objects that are in focus:
 
 - $P$ is a point with coordinates $(x, y, z)$, $P'$ is its image with coordinates $(x', y', z')$, and $O$ is the origin (or pinhole, center of lens)
-- image plane is located at distance $f'$ from pinhole, optical axis is line perpendicular to image plane and passing through $O$, and $C'$ is image centre (intersection of optical axis and image plane)
+- image plane is located at distance $f'$ from pinhole, optical axis is line perpendicular to image plane and passing through $O$, and $C'$ is image center (intersection of optical axis and image plane)
 	- the equation of projection in 2D is $$\frac{x'}{x} = \frac{f'}{z} \Rightarrow x' = \frac{f'}{z}x$$
 	- the equation of projection in 3D is $$x' = \frac{f'}{z}x, y' = \frac{f'}{z}y, z' = f'$$
 
 #### <a name="2.2.2" class="anchor"></a> [External reference frame](#2.2.2)
 
-An external reference frame is useful when camera is moving or when using more than one camera (stereo vision):
+An external reference frame is used when camera is moving or with more than one camera (stereo vision):
 
 - $O_{XYZ}$ is world reference frame and $O_{xyz}$ is camera reference frame
 - $P$ is coordinates of point in frame $O_{XYZ}$ and $t$ is coordinates of origin of frame $O_{xyz}$ in frame $O_{XYZ}$ (translation vector)
 - $R$ is rotation matrix describing orientation of frame $O_{xyz}$ with respect of $O_{XYZ}$
 - $p$ is coordinates of point in frame $O_{xyz}$
 
-In euclidean geometry, objects are described as they are, transformations within a 3D world, translations and rotations, and same shape. In projective geometry, objects are described as they appear, transformations from a 3D world to a 2D image, scaling and shear in addition to translation and rotation. A vanishing point is a projection of a point at infinity, such as looking at train tracks in the distance.
+In Euclidean geometry, objects are described as they are, transformations within a 3D world, translations and rotations, and same shape. In projective geometry, objects are described as they appear, transformations from a 3D world to a 2D image, scaling and shear in addition to translation and rotation. A vanishing point is a projection of a point at infinity, such as looking at train tracks in the distance.
 
 ### <a name="2.3" class="anchor"></a> [2.3 Digital images](#2.3)
 
-A digital image is represented as a 2D array with numbers and is sampled at discrete points (pixels), value at each pixel is light intensity at that point (0 is black and 255 is white, sometimes 1 is white). An image is usually denoted as $I$, origin is in top-left corner, where a point on the image is denoted as $p$, such as $p = (x, y)^{T}$, where $p$ is a transposed vector, and pixel value is denoted as $I(p)$, or $I(x, y)$. An intensity value is averaged at sampling point, also called pixelisation, and represented using finite discrete values (quantization):
+A digital image is represented as a 2D array with numbers and is sampled at discrete points (pixels), value at each pixel is light intensity at that point (0 is black and 255 is white, sometimes 1 is white). An image is usually denoted as $I$, origin is in top-left corner, where a point on the image is denoted as $p$, such as $p = (x, y)^{T}$, where $p$ is a transposed vector, and pixel value is denoted as $I(p)$, or $I(x, y)$. An intensity value is averaged at sampling point, also called pixelization, and represented using finite discrete values (quantization):
 
 - 1 bit per pixel gives 2 gray levels (binary)
 - 2 bit per pixel gives 4 gray levels
 - 8 bit per pixel gives 256 gray levels
-- 8 bit per pixel and 3 real values (RGB) gives 24 bit (true color)
+- 8 bit per pixel and 3 real values (RGB) gives 24 bits (true color)
 
 #### <a name="2.3.1" class="anchor"></a> [CCD](#2.3.1)
 
-A charge-coupled device (CCD) is a semiconductor with a two-dimensional matrix of photo-sensors (photo-diodes) where each sensor is small and isolated capacitive region, which can accumulate charge. The photoelectric effect converts photons on sensors into electrons, the accumulated charge is proportional to light intensity and exposure time. CCDs can be used with colored filters to make different pixels selective to different colors, such as [Bayer filter](https://en.wikipedia.org/wiki/Bayer_filter). 
+A charge-coupled device (CCD) is a semiconductor with a two-dimensional matrix of photo-sensors (photodiodes) where each sensor is small and isolated capacitive region, which can accumulate charge. The photoelectric effect converts photons on sensors into electrons, the accumulated charge is proportional to light intensity and exposure time. CCDs can be used with colored filters to make different pixels selective to different colors, such as [Bayer filter](https://en.wikipedia.org/wiki/Bayer_filter). 
 
 #### <a name="2.3.2" class="anchor"></a> [Bayer filter](#2.3.2)
 
 A Bayer filter, or mask, has twice as many green filters as red and blue, samples colors at specific locations, and use [demosaicing](https://en.wikipedia.org/wiki/Demosaicing), which is an algorithm used to compute color at pixel (based on local red, green, blue values in subsampled images) to fill in missing values:
 
-- nearest neighbour interpolation copies adjacent pixel value in same color channel and is fast but inaccurate
-- bilinear interpolation takes average of nearest two to four pixel value in same color channel is fast and accurate in smooth regions, but inaccurate at edges
+- nearest neighbor interpolation copies adjacent pixel value in same color channel and is fast but inaccurate
+- bilinear interpolation takes average of nearest two-to-four-pixel value in same color channel is fast and accurate in smooth regions, but inaccurate at edges
 - smooth hue transition interpolation (only red and blue, green is same as bilinear interpolation) takes ratio of bilinear interpolation between red/ blue and green
 - edge-directed interpolation performed on axis where change in value is lowest
 
@@ -134,7 +121,7 @@ A Bayer filter, or mask, has twice as many green filters as red and blue, sample
 
 The human eye has several parts (listing relevant only):
 
-- cornea, perform inital refraction at fixed focus
+- cornea, perform initial refraction at fixed focus
 - lens, perform further refraction and can be stretched to change focal length
 - iris, allow regulation of exposure to light, both as protection and to improve focus
 - optic nerve, transmit information to brain
@@ -142,22 +129,20 @@ The human eye has several parts (listing relevant only):
 
 #### <a name="2.4.1" class="anchor"></a> [Photoreceptor](#2.4.1)
 
-A [photoreceptor](https://en.wikipedia.org/wiki/Photoreceptor_cell) is a rod, highly sensitive and can operate in low light levels, or a cone, low sensitivity but sensitive to different wavelengths. The color blue has short-wavelength and peak sensitivity 440nm, green has medium-wavelength and peak sensitivity 545nm, and red has long-wavelength and peak sensitivity 580nm. 
+A [photoreceptor](https://en.wikipedia.org/wiki/Photoreceptor_cell) is a rod, highly sensitive and can operate in low light levels, or a cone, low sensitivity but sensitive to different wavelengths. Blue has short-wavelength and peak sensitivity 440nm, green has medium-wavelength and peak sensitivity 545nm, and red has long-wavelength and peak sensitivity 580nm. 
 
 A blind spot has no photoreceptors (it is blind), the fovea has no rods but many cones, and periphery has many rods and few cones. The fovea is high resolution (high density of photoreceptors), color (cones), and low sensitivity (no rods), whereas the periphery is low resolution (low density of photoreceptors), monochrome (rods), and high sensitivity (rods).
 
 #### <a name="2.4.2" class="anchor"></a> [Centre-surround RF function](#2.4.2)
 
-A centre-surround receptive field (RF) is an area of visual space from which neuron recieve input:
+A center-surround receptive field (RF) is an area of visual space from which neuron receive input:
 
-- on-centre/off-surround is active if stimulus is brighter than background
-- off-centre/on-surround is active if stimulus is darker than background
+- on-center/off-surround is active if stimulus is brighter than background
+- off-center/on-surround is active if stimulus is darker than background
 
-A centre-surround RF measure change in intensity, or contrast, between adjacent locations. The relative contrast should be independent of lightning conditions, so illuminance should be irrelevant.
+A center-surround RF measure change in intensity, or contrast, between adjacent locations. The relative contrast should be independent of lightning conditions, so illuminance should be irrelevant.
 
 ## <a name="3" class="anchor"></a> [3. Low-level artificial vision](#3)
-
-*Keywords: filters, Gaussian mask, image features*
 
 ### <a name="3.1" class="anchor"></a> [3.1 Convolution](#3.1)
 
@@ -167,14 +152,14 @@ $$I'(i, j) = IH = \sum I(i - k, j - l) H(k, l)$$
 
 Convolution is commutative, $IH = HI$, and associative, $(IH)G = IHG$, so for each pixel (note that a 2D convolution is separable if $H$ is a convolution of two vectors, which is much more efficient, so $H = h_{1}h_{2}$):
 
-- centre a rotated mask on pixel and multiply each mask element by corresponding image value (assume image values outside boundary is zero)
+- center a rotated mask on pixel and multiply each mask element by corresponding image value (assume image values outside boundary is zero)
 - sum products to get new pixel value
 
 For more convolution examples, see: [Example of 2D Convolution](http://www.songho.ca/dsp/convolution/convolution2d_example.html).
 
 ### <a name="3.2" class="anchor"></a> [3.2 Filtering](#3.2)
 
-A filter, or mask, is a point-spread function, image with isolated white dots on black bakground would superimpose mask at each pixel. A mask is a template and convolution output is maximum when large image values are multiplied with large mask values (respond most strongly at features similar to rotated mask), where rotated mask can be used as template to find image features:
+A filter, or mask, is a point-spread function, image with isolated white dots on black background would superimpose mask at each pixel. A mask is a template, and convolution output is maximum when large image values are multiplied with large mask values (respond most strongly at features like rotated mask), where rotated mask can be used as template to find image features:
 
 -  each pixel replaced by itself
 
@@ -247,21 +232,19 @@ Other methods to find edges include:
 
 #### <a name="3.3.1" class="anchor"></a> [Image feature](#3.3.1)
 
-An image feature can be found at different scales by applying filters of different sizes, or applying filters at fixed size to an image of different sizes (most common). A down-sampling algorithm is often used to scale an image by taking every $n$-pixel and can be used recursively to create images in various sizes. However, results can be both good or bad (aliased, or not representative of image), where smoothing can be used to fix bad sampling:
+An image feature can be found at different scales by applying filters of different sizes or applying filters at fixed size to an image of different sizes (most common). A down-sampling algorithm is often used to scale an image by taking every $n$-pixel and can be used recursively to create images in various sizes. However, results can be both good or bad (aliased, or not representative of image), where smoothing can be used to fix bad sampling:
 
 - Gaussian pyramid, Gaussian smoothing applied recursively to a scaled image, which can be used to create scaled images that are representative to the original image
 - Laplacian pyramid, Laplacian mask applied recursively to a scaled image, which can be used to detect intensity discontinuities in scaled images.
 
 ## <a name="4" class="anchor"></a> [4. Low and mid-level biological vision](#4)
 
-*Keywords: visual cortex, 2D Gabor function, image components, object grouping*
-
 ### <a name="4.1" class="anchor"></a> [4.1 Biological visual system](#4.1)
 
 In our brain, the cortex is responsible for all higher cognitive functions, such as perception, learning, language, memory, and reasoning, and the pathway from our retina to the cortex is not straightforward:
 
 - the right visual field (RVF) projects to left side on each retina
-- ganglion cells on left side in left eye projects to left lateral geniculate nucleus (LGN), where LGN cells have centre-surround RFs (similar to retinal ganglion cells)
+- ganglion cells on left side in left eye projects to left lateral geniculate nucleus (LGN), where LGN cells have center-surround RFs (like retinal ganglion cells)
 - ganglion cells on left side in right eye cross over at optic chiasm to left LGN, so RVF projects to left LGN
 - the left LGN projects to left primary visual cortex (V1), striate cortex, which performs initial low-level processing
 - V1 to parietal cortex for spatial and motion information
@@ -271,26 +254,26 @@ In our brain, the cortex is responsible for all higher cognitive functions, such
 
 The V1 have receptive fields (some similar to retinal ganglion cells) for color, orientation (stronger response at a specific angle, simple cells act as edge and bar detectors, complex cells act as edge and bar detectors with tolerance to location, hyper-complex cells are selective to length and optimal when matching width of RF), direction, spatial frequency, eye of origin (monocular cells are input from one eye only, binocular cells are optimal with same input from both eyes), binocular disparity (difference in location in each eye, depth of stimulus), and position.
 
-The V1 have centre-surround RFs, which is similar to LGN and retina, double-opponent (DO) cells to detect location where color changes, and a hypercolumn, which is a collection of all neurons with RFs in same location on retina (each hypercolumn can process every image attribute).
+The V1 have center-surround RFs, which is like LGN and retina, double-opponent (DO) cells to detect location where color changes, and a hypercolumn, which is a collection of all neurons with RFs in same location on retina (each hypercolumn can process every image attribute).
 
 ### <a name="4.2" class="anchor"></a> [4.2 Gabor functions](#4.2)
 
 A [2D Gabor function](https://en.wikipedia.org/wiki/Gabor_filter) is a Gaussian multiplied with a sinusoid:
 
 - a cosine function with gaussian, where gaussian function goes towards zero on the edges
-- simulate simple cells in one orientation, convolve image with gabor as mask
-- simulate complex cells in one orientation, sum output from convolving image with gabor mask at different phases (multiple simple cells)
-- simulate complex cells in multiple orientations (detect edges), sum output from convolving image with gabor mask at different phases and orientations
+- simulate simple cells in one orientation, convolve image with Gabor as mask
+- simulate complex cells in one orientation, sum output from convolving image with Gabor mask at different phases (multiple simple cells)
+- simulate complex cells in multiple orientations (detect edges), sum output from convolving image with Gabor mask at different phases and orientations
 
 #### <a name="4.2.1" class="anchor"></a> [Image component](#4.2.1)
 
-An image component is a small part of different images that are selected (as a mask) and summed to produce an image, such as set of hand written parts to generate a number as if written by different people:
+An image component is a small part of different images that are selected (as a mask) and summed to produce an image, such as set of handwritten parts to generate a number as if written by different people:
 
 - [Principal Component Analysis (PCA)](https://en.wikipedia.org/wiki/Principal_component_analysis)
 - [Independent Component Analysis (ICA)](https://en.wikipedia.org/wiki/Independent_component_analysis)
 - [Non-negative Matrix Factorization (NMF)](https://en.wikipedia.org/wiki/Non-negative_matrix_factorization)
 
-A set of randomly selected image components in natural images are similar to gabor functions, which seem to capture the intrinsic structure of natural images. A set of gabors can represent every image (with sparsity constraint, such as using as few as possible), which is useful for:
+A set of randomly selected image components in natural images are like Gabor functions, which seem to capture the intrinsic structure of natural images. A set of Gabor functions can represent every image (with sparsity constraint, such as using as few as possible), which is useful for:
 
 - image compression, such as jpeg, to save storage space, where jpeg reconstruct each image as linear combination of set of image components
 - image denoising to reconstruct a noisy image with less noise, components do not include noise
@@ -316,20 +299,18 @@ An object grouped with another object is influenced by [Gestalt laws](https://en
 
 ## <a name="5" class="anchor"></a> [5. Mid-level artificial vision](#5)
 
-*Keywords: feature space, region growing, region merging, k-means clustering method, Hough transform, snakes*
-
 ### <a name="5.1" class="anchor"></a> [5.1 Features and feature space](#5.1)
 
 In the context of vision, a feature is used to determine which elements that belong together (individually or combination, based on Gestalt laws), such as location/proximity, color/similarity, texture/similarity, size/similarity, depth, motion/common fate), not separated by contour/common region, and form a known shape (top-down approach). A feature space is a coordinate system with image elements, or features, as points, where similarity is determined by distance between points in the feature space:
 
-- similarity is measured by affinity (similar to gaussian), cross-relation, normalised cross-correlation (NCC), correlation coefficient
-- distance is measured by euclidean distance, sum of squared differences (SDD), sum of absolute differences (SAD)
+- similarity is measured by affinity (like Gaussian), cross-relation, normalized cross-correlation (NCC), correlation coefficient
+- distance is measured by Euclidean distance, sum of squared differences (SDD), sum of absolute differences (SAD)
 
 Features can be weighted differently based on relative importance, finding best performance is non-trivial, but can be scaled to make calculations easier, such as within range of 0 and 1.
 
 ### <a name="5.2" class="anchor"></a> [5.2 Segmentation](#5.2)
 
-A region-based method for segmentation try to group image elements with similar feature vectors (look similar), such as thresholding (applied to intensity), region growing, region merging, split and merge, k-means clustering, hierarchical clustering, and graph cutting. An edge-based method partition an image based on changes in feature values (intensity discontinuities), such as thresholding (applied to edge detectors), [Hough transform](https://en.wikipedia.org/wiki/Hough_transform) (model-based, fit data to a predefined model), and active contours (also model-based).
+A region-based method for segmentation try to group image elements with similar feature vectors (look similar), such as thresholding (applied to intensity), region growing, region merging, split and merge, k-means clustering, hierarchical clustering, and graph cutting. An edge-based method partitions an image based on changes in feature values (intensity discontinuities), such as thresholding (applied to edge detectors), [Hough transform](https://en.wikipedia.org/wiki/Hough_transform) (model-based, fit data to a predefined model), and active contours (also model-based).
 
 #### <a name="5.2.1" class="anchor"></a> [Thresholding](#5.2.1)
 
@@ -347,11 +328,11 @@ Morphological operations can be used to clean up results of thresholding, such a
 
 #### <a name="5.2.2" class="anchor"></a> [**Example:** Region growing](#5.2.2)
 
-1. seed pixel choosen randomly, set region label
-2. check unlabelled pixels that are neighbors
-	- if whithin similarity threshold to seed, give region label
+1. seed pixel chosen randomly, set region label
+2. check unlabeled pixels that are neighbors
+	- if within similarity threshold to seed, give region label
 3. repeat until region is not growing
-4. pick another unlabelled seed pixel
+4. pick another unlabeled seed pixel
 5. repeat until all pixels assigned to a region
 
 #### <a name="5.2.3" class="anchor"></a> [**Example:** Region merging](#5.2.3)
@@ -371,7 +352,7 @@ Morphological operations can be used to clean up results of thresholding, such a
 
 ### <a name="5.3" class="anchor"></a> [5.3 Clustering](#5.3)
 
-A partitional clustering algorithm divide data into non-overlapping subsets, or clusters, where each data point is in exctly one cluster. A few methods to determine similarity between clusters:
+A partitional clustering algorithm divide data into non-overlapping subsets, or clusters, where each data point is in exactly one cluster. A few methods to determine similarity between clusters:
 
 - single-link, distance between clusters is shortest distance between any of its elements
 - complete-link, distance between clusters is longest distance between any of its elements
@@ -382,14 +363,14 @@ A partitional clustering algorithm divide data into non-overlapping subsets, or 
 
 The k-means clustering algorithm assume $k$-clusters as input (work best with equally sized clusters):
 
-1. randomly pick $k$-cluster centres
-2. allocate each element to nearest cluster centre
-3. compute new cluster centre as mean position of elements in cluster
-4. repeat until cluster centres are unchanged (repeat from step 2 until no new allocations)
+1. randomly pick $k$-cluster centers
+2. allocate each element to nearest cluster center
+3. compute new cluster center as mean position of elements in cluster
+4. repeat until cluster centers are unchanged (repeat from step 2 until no new allocations)
 
 #### <a name="5.3.2" class="anchor"></a> [Hierarchical](#5.3.2)
 
-Hierarchical clustering produce a set of nested clusters organised as a tree, such as divisive clustering, where data is regarded as single cluster and then recursively split, or agglomerative clustering, where each data point is regarded as cluster and then recursively merged with most similar cluster.
+Hierarchical clustering produces a set of nested clusters organized as a tree, such as divisive clustering, where data is regarded as single cluster and then recursively split, or agglomerative clustering, where each data point is regarded as cluster and then recursively merged with most similar cluster.
     
 - agglomerative clustering
 	
@@ -403,12 +384,12 @@ Hierarchical clustering produce a set of nested clusters organised as a tree, su
 A feature space can be represented as a graph, $G = (V, E)$, where vertices, $V$, represent image elements (feature vector), edges, $E$, represent connections between pair of vertices, and each edge is the similarity between the two connected elements. A graph cutting process involves:
 
 - finding the optimal partitioning (cutting graph into disjoint subgraphs)
-- similarity between subgraphs is minimised, edges that are cut are weak
-- similarity within subgraphs is maximised, strong interior links
+- similarity between subgraphs is minimized, edges that are cut are weak
+- similarity within subgraphs is maximized, strong interior links
 
 #### <a name="5.4.1" class="anchor"></a> [Ncuts](#5.4.1)
 
-Normalised cuts (Ncuts) are used to avoid bias towards small subgraphs (cost of cutting graph). Finding set of nodes that produce minimum cut is a NP-hard problem and only approximations are possible for real images, with bias towards partitioning into equal segments.
+Normalized cuts (Ncuts) are used to avoid bias towards small subgraphs (cost of cutting graph). Finding set of nodes that produce minimum cut is a NP-hard problem and only approximations are possible for real images, with bias towards partitioning into equal segments.
 
 ### <a name="5.5" class="anchor"></a> [5.5 Fitting](#5.5)
 
@@ -418,12 +399,12 @@ Fitting algorithms use mathematical models to represent a set of elements. A mod
 
 The Hough transform is useful for fitting lines, where data points vote on which line to belong to (there are often a lot of potential straight lines):
 
-- any point $(x, y)$ in an image could be part of a set of lines that pass through point
+- any point $(x, y)$ in an image could be part of a set of lines that pass-through point
 - a line has the relationship $r = y\cos(a) - x\sin(a)$
 - an accumulator array is used to count $votes$ for each set of parameter values
-- can be generalised to fit any shape that can be expressed parametrically
+- can be generalized to fit any shape that can be expressed parametrically
 
-A generalised Hough transform is an extension to express shapes that can not be expressed parametrically:
+A generalized Hough transform is an extension to express shapes that cannot be expressed parametrically:
 
 - using a table to describe location of each edge pixel in shape relative to some reference point (such as centroid)
 - for each point in image
@@ -431,20 +412,18 @@ A generalised Hough transform is an extension to express shapes that can not be 
 
 #### <a name="5.5.2" class="anchor"></a> [Active contours](#5.5.2)
 
-An active contour algorithm, also called snakes, should produce result that is near the edge and smooth, where a snake is a curve that moves to minimise energy:
+An active contour algorithm, also called snakes, should produce result that is near the edge and smooth, where a snake is a curve that moves to minimize energy:
 
 - internal energy is determined by shape, bending and stretching increase energy
 - external energy is determined by proximity to other image features, large intensity gradients decrease energy.
 
-Minimising the energy of a snake results in a curve that is short, smooth, and close to intensity discontinuities, but only work on shapes that are closed (no gaps), is sensitive to parameters (smooth vs short vs proximity), and dependent on initial position, which are often placed around object manually.
+Minimizing the energy of a snake results in a curve that is short, smooth, and close to intensity discontinuities, but only work on shapes that are closed (no gaps), is sensitive to parameters (smooth vs short vs proximity), and dependent on initial position, which are often placed around object manually.
 
 ## <a name="6" class="anchor"></a> [6. Correspondence](#6)
 
-*Keywords: occlusion, correspondence methods, Harris corner detector, image pyramid, SIFT, RANSAC*
-
 ### <a name="6.1" class="anchor"></a> [6.1 Multiple images](#6.1)
 
-Typically, multiple images are used when multiple cameras take two or more images at same time (such as stereo, recover 3D information), one camera take two or more images at different times (such as video, motion tracking), or for object recognition, such as current image and training images. The [correspondence problem](https://en.wikipedia.org/wiki/Correspondence_problem) refers to the problem of finding matching image elements across different views (need to decide what to search for, intensity, edges). Correspondence require that most scene points are visible in both images and correponding regions must appear similar, some issues might be:
+Typically, multiple images are used when multiple cameras take two or more images at same time (such as stereo, recover 3D information), one camera take two or more images at different times (such as video, motion tracking), or for object recognition, such as current image and training images. The [correspondence problem](https://en.wikipedia.org/wiki/Correspondence_problem) refers to the problem of finding matching image elements across different views (need to decide what to search for, intensity, edges). Correspondence require that most scene points are visible in both images and corresponding regions must appear similar, some issues might be:
 
 - occlusions, some elements may not have a corresponding element, or not visible
 - false matches, several elements are similar
@@ -453,17 +432,17 @@ Typically, multiple images are used when multiple cameras take two or more image
 
 #### <a name="6.1.1" class="anchor"></a> [Correlation-based method](#6.1.1)
 
-A correlation-based method try to match image intensities over window of pixels to find correspondence:
+A correlation-based method tries to match image intensities over window of pixels to find correspondence:
 
 - start from raw image intensity values, match image windows, and compare matches using similarity measure for intensity values
-    - maximise cross-correlation, normalised cross-correlation, correlation coefficient
-    - minimise sum of squared differences, euclidean distance, sum of absolute differences (SAD)
+    - maximize cross-correlation, normalized cross-correlation, correlation coefficient
+    - minimize sum of squared differences, Euclidean distance, sum of absolute differences (SAD)
 - for each region $r_{1}$ in $I_{1}$, and for each region $r_{2}$ in $I_{2}$ (both regions are same size)
     - compute similarity between $r_{1}$ and $r_{2}$
-    - repeat for all regions in $I_{2}$, correspondence point is centre of region with highest similarity, repeat for all regions in $I_{1}$
+    - repeat for all regions in $I_{2}$, correspondence point is center of region with highest similarity, repeat for all regions in $I_{1}$
 
 
-Correlation-based methods are easy to implement and have dense correspondense map (calculate at all points), but computationally expensive, constant or repetitive regions give false matches, and viewpoints can not be too different.
+Correlation-based methods are easy to implement and have dense correspondence map (calculate at all points), but computationally expensive, constant or repetitive regions give false matches, and viewpoints cannot be too different.
 
 #### <a name="6.1.2" class="anchor"></a> [Feature-based method](#6.1.2)
 
@@ -473,7 +452,7 @@ A feature-based method find correspondence by matching sparse sets of image feat
 
 - for each interest point $ip_{1}$ in $I_{1}$, and for each $ip_{2}$ in $I_{2}$
     - compute similarity between features
-    - select point that maximise similarity measure
+    - select point that maximize similarity measure
 
 Feature-based methods are less sensitive to illumination and appearance, computationally cheaper than correlation-based methods (only need to match selected locations instead of every pixel), but have sparse correspondence maps, which is still sufficient for many tasks, and bad with constant or random regions. The choice of interest points is important, where an interest point is typically a corner, so need to detect same point independently in each image (repeatable detector, invariant to scaling, rotation), and need to recognize corresponding points in each image (distinctive descriptor, sufficiently complex to map with high probability).
 
@@ -500,7 +479,7 @@ The [Harris corner detector](https://en.wikipedia.org/wiki/Harris_corner_detecto
         | 0 | 2 | 2 | 2 |
         | 0 | 1 | 1 | 0 |
 
-	- use non-maximum supression to find local maxima
+	- use non-maximum suppression to find local maxima
 
 		|   |   |   |   |
         | - | - | - | - |
@@ -518,16 +497,16 @@ An image pyramid can be used to detect interest points at different scales (scal
 A [Scale Invariant Feature Transform (SIFT)](https://en.wikipedia.org/wiki/Scale-invariant_feature_transform) find local maximum using difference of gaussians in space and scale:
 
 - convolve image with DoG mask and repeat for different resolutions (create Laplacian image pyramid)
-- detect maxima and minima of difference of Guassian across scale space, keep points with high contrast, keep points with high structure (Harris corner detector but ratio of trace and determinant of Hessian matrix) $$\frac{\textrm{tr}(H)^{2}}{\det(H)} < \frac{(r + 1)^{2}}{r}$$ where $r$ is usually about 10
+- detect maxima and minima of difference of Gaussian across scale space, keep points with high contrast, keep points with high structure (Harris corner detector but ratio of trace and determinant of Hessian matrix) $$\frac{\textrm{tr}(H)^{2}}{\det(H)} < \frac{(r + 1)^{2}}{r}$$ where $r$ is usually about 10
 
 The descriptor can be found using this method:
 
 1. calculate magnitude and orientation of intensity gradient at all pixels around interest point (using Gaussian smoothed image at scale where interest point is found, approximate using pixel differences) $$\textrm{magnitude} = \sqrt{\left( I_{x_{1}} - I_{x_{2}} \right)^{2} + \left( I_{y_{1}} - I_{y_{2}} \right)^{2}}$$ $$\textrm{orientation} = \arctan \left(\frac{I_{y_{1}} - I_{y_{2}}}{I_{x_{1}} - I_{x_{2}}} \right)$$
 2. create histogram of all orientations around the interest point
-	- each sample is weighted by gradient magnitude and Gaussian centres on interest point
+	- each sample is weighted by gradient magnitude and Gaussian centers on interest point
 	- find dominant orientation (peak in histogram) and rotate dominant orientation up
 3. create separate histograms for all orientations in sub-windows
-	- for example, a 4x4 matrix in 8 orientations gives a 128 element vector (intensity gradient orientations around interest point), where each sample added to each histogram is weighted by gradient magnitude and Gaussian centered on intrest point, and normalised to unit length
+	- for example, a 4x4 matrix in 8 orientations gives a 128-element vector (intensity gradient orientations around interest point), where each sample added to each histogram is weighted by gradient magnitude and Gaussian centered on interest point, and normalized to unit length
 
 ### <a name="6.3" class="anchor"></a> [6.3 Matching](#6.3)
 
@@ -543,13 +522,11 @@ A match that is correct belong to inliers, incorrect are outliers, and used to e
 	- count number of inliers (this is the consensus set)
 	- size of consensus set is model support
 3. repeat $n$-times
-	- select model parameters with higest support and re-estimate model with points in subset
+	- select model parameters with highest support and re-estimate model with points in subset
 
-RANSAC is simple and effective, works with different model fitting problems, such as segmentation, camera transformation, and object trejectory, but can sometimes requires many iterations with a lot of parameters, which can be computationally expensive.
+RANSAC is simple and effective, works with different model fitting problems, such as segmentation, camera transformation, and object trajectory, but can sometimes requires many iterations with a lot of parameters, which can be computationally expensive.
 
 ## <a name="7" class="anchor"></a> [7. Stereo and depth](#7)
-
-*Keywords: 3D scene points, disparity, epipolar constraints, depth*
 
 ### <a name="7.1" class="anchor"></a> [7.1 Stereo vision](#7.1)
 
@@ -557,7 +534,7 @@ A camera projects a 3D point onto 2D plane, so all 3D points on the same line-of
 
 $$x' = \frac{f'}{Z_{1}} X_{1} = \frac{f'}{Z_{2}} X_{2}$$
 
-A stereo image (two images), can be used to recover depth information, where points project to same location in one image but to different locations in the other image. Two images can be used to measure how far each point are from each other in each image (different viewpoint, need to solve correspondence problem). This is useful for:
+A stereo image (two images) can be used to recover depth information, where points project to same location in one image but to different locations in the other image. Two images can be used to measure how far each point are from each other in each image (different viewpoint, need to solve correspondence problem). This is useful for:
 
 - path planning and collision avoidance
 - virtual advertising
@@ -585,19 +562,19 @@ $$d = x_{L}' - x_{R}' = f\frac{x}{z} - f\frac{x - B}{z} = f\frac{B}{z} \Rightarr
     - correlation-based methods gives dense disparity maps (disparity value at each pixel)
     - feature-based methods gives sparse disparity maps (disparity value at interest points only)
 - if baseline distance is known, measure disparity and calculate depth of point
-- if basline distance is not known, calculate relative depths of points from relative disparities
+- if baseline distance is not known, calculate relative depths of points from relative disparities
 
 ### <a name="7.2" class="anchor"></a> [7.2 Coplanar cameras](#7.2)
 
 An epipolar constraint is cameras on the same plane, $y_{L}' = y_{R}'$, so possible to search along straight line to find corresponding point in other image, and maximum disparity constraint is when length of search region depends on maximum expected disparity, so $$d_{\textrm{max}} = f\frac{B}{z_{\textrm{max}}}$$
 
 - for each point $(x', y')$ in image
-    - search correponding point between $(x' - d_{\textrm{max}}, y')$ and $(x' + d_{\textrm{max}}, y')$ in other image
+    - search corresponding point between $(x' - d_{\textrm{max}}, y')$ and $(x' + d_{\textrm{max}}, y')$ in the other image
 
 Other constraints are:
 
-- continuity constraint, neighbouring points have similar disparities, or relative distance between different corresponding points the same
-- uniqueness constraint, location in image should only match single point in other image
+- continuity constraint, neighboring points have similar disparities, or relative distance between different corresponding points the same
+- uniqueness constraint, location in image should only match single point in the other image
 	- exception is line-of-sight
 - ordering constraint, matching points along corresponding epipolar (straight line) is same order in images
 	- exception is difference in depth
@@ -620,10 +597,10 @@ Non-coplanar cameras are when cameras are at different planes with intersecting 
 
 In epipolar geometry:
 
-- baseline is line through camera projection centres
-- epipole is projection of optic centre of one camera in the image plane of the other camera
-- epipolar plane is plane going through a particular 3D point and optic centres of both cameras
-- epipolar lines is intersection of epipolar plane and each image plane
+- baseline is line through camera projection centers
+- epipole is projection of optic center of one camera in the image plane of the other camera
+- epipolar plane is plane going through a particular 3D point and optic centers of both cameras
+- epipolar lines are intersection of epipolar plane and each image plane
 - conjugated epipolar lines is epipolar lines generated by the same 3D point in both image planes
 - epipolar constraints, corresponding points must be on conjugated epipolar lines
 
@@ -631,15 +608,15 @@ A rectification is a transform to make epipolar lines parallel to rows of an ima
 
 #### <a name="7.3.2" class="anchor"></a> [Recognising depth](#7.3.2)
 
-Depth in images can be recognised using different methods:
+Depth in images can be recognized using different methods:
 
 - interposition, view of one object is interrupted by another object (relative depth)
-    - manipulating interposition can produce impossible objects, such as [penrose triangle](https://en.wikipedia.org/wiki/Penrose_triangle) and kanizsa square
+    - manipulating interposition can produce impossible objects, such as [Penrose triangle](https://en.wikipedia.org/wiki/Penrose_triangle)
 - size familiarity, different sizes of same object appear closer or further away
 - texture gradients, uniformly textured surfaces get smaller and closely spaced at distance (tiles, waves)
 - linear perspective, property of parallel lines converging at infinity
     - manipulating perspective can produce unusual perceptions, such as street 3D paintings and [Trompe L'oeil](https://en.wikipedia.org/wiki/Trompe-l%27%C5%93il) art
-- aerial perspective, scattering of light by particles in the athmosphere, where distant objects look less sharp, lower contrast, and lower color saturation
+- aerial perspective, scattering of light by particles in the atmosphere, where distant objects look less sharp, lower contrast, and lower color saturation
 - shading, distribution of light and shadow on objects (usually light comes from above)
 - motion parallax, objects closer than fixation point appear to move opposite to observer, and further away move in same direction (twisting)
 - optic flow, camera moving forward or backward and pattern of stimulation across visual field changes, where points closer to camera move faster
@@ -648,13 +625,11 @@ Depth in images can be recognised using different methods:
 
 ## <a name="8" class="anchor"></a> [8. Video and motion](#8)
 
-*Keywords: optic flow vector, aperture problem, track algorithm, image differencing, background subtraction*
-
 ### <a name="8.1" class="anchor"></a> [8.1 Optic flow](#8.1)
 
-A video is a series of $n$-images, also referred to as frames, at discrete time instants. A static image has intensity of pixel as function of spatial coordinates $x$, $y$, so $I(x, y)$, whereas a video has intensity of pixel as function of spatial coordinates $x$, $y$ and time $t$, so $I(x, y, t)$. An optic flow is change in position from one image to another image, optic flow vector is the image motion of a scene point, and optic flow field is collection of all optic flow vectors, which can be sparse or dense (defined for specified features or defined everywhere). An optic flow provides an approximation of a motion field, true image motion of a scene point from actual projection of relative motion between camera and 3D scene, but not always accurate (smooth surfaces, moving light source). It is measured by finding corresponding points at different frames (note that a discontinuity in an optic flow field indicate different depths, so different objects):
+A video is a series of $n$-images, also referred to as frames, at discrete time instants. A static image has intensity of pixel as function of spatial coordinates $x$, $y$, so $I(x, y)$, whereas a video has intensity of pixel as function of spatial coordinates $x$, $y$ and time $t$, so $I(x, y, t)$. An optic flow is change in position from one image to another image, optic flow vector is the image motion of a scene point, and optic flow field is collection of all optic flow vectors, which can be sparse or dense (defined for specified features or defined everywhere). An optic flow provides an approximation of a motion field, true image motion of scene points from actual projection of relative motion between camera and 3D scene, but not always accurate (smooth surfaces, moving light source). It is measured by finding corresponding points at different frames (note that a discontinuity in an optic flow field indicate different depths, so different objects):
 
-- feature-based methods extract features from around point to find similar features in next frame (similar to stereo correspondence)
+- feature-based methods extract features from around point to find similar features in next frame (like stereo correspondence)
 	- sparse optic flow field
 	- suitable when image motion is large
 - direct methods recover image motion at each pixel from temporal variations of image brightness (convolve image with spatio-temporal filters)
@@ -664,7 +639,7 @@ A video is a series of $n$-images, also referred to as frames, at discrete time 
 
 Constraints for finding corresponding points in video:
 
-- spatial coherence, similar neighbouring flow vectors are preferred over dissimilar, assuming scene points are smooth surfaces and closer points more likely to belong to same surface
+- spatial coherence, similar neighboring flow vectors are preferred over dissimilar, assuming scene points are smooth surfaces and closer points more likely to belong to same surface
 - small motion, small optic flow vectors are preferred over large, assuming relative velocities are slow compared to frame rate and motion between frames is likely small compared to size of image
 
 An optic flow is measured to estimate layout of environment, such as depth and orientation of surfaces, estimating ego motion (camera velocity relative to visual frame of reference), estimating object motion relative to visual frame of reference or environment frame of reference, and to predict information for control of action. The [aperture problem](https://en.wikipedia.org/wiki/Motion_perception#The_aperture_problem) is the inability to determine optic flow along direction of brightness pattern (no edges or corners along straight lines), where any movement with a component perpendicular to an edge is possible. It is solved by combining local motion measurements across space.
@@ -700,9 +675,9 @@ Below is an example of recovering depth from velocity if direction of motion is 
 	- $\frac{Z_{2}}{V} = \frac{x_{1}}{x}$
 	- $\frac{x_{1}}{x} = \frac{a_{1}}{a} = \frac{2A_{1}}{A}$, where $a$ is angle subtended by object and $A$ is area of objects image
 
-#### <a name="8.1.4" class="anchor"></a> [Parallel and radial optic fow fields](#8.1.4)
+#### <a name="8.1.4" class="anchor"></a> [Parallel and radial optic flow fields](#8.1.4)
 
-A parallel optic flow field, where depth velocity is zero, is when all optic flow vectors are parallel, direction of camera movement is opposite to direction of optic flow field, speed of camera movement is proportional to length of optic flow vectors, and depth is inversely proportional to magnitude of optic flow vector (similar to motion parallax with fixation on infinity).
+A parallel optic flow field, where depth velocity is zero, is when all optic flow vectors are parallel, direction of camera movement is opposite to direction of optic flow field, speed of camera movement is proportional to length of optic flow vectors, and depth is inversely proportional to magnitude of optic flow vector (like motion parallax with fixation on infinity).
 
 A radial optic flow field, where depth velocity is not zero, is when all optic flow vectors point towards or away from vanishing point, direction of camera movement is determined by focus of expansion or focus of contraction, destination of movement is focus of expansion, depth is inversely proportional to magnitude of optic flow vector and proportional to distance from point to vanishing point.
 
@@ -715,7 +690,7 @@ An optic flow algorithm, such as [track algorithm](https://en.wikipedia.org/wiki
 Segmentation from motion is typically done using optic flow discontinuities, optic flow and depth, or Gestalt law of common fate:
 
 - image differencing is the process of subtracting pixel by pixel from next frames to create a binary image (absolute difference above threshold), intensity levels change the most in regions with motion, so if $I(x, y, t)$ and $I(x, y, t + 1)$, then $$\|I(x, y, t + 1) - I(x, y, t)\| > T$$ where $T$ is some threshold (note that it is not optimal when background matches object, or for smooth objects)
-- background subtraction is when background is used as reference image (static image) and each image is subtracted from previous image in sequence, adjacent frame difference, which is similar to image differencing $$B(x, y) = I(x, y, t - 1)$$
+- background subtraction is when background is used as reference image (static image) and each image is subtracted from previous image in sequence, adjacent frame difference, which is like image differencing $$B(x, y) = I(x, y, t - 1)$$
     - off-line average, pixel-wise mean values computed in separate training phase, also called mean of threshold $$B(x, y) = \frac{1}{N} \sum I(x, y, t)$$
     - moving average, background model is linear weighted sum of previous frames and is commonly used $$B(x, y) = (1 - \beta) B(x, y) + \beta I(x, y, t)$$
 
@@ -730,17 +705,15 @@ In background subtraction, new objects that are temporarily stationary is seen a
 
 ## <a name="9" class="anchor"></a> [9. Artificial recognition](#9)
 
-*Keywords: object identification, object localisation, template matching, sliding window method, edge-matching, intensity histograms, ISM, bag-of-words, invariants*
-
 ### <a name="9.1" class="anchor"></a> [9.1 Object recognition tasks](#9.1)
 
-An object recognition task is often to determine the identity of an individual instance of an object, such as recognising different phone models, or people. A classification task is to determine category of an object, such as human vs ape, or phone vs calculator, where each category has a different level:
+An object recognition task is often to determine the identity of an individual instance of an object, such as recognizing different phone models, or people. A classification task is to determine category of an object, such as human vs ape, or phone vs calculator, where each category has a different level:
 
 - abstract categories are objects, such as animal, man-made, and mammal
-- basic level is lowest level where objects have distinct features (apple or banana is easier than Rex vs Annie), humans are fast at recognising objects in category and start at basic level categorisation before identification
+- basic level is lowest level where objects have distinct features (apple or banana is easier than Rex vs Annie), humans are fast at recognizing objects in category and start at basic level categorization before identification
 - specific categories are names, such as poodle, doberman, Rex, and Annie
 
-A localisation task determine presence and location of an object in image, such as finding faces and cars, where image segmentation is used to determine location of multiple different objects in image (semantic segmentation). Object recognition should be sensitive to small image differences relevant to different categories of objects (phone vs calculator) and insensitive to large image differences that do not affect the identity or category of object (mobile phone vs old phone), such as background clutter and occlusion, viewpoint, lightning, non-rigid deformations (same object changing shape, wind blowing in tree), or variation within category (different type of chairs).
+A localization task determines presence and location of an object in image, such as finding faces and cars, where image segmentation is used to determine location of multiple different objects in image (semantic segmentation). Object recognition should be sensitive to small image differences relevant to different categories of objects (phone vs calculator) and insensitive to large image differences that do not affect the identity or category of object (mobile phone vs old phone), such as background clutter and occlusion, viewpoint, lightning, non-rigid deformations (same object changing shape, wind blowing in tree), or variation within category (different type of chairs).
 
 Note that it is generally hard to distinguish between similar objects (many false positives), and global representation is sensitive to viewpoint and occlusion (many false negatives), so one approach to object recognition is to use intermediate complexity between local and global, or hierarchy of features with range of complexities, or sensitivity.
 
@@ -790,19 +763,19 @@ A model-based method is model of object identity and pose, where object is rende
 
 #### <a name="9.2.5" class="anchor"></a> [Intensity histogram](#9.2.5)
 
-A intensity histogram method is histogram of pixel intensity values (grayscale or color) representig some object, color histograms are commonly used in face detection and recognition algorithms. Histograms are compared to find closest match, which is fast and east to compute, and matches are insensitive to small viewpoint changes. However, it is sensitive to lightning and within-category changes to appearance, and insensitive to spatial configuration, where image with similar configurations result in same histogram.
+An intensity histogram method is histogram of pixel intensity values (grayscale or color) representing some object, color histograms are commonly used in face detection and recognition algorithms. Histograms are compared to find closest match, which is fast and east to compute, and matches are insensitive to small viewpoint changes. However, it is sensitive to lightning and within-category changes to appearance, and insensitive to spatial configuration, where image with similar configurations result in same histogram.
 
 #### <a name="9.2.6" class="anchor"></a> [ISM](#9.2.6)
 
 An implicit shape model (ISM) method is where 2D image fragments, or parts, are extracted from image regions around each interest point (Harris detector):
 
-- image fragments can be collected from training images and clustered into sets with similar image regions (use cluster centre as key)
-- image fragments match set features to training images using template matching, where each set feature find possible object centres (features on car points towards middle)
-- find interest points in input image, match extracted features with features in set, and then matched features vote on object centre
+- image fragments can be collected from training images and clustered into sets with similar image regions (use cluster center as key)
+- image fragments match set features to training images using template matching, where each set feature finds possible object centers (features on car points towards middle)
+- find interest points in input image, match extracted features with features in set, and then matched features vote on object center
 
 #### <a name="9.2.7" class="anchor"></a> [Feature-based methods](#9.2.7)
 
-A feature-based method is when training image content is transformed into local features, so invariant to translation, rotation, and scale. Local features is extracted from input image and then features are matched with training image features. In SIFT feature matching, a 128 element histogram of orientations of intensity gradients is binned into 8 orientations and 4x4 pixel windows around the interest point, normalised with dominant orientation vertical:
+A feature-based method is when training image content is transformed into local features, so invariant to translation, rotation, and scale. Local features are extracted from input image and then features are matched with training image features. In SIFT feature matching, a 128-element histogram of orientations of intensity gradients is binned into 8 orientations and 4x4 pixel windows around the interest point, normalized with dominant orientation vertical:
 
 - locality, features are local and insensitive to occlusion and clutter, distinctiveness, features can be matched to database of objects, quantity, many features can be generated for small objects, and efficiency, close to real-time performance
 - set of interest points obtained from each training image, each has descriptor (128 components), all sets stored in database with key as interest point
@@ -813,7 +786,7 @@ A feature-based method is when training image content is transformed into local 
 A [bag-of-words](https://en.wikipedia.org/wiki/Bag-of-words_model) method is when different objects have distinct set of features that occur in different frequencies:
 
 - find interest points using regular grid, interest point detectors, or randomly, then extract descriptor from image regions around interest points (also referred to as words)
-- object have a distribution of feature occurrences, or histogram, and cluster descriptors can be used to find cluster centre (word stem, set of clusters represent vocabulary), where most frequent words that occur in most images are removed
+- objects have a distribution of feature occurrences, or histogram, and cluster descriptors can be used to find cluster center (word stem, set of clusters represent vocabulary), where most frequent words that occur in most images are removed
 - input image is matched by comparing distance between histograms
 
 ### <a name="9.3" class="anchor"></a> [9.3 Geometric invariants](#9.3)
@@ -822,18 +795,16 @@ A geometric invariant is some property of an object in a scene that do not chang
 
 - in Euclidean space, which include translation and rotation, invariants are lengths, angles, and areas
 - in similarity space, which include translation, rotation, and scale, invariants are ratios of length and angles
-- in affine space, which include translation, rotation, scale, and shear,  invariants are parallelism, ratios of lengths along lines, and ratio of areas
+- in affine space, which include translation, rotation, scale, and shear, invariants are parallelism, ratios of lengths along lines, and ratio of areas
 - in projective space, which include translation, rotation, scale, shear, and foreshortening, invariants are cross-ratio, which is ratio of ratios of lengths, and is constant from any viewpoint $$\frac{\| P3 - P1 \| \| P4 - P2 \|}{\| P3 - P2 \| \| P4 - P1 \|}$$
 
 ## <a name="10" class="anchor"></a> [10. Biological recognition](#10)
 
-*Keywords: object-based theory, image-based theory, cortical visual system, feedforward model, HMAX, Bayes Theorem*
-
 ### <a name="10.1" class="anchor"></a> [10.1 Object recognition theories (psychology)](10.1)
 
-In object-based theory, or [recognition-by-components](https://en.wikipedia.org/wiki/Recognition-by-components_theory), each object is represented as 3D model with an object-centered reference frame, objects are stored in our brain as structural descriptions (parts and configuration), and each object is a collection of shapes (or geometric components), such as human head and body could be represented as a cube shape above cylinder shape.
+Object-based theory, or [recognition-by-components](https://en.wikipedia.org/wiki/Recognition-by-components_theory), is a concept where an object is represented as 3D model with an object-centered reference frame, objects are stored in our brain as structural descriptions (parts and configuration), and each object is a collection of shapes (or geometric components), such as human head and body could be represented as a cube shape above cylinder shape.
 
-Geometric components are primitive elements (or geons, letters forming words), such as cube, wedge, pyramid, cylinder, barrel, arch, cone, expanded cylinder, handle, expanded handle, and different combinations of goens can be used to represent a large variety of objects:
+Geometric components are primitive elements (or geons, letters forming words), such as cube, wedge, pyramid, cylinder, barrel, arch, cone, expanded cylinder, handle, expanded handle, and different combinations of geons can be used to represent a large variety of objects:
 
 - each geon is sufficiently different from each other, so robust to noise and occlusion, view-invariant (same set of geons in same arrangement in different views)
 - objects can be matched by finding elements and configuration
@@ -842,7 +813,7 @@ Geometric components are primitive elements (or geons, letters forming words), s
 
 #### <a name="10.1.1" class="anchor"></a> [Image-based theory](#10.1.1)
 
-In image-based theory, each object is represented by multiple 2D views with a viewer-centered reference frame and matched using template matching, which is an early version of an image-based approach (less flexible compared to human recognition), or multiple views approach, which encode multiple views of an object through experience (templates for recognition).
+Image-based theory is a concept where an object is represented by multiple 2D views with a viewer-centered reference frame and matched using template matching, which is an early version of an image-based approach (less flexible compared to human recognition), or multiple views approach, which encode multiple views of an object through experience (templates for recognition).
 
 #### <a name="10.1.2" class="anchor"></a> [Classification](#10.1.2)
 
@@ -853,15 +824,15 @@ To assign objects to different categories of features in a feature space, or cla
         - calculate mean of feature for all training examples in category
     - for each new instance (or stimulus)
         - find closest prototype and assign instance to that label
-- exemplars, specific instances in each category are stored as exemplars, where each new instance is compared and assigned to nearest one (nearest neighbour classifier), or best match
+- exemplars, specific instances in each category are stored as exemplars, where each new instance is compared and assigned to nearest one (nearest neighbor classifier), or best match
     - for each new instance
         - find closest exemplar
         - assign instance to that category label
     - alternatively, for each new instance
-        - find $k$-nearest exemplars (such as [k-nearest neighbours classifier](https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm))
+        - find $k$-nearest exemplars (such as [k-nearest neighbors classifier](https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm))
         - assign instance to category label of majority ($k$ small and odd to break ties)
 
-A nearest neighbour classifier have a non-linear decision boundary and do not deal with outliers. The k-nearest neighbours classifier also have a non-linear decision boundary but reduce effect of outliers. To determine similarity (using similarity measures):
+A nearest neighbor classifier have a non-linear decision boundary and do not deal with outliers. The k-nearest neighbors classifier also has a non-linear decision boundary but reduce effect of outliers. To determine similarity (using similarity measures):
 
 - minimum distance measures
 	- sum of squared differences (SSD)
@@ -870,30 +841,17 @@ A nearest neighbour classifier have a non-linear decision boundary and do not de
 	- Manhattan distance
 - maximum similarity measures
 	- cross-correlation
-	- normalised cross-correlation
+	- normalized cross-correlation
 	- correlation coefficient
 
 ### <a name="10.2" class="anchor"></a> [10.2 Cortical processing (neuroscience)](#10.2)
 
-In the cortical visual system, there are pathways for different kinds of information, such as spatial and motion (the where and how), which goes from V1 to parietal cortex, or identity and category (the what), which goes from V1 to inferotemporal cortex. The receptive fields become greater further down a pathway, similar to a heirarchy, or progression:
+In the cortical visual system, there are pathways for different kinds of information, such as spatial and motion (the where and how), which goes from V1 to parietal cortex, or identity and category (the what), which goes from V1 to inferotemporal cortex. The receptive fields become greater further down a pathway, like a hierarchy, or progression:
 
-- centre-surround cells, such as in the eye, respond to isolated spots of contrasting intensity
-- simple cells, such as LGN, respond when multiple co-aligned centre-surround cells are active, and to edges and bars at a specfic orientation, contrast, and location
+- center-surround cells, such as in the eye, respond to isolated spots of contrasting intensity
+- simple cells, such as LGN, respond when multiple co-aligned center-surround cells are active, and to edges and bars at a specific orientation, contrast, and location
 - complex cells, such as V1, respond when multiple similarly oriented simple cells are active and to edges and bars at specific orientation, but any contrast and location
 
 #### <a name="10.2.1" class="anchor"></a> [Feedforward model](#10.2.1)
 
 A feedforward model is image processed by layers of neurons with progressively more complex receptive fields, and at progressively less specific locations, where features at one stage is built from features at earlier stages (heirarchical). [Hierarchical max-pooling (HMAX)](https://maxlab.neuro.georgetown.edu/hmax.html) is a deep neural network with different mathematical operations required to increase complexity of receptive fields, where multiple models use alternating layers of neurons with different properties, such as $\textrm{simple}(S)$ and $\textrm{complex}(C)$. The simple cells are sums (similar to logical $and$ operation) and used to increase selectivity, whereas complex cells are max (similar to logical $or$ operation) and used to increase invariance. A [convolutional neural network (CNN)](https://en.wikipedia.org/wiki/Convolutional_neural_network) is a deep neural network similar to HMAX, but alternating layers with convolution and sub-sampling.
-
-### <a name="10.3" class="anchor"></a> [10.3 Bayesian inference](#10.3)
-
-A recurrent model of cortial hierarchy is when bottom-up and top-down information interact to affect perception (information from higher cortical regions to primary sensor areas), where bottom-up processes, use information in stimulus to aid in identification (stimulus-driven) and top-down processes use context, or previous knowledge, and expectation to aid in identification (knowledge-driven).
-
-#### <a name="10.3.1" class="anchor"></a> [Bayes Theorem](#10.3.1)
-
-The [Bayes Theorem](https://en.wikipedia.org/wiki/Bayes%27_theorem) describe an optimal method to combine bottom-up and top-down information, so what we see is inferred from both the sensory input data and our prior experience. In conditional probability, $$\textrm{P}(A\|B) \textrm{P}(B) = \textrm{P}(B\|A) \textrm{P}(A)$$ and $$\textrm{P}(A\|B) = \textrm{P}(B\|A) \frac{\textrm{P}(A)}{\textrm{P}(B)}$$ such as $\textrm{P}(rain\|wet grass) < 1$, or rain given wet grass is not guaranteed, and $\textrm{P}(wet grass\|rain) = 1$, or rain always gives wet grass:
-
-- probability that object is present in world given image in retina, this is an inverse problem and hard
-	- $\textrm{P}(object\|image)$
-- probability that image is observed given 3D object, this is a forward problem and easier
-	- $\textrm{P}(image\|object)$, so $$\textrm{P}(object\|image) = \textrm{P}(image\|object) \frac{\textrm{P}(object)}{\textrm{P}(image)}$$ where posterior is likelihood times prior divided by evidence, where posterior is something we want to know, likelihood is something we already know, prior is something we know from prior experience, and evidence is something we can ignore
