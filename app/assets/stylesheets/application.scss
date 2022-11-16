@@ -530,8 +530,8 @@ h5 {
     padding-bottom          : 1rem;
 }
 
-h4,
-h4 a,
+// h4,
+// h4 a,
 h5 {
     font-size               : $FONT_SIZE_BASE_PLUS !important;
     color                   : rgba($COLOR_DARK_BASE, 0.5) !important;
@@ -542,8 +542,8 @@ h5 {
     font-style              : italic;
 }
 
-html.dark h4,
-html.dark h4 a,
+// html.dark h4,
+// html.dark h4 a,
 html.dark h5 {
     color                   : rgba($WHITE_BASE, 0.5) !important;
 }
