@@ -198,7 +198,7 @@ Below is an example to find bits required to achieve precision of $d$ decimal pl
 
 ---
 
-### <a name="2.2" class="anchor"></a> [Selection](#2.2)
+### <a name="2.2" class="anchor"></a> [2.2 Selection](#2.2)
 
 The selection process involves selecting two chromosomes from the mating pool to produce two new offsprings, and the offsprings are either kept or discarded based on parameters:
 
@@ -206,13 +206,21 @@ The selection process involves selecting two chromosomes from the mating pool to
 
 - random pairing, uniform random number generator to select chromosomes, all chromosomes have chance to mate, introduce diversity into population
 
-- weighted random pairing, or roulette wheel weighting, probabilities that are inversely proportional to cost assigned to chromosomes in mating pool, where chromosomes with lowest cost have greatest chance to mate
-	- rank weighting is problem independent, probabilities are calculated once, so computationally cheaper, but small population have higher probability to select same chromosome
-    - cost weighting is cost function dependent, tend to weight top chromosomes more when large spread in cost between top and bottom chromosomes, tend to weight chromosomes evenly when chromosomes have about same cost, probabilities are calculated each generation, so computationally expensive
-- tournament selection, problem independent, work best with larger population size but sorting is time-consuming and computationally expensive, chromosomes with good quality have higher chance to be selected
-    - randomly pick small subset of chromosomes from mating pool in $N_{keep}$, where chromosomes with lowest cost in subset become parent
+##### <a name="2.2.1" class="anchor"></a> [Weighted random pairing](#2.2.1)
 
-### <a name="2.3" class="anchor"></a> [Crossover](#2.3)
+Weighted random pairing, or roulette wheel weighting, assign probabilities that are inversely proportional to cost to chromosomes in mating pool, where chromosomes with lowest cost have greatest chance to mate:
+
+- rank weighting is problem independent, probabilities are calculated once, so computationally cheaper, but small population have higher probability to select same chromosome
+
+- cost weighting is cost function dependent, tend to weight top chromosomes more when large spread in cost between top and bottom chromosomes, tend to weight chromosomes evenly when chromosomes have about same cost, probabilities are calculated each generation, so computationally expensive
+
+##### <a name="2.2.2" class="anchor"></a> [Tournament selection](#2.2.2)
+
+Tournament selection is problem independent and work best with larger population size, but sorting is time-consuming and computationally expensive, chromosomes with good quality have higher chance to be selected
+
+- randomly pick small subset of chromosomes from mating pool in $N_{keep}$, where chromosomes with lowest cost in subset become parent
+
+### <a name="2.3" class="anchor"></a> [2.3 Crossover](#2.3)
 
 The crossover process create offsprings by exchanging information between parents selected in the selection process:
 
@@ -224,9 +232,9 @@ The crossover process create offsprings by exchanging information between parent
 - double-point crossover, segments between two randomly generated crossover points are swapped between parents
 - uniform crossover, bits are randomly selected for swapping between parents
 
-### <a name="2.4" class="anchor"></a> [Mutation](#2.4)
+### <a name="2.4" class="anchor"></a> [2.4 Mutation](#2.4)
 
-A mutation is random alteration of certain bits in cost table with chromosomes, this is to allow the algorithm to explore a wider cost surface by introducing new information. The mutation process:
+A mutation is random alteration of certain bits in cost table with chromosomes, this is to allow the algorithm to explore a wider cost surface by introducing new information:
 
 1. choose mutation rate, $\mu$, which represent probability of mutation
 2. determine number of bits to be mutated
@@ -234,7 +242,7 @@ A mutation is random alteration of certain bits in cost table with chromosomes, 
     - without elitism, $\mu(N_{pop}) N_{bits}$
 3. flip bits (at random or otherwise)
 
-### <a name="2.5" class="anchor"></a> [Convergence](#2.5)
+### <a name="2.5" class="anchor"></a> [2.5 Convergence](#2.5)
 
 A convergence is the stop criteria, such as finding an acceptable solution, exceeded maximum number of iterations, no changes to chromosomes, no changes to cost, or population statistics on mean and minimum cost.
 
