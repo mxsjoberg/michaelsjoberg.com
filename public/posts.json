@@ -26,10 +26,9 @@
     "a-deep-dive-into-computer-vision": {
         "title": "A Deep Dive into Computer Vision",
         "short": false,
-        "note": "This post was first written in 2020 and partly rewritten for this website.",
         "tags": ["computer science"],
         "date": "20220713",
-        "updated": "20221005",
+        "updated": "20221116",
         "draft": false,
         "toc": true,
         "read": 146,
