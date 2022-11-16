@@ -86,7 +86,7 @@
                         <%= CommonMarker.render_html("- #{line.split('</a>')[1]}", :UNSAFE, [:table, :autolink]).html_safe %>
                     </div>
                     <!-- subsubitem -->
-                    <% elsif line[0..4] == '#### ' %>
+                    <% elsif line[0..4] == '#### ' || line[0..5] == '##### ' %>
                     <div class="text-normal list-item subitem subsubitem pl-4">
                         <%= CommonMarker.render_html("- #{line.split('</a>')[1]}", :UNSAFE, [:table, :autolink]).html_safe %>
                     </div>
