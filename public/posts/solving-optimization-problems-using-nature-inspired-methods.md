@@ -112,7 +112,7 @@ Genetic algorithms is a subclass of evolutionary computing and describe populati
 
 Binary genetic algorithms (BGA) work well with continuous and discrete variables, can handle large number of decision variables and optimize decision variables with cost functions. BGA is less likely to get stuck in local minimum and tend to find global minimum. Common components of the BGA are variable encoding and decoding, fitness function, population, selection, mutation, offspring, and convergance.
 
-#### <a name="2.1.1" class="anchor"></a> [Notation](#2.1.1)
+##### <a name="2.1.1" class="anchor"></a> [Notation](#2.1.1)
 
 |     |     |
 | :-- | :-- |
@@ -132,13 +132,15 @@ Binary genetic algorithms (BGA) work well with continuous and discrete variables
 
 Decision variables are represented as chromosomes, such as $[v_{1}, v_{2}, ..., v_{N_{var}}]$, where each gene is coded by $m$-bits, so total number of bits per chromosome is $N_{bits} = m(N_{var})$, cost is evaluated by some cost function, and result is typically presented as sorted table, or cost table. A population, $N_{pop}$, is a group of chromosomes, each representing a potential solution to function, such as $f(x, y)$, where $(x, y)$ represent some chromosome (e.g., $[1100011, 0011001]$).
 
-#### <a name="2.1.2" class="anchor"></a> [Natural selection](#2.1.2)
+##### <a name="2.1.2" class="anchor"></a> [Natural selection](#2.1.2)
 
 The selection process imitates natural selection, i.e. survival of the fittest, where only best potential solutions are selected. A selection occur each generation, or iteration, and selection rate, $X_rate$, is fraction of population that survive. The number of chromosomes that are kept is $N_{keep}$, where best are kept and worst will be discarded (replaced by offsprings):
 
 - if $N_{pop} = 8$ and $X_{rate} = 0.5$, then $N_{keep} = N_{pop} X_{rate} = 8(0.5) = 4$, so keep best 4 chromosomes in cost table
 
 In natural selection, thresholding is a computationally cheaper alternative to $X_{rate}$ and used to determine which chromosomes to keep or discard, where chromosomes with cost lower than threshold survive and higher are discarded (minimization). A new population is generated when no chromsome within threshold, where threshold can be updated with each generation.
+
+---
 
 #### <a name="2.1.3" class="anchor"></a> [**Example**: binary encoding and decoding](#2.1.2)
 
@@ -182,6 +184,8 @@ Below is an example of binary encoding and decoding a decimal, 25.3125 (base 10)
         # 0.3125
         ```
 
+---
+
 #### <a name="2.1.4" class="anchor"></a> [**Example**: bits required to achieve precision](#2.1.3)
 
 Below is an example to find bits required to achieve precision of $d$ decimal places given a range:
@@ -191,6 +195,8 @@ Below is an example to find bits required to achieve precision of $d$ decimal pl
     - if $x_{low} = 25$, $x_{high} = 100$, and $d = 2$
     
     - then $\frac{100 - 25}{10^{-2}} \leq 2^{m} - 1$ gives $m = 12.8729$, or about 13 bits
+
+---
 
 ### <a name="2.2" class="anchor"></a> [Selection](#2.2)
 
