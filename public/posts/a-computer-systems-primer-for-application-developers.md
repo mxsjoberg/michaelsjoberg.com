@@ -10,7 +10,7 @@
 
 A computer program is a sequence of bits (0 or 1), and organized as 8-bit bytes, where one byte is 8-bits and each byte represent some text character (ASCII standard). Most programs are developed in a high-level programming language, then compiled, or translated, into an object file, which is executed by a process, and finally terminated. An object file contains application and libraries, such as program code in binary format, relocation information, which are things that need to be fixed once loaded into memory, symbol information as defined by object (or imported), and optional debugging information (note that some interpreted languages are translated into an intermediate format).
 
-#### <a name="1.1.1" class="anchor"></a> [Compilation system](#1.1.1)
+##### <a name="1.1.1" class="anchor"></a> [Compilation system](#1.1.1)
 
 The compilation system typically includes a preprocessor, compiler, assembler, and linker, and is used to translate programs into a sequence of machine-language instructions, which is packed into an executable object file. The compilation process (note that program code and file suffix refer to programs written in the C programming language and using [gcc](https://linux.die.net/man/1/gcc) to compile):
 
@@ -55,7 +55,7 @@ int main() {
 
 Linking is the process to resolve references to external objects, such as variables and functions (for example `printf`), where static linking is performed at compile-time and dynamic linking is performed at run-time.
 
-#### <a name="1.1.2" class="anchor"></a> [Tools](#1.1.2)
+##### <a name="1.1.2" class="anchor"></a> [Tools](#1.1.2)
 
 A few useful tools for working with programs:
 
@@ -95,9 +95,7 @@ Most modern computers are organized as an assemble of buses, I/O devices, main m
 
 #### <a name="1.2.1" class="anchor"></a> [CPU](#1.2.1)
 
-The CPU has a word size storage device (register) called program counter (PC) that points at some instruction in main memory. Instructions are executed in a strict sequence, which is to read and interpret instruction as pointed to by program counter, perform operation (as per the instruction), and then update the counter to point to next instruction (note that each instruction has its own unique address).
-
-An operation, as performed by the CPU, use main memory, register file, which is a small storage device with collection of word-size registers, and the arithmetic logic unit (ALU) to compute new data and address values:
+The CPU has a word size storage device (register) called program counter (PC) that points at some instruction in main memory. Instructions are executed in a strict sequence, which is to read and interpret instruction as pointed to by program counter, perform operation (as per the instruction), and then update the counter to point to next instruction (note that each instruction has its own unique address). An operation, as performed by the CPU, use main memory, register file, which is a small storage device with collection of word-size registers, and the arithmetic logic unit (ALU) to compute new data and address values:
 
 - load, copy byte (or word) from main memory into register, overwriting previous content in register
 
@@ -146,11 +144,11 @@ A system command is a command-line program (note that `system()` is a library fu
 
 Note that a system call is a function executed by the operating system, such as accessing hard drive and creating processes, whereas system command is a program implementing functions (system calls are used by programs to request services from the operating system). In C, and most other programming languages, system commands, such as `write`, is wrapped in some other function, such as `printf`.
 
-#### <a name="1.4.1" class="anchor"></a> [Process](#1.4.1)
+##### <a name="1.4.1" class="anchor"></a> [Process](#1.4.1)
 
 A process is an abstraction for processor, main memory, and I/O devices, and represent a running program, where its context is the state information the process needs to run. The processor can switch between multiple running programs, such as shell and program, using context switching, which saves the state of current process and restores state of some new process. A thread is multiple execution units within a process with access to the same code and global data, and kernel is collection of code and data structures that is always in memory. A kernel is used to manage all processes and called using a system call instruction, or `syscall`, which transfers control to the kernel when the program need some action by the operating system, such as read or write to file.
 
-#### <a name="1.4.2" class="anchor"></a> [Virtual memory](#1.4.2)
+##### <a name="1.4.2" class="anchor"></a> [Virtual memory](#1.4.2)
 
 Virtual memory is an abstraction for main memory and local disks, which provides each program with a virtual address space to make it seem as if programs have exclusive use of memory:
 
@@ -160,7 +158,7 @@ Virtual memory is an abstraction for main memory and local disks, which provides
 - stack is at top of user virtual address space and used by compiler to implement function calls, it expands and contracts its size dynamically at run-time (note that stack grows with each function call and contracts on return)
 - kernel virtual memory is at top of virtual memory space, which is reserved for kernel, programs must call kernel to read or write in this space
 
-#### <a name="1.4.3" class="anchor"></a> [File](#1.4.3)
+##### <a name="1.4.3" class="anchor"></a> [File](#1.4.3)
 
 A file is an abstraction for I/O devices, which provides a uniform view of devices, where most input and output in a system is reading and writing to files.
 
@@ -168,9 +166,7 @@ A file is an abstraction for I/O devices, which provides a uniform view of devic
 
 ### <a name="2.1" class="anchor"></a> [2.1 File permission](#2.1)
 
-In UNIX-based systems, a process has real UID/GID, which is the user who started or own the process, effective UID/GID, which is referred to as EUID and used to determine permissions, and saved UID/GID, which is referred to as SUID and used to drop and gain privileges. A program with the SUID bit set has the effective UID/GID changed to that of the program owner.
-
-File permissions are set using command, such as `-rwxr-xr-x root root <file>`:
+In UNIX-based systems, a process has real UID/GID, which is the user who started or own the process, effective UID/GID, which is referred to as EUID and used to determine permissions, and saved UID/GID, which is referred to as SUID and used to drop and gain privileges. A program with the SUID bit set has the effective UID/GID changed to that of the program owner. File permissions are set using command, such as `-rwxr-xr-x root root <file>`:
 
 - `rwx`, or read-write-execute, is first root (file owner)
 - first ``r-x``, or read-execute, is second root (group owner)
@@ -220,11 +216,11 @@ Vulnerabilities in applications is often due to deployment of overprivileged app
 
 Most local attacks exploit vulnerabilities in SUID-root programs to obtain root privileges. Bad inputs can be supplied at startup via command line and environment, or during execution via dynamic-linked objects and files. Unintended interaction with environment can result in creation of new files, accessing files via file system, or invoking commands and processes. Local attacks often result in memory corruption (control hijacking, data brainwashing), command injection, and information leaks.
 
-#### <a name="2.3.1" class="anchor"></a> [Environment attack](#2.3.1)
+##### <a name="2.3.1" class="anchor"></a> [Environment attack](#2.3.1)
 
 An environment attack can occur when applications invoke external commands to carry out tasks, such as `system()` to execute some command, `popen()` to open a process, or `execlp()` and `execvp()` to use the `PATH` environment variable to locate applications. A `PATH` substitution attack use commands without a complete path, where attacker modifies the `PATH` variable to run script, or the `HOME` variable to control execution of commands, such as accessing files.
 
-#### <a name="2.3.2" class="anchor"></a> [Input argument attack](#2.3.2)
+##### <a name="2.3.2" class="anchor"></a> [Input argument attack](#2.3.2)
 
 An input argument attack can occur when applications are supplied arguments via the command-line (note that this could also apply to web applications and SQL), where user-provided inputs can be used to inject commands, such as `./program "; rm -rf /"`, which would call `program` and then inject command to delete everything, traverse directories (dot-dot attack), overflow buffer, and perform format string attack:
 
@@ -246,7 +242,7 @@ An input argument attack can occur when applications are supplied arguments via 
 
 - always sanitize user-provided input to avoid bad formats, such as by excluding known bad inputs, define allowed input, or escape special characters
 
-#### <a name="2.3.3" class="anchor"></a> [File access attack](#2.3.3)
+##### <a name="2.3.3" class="anchor"></a> [File access attack](#2.3.3)
 
 A file access attack can occur when applications create and use files: 
 
@@ -270,11 +266,11 @@ A file access attack can occur when applications create and use files:
         }
         ```
 
-#### <a name="2.3.4" class="anchor"></a> [Buffer overflow attack](#2.3.4)
+##### <a name="2.3.4" class="anchor"></a> [Buffer overflow attack](#2.3.4)
 
 A buffer overflow attack can occur when programs try to store more elements in a buffer (set of memory locations) than it can contain. Systems can sometimes detect and block potential overflows, such as in Java, and others do not detect, in which case the operation is executed (it is not detected in C by default).
 
-#### <a name="2.3.5" class="anchor"></a> [**Example:** buffer overflow](#2.3.5)
+##### <a name="2.3.5" class="anchor"></a> [**Example:** buffer overflow](#2.3.5)
 
 Below is an example program vulnerable to the buffer overflow attack (note that executing this would result in overflow of `buffer_1` into `buffer_2`)
     
@@ -316,7 +312,7 @@ In most assembly-like languages, an instruction has the form `mnemonic <source>,
 
 - labels are symbol at current address, so `number: .byte 42` is same as `char number = 42;` in C (global variable)
 
-#### <a name="3.1.1" class="anchor"></a> [Register](#3.1.1)
+##### <a name="3.1.1" class="anchor"></a> [Register](#3.1.1)
 
 A register is a memory location on the CPU and prefixed with `%`, such as general-purpose registers, including stack pointer `%esp`, frame pointer `%ebp`, instruction pointer `%eip`, and flags register (note that `%esp`, `%ebp`, and `%eip` is 32 bit, and `%rsp`, `%rbp`, and `%rip` is equivalent 64 bit):
 
@@ -329,11 +325,11 @@ A register is a memory location on the CPU and prefixed with `%`, such as genera
 - second byte
     - `%ah` `%bh` `%ch` `%dh`
 
-A constant is prefixed with `$` and the operand size is specified as suffix to mnemonic, so byte is `b` (8 bit), word is `w` (16 bit), and long is `l` (32-bit or 64-bit floating point).
+A constant is prefixed with `$` and the operand size is specified as suffix to mnemonic, so byte is `b` (8 bit), word is `w` (16 bit), and long is `l` (32-bit or 64-bit floating point). Memory is accessed by dereferencing pointers, where dereferencing is specified as `displacement(base, index, scale)` (AT&T) and `displacement + base + index * scale` (Intel), where `base` and `index` are 32-bit general purpose registers, `displacement` is a 32-bit constant or symbol (default is 0), and `scale` is 1, 2, 4, or 8 (default is 1).
 
-Memory is accessed by dereferencing pointers, where dereferencing is specified as `displacement(base, index, scale)` (AT&T) and `displacement + base + index * scale` (Intel), where `base` and `index` are 32-bit general purpose registers, `displacement` is a 32-bit constant or symbol (default is 0), and `scale` is 1, 2, 4, or 8 (default is 1).
+---
 
-#### <a name="3.1.2" class="anchor"></a> [**Example:** memory location layout](#3.1.2)
+#### <a name="3.1.2" class="anchor"></a> [**Example**: memory location layout](#3.1.2)
 
 - initial layout (note that bits 0-15 is `%ax` and 0-31 is extended, `%eax`)
 
@@ -350,6 +346,8 @@ Memory is accessed by dereferencing pointers, where dereferencing is specified a
     | `%a1` | `%ah` |
     | 10000000 | 00000000 | 0 ... 0 | 0 ... 0 |
     | 0 | 8 | 16 | 31 |
+
+---
 
 ### <a name="3.2" class="anchor"></a> [3.2 Assembly programming](#3.2)
 
@@ -509,7 +507,9 @@ Assembly programs are typically generated by compilers, but it can sometimes be 
     nop
     ```
 
-#### <a name="3.2.7" class="anchor"></a> [**Example:** assembly program](#3.2.7)
+---
+
+#### <a name="3.2.7" class="anchor"></a> [**Example**: assembly program](#3.2.7)
 
 Below is an example assembly program, which should output "hello assembly" (note that it is easier to experiment with assembly programs in emulators, such as [nasm Online Compiler](https://rextester.com/l/nasm_online_compiler)).
 
@@ -533,13 +533,17 @@ section .data
     msg db "hello assembly", 10
 ```
 
+---
+
 ## <a name="4" class="anchor"></a> [4. The stack](#4)
 
 ### <a name="4.1" class="anchor"></a> [4.1 Stack layout](#4.1)
 
 A stack grows towards lower memory addresses, and the stack pointer, `%esp`, points to top of stack, which is the lowest valid address and last pushed to stack.
 
-#### <a name="4.1.1" class="anchor"></a> [**Example:** stack operation](#4.1.1)
+---
+
+#### <a name="4.1.1" class="anchor"></a> [**Example**: stack operation](#4.1.1)
 
 Below is an example stack operation using `push` and `pop`:
 
@@ -583,13 +587,15 @@ Below is an example stack operation using `push` and `pop`:
     | ------ | - |
     | `%eax` | f |
 
+---
+
 ### <a name="4.2" class="anchor"></a> [4.2 Stack frames](#4.2)
 
-A stack is composed of frames, which are pushed to the stack because of function calls, and address to current frame is stored in the frame pointer register, `%ebp`. Each frame contain function parameters, which are pushed to stack by caller, return address to jump to at the end, pointer to previous frame (save `%ebp` to stack and set `%ebp = %esp`, frame pointer is lowest valid address and part of prologue), and local variables, which are part of the prologue executed by caller (note that address location is subtracted to move towards lower addresses, typically 4 bytes).
+A stack is composed of frames, which are pushed to the stack because of function calls, and address to current frame is stored in the frame pointer register, `%ebp`. Each frame contain function parameters, which are pushed to stack by caller, return address to jump to at the end, pointer to previous frame (save `%ebp` to stack and set `%ebp = %esp`, frame pointer is lowest valid address and part of prologue), and local variables, which are part of the prologue executed by caller (note that address location is subtracted to move towards lower addresses, typically 4 bytes). The epilogue is executed by the callee to deallocate local variables, `%esp = %ebp`, save result in some register, such as `%eax`, restore frame pointer of caller function, and then resume execution from saved return address.
 
-The epilogue is executed by the callee to deallocate local variables, `%esp = %ebp`, save result in some register, such as `%eax`, restore frame pointer of caller function, and then resume execution from saved return address.
+---
 
-#### <a name="4.2.1" class="anchor"></a> [**Example:** function call and stack layout](#4.2.1)
+#### <a name="4.2.1" class="anchor"></a> [**Example**: function call and stack layout](#4.2.1)
 
 Below is an example function call and resulting stack layout:
 
@@ -635,7 +641,9 @@ int main(int argc, char **argv) {
     | `result` | `0xbfff7fdc` |
     | paramater to `atoi` | `0xbfff7fd8` |
 
-#### <a name="4.2.2" class="anchor"></a> [**Example:** function call in assembly](#4.2.2)
+---
+
+#### <a name="4.2.2" class="anchor"></a> [**Example**: function call in assembly](#4.2.2)
 
 Below is an example function call and termination (note that the below assembly can be generated with [Compiler Explorer](https://godbolt.org/) using `x86-64 gcc 4.1.2` and flag `-m32` for 32-bit, AT&T syntax):
 
@@ -700,6 +708,8 @@ int main(int argc, char **argv) {
         ret
     ```
 
+---
+
 ### <a name="4.3" class="anchor"></a> [4.3 Stack-based overflow](#4.3)
 
 A stack overflow, or stack smashing, is a special case of buffer overflow (targeting the stack or heap), where data can overflow allocated buffer and overwrite return address:
@@ -731,11 +741,13 @@ A stack overflow, or stack smashing, is a special case of buffer overflow (targe
     }
     ```
 
-#### <a name="4.3.1" class="anchor"></a> [NOP slide](#4.3.1)
+##### <a name="4.3.1" class="anchor"></a> [NOP slide](#4.3.1)
 
 A [NOP slide](https://en.wikipedia.org/wiki/NOP_slide), or `nop`-sled, is an optional sequence of no-nothing instruction used to fill stack and eventually reach a jump to shellcode, which is any code used to start a shell, such as `execve("/bin/sh")`.
 
-#### <a name="4.3.2" class="anchor"></a> [**Example:** buffer overflow attack](#4.3.2)
+---
+
+#### <a name="4.3.2" class="anchor"></a> [**Example**: buffer overflow attack](#4.3.2)
 
 Below is an example buffer overflow attack using `nop`-sled and injected shellcode:
 
@@ -825,6 +837,8 @@ int main(int argc, char **argv) {
     bash$
     ```
 
+---
+
 ## <a name="5" class="anchor"></a> [5. Secure system design](#5)
 
 ### <a name="5.1" class="anchor"></a> [5.1 Hardware and software solutions](#5.1)
@@ -839,7 +853,7 @@ A system design involves both hardware and software, where software is easy to c
 
 A secure system design favor simplicity, such as fail-safe defaults (key lengths, whitelist better than blacklist) and assume non-expert users, so keep user interface simple and avoid choices. Reduce need to trust other parts of system (kernel is assumed to be trusted) and grant least privileges possible, such as restricting flow of sensitive data, secure compartments (operating system), `seccomp` system call isolates process by limiting possible interactions. Layers of security can be used to further secure systems, such as firewall, encrypting data at rest, using type-safe programming languages, and logging relevant operational information.
 
-#### <a name="5.1.1" class="anchor"></a> [Tainted flow analysis](#5.1.1)
+##### <a name="5.1.1" class="anchor"></a> [Tainted flow analysis](#5.1.1)
 
 Trusting unvalidated inputs is the root cause of many attacks, such as a program getting unsafe input, or tainted data, from a user and assuming it is safe, or untainted:
 
@@ -870,7 +884,9 @@ In tainted flow analysis, such as [Taint checking](https://en.wikipedia.org/wiki
     f(a); /* function assume untainted, and input is tainted, so illegal flow */
     ```
 
-#### <a name="5.1.2" class="anchor"></a> [**Example:** tracking tainted data in programs](#5.1.2)
+---
+
+#### <a name="5.1.2" class="anchor"></a> [**Example**: tracking tainted data in programs](#5.1.2)
 
 Below is an example tainted flow analysis on vulnerable program at each line of execution:
     
@@ -885,6 +901,8 @@ void copy(tainted char *src, untainted char *dst, int len) {
     }
 }
 ```
+
+---
 
 ### <a name="5.2" class="anchor"></a> [5.2 Preventing buffer overflows](#5.2)
 
