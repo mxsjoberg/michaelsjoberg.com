@@ -6,15 +6,13 @@
 
 ## <a name="1" class="anchor"></a> [1. Introduction](#1)
 
-*Keywords: computer programs, compilation process, CPU operations, system commands, virtual memory, device abstraction*
-
 ### <a name="1.1" class="anchor"></a> [1.1 Computer programs and compilation](#1.2)
 
-A computer program is a sequence of bits (0 or 1), and organised as 8-bit bytes, where one byte is 8-bits and each byte represent some text character (ASCII standard). Most programs are developed in a high-level programming language, then compiled, or translated, into an object file, which is executed by a process, and finally terminated. An object file contains application and libraries, such as program code in binary format, relocation information, which are things that need to be fixed once loaded into memory, symbol information as defined by object (or imported), and optional debugging information (note that some interpreted languages are translated into an intermediate format).
+A computer program is a sequence of bits (0 or 1), and organized as 8-bit bytes, where one byte is 8-bits and each byte represent some text character (ASCII standard). Most programs are developed in a high-level programming language, then compiled, or translated, into an object file, which is executed by a process, and finally terminated. An object file contains application and libraries, such as program code in binary format, relocation information, which are things that need to be fixed once loaded into memory, symbol information as defined by object (or imported), and optional debugging information (note that some interpreted languages are translated into an intermediate format).
 
 #### <a name="1.1.1" class="anchor"></a> [Compilation system](#1.1.1)
 
-The compilation system typically includes a preprocessor, compiler, assembler, and linker, and is used to translate programs into a sequence of machine-language instructions, which is packed into an executable object file. The compilation process (note that program code and file suffix refers to programs written in the C programming language and using [gcc](https://linux.die.net/man/1/gcc) to compile):
+The compilation system typically includes a preprocessor, compiler, assembler, and linker, and is used to translate programs into a sequence of machine-language instructions, which is packed into an executable object file. The compilation process (note that program code and file suffix refer to programs written in the C programming language and using [gcc](https://linux.die.net/man/1/gcc) to compile):
 
 ```c
 /* hello.c */
@@ -83,7 +81,7 @@ A few useful tools for working with programs:
 
 ### <a name="1.2" class="anchor"></a> [1.2 Computer organisation](#1.2)
 
-Most modern computers are organised as an assemble of buses, I/O devices, main memory, and processor:
+Most modern computers are organized as an assemble of buses, I/O devices, main memory, and processor:
 
 - buses are collections of electrical conduits that carry bytes between components, usually fixed sized and referred to as words, where the word size is 4 bytes (32 bits) or 8 bytes (64 bits)
 
@@ -91,7 +89,7 @@ Most modern computers are organised as an assemble of buses, I/O devices, main m
     - controller, chip sets in the devices themselves or main circuit board (also called motherboard)
     - adapter, cards plugged into the motherboard
 
-- main memory is a temporary storage device that holds program and data when executed by the processor, physically, it is a collection of dynamic random access memory (DRAM) chips, and logically, it is a linear array of bytes with its own unique address (also called array index)
+- main memory is a temporary storage device that holds program and data when executed by the processor, physically, it is a collection of dynamic random-access memory (DRAM) chips, and logically, it is a linear array of bytes with its own unique address (also called array index)
 
 - processor, or central processing unit (CPU), is the engine that interprets and executes the machine-level instructions stored in the main memory
 
@@ -103,7 +101,7 @@ An operation, as performed by the CPU, use main memory, register file, which is 
 
 - load, copy byte (or word) from main memory into register, overwriting previous content in register
 
-- store, copy byte (or word) from register to location in main memory, overwiting previous content in location
+- store, copy byte (or word) from register to location in main memory, overwriting previous content in location
 
 - operate, copy content of two registers to ALU, perform arithmetic operation on the two words and store result in register, overwriting previous content in register
 
@@ -123,7 +121,7 @@ A cache memory is a memory device with different levels, or sizes (L1, L2, L3), 
 | L5 | Local secondary storage (local disks) | Local disks hold files copied from other disks or remote network storage |
 | L6 | Remote secondary storage |  |
 
-The different levels of memory is also referred to as [memory hierarchy](https://en.wikipedia.org/wiki/Memory_hierarchy), which is based on respons time, and where each level act as cache for the level before and top levels are used to store information that the processor might need in the near future.
+The different levels of memory is also referred to as [memory hierarchy](https://en.wikipedia.org/wiki/Memory_hierarchy), which is based on response time, and where each level act as cache for the level before and top levels are used to store information that the processor might need in the near future.
 
 ### <a name="1.4" class="anchor"></a> [1.4 Operating systems](#1.4)
 
@@ -150,7 +148,7 @@ Note that a system call is a function executed by the operating system, such as 
 
 #### <a name="1.4.1" class="anchor"></a> [Process](#1.4.1)
 
-A process is an abstraction for processor, main memory, and I/O devices, and represent a running program, where its context is the state information the process need to run. The processor can switch between multiple running programs, such as shell and program, using context switching, which saves the state of current process and restores state of some new process. A thread is multiple execution units within a process with access to the same code and global data, and kernel is collection of code and data structures that is always in memory. A kernel is used to manage all processes and called using a system call instruction, or `syscall`, which transfers control to the kernel when the program need some action by the operating system, such as read or write to file.
+A process is an abstraction for processor, main memory, and I/O devices, and represent a running program, where its context is the state information the process needs to run. The processor can switch between multiple running programs, such as shell and program, using context switching, which saves the state of current process and restores state of some new process. A thread is multiple execution units within a process with access to the same code and global data, and kernel is collection of code and data structures that is always in memory. A kernel is used to manage all processes and called using a system call instruction, or `syscall`, which transfers control to the kernel when the program need some action by the operating system, such as read or write to file.
 
 #### <a name="1.4.2" class="anchor"></a> [Virtual memory](#1.4.2)
 
@@ -160,15 +158,13 @@ Virtual memory is an abstraction for main memory and local disks, which provides
 - heap expands and contracts its size dynamically at run-time using special routines, such as `malloc` and `free` (or using garbage collection)
 - shared libraries, such as the C standard library, is near the middle of the virtual address space
 - stack is at top of user virtual address space and used by compiler to implement function calls, it expands and contracts its size dynamically at run-time (note that stack grows with each function call and contracts on return)
-- kernel virtual memory is at top of virtual memory space, which is reserved for kernel, programs have to call kernel to read or write in this space
+- kernel virtual memory is at top of virtual memory space, which is reserved for kernel, programs must call kernel to read or write in this space
 
 #### <a name="1.4.3" class="anchor"></a> [File](#1.4.3)
 
-A file is an abstraction for I/O devices, which provides an uniform view of devices, where most input and output in a system is reading and writing to files.
+A file is an abstraction for I/O devices, which provides a uniform view of devices, where most input and output in a system is reading and writing to files.
 
 ## <a name="2" class="anchor"></a> [2. Programs and processes](#2)
-
-*Keywords: program privileges, address space, low-level software vulnerabilities, buffer overflow*
 
 ### <a name="2.1" class="anchor"></a> [2.1 File permission](#2.1)
 
@@ -198,14 +194,14 @@ int main() {
 }
 ```
 
-- locations in buffer (note that address space is based on linux legacy VM layout)
+- locations in buffer (note that address space is based on Linux legacy VM layout)
 
     |     |     |
     | :-- | --- |
     | | user space ~3GB |
     | `.text` (program code) | ... |
-    | `.bss` (uninitialised global data) | `z` |
-    | `.data` (initialised global data) | `w` |
+    | `.bss` (uninitialized global data) | `z` |
+    | `.data` (initialized global data) | `w` |
     | heap (growing from lower to higher addresses) | `malloc(42)` |
     | memory mapped region for large chunks of memory, such as shared libraries (text, data, `printf`) | ... |
     | stack (growing from higher to lower addresses) | `x` |
@@ -230,7 +226,7 @@ An environment attack can occur when applications invoke external commands to ca
 
 #### <a name="2.3.2" class="anchor"></a> [Input argument attack](#2.3.2)
 
-An input argument attack can occur when applications are supplied arguments via the command-line (note that this could also apply to web applications and SQL), where user-provided inputs can be used to inject commands, such as `./program "; rm -rf /"`, which would call `program` and then inject command to delete everything, treverse directories (dot-dot attack), overflow buffer, and perform format string attack:
+An input argument attack can occur when applications are supplied arguments via the command-line (note that this could also apply to web applications and SQL), where user-provided inputs can be used to inject commands, such as `./program "; rm -rf /"`, which would call `program` and then inject command to delete everything, traverse directories (dot-dot attack), overflow buffer, and perform format string attack:
 
 - always check size to avoid overflow, such as when copied into buffers
     - `snprintf` restrict size to `n`
@@ -298,13 +294,11 @@ int main() {
 
 ## <a name="3" class="anchor"></a> [3. Assembly](#3)
 
-*Keywords: assembly programming language, registers*
-
 ### <a name="3.1" class="anchor"></a> [3.1 x86 Assembly basics](#3.1)
 
-An assembly language is a low-level symbolic language with processor specific instructions and syntax, such as those developed by AT&T and Intel. Instructions and syntax, as well as data types, registers, and hardware support, is typically specified by some instruction set architecture (ISA), which is an abstract model of some computer implementation. An assembly program is a sequence of instructions, where each instruction represent an actual operations to be performed by the processor.
+An assembly language is a low-level symbolic language with processor specific instructions and syntax, such as those developed by AT&T and Intel. Instructions and syntax, as well as data types, registers, and hardware support, is typically specified by some instruction set architecture (ISA), which is an abstract model of some computer implementation. An assembly program is a sequence of instructions, where each instruction represents an actual operation to be performed by the processor.
 
-In most assembly-like languages, an instruction has the form `mnemonic  <source>, <destination>` (AT&T syntax), such as `mov %eax, %ebx` to copy value from `%eax` to `%ebx`, or `mnemonic <destination>, <source>` (Intel syntax):
+In most assembly-like languages, an instruction has the form `mnemonic <source>, <destination>` (AT&T syntax), such as `mov %eax, %ebx` to copy value from `%eax` to `%ebx`, or `mnemonic <destination>, <source>` (Intel syntax):
 
 - mnemonics tell the CPU what to do
     - `mov` `add` `sub` `push` `pop` `call` `jmp`
@@ -324,7 +318,7 @@ In most assembly-like languages, an instruction has the form `mnemonic  <source>
 
 #### <a name="3.1.1" class="anchor"></a> [Register](#3.1.1)
 
-A register is a memory location on the CPU and prefixed with `%`, such as general purpose registers, including stack pointer `%esp`, frame pointer `%ebp`, instruction pointer `%eip`, and flags register (note that `%esp`, `%ebp`, and `%eip` is 32 bit, and `%rsp`, `%rbp`, and `%rip` is equivalent 64 bit):
+A register is a memory location on the CPU and prefixed with `%`, such as general-purpose registers, including stack pointer `%esp`, frame pointer `%ebp`, instruction pointer `%eip`, and flags register (note that `%esp`, `%ebp`, and `%eip` is 32 bit, and `%rsp`, `%rbp`, and `%rip` is equivalent 64 bit):
 
 - extended (32-bit)
     - `%eax` `%ebx` `%ecx` `%edx` `%esi` `%edi`
@@ -335,7 +329,7 @@ A register is a memory location on the CPU and prefixed with `%`, such as genera
 - second byte
     - `%ah` `%bh` `%ch` `%dh`
 
-A constant is prefixed with `$` and the operand size is specified as suffix to mnemonic, so byte is `b` (8 bit), word is `w` (16 bit), and long is `l` (32 bit or 64 bit floating point).
+A constant is prefixed with `$` and the operand size is specified as suffix to mnemonic, so byte is `b` (8 bit), word is `w` (16 bit), and long is `l` (32-bit or 64-bit floating point).
 
 Memory is accessed by dereferencing pointers, where dereferencing is specified as `displacement(base, index, scale)` (AT&T) and `displacement + base + index * scale` (Intel), where `base` and `index` are 32-bit general purpose registers, `displacement` is a 32-bit constant or symbol (default is 0), and `scale` is 1, 2, 4, or 8 (default is 1).
 
@@ -359,7 +353,7 @@ Memory is accessed by dereferencing pointers, where dereferencing is specified a
 
 ### <a name="3.2" class="anchor"></a> [3.2 Assembly programming](#3.2)
 
-Assembly programs are typically generated by compilers but it can sometimes be necessary to inspect or change manually (note that writing programs using assembly instructions is not very efficient and can be very error prone).
+Assembly programs are typically generated by compilers, but it can sometimes be necessary to inspect or change manually (note that writing programs using assembly instructions is not very efficient and can be very error prone).
 
 #### <a name="3.2.1" class="anchor"></a> [Data transfer](#3.2.1)
 
@@ -375,7 +369,7 @@ Assembly programs are typically generated by compilers but it can sometimes be n
     xchg <destination>, <destination>
     ```
 
-- store source on top och stack
+- store source on top of stack
 
     ```x86asm
     push <source>
@@ -517,10 +511,10 @@ Assembly programs are typically generated by compilers but it can sometimes be n
 
 #### <a name="3.2.7" class="anchor"></a> [**Example:** assembly program](#3.2.7)
 
-Below is an example assembly program, which should ouput "hello assembly" (note that it is easier to experiment with assembly programs in emulators, such as [nasm Online Compiler](https://rextester.com/l/nasm_online_compiler)).
+Below is an example assembly program, which should output "hello assembly" (note that it is easier to experiment with assembly programs in emulators, such as [nasm Online Compiler](https://rextester.com/l/nasm_online_compiler)).
 
 ```x86asm
-; assembly program (64 bit, intel syntax)
+; assembly program (64-bit, intel syntax)
 section .text
     global _main        ; start point for execution
 
@@ -540,8 +534,6 @@ section .data
 ```
 
 ## <a name="4" class="anchor"></a> [4. The stack](#4)
-
-*Keywords: stack layout, stack frames, function calls, overflow exploit*
 
 ### <a name="4.1" class="anchor"></a> [4.1 Stack layout](#4.1)
 
@@ -593,7 +585,7 @@ Below is an example stack operation using `push` and `pop`:
 
 ### <a name="4.2" class="anchor"></a> [4.2 Stack frames](#4.2)
 
-A stack is composed of frames, which are pushed to the stack as a consequence of function calls, and address to current frame is stored in the frame pointer register, `%ebp`. Each frame contain function parameters, which are pushed to stack by caller, return address to jump to at end, pointer to previous frame (save `%ebp` to stack and set `%ebp = %esp`, frame pointer is lowest valid address and part of prologue), and local variables, which are part of the prologue executed by caller (note that address location is subtracted to move towards lower addreses, typically 4 bytes).
+A stack is composed of frames, which are pushed to the stack because of function calls, and address to current frame is stored in the frame pointer register, `%ebp`. Each frame contain function parameters, which are pushed to stack by caller, return address to jump to at the end, pointer to previous frame (save `%ebp` to stack and set `%ebp = %esp`, frame pointer is lowest valid address and part of prologue), and local variables, which are part of the prologue executed by caller (note that address location is subtracted to move towards lower addresses, typically 4 bytes).
 
 The epilogue is executed by the callee to deallocate local variables, `%esp = %ebp`, save result in some register, such as `%eax`, restore frame pointer of caller function, and then resume execution from saved return address.
 
@@ -819,7 +811,7 @@ int main(int argc, char **argv) {
     }
     ```
 
-- running exploit (note that `-fno-stack-protector` disables stack protection, which is enabled by default on some Linux distributions, and `echo 0 | sudo tee /proc/sys/kernel/randomize_va_space` disables address space layout randomisation, or ASLR)
+- running exploit (note that `-fno-stack-protector` disables stack protection, which is enabled by default on some Linux distributions, and `echo 0 | sudo tee /proc/sys/kernel/randomize_va_space` disables address space layout randomization, or ASLR)
 
     ```
     $ CFLAGS="-m32 -fno-stack-protector -z execstack -mpreferred-stack-boundary=2"
@@ -834,8 +826,6 @@ int main(int argc, char **argv) {
     ```
 
 ## <a name="5" class="anchor"></a> [5. Secure system design](#5)
-
-*Keywords: secure hardware, tainted flow analysis, stack protections*
 
 ### <a name="5.1" class="anchor"></a> [5.1 Hardware and software solutions](#5.1)
 
@@ -868,7 +858,7 @@ In tainted flow analysis, such as [Taint checking](https://en.wikipedia.org/wiki
     void f(tainted int);
     
     untainted int a = /* ... */ ;
-    f(a); /* function expect tainted and input is untainted, so legal flow */
+    f(a); /* function expect tainted, and input is untainted, so legal flow */
     ```
 
 - illegal flow
@@ -877,7 +867,7 @@ In tainted flow analysis, such as [Taint checking](https://en.wikipedia.org/wiki
     void f(untainted int);
     
     tainted int a = /* ... */ ;
-    f(a); /* function assume untainted and input is tainted, so illegal flow */
+    f(a); /* function assume untainted, and input is tainted, so illegal flow */
     ```
 
 #### <a name="5.1.2" class="anchor"></a> [**Example:** tracking tainted data in programs](#5.1.2)
@@ -898,12 +888,12 @@ void copy(tainted char *src, untainted char *dst, int len) {
 
 ### <a name="5.2" class="anchor"></a> [5.2 Preventing buffer overflows](#5.2)
 
-Buffer overflow attacks can sometimes be prevented using programming languages with boundary checking, such as Java or Python, or contained using virtualisation. Below are a few other common methods:
+Buffer overflow attacks can sometimes be prevented using programming languages with boundary checking, such as Java or Python, or contained using virtualization. Below are a few other common methods:
 
 - [StackGuard](https://www.usenix.org/legacy/publications/library/proceedings/sec98/full_papers/cowan/cowan.pdf) is a canary-based method to protect or detect potential danger, where a canary-value is placed on stack, which can be verified to not be corrupted during execution
 
 - non-executable memory, or [NX-bit](https://en.wikipedia.org/wiki/NX_bit), can be used to segregate area in memory used by code and data
 
-- randomised addresses and instructions, such as [ASLR](https://en.wikipedia.org/wiki/Address_space_layout_randomization), which can be used to randomise address space layout (note that instructions can also be encrypted in memory and decrypted before execution, but substantial overhead)
+- randomized addresses and instructions, such as [ASLR](https://en.wikipedia.org/wiki/Address_space_layout_randomization), which can be used to randomize address space layout (note that instructions can also be encrypted in memory and decrypted before execution, but substantial overhead)
 
 For more methods, see: [Return-oriented programming (ROP)](https://en.wikipedia.org/wiki/Return-oriented_programming).
