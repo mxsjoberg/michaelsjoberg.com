@@ -530,9 +530,15 @@ h5 {
     padding-bottom          : 1rem;
 }
 
+// h4 {
+//     padding-top: 1rem;
+//     padding-bottom: 0.5rem;
+// }
+
 // h4,
 // h4 a,
-h5 {
+h5,
+h5 a {
     font-size               : $FONT_SIZE_BASE_PLUS !important;
     color                   : rgba($COLOR_DARK_BASE, 0.5) !important;
     display                 : inline-block;
@@ -544,7 +550,8 @@ h5 {
 
 // html.dark h4,
 // html.dark h4 a,
-html.dark h5 {
+html.dark h5,
+html.dark h5 a {
     color                   : rgba($WHITE_BASE, 0.5) !important;
 }
 
