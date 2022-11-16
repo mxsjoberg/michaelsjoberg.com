@@ -2,7 +2,6 @@
     "solving-optimisation-problems-using-nature-inspired-algorithms": {
         "title": "Solving optimisation problems using nature-inspired algorithms",
         "short": false,
-        "note": "This post was first written in 2020 and partly rewritten for this website.",
         "tags": ["computer science"],
         "date": "20220915",
         "updated": "20220915",
@@ -14,7 +13,6 @@
     "a-computer-systems-primer-for-application-developers": {
         "title": "A Computer Systems Primer for Application Developers",
         "short": false,
-        "note": "This post was first written in 2020 and partly rewritten for this website.",
         "tags": ["computer systems"],
         "date": "20220827",
         "updated": "20221012",
