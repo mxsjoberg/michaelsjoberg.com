@@ -6,13 +6,13 @@
 
 ## <a name="1" class="anchor"></a> [1. Introduction](#1)
 
-This is an evolving list with learning material and recommended programming languages for computer science students. It works well on its own (for self-learners) or in addition to an undergraduate degree in computer science (or related field). The goal is to provide a solid foundation to build upon, degree or no degree. It will be updated to fix broken links and to keep learning material up-to-date.
+This is an evolving list with learning material and recommended programming languages for computer science students. It works well on its own (for self-learners) or in addition to an undergraduate degree in computer science (or related field). The goal is to provide a solid foundation to build upon, degree or no degree. It will be updated to fix broken links and to keep learning material up to date.
 
 If you are interested in computer science and engineering (and have plenty of time to spare), see [github.com/michaelsjoeberg/the-ultimate-computer-science-and-engineering-curriculum](https://github.com/michaelsjoeberg/the-ultimate-computer-science-and-engineering-curriculum).
 
 ## <a name="2" class="anchor"></a> [2. Programming](#2)
 
-Programming is the most important skill in computer science and computational problem solving, and should be the primary focus of any computer science curriculum (with use cases in computer systems, application software development, theorem proving, and so on). If you prefer to work on projects while learning, see [github.com/tuvtran/project-based-learning](https://github.com/tuvtran/project-based-learning).
+Programming is the most important skill in computer science and computational problem solving and should be the primary focus of any computer science curriculum (with use cases in computer systems, application software development, theorem proving, and so on). If you prefer to work on projects while learning, see [github.com/tuvtran/project-based-learning](https://github.com/tuvtran/project-based-learning).
 
 ### <a name="2.1" class="anchor"></a> [2.1 Foundation](#2.1)
 
@@ -58,7 +58,7 @@ The goal is to get familiar with a range of programming paradigms, understand pa
 #### <a name="2.2.3" class="anchor"></a> [Verilog](#2.2.3)
 
 - Hardware description language; probably most popular language to design and verify digital systems
-- **Bonus:** Try to implement designs at different abstraction levels (gate-level, register-transfer-level, behavioural-level); see [Verilog Tutorial](https://www.javatpoint.com/verilog)
+- **Bonus:** Try to implement designs at different abstraction levels (gate-level, register-transfer-level, behavioral-level); see [Verilog Tutorial](https://www.javatpoint.com/verilog)
 
 Recommended learning material:
 
@@ -114,7 +114,7 @@ The Goal is to get familiar with data structures and theory of computation, thes
 
 #### <a name="3.1.1" class="anchor"></a> [Discrete Mathematics](#3.1.1)
 
-- Get familar with sets, permutations, trees, graphs, and related concepts
+- Get familiar with sets, permutations, trees, graphs, and related concepts
 - **Bonus:** Try to implement common algorithms in different programming languages (optimize based on different conditions); see [The Algorithms](https://github.com/TheAlgorithms)
 
 #### <a name="3.1.2" class="anchor"></a> [Probability](#3.1.2)
@@ -129,7 +129,7 @@ Recommended learning material:
 
 ### <a name="3.2" class="anchor"></a> [3.2 General topics](#3.2)
 
-The goal is to build a strong general background in mathematics, such as typically taught in undergraduate science-related degrees. Many topics are useful in several tasks related to computer science, but in particular ML, computer vision, and scientifc computing.
+The goal is to build a strong general background in mathematics, such as typically taught in undergraduate science-related degrees. Many topics are useful in several tasks related to computer science, ML, computer vision, and scientific computing.
 
 #### <a name="3.2.1" class="anchor"></a> [Calculus](#3.2.1)
 
@@ -185,4 +185,4 @@ The goal is to get familiar with web technologies and to develop a basic website
 - Event-driven programming language (control flow based on events)
 - Get proficient if you want to work in web development; see [JavaScript](https://developer.mozilla.org/en-US/docs/Learn/JavaScript)
 
-Finally; it is probably a good idea to get used to working with cloud platforms, such as AWS or Google Cloud, and notebooks, such as Jupyter (Python), which is a very popular web-based development environment for ML and deep learning.
+Finally, it is probably a good idea to get used to working with cloud platforms, such as AWS or Google Cloud, and notebooks, such as Jupyter (Python), which is a very popular web-based development environment for ML and deep learning.
