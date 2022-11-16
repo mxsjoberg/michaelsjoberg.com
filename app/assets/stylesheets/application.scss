@@ -542,6 +542,8 @@ h5 {
     font-style              : italic;
 }
 
+html.dark h4,
+html.dark h4 a,
 html.dark h5 {
     color                   : rgba($WHITE_BASE, 0.5) !important;
 }
