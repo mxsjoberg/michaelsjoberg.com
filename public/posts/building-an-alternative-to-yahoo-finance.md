@@ -42,7 +42,7 @@ I have made several past attempts to build applications to improve my own workfl
 
 ##### Introducing Terminal
 
-[Terminal](https://terminal.frozenfork.com) is my most recent attempt at this problem. It started as a solution to view financial data on desktop (not in browser, like a terminal), using data provided by IEX Cloud (mainly US-listed companies), and basically added features and additional data when needed (such as non-US companies via an unofficial Yahoo Finance API). I started to use an early version of this desktop-application for almost all data needs (only went to Yahoo Finance occasionally, and for data not yet implemented). It was initially designed to provide me with the data I usually want in a single view (no clicking around), but later transformed into providing any (available) data I currently want in views (based on customizable templates).
+My project: [Terminal](https://terminal.frozenfork.com) is my most recent attempt at this problem. It started as a solution to view financial data on desktop (not in browser, like a terminal), using data provided by IEX Cloud (mainly US-listed companies), and basically added features and additional data when needed (such as non-US companies via an unofficial Yahoo Finance API). I started to use an early version of this desktop-application for almost all data needs (only went to Yahoo Finance occasionally, and for data not yet implemented). It was initially designed to provide me with the data I usually want in a single view (no clicking around), but later transformed into providing any (available) data I currently want in views (based on customizable templates).
 
 The current state (as of July 5, 2022):
 
