@@ -734,6 +734,15 @@ li.list-item {
     line-height             : 2;
 }
 
+html.dark .font-family-serif,
+html.dark .font-family-serif h1,
+html.dark .font-family-serif h2,
+html.dark .font-family-serif h3,
+html.dark .font-family-serif h4,
+html.dark .font-family-serif h5 {
+    font-family             : $FONT_FAMILY_BASE !important;
+}
+
 .text-small,
 p.text-small,
 span.text-small {
