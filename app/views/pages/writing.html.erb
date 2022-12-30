@@ -29,15 +29,20 @@
             <div class="col-12 col-lg-<%= @size %>">
                 <div class="row list">
                     <% @posts_array.keys.each do |post| %>
-                    <% if @posts_array[post][:draft] == false %>
-                    <!-- item -->
-                        <!-- post:title -->
-                    <a href="/<%= @route_path %>/<%= post %>" data-turbolinks="true" style="min-width:100%;">
-                        <li class="list-item col-12 mb-3">
-                            <span><% if @posts_array[post][:draft] %>[DRAFT]<% end %> <%= @posts_array[post][:title] %></span>
-                        </li>
-                    </a>
-                    <% end %>
+                        <% if @posts_array[post][:draft] == false %>
+                            <!-- post:title -->
+                            <a href="/<%= @route_path %>/<%= post %>" data-turbolinks="true" style="min-width:100%;">
+                                <li class="list-item col-12 mb-3">
+                                    <span><%= @posts_array[post][:title] %></span>
+                                </li>
+                            </a>
+                        <% elsif Rails.env == "development" %>
+                            <a href="/<%= @route_path %>/<%= post %>" data-turbolinks="true" style="min-width:100%;">
+                                <li class="list-item col-12 mb-3">
+                                    <span><% if @posts_array[post][:draft] %>[DRAFT]<% end %> <%= @posts_array[post][:title] %></span>
+                                </li>
+                            </a>
+                        <% end %>
                     <% end %>
                 </div>
             </div>
