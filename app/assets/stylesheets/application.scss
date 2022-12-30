@@ -513,6 +513,14 @@ button {
 
 // TYPOGRAPHY
 // --------------------------------------------------------
+// h1,
+h2,
+h3,
+h4,
+h5 {
+    padding-bottom          : 1rem;
+}
+
 h1 { 
     font-size               : $FONT_SIZE_LARGER !important;
 }
@@ -527,7 +535,7 @@ h3 {
 h4,
 h5 {
     font-size               : $FONT_SIZE_BASE_PLUS !important;
-    padding-bottom          : 1rem;
+    // padding-bottom          : 1rem;
 }
 
 // h4 {
