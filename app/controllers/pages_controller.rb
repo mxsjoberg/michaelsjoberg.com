@@ -68,8 +68,8 @@ class PagesController < ApplicationController
         if @post == "a-few-notes-on-investing" || @post == "investing-in-stocks-like-a-pro"
             @post = "how-to-invest-in-stocks-like-a-pro"
         end
-        if @post == "computer-vision-in-a-hurry"
-            @post = "a-deep-dive-into-computer-vision"
+        if @post == "computer-vision-in-a-hurry" || @post == "a-deep-dive-into-computer-vision"
+            @post = "lecture-notes-on-computer-vision"
         end
         if @post == "why-are-financial-data-apps-so-bad"
             @post = "building-an-alternative-to-yahoo-finance"
