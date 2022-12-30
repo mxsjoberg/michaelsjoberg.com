@@ -1,8 +1,10 @@
 <!--
-    A Computer Systems Primer for Application Developers
+    Lecture notes on security engineering
     Michael Sjöberg
     Aug 27, 2022
 -->
+
+*This post is adapted from lecture notes taken during postgraduate studies at King's College London.*
 
 ## <a name="1" class="anchor"></a> [1. Introduction](#1)
 

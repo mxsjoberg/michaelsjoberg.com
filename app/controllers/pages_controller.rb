@@ -74,8 +74,8 @@ class PagesController < ApplicationController
         if @post == "why-are-financial-data-apps-so-bad"
             @post = "building-an-alternative-to-yahoo-finance"
         end
-        if @post == "computer-systems-and-low-level-software-security"
-            @post = "a-computer-systems-primer-for-application-developers"
+        if @post == "computer-systems-and-low-level-software-security" || @post == "a-computer-systems-primer-for-application-developers"
+            @post = "lecture-notes-on-security-engineering"
         end
         # posts.json
         @posts = JSON.parse(File.read(Rails.public_path + 'posts.json'))

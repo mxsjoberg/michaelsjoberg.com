@@ -10,8 +10,8 @@
         "read": 0,
         "image": false
     },
-    "a-computer-systems-primer-for-application-developers": {
-        "title": "A Computer Systems Primer for Application Developers",
+    "lecture-notes-on-security-engineering": {
+        "title": "Lecture notes on security engineering",
         "short": false,
         "tags": ["computer systems"],
         "date": "20220827",
