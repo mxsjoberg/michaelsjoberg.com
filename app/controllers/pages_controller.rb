@@ -65,8 +65,8 @@ class PagesController < ApplicationController
         @meta_title = "Writing"
         @post = params[:post]
         # redirects
-        if @post == "a-few-notes-on-investing" || @post == "investing-in-stocks-like-a-pro"
-            @post = "how-to-invest-in-stocks-like-a-pro"
+        if @post == "a-few-notes-on-investing" || @post == "investing-in-stocks-like-a-pro" || @post == "how-to-invest-in-stocks-like-a-pro"
+            @post = "how-to-invest-in-stocks"
         end
         if @post == "computer-vision-in-a-hurry" || @post == "a-deep-dive-into-computer-vision"
             @post = "lecture-notes-on-computer-vision"
