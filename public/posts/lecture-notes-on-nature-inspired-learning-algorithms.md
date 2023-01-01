@@ -1,10 +1,10 @@
 <!--
-    Solving Optimization Problems using Nature-Inspired Methods
+    Lecture notes on nature-inspired learning algorithms
     Michael Sjöberg
     November 16, 2022
 -->
 
-Related content: [Genetic Algorithm Optimization in Python](/programming/python/other/genetic-algorithm-optimization)
+*This post is adapted from lecture notes taken during postgraduate studies at King's College London.*
 
 ## <a name="1" class="anchor"></a> [1. Introduction](#1)
 
@@ -68,11 +68,11 @@ Solutions to optimization problems can be function-based (cost function) or tria
 
 - [Lagrange multiplier method](https://en.wikipedia.org/wiki/Lagrange_multiplier), $\textbf{MIN}\left[f(x, y, z)\right]$ subject to condition $c = g(x, y, z)$, Lagrange function is $L(x, y, z, l) = f(x, y, z) + l(g(x, y, z) - c)$, where $l$ is Lagrange multiplier, and stationary point is $L(x, y, z, l) = 0$.
 
-##### <a name="1.2.1" class="anchor"></a> [Exhaustive search](#1.2.1)
+#### <a name="1.2.1" class="anchor"></a> [Exhaustive search](#1.2.1)
 
 An exhaustive search method, or brute-force, is a numerical method that can be used to search a large but finite solution space using combinations of different variables. Brute-force methods do not get stuck in local minimum with fine sampling and work with both continuous or discontinuous functions (no derivatives). However, brute-force can take long time to find global minimum, or missed due to under-sampling, and only practical with small number of variables in limited search space.
 
-##### <a name="1.2.2" class="anchor"></a> [Nelder-Mead method](#1.2.2)
+#### <a name="1.2.2" class="anchor"></a> [Nelder-Mead method](#1.2.2)
 
 The [Nelder-Mead method](https://en.wikipedia.org/wiki/Nelder%E2%80%93Mead_method), or downhill simplex method, can be used to find local minimum of function with several variables (a simplex is an elementary shape formed in dimension $n+1$, such as 2D triangle, where points are referred to as best ($B$), good ($G$), and worst ($W$):
 
@@ -81,7 +81,7 @@ The [Nelder-Mead method](https://en.wikipedia.org/wiki/Nelder%E2%80%93Mead_metho
 	- move towards local minimum (reflection, expansion), where reflection point is $R = M + (M - W) = 2M - W$ and expanding point is $E = R + (R - M) = 2R - M$
     - contract around minimum (contraction, shrinking), where contraction points are $C_{1} = \frac{W + M}{2}$ and $C_{2} = \frac{M + R}{2}$, and shrink towards $B$, so shrink point is $S = \frac{B + W}{2}$ and midpoint is $M = \frac{B + G}{2}$
 
-##### <a name="1.2.3" class="anchor"></a> [Line minimisation](#1.2.3)
+#### <a name="1.2.3" class="anchor"></a> [Line minimisation](#1.2.3)
 
 A line minimisation method, or line search, starts at random point and selects direction to move until cost function changes (increases or decreases depending on goal). Line search methods are generally robust and fast to converge, but use gradients, so function need to be differentiable, and is not guaranteed to find global minimum:
 
@@ -91,7 +91,7 @@ A line minimisation method, or line search, starts at random point and selects d
 5. update, $x_{k+1} = x_{k} - \frac{f'(x_{k})}{f''(x_{k)})}$
 6. check convergence, or repeat from step 2
 
-##### <a name="1.2.4" class="anchor"></a> [Random walk](#1.2.4)
+#### <a name="1.2.4" class="anchor"></a> [Random walk](#1.2.4)
 
 The random walk method use random numbers to move in different directions, which is particularly useful to avoid getting stuck in local minimum or explore different regions to locate additional minimums, concentrate search to smaller region to refine solution:
 
@@ -112,7 +112,7 @@ Genetic algorithms is a subclass of evolutionary computing and describe populati
 
 Binary genetic algorithms (BGA) work well with continuous and discrete variables, can handle large number of decision variables and optimize decision variables with cost functions. BGA is less likely to get stuck in local minimum and tend to find global minimum. Common components of the BGA are variable encoding and decoding, fitness function, population, selection, mutation, offspring, and convergance.
 
-##### <a name="2.1.1" class="anchor"></a> [Notation](#2.1.1)
+#### <a name="2.1.1" class="anchor"></a> [Notation](#2.1.1)
 
 |     |     |
 | :-- | :-- |
@@ -132,15 +132,13 @@ Binary genetic algorithms (BGA) work well with continuous and discrete variables
 
 Decision variables are represented as chromosomes, such as $[v_{1}, v_{2}, ..., v_{N_{var}}]$, where each gene is coded by $m$-bits, so total number of bits per chromosome is $N_{bits} = m(N_{var})$, cost is evaluated by some cost function, and result is typically presented as sorted table, or cost table. A population, $N_{pop}$, is a group of chromosomes, each representing a potential solution to function, such as $f(x, y)$, where $(x, y)$ represent some chromosome (e.g., $[1100011, 0011001]$).
 
-##### <a name="2.1.2" class="anchor"></a> [Natural selection](#2.1.2)
+#### <a name="2.1.2" class="anchor"></a> [Natural selection](#2.1.2)
 
 The selection process imitates natural selection, i.e. survival of the fittest, where only best potential solutions are selected. A selection occur each generation, or iteration, and selection rate, $X_rate$, is fraction of population that survive. The number of chromosomes that are kept is $N_{keep}$, where best are kept and worst will be discarded (replaced by offsprings):
 
 - if $N_{pop} = 8$ and $X_{rate} = 0.5$, then $N_{keep} = N_{pop} X_{rate} = 8(0.5) = 4$, so keep best 4 chromosomes in cost table
 
 In natural selection, thresholding is a computationally cheaper alternative to $X_{rate}$ and used to determine which chromosomes to keep or discard, where chromosomes with cost lower than threshold survive and higher are discarded (minimization). A new population is generated when no chromsome within threshold, where threshold can be updated with each generation.
-
----
 
 #### <a name="2.1.3" class="anchor"></a> [**Example**: binary encoding and decoding](#2.1.2)
 
@@ -184,8 +182,6 @@ Below is an example of binary encoding and decoding a decimal, 25.3125 (base 10)
         # 0.3125
         ```
 
----
-
 #### <a name="2.1.4" class="anchor"></a> [**Example**: bits required to achieve precision](#2.1.3)
 
 Below is an example to find bits required to achieve precision of $d$ decimal places given a range:
@@ -196,8 +192,6 @@ Below is an example to find bits required to achieve precision of $d$ decimal pl
     
     - then $\frac{100 - 25}{10^{-2}} \leq 2^{m} - 1$ gives $m = 12.8729$, or about 13 bits
 
----
-
 ### <a name="2.2" class="anchor"></a> [2.2 Selection](#2.2)
 
 The selection process involves selecting two chromosomes from the mating pool to produce two new offsprings, and the offsprings are either kept or discarded based on parameters:
@@ -206,7 +200,7 @@ The selection process involves selecting two chromosomes from the mating pool to
 
 - random pairing, uniform random number generator to select chromosomes, all chromosomes have chance to mate, introduce diversity into population
 
-##### <a name="2.2.1" class="anchor"></a> [Weighted random pairing](#2.2.1)
+#### <a name="2.2.1" class="anchor"></a> [Weighted random pairing](#2.2.1)
 
 Weighted random pairing, or roulette wheel weighting, assign probabilities that are inversely proportional to cost to chromosomes in mating pool, where chromosomes with lowest cost have greatest chance to mate:
 
@@ -214,7 +208,7 @@ Weighted random pairing, or roulette wheel weighting, assign probabilities that 
 
 - cost weighting is cost function dependent, tend to weight top chromosomes more when large spread in cost between top and bottom chromosomes, tend to weight chromosomes evenly when chromosomes have about same cost, probabilities are calculated each generation, so computationally expensive
 
-##### <a name="2.2.2" class="anchor"></a> [Tournament selection](#2.2.2)
+#### <a name="2.2.2" class="anchor"></a> [Tournament selection](#2.2.2)
 
 Tournament selection is problem independent and work best with larger population size, but sorting is time-consuming and computationally expensive, chromosomes with good quality have higher chance to be selected
 
