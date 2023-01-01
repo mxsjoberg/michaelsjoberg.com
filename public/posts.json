@@ -1,6 +1,17 @@
 {   
-    "solving-optimization-problems-using-nature-inspired-methods": {
-        "title": "Solving Optimization Problems using Nature-Inspired Methods",
+    "genetic-algorithm-optimization-in-python": {
+        "title": "Genetic Algorithm Optimization in Python",
+        "short": false,
+        "tags": ["computer science"],
+        "date": "20221231",
+        "updated": "20221231",
+        "draft": true,
+        "toc": false,
+        "read": 0,
+        "image": false
+    },
+    "lecture-notes-on-nature-inspired-learning-algorithms": {
+        "title": "Lecture notes on nature-inspired learning algorithms",
         "short": false,
         "tags": ["computer science"],
         "date": "20220915",
