@@ -15,23 +15,8 @@ Dependencies.
 ```python
 import random
 import math
-
-# prettytable (optional but used to render tables)
-from prettytable import PrettyTable
-```
-
-Helper function to print table.
-
-```python
-def print_table(data):
-    pt = PrettyTable(('n', 'encoding', 'decoded x, y', 'cost'))
-    for row in data:
-        pt.add_row(row)
-
-    pt.align = 'l'
-    pt.align['n'] = 'c'
-
-    print(pt)
+# https://pypi.org/project/tabulate/
+from tabulate import tabulate
 ```
 
 Configuration variables used.
@@ -47,7 +32,7 @@ MAX_GEN = 10000
 
 # cost function
 def f(x, y):
-    return x * y
+    return -x * (y / 2 - 10)
 
 # range
 x_range = [10, 20]
@@ -64,9 +49,9 @@ crossover = [3, 6]
 #### <a name="2.1.1" class="anchor"></a> [Encoding](#2.1.1)
 
 ```python
-# encoding equation: B = x - x_low / ( (x_high - x_low) / ((2 ** m) - 1) )
+# encoding equation: B = (x - x_low) / [(x_high - x_low) / (2 ** m - 1)]
 def encode(x, x_low, x_high, m):
-    decimal = round((x - x_low) / ((x_high - x_low) / ((2 ** m) - 1)))
+    decimal = round((x - x_low) / ((x_high - x_low) / (2 ** m - 1)))
     binary = []
     while decimal >= 1:
         if decimal % 2 == 1:
@@ -76,11 +61,9 @@ def encode(x, x_low, x_high, m):
         decimal = math.floor(decimal / 2)
     while len(binary) < 4:
         binary.append(0)
-    
+
     return list(reversed(binary))
 ```
-
-It is always useful to add a few tests.
 
 ```python
 assert encode(9, -10, 14, 5) == [1, 1, 0, 0, 1]
@@ -91,7 +74,9 @@ assert encode(9, -10, 14, 5) == [1, 1, 0, 0, 1]
 ```python
 # decoding equation: x = x_low + B * ( (x_high - x_low) / ((2 ** m) - 1) )
 def decode(B, x_low, x_high, m):
-    return x_low + int((''.join(map(str, B))), 2) * ((x_high - x_low) / ((2 ** m) - 1))
+    decoded = x_low + int((''.join(map(str, B))), 2) * ((x_high - x_low) / ((2 ** m) - 1))
+    
+    return decoded
 ```
 
 ```python
@@ -121,7 +106,7 @@ def generate_population(n_pop, x_range, y_range, m_bits):
     # update index
     for i in range(len(pop_lst)):
         pop_lst[i][0] = i
-    
+
     return pop_lst
 ```
 
@@ -192,41 +177,35 @@ Generate initial population.
 
 ```python
 current_population = generate_population(N_POP, x_range, y_range, M_BITS)
-print_table(current_population)
-# +---+--------------------------+---------------+--------+
-# | n | encoding                 | decoded x, y  | cost   |
-# +---+--------------------------+---------------+--------+
-# | 0 | [0, 1, 0, 0, 0, 0, 0, 0] | [12.67, -5.0] | -63.35 |
-# | 1 | [0, 0, 0, 0, 0, 0, 1, 0] | [10.0, -3.4]  | -34.0  |
-# | 2 | [1, 0, 0, 0, 1, 0, 1, 0] | [15.33, 3.0]  | 45.99  |
-# | 3 | [1, 1, 1, 1, 1, 0, 1, 0] | [20.0, 3.0]   | 60.0   |
-# +---+--------------------------+---------------+--------+
+print(tabulate(current_population, headers=['n', 'encoding', 'decoded x, y', 'cost'], floatfmt=".3f", tablefmt="github"), end="\n\n")
 ```
+
+|   n | encoding                 | decoded x, y   |    cost |
+|-----|--------------------------|----------------|---------|
+|   0 | [1, 0, 0, 1, 1, 1, 0, 0] | [16.0, 4.6]    | 123.200 |
+|   1 | [0, 1, 0, 0, 0, 1, 1, 0] | [12.67, -0.2]  | 127.970 |
+|   2 | [0, 1, 1, 0, 0, 0, 1, 0] | [14.0, -3.4]   | 163.800 |
+|   3 | [1, 0, 0, 1, 0, 1, 0, 0] | [16.0, -1.8]   | 174.400 |
 
 Generate better population.
 
 ```python
 for i in range(MAX_GEN):
-    # generate
+    # generate offsprings
     offsprings = generate_offsprings(current_population, crossover)
     # mutate
     offsprings = mutate(offsprings, MUTATE_RATE, M_BITS)
-    # update
+    # update population
     current_population = update_population(current_population, offsprings, N_KEEP, x_range, y_range, M_BITS)
+
+print(tabulate(current_population, headers=['n', 'encoding', 'decoded x, y', 'cost'], floatfmt=".3f", tablefmt="github"), end="\n\n")
 ```
 
-Show results.
-
-```python
-print_table(current_population)
-# +---+--------------------------+---------------+--------+
-# | n | encoding                 | decoded x, y  | cost   |
-# +---+--------------------------+---------------+--------+
-# | 0 | [1, 1, 1, 1, 0, 0, 0, 0] | [20.0, -5.0]  | -100.0 |
-# | 1 | [1, 1, 1, 1, 0, 0, 0, 0] | [20.0, -5.0]  | -100.0 |
-# | 2 | [1, 1, 1, 1, 0, 0, 0, 0] | [20.0, -5.0]  | -100.0 |
-# | 3 | [1, 1, 1, 0, 0, 0, 0, 0] | [19.33, -5.0] | -96.65 |
-# +---+--------------------------+---------------+--------+
-```
+|   n | encoding                 | decoded x, y   |   cost |
+|-----|--------------------------|----------------|--------|
+|   0 | [0, 0, 0, 0, 1, 1, 1, 1] | [10.0, 7.0]    | 65.000 |
+|   1 | [0, 0, 0, 0, 1, 1, 1, 1] | [10.0, 7.0]    | 65.000 |
+|   2 | [0, 0, 0, 0, 1, 1, 1, 1] | [10.0, 7.0]    | 65.000 |
+|   3 | [0, 0, 0, 0, 1, 1, 1, 0] | [10.0, 6.2]    | 69.000 |
 
 
