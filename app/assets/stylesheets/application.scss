@@ -655,6 +655,12 @@ ol, ul, dl {
     padding-left            : 2rem;
 }
 
+#toc ol,
+#toc ul,
+#toc dl {
+    padding-left            : 1rem !important;
+}
+
 .font-family-serif ul li,
 .font-family-serif ol li {
     margin-bottom           : 1rem;
