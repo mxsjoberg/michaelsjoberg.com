@@ -69,5 +69,16 @@
         "draft": false,
         "toc": false,
         "read": 16
+    },
+    "a-python-primer-and-cheat-sheet": {
+        "title": "A Python Primer and Cheat Sheet",
+        "short": false,
+        "tags": ["computer science"],
+        "date": "20181104",
+        "updated": "20230103",
+        "draft": false,
+        "toc": true,
+        "read": 21,
+        "image": false
     }
 }
