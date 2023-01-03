@@ -8,12 +8,11 @@
         <%= render 'divider', locals: { size: @size } %>
     </div>
 
-    <!-- projects:active -->
+    <!-- projects -->
     <% @projects.keys.each do |project| %>
-        <% if true %>
         <div class="row justify-content-center mb-3">
             <!-- title -->
-            <div class="col-12 col-lg-<%= @size %> mb-3">
+            <div class="col-12 col-lg-<%= @size %> mb-0">
                 <h3 class="font-family-base <% if @projects[project]['url'] != "" %>font-weight-bold<% end %>">
                     <% if @projects[project]['url'] != "" %>
                     <a href="<%= @projects[project]['url'] %>" target="_blank"><% if @projects[project]['archived'] %>[ARCHIVED]<% end %> <%= project %></a>
@@ -64,64 +63,5 @@
             </div>
             <% end %>
         </div>
-        <% end %>
-    <% end %>
-
-    <!-- projects:previous -->
-    <% if false %>
-    <div class="row justify-content-center mb-3">
-        <div class="col-12 col-lg-<%= @size %> text-center mb-0">
-            <p class="m-0">Previous:</p>
-        </div>
-    </div>
-    <% @projects.keys.each do |project| %>
-        <% if !@projects[project]['active'] %>
-        <div class="row justify-content-center mb-3">
-            <!-- title -->
-            <div class="col-12 col-lg-<%= @size %> mb-3">
-                <h3 class="font-family-base <% if @projects[project]['url'] != "" %>font-weight-bold<% end %>">
-                    <% if @projects[project]['url'] != "" %>
-                    <a href="<%= @projects[project]['url'] %>" target="_blank"><% if @projects[project]['archived'] %>[ARCHIVED]<% end %> <%= project %></a>
-                    <% else %>
-                        <%= project %>
-                    <% end %>
-                </h3>
-                <!-- meta -->
-                <% if @projects[project]['tags'] != [] %>
-                <p class="text-muted m-0">
-                    <!-- tags -->
-                    <% @projects[project]['tags'].each do |tag| %>
-                        <span>
-                            <% if tag == tag.upcase %>
-                                <%= tag %>
-                            <% elsif tag.include?('.') %>
-                                <%= tag.capitalize %>
-                            <% else %>
-                                <%= tag.titleize %>
-                            <% end %>
-                            <% unless tag.equal?(@projects[project]["tags"].last) %> / <% end %>
-                        </span>
-                    <% end %>
-                </p>
-                <% end %>
-            </div>
-            <!-- body -->
-            <% if @projects[project]['description'] != [] %>
-            <div class="col-12 col-lg-<%= @size %> mb-3">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-12 border-left">
-                            <!-- description -->
-                            <% @projects[project]['description'].each do |paragraph| %>
-                                <p class="<% unless paragraph.equal?(@projects[project]['description'].last) %>mb-3<% else %>m-0<% end %> font-family-serif"><%= paragraph %></p>
-                            <% end %>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <% end %>
-        </div>
-        <% end %>
-    <% end %>
     <% end %>
 </div>
