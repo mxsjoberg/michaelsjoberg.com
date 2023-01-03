@@ -1,7 +1,7 @@
 {   
     "Evert.AI": {
         "description": [
-            "Visual programming language (block-based) and low-code environment for machine learning frameworks."
+            "A block-based developer environment to experiment with automatically generated code (program synthesis)."
         ],
         "date": "",
         "url": "",
@@ -13,43 +13,43 @@
     },
     "Terminal": {
         "description": [
-            "Browser-based and highly customizable stock market data dashboard."
+            "A browser-based stock market data dashboard with customizable interface. The goal is to create a highly customizable and developer-like environment for financial professionals. Interesting future work include exploring user-driven approaches to generate web layouts, such as SQL-like language or using prompts in natural language."
         ],
         "date": "2020-",
-        "url": "",
+        "url": "https://terminal.frozenfork.com",
         "tags": [],
         "archived": false,
         "active": true,
         "github": false,
-        "website": "https://terminal.frozenfork.com"
-    },
-    "pas2wat (pascal-to-wat)": {
-        "description": [
-            "Compiler for subset of Pascal targeting WebAssembly text-format."
-        ],
-        "date": "2020-",
-        "url": "",
-        "tags": [],
-        "archived": false,
-        "active": true,
-        "github": "https://github.com/michaelsjoeberg/pas2wat",
         "website": false
     },
     "raknalang (räknalang)": {
         "description": [
-            "A simple educational programming language for learning basic arithmetics in native languages."
+            "An interpreter and REPL to do arithmetic in natural languages, such as English or Swedish. The goal is to provide a programmatic way to express simple calculation and conditional problems like it would be expressed in native language."
         ],
-        "date": "2020",
-        "url": "",
+        "date": "2021",
+        "url": "https://github.com/michaelsjoeberg/raknalang",
         "tags": [],
         "archived": false,
         "active": true,
-        "github": "https://github.com/michaelsjoeberg/raknalang",
+        "github": false,
+        "website": false
+    },
+    "pas2wat (pascal-to-wat)": {
+        "description": [
+            "A compiler to translate subset of Pascal into WebAssembly text-format. The goal is to develop a modular and extendable compiler architecture in Rust, and to explore compatibility issues when translating legacy programming languages to web native languages. Interesting future work include handling files, read-write operations, and memory management."
+        ],
+        "date": "2020-",
+        "url": "https://github.com/michaelsjoeberg/pas2wat",
+        "tags": [],
+        "archived": false,
+        "active": true,
+        "github": false,
         "website": false
     },
     "EQZEN": {
         "description": [
-            "Browser-based and collaborative portfolio management application; discontinued."
+            "A browser-based collaborative financial portfolio management application. The goal was to explore use cases around security and collaboration in financial management and to improve workflow for financial advisors working with many clients. Discontinued."
         ],
         "date": "2018-2020",
         "url": "",
@@ -57,11 +57,11 @@
         "archived": false,
         "active": false,
         "github": false,
-        "website": "https://web.archive.org/web/20200302140415/https://eqzen.com/"
+        "website": false
     },
-    "Give Trees (Plant for Earth LTD; dissolved)": {
+    "Give Trees": {
         "description": [
-            "Android application for charitable donations and unreleased iOS game; both discontinued."
+            "Mobile application to plant trees published by Plant for Earth LTD (co-founder, dissolved). Discontinued."
         ],
         "date": "2014-2017",
         "url": "",
@@ -69,28 +69,28 @@
         "archived": false,
         "active": false,
         "github": false,
-        "website": "https://web.archive.org/web/20190205052959/https://www.givetrees.co/"
+        "website": false
     },
     "learnhub.io": {
         "description": [
-            "Browser-based platform and skill tracker for self-learners."
+            "A web-based skill tracker and social platform for self-learners. The goal was to create a community of self-learners that want to create and share pathways/ online curriculums to learn specific topics. A pathway was a curated list of available-online courses, such as MOOCs."
         ],
         "date": "2018",
-        "url": "",
+        "url": "https://github.com/michaelsjoeberg/learnhub.io",
         "tags": [],
         "archived": true,
         "active": false,
-        "github": "https://github.com/michaelsjoeberg/learnhub.io",
+        "github": false,
         "website": false
     },
     "doolio.co": {
-        "description": ["Online interactive resume."],
+        "description": ["An interactive resume. The goal was to learn PHP."],
         "date": "2017",
-        "url": "",
+        "url": "https://github.com/michaelsjoeberg/doolio.co",
         "tags": [],
         "archived": true,
         "active": false,
-        "github": "https://github.com/michaelsjoeberg/doolio.co",
+        "github": false,
         "website": false
     }
 }
