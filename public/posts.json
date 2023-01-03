@@ -80,5 +80,16 @@
         "toc": true,
         "read": 21,
         "image": false
+    },
+    "a-scala-primer-and-cheat-sheet": {
+        "title": "A Scala Primer and Cheat Sheet",
+        "short": false,
+        "tags": ["computer science"],
+        "date": "20180622",
+        "updated": "20230103",
+        "draft": false,
+        "toc": true,
+        "read": 21,
+        "image": false
     }
 }
