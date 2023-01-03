@@ -280,7 +280,7 @@ string.find('t', 1, len(string))
 # 3
 ```
 
-#### <a name="4.2.2" class="anchor"></a> [Removing whitespace from a string](#4.2.2)
+#### <a name="4.2.2" class="anchor"></a> [Removing whitespace from string](#4.2.2)
 
 ```python
 string = '    some text    '
@@ -382,7 +382,10 @@ tuple_list = tuple([100, 'B'])
 Dictionaries are key-value pairs.
 
 ```python
-dict = {'Adam': ['adam@email.com', 2445055], 'Bard': 'bard@email.com'}
+dict = {
+    'Adam': ['adam@email.com', 2445055],
+    'Bard': 'bard@email.com'
+}
 ```
 
 ```python
@@ -696,7 +699,7 @@ class Money (object):
         return str(self.amount) + ' ' + self.currency
 ```
 
-Create a new instance of class.
+Create new instance of class.
 
 ```python
 money = Money(220, 'EUR') 
