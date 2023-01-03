@@ -8,26 +8,34 @@ class PagesController < ApplicationController
     def home
         @route_path = "home"
         @meta_title = "Michael Sjöberg"
-        # intro.json
-        @intro = JSON.parse(File.read(Rails.public_path + 'intro.json'))
-        # recent
-        @recent = @intro['recent']
-        # highlight
-        @highlight = @intro['highlight']
+        # posts.json
+        @posts = JSON.parse(File.read(Rails.public_path + 'posts.json'))
+        @posts_array = Hash.new
+        @max_len = 1
+        @posts.keys.each do |post|
+            unless @posts[post]['draft'] == true || @posts_array.length >= @max_len
+                @posts_array[post] = {
+                    title: @posts[post]['title'],
+                    date: @posts[post]['date']
+                }
+            end
+        end
+        # sort by date if not sorted already
+        @posts_array = @posts_array.sort_by{ |_,h| -h[:date].to_i }.to_h
     end
 
     # GET /programming
     def programming
         @route_path = "programming"
-        @meta_title = "Programming"
+        @meta_title = "Programming | Michael Sjöberg"
+        # params
         @category = params[:category]
         @group = params[:group]
         @file = params[:file]
         # programming.json
-        json_file = File.read(Rails.public_path + 'programming.json')
-        @programming = JSON.parse(json_file)
+        @programming = JSON.parse(File.read(Rails.public_path + 'programming.json'))
         unless (@file.nil?)
-            @meta_title = @file.titleize + " -- " + @category.titleize
+            @meta_title = @file.titleize + " in " + @category.titleize
             # define file properties
             @path = @programming[@category][@group]["path"]
             @url = @programming[@category][@group]["url"]
@@ -44,7 +52,7 @@ class PagesController < ApplicationController
     # GET /finance
     def finance
         @route_path = "finance"
-        @meta_title = "Finance"
+        @meta_title = "Finance | Michael Sjöberg"
         # finance.json
         @finance = JSON.parse(File.read(Rails.public_path + 'finance.json'))
         @url = @finance["url"]
@@ -54,7 +62,7 @@ class PagesController < ApplicationController
     # GET /projects
     def projects
         @route_path = "projects"
-        @meta_title = "Projects"
+        @meta_title = "Projects | Michael Sjöberg"
         # projects.json
         @projects = JSON.parse(File.read(Rails.public_path + 'projects.json'))
     end
@@ -62,7 +70,8 @@ class PagesController < ApplicationController
     # GET /writing
     def writing
         @route_path = "writing"
-        @meta_title = "Writing"
+        @meta_title = "Writing | Michael Sjöberg"
+        # params
         @post = params[:post]
         # redirects
         if @post == "a-few-notes-on-investing" || @post == "investing-in-stocks-like-a-pro" || @post == "how-to-invest-in-stocks-like-a-pro"
@@ -83,66 +92,59 @@ class PagesController < ApplicationController
         unless (@post.nil?)
             @file = @post + '.md'
             @title = @posts[@post]['title']
-            @short = @posts[@post]['short']
-            @note = @posts[@post]['note']
+            # @short = @posts[@post]['short']
+            # @note = @posts[@post]['note']
             @tags = @posts[@post]['tags']
             @date = @posts[@post]['date']
             @updated = @posts[@post]['updated']
             @draft = @posts[@post]['draft']
             @toc = @posts[@post]['toc']
-            @image = @posts[@post]['image']
+            # @image = @posts[@post]['image']
             @all_lines = File.read(Rails.public_path + 'posts/' + @file)
             @lines = File.readlines(Rails.public_path + 'posts/' + @file)
-            # @skip = @lines[4].to_i
-            # unless (@skip == 0)
-            #     @toc = @lines[6..@skip]
-            # end
-            # override meta
-            @meta_title = @title
+            # override meta title
+            @meta_title = @title + " | Michael Sjöberg"
             # count words
             @words = 0
-            @lines.drop(4).each do |line|
+            @lines.drop(5).each do |line|
                 words = line.split(' ')
                 words.each do |word|
                     @words += 1
                 end
             end
-            # content
-            # to render full file
-            # @content = @lines.drop(4).join("\n")
-        # all posts
+        # render all posts
         else
             @posts_array = Hash.new
             @posts.keys.each do |post|
                 @file = post + '.md'
-                # @date = post
                 @title = @posts[post]['title']
-                @short = @posts[post]['short']
-                @note = @posts[post]['note']
+                # @short = @posts[post]['short']
+                # @note = @posts[post]['note']
                 @tags = @posts[post]['tags']
                 @date = @posts[post]['date']
                 @updated = @posts[post]['updated']
                 @draft = @posts[post]['draft']
                 @read = @posts[post]['read']
-                @posts_array[post] = { title: @title, short: @short, note: @note, tags: @tags, date: @date, updated: @updated, draft: @draft, read: @read }
+                @posts_array[post] = {
+                    title: @title,
+                    # short: @short,
+                    # note: @note,
+                    tags: @tags,
+                    date: @date,
+                    updated: @updated,
+                    draft: @draft,
+                    read: @read
+                }
             end
             # sort by date if not sorted already
             @posts_array = @posts_array.sort_by{ |_,h| -h[:date].to_i }.to_h
         end
     end
 
-    # GET /about
-    # def about
-    #     @route_path = "about"
-    #     @meta_title = "About"
-    #     # projects
-    #     @projects = JSON.parse(File.read(Rails.public_path + 'projects.json'))
-    # end
-
     # GET /about/courses
     def courses
         @route_path = "courses"
-        @meta_title = "Course List"
+        @meta_title = "Course List | Michael Sjöberg"
         # courses
         @courses = JSON.parse(File.read(Rails.public_path + 'courses.json'))
     end
