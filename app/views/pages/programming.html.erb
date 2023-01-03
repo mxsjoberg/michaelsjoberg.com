@@ -40,20 +40,22 @@
         <% @programming.keys.each do |category| %>
         <div class="row justify-content-center mb-3">
             <!-- category -->
-            <div class="col-12 col-lg-<%= @size %> mb-3">
+            <div class="col-12 col-lg-<%= @size %>">
                 <a name="<%= category %>" class="anchor-2"></a>
                 <h2 class="font-weight-bold">
                     <a href="#<%= category %>" data-turbolinks="true"><%= category.titleize %></a>
                 </h2>
             </div>
-            <% if category == 'python' %>
-            <div class="col-12 col-lg-<%= @size %> mb-3">
-                <p class="m-0">See also: <a href="https://michaelsjoeberg.github.io/A-Python-Primer-and-Cheat-Sheet/" target="_blank">A Python Primer and Cheat Sheet</a></p>
-            </div>
-            <% elsif category == 'scala' %>
-            <div class="col-12 col-lg-<%= @size %> mb-3">
-                <p class="m-0">See also: <a href="https://michaelsjoeberg.github.io/A-Scala-Primer-and-Cheat-Sheet/" target="_blank">A Scala Primer and Cheat Sheet</a></p>
-            </div>
+            <% if false %>
+                <% if category == 'python' %>
+                <div class="col-12 col-lg-<%= @size %> mb-3">
+                    <p class="m-0">See also: <a href="https://michaelsjoeberg.github.io/A-Python-Primer-and-Cheat-Sheet/" target="_blank">A Python Primer and Cheat Sheet</a></p>
+                </div>
+                <% elsif category == 'scala' %>
+                <div class="col-12 col-lg-<%= @size %> mb-3">
+                    <p class="m-0">See also: <a href="https://michaelsjoeberg.github.io/A-Scala-Primer-and-Cheat-Sheet/" target="_blank">A Scala Primer and Cheat Sheet</a></p>
+                </div>
+                <% end %>
             <% end %>
             <!-- group -->
             <div class="col-12 col-lg-<%= @size %>">
