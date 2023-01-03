@@ -18,7 +18,7 @@
             <% end %>
             <!-- time to read -->
             <% @time_to_read = @words / 75 %>
-            <span><%= @time_to_read %> min read</span>
+            <span><%= @time_to_read %> min read (~<%= @words / 500 %> pages)</span>
             <!-- words -->
             <% if @draft %>
             <span style="float:right;">~<%= @words %> words</span>
@@ -50,10 +50,6 @@
         <h1 class="font-family-serif font-weight-bold <% if @toc%>my-3<% else %>mt-3<% end %>">
             <a href="/<%= @route_path %>/<%= @post %>" data-turbolinks="true"><%= @title %></a>
         </h1>
-        <!-- short -->
-        <% if false %>
-        <p class="text-medium text-muted mb-0" style="font-style:italic;"><%= @short %></p>
-        <% end %>
     </div>
     <!-- image -->
     <% if false %>
@@ -102,10 +98,6 @@
     </div>
     <% else %>
         <%= render 'divider', locals: { size: @size } %>
-    <% end %>
-    <!-- note -->
-    <% if @note %>
-    <p class="font-family-serif text-muted mb-0 text-center mb-3 pb-3" style="font-style:italic;"><%= @note %></p>
     <% end %>
     <!-- render post  -->
     <div class="col-12 col-lg-<%= @size %> font-family-serif">
