@@ -16,14 +16,32 @@
                 <div class="row list">
                     <!-- list items -->
                     <div class="container-fluid">
-                        <div class="row list border-solid--grey pt-3">
-                            <% @finance['files'].sort.each do |ticker| %>
+                        <div class="row list border-solid--grey py-2">
+                            <% @finance['files'].keys.sort.each do |ticker| %>
                             <!-- file -->
-                            <a href="<%= @url %><%= ticker %><%= @format %>" target="_blank" class="col-12 col-lg-4">
-                                <li class="list-item mb-3">
-                                    <span><%= ticker %></span>
-                                </li>
-                            </a>
+                            <div class="col-12 list-item">
+                                <div class="row">
+                                <!-- <li class="list-item mb-3"> -->
+                                    <div class="col-4">
+                                        <a href="<%= @url %><%= ticker %><%= @format %>" target="_blank"><span><%= ticker %></span></a>
+                                    </div>
+                                    <div class="col-4">
+                                        <% unless @finance['files'][ticker]["name"] == false %>
+                                        <p class="mb-0"><%= @finance['files'][ticker]["name"] %></p>
+                                        <% end %>
+                                    </div>
+                                    <div class="col-4 text-right">
+                                        <p class="mb-0">
+                                        <% unless @finance['files'][ticker]["rating"] == false %>
+                                            <%= @finance['files'][ticker]["rating"] %>
+                                        <% else %>
+                                            <span class="text-muted">Not updated</span>
+                                        <% end %>
+                                        </p>
+                                    </div>
+                                <!-- </li> -->
+                                </div>
+                            </div>
                             <% end %>
                         </div>
                     </div>
