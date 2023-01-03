@@ -88,19 +88,6 @@ Modulo (remainder).
 // 10.0
 ```
 
-TODO: move to list operations
-
-Built in numerical operations.
-
-```scala
-List(1, 2, 3, 4).sum
-// 10
-List(1, 2, 3, 4).min
-// 1
-List(1, 2, 3, 4).max
-// 4
-```
-
 ## <a name="3" class="anchor"></a> [3. Variables](#3)
 
 Use `val` keyword to make data immutable.
@@ -284,6 +271,15 @@ list_two.last
 ```scala
 list_range.filter(_ > 5)
 // List(6, 7, 8, 9)
+```
+
+```scala
+List(1, 2, 3, 4).sum
+// 10
+List(1, 2, 3, 4).min
+// 1
+List(1, 2, 3, 4).max
+// 4
 ```
 
 #### <a name="5.1.1" class="anchor"></a> [Create list from a string](#5.1.1)
