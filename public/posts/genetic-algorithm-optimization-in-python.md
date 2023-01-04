@@ -6,11 +6,11 @@
 
 ## <a name="1" class="anchor"></a> [Introduction](#1)
 
-TODO: background on BGA and stages
+Genetic algorithms is a subclass of evolutionary computing and part of population-based search methods inspired by the theory of evolution. The theory of evolution states that an offspring has many characteristics of its parents, which implies population is stable, and variations in characterisitcs between individuals passed from one generation to the next often is due to inherited characteristics, where some percentage of offsprings survive to adulthood. Genetic algorithms borrow much of its terminology from biology, such as natural selection, evolution, gene, chromosome, mating, crossover, and mutation. Binary genetic algorithms (BGA) work well with continuous and discrete variables, can handle large number of decision variables, and optimize decision variables for cost functions. A BGA is less likely to get stuck in local minimum and often find global minimum. The common components of a BGA implementation are: variable encoding and decoding, fitness function (cost function), initial population, selection, mutation, offspring generation, and convergance condition.
 
-### <a name="1.1" class="anchor"></a> [Set-up](#1.1)
+#### <a name="1.1" class="anchor"></a> [Set-up](#1.1)
 
-Dependencies.
+Install and import dependencies.
 
 ```python
 import random
@@ -19,37 +19,15 @@ import math
 from tabulate import tabulate
 ```
 
-Configuration variables used.
+## <a name="2" class="anchor"></a> [Genetic algorithm functions](#2)
 
-```python
-M_BITS = 4
-N_POP = 4
-N_KEEP = 2
-MUTATE_RATE = 0.1
-
-# generations
-MAX_GEN = 10000
-
-# cost function
-def f(x, y):
-    return -x * (y / 2 - 10)
-
-# range
-x_range = [10, 20]
-y_range = [-5, 7]
-
-# crossover
-crossover = [3, 6]
-```
-
-## <a name="2" class="anchor"></a> [Genetic algorithm implementation](#2)
-
-### <a name="2.1" class="anchor"></a> [Encoding and decoding](#2.1)
+BGA need decision variables to be represented as binary chromosomes, where each gene is coded by `M_BITS`, and need to be decoded before evaluated by cost function `f`. A population, `N_POP`, is a group of chromosomes, each representing a potential solution to `f`.
 
 #### <a name="2.1.1" class="anchor"></a> [Encoding](#2.1.1)
 
+The encoding equation is `B = (x - x_low) / [(x_high - x_low) / (2 ** m - 1)]` takes a number, `x`, range `[x_low, x_high]`, and precision `m`, and gives binary representation.
+
 ```python
-# encoding equation: B = (x - x_low) / [(x_high - x_low) / (2 ** m - 1)]
 def encode(x, x_low, x_high, m):
     decimal = round((x - x_low) / ((x_high - x_low) / (2 ** m - 1)))
     binary = []
@@ -71,8 +49,9 @@ assert encode(9, -10, 14, 5) == [1, 1, 0, 0, 1]
 
 #### <a name="2.1.2" class="anchor"></a> [Decoding](#2.1.2)
 
+The decoding equation is `x = x_low + B * [(x_high - x_low) / ((2 ** m) - 1)]`, which takes binary representation as input and gives decimal number.
+
 ```python
-# decoding equation: x = x_low + B * ( (x_high - x_low) / ((2 ** m) - 1) )
 def decode(B, x_low, x_high, m):
     decoded = x_low + int((''.join(map(str, B))), 2) * ((x_high - x_low) / ((2 ** m) - 1))
     
@@ -80,13 +59,17 @@ def decode(B, x_low, x_high, m):
 ```
 
 ```python
+assert int(decode([1, 1, 0, 0, 1], -10, 14, 5)) == 9
 assert round(decode([1, 0, 0, 0], 10, 20, 4), 2) == 15.33
 ```
 
 ### <a name="2.2" class="anchor"></a> [Initial population](#2.2)
 
+The initial population is generated at random, encoded and decoded for consistency, evaluated using the cost function, and then appended to cost table (sorted). Note that the index in cost table is mainly for readability and should not be updated when table is sorted, so needs to be generated after every iteration.
+
 ```python
-def generate_population(n_pop, x_range, y_range, m_bits):
+def generate_population(n_pop, x_range, y_range, m_bits, debug=False):
+    if debug: random.seed(10)
     pop_lst = []
     for i in range(n_pop):
         x = random.randint(x_range[0], x_range[1])
@@ -108,6 +91,19 @@ def generate_population(n_pop, x_range, y_range, m_bits):
         pop_lst[i][0] = i
 
     return pop_lst
+```
+
+```python
+example_population = generate_population(6, [5, 20], [-5, 15], 4, True)
+print(tabulate(example_population, headers=['n', 'encoding', 'decoded x, y', 'cost'], floatfmt=".3f", tablefmt="simple"), end="\n\n")
+#   n  encoding                  decoded x, y       cost
+# ---  ------------------------  --------------  -------
+#   0  [1, 0, 0, 0, 1, 1, 1, 1]  [13.0, 15.0]     32.500
+#   1  [0, 0, 0, 1, 1, 0, 1, 0]  [6.0, 8.33]      35.010
+#   2  [0, 0, 0, 0, 0, 1, 0, 0]  [5.0, 0.33]      49.180
+#   3  [1, 1, 1, 1, 1, 1, 1, 0]  [20.0, 13.67]    63.300
+#   4  [1, 1, 1, 0, 1, 0, 1, 1]  [19.0, 9.67]     98.140
+#   5  [0, 1, 0, 1, 0, 0, 0, 1]  [10.0, -3.67]   118.350
 ```
 
 ### <a name="2.3" class="anchor"></a> [Generate offsprings](#2.3)
@@ -172,6 +168,29 @@ def update_population(current_population, offsprings, keep, x_range, y_range, m_
 ```
 
 ## <a name="3" class="anchor"></a> [Running](#3)
+
+Set configuration variables `M_BITS`, `N_POP`, `N_KEEP`, `MUTATE_RATE`, crossover locations, which could also be random, constraints, such as maxium number of iterations and range of decision variables, and define cost function.
+
+```python
+M_BITS = 4
+N_POP = 4
+N_KEEP = 2
+MUTATE_RATE = 0.1
+
+# generations
+MAX_GEN = 10000
+
+# cost function
+def f(x, y):
+    return -x * (y / 2 - 10)
+
+# range
+x_range = [10, 20]
+y_range = [-5, 7]
+
+# crossover
+crossover = [3, 6]
+```
 
 Generate initial population.
 
