@@ -1,14 +1,14 @@
 <!--
     Genetic Algorithm Optimization in Python
     Michael Sjöberg
-    Aug 27, 2022
+    Jan 05, 2023
 -->
 
 ## <a name="1" class="anchor"></a> [Introduction](#1)
 
-<!-- Genetic algorithms is a subclass of evolutionary computing and part of population-based search methods inspired by the theory of evolution. The theory of evolution states that an offspring has many characteristics of its parents, which implies population is stable, and variations in characterisitcs between individuals passed from one generation to the next often is due to inherited characteristics, where some percentage of offsprings survive to adulthood. Genetic algorithms borrow much of its terminology from biology, such as natural selection, evolution, gene, chromosome, mating, crossover, and mutation. Binary genetic algorithms (BGA) work well with continuous and discrete variables, can handle large number of decision variables, and optimize decision variables for cost functions. A BGA is less likely to get stuck in local minimum and often find global minimum. The common components of a BGA implementation are: variable encoding and decoding, fitness function (cost function), initial population, selection, mutation, offspring generation, and convergance condition. -->
+Genetic algorithms are a type of computational method that uses concepts from biology, such as natural selection and evolution, to find solutions to problems. They are a subclass of evolutionary computing and are used to search through a large set of potential solutions to find the best one. One specific type of genetic algorithm, called a binary genetic algorithm (BGA), is effective at working with both continuous and discrete variables and optimizing many decision variables at once. It is also less likely to get stuck in local minima, meaning it can often find the overall best solution (global minimum).
 
-Genetic algorithms are a type of computational method that uses concepts from biology, such as natural selection and evolution, to find solutions to problems. They are a subclass of evolutionary computing and are used to search through a large set of potential solutions to find the best one. One specific type of genetic algorithm, called a binary genetic algorithm (BGA), is effective at working with both continuous and discrete variables and optimizing many decision variables at once. It is also less likely to get stuck in local minima, meaning it can often find the overall best solution (global minimum). To use a BGA, we need to define certain components, including an encoding and decoding system for variables, a fitness function to evaluate potential solutions, an initial population of solutions, and rules for selection, mutation, and generating new solutions. The algorithm will continue to run until it meets a pre-defined convergence condition.
+To use a BGA, we need to define certain components, including an encoding and decoding system for variables, a fitness function to evaluate potential solutions, an initial population of solutions, and rules for selection, mutation, and generating new solutions. The algorithm will continue to run until it meets a pre-defined convergence condition.
 
 #### <a name="1.1" class="anchor"></a> [Setup](#1.1)
 
@@ -19,6 +19,13 @@ import random
 import math
 # https://pypi.org/project/tabulate/
 from tabulate import tabulate
+```
+
+Helper function to print table using `tabulate`.
+
+```python
+def print_table(population):
+    print(tabulate(population, headers=['n', 'encoding', 'decoded x, y', 'cost'], floatfmt=".3f", tablefmt="simple"), end="\n\n")
 ```
 
 ## <a name="2" class="anchor"></a> [Binary Genetic Algorithm (BGA)](#2)
@@ -118,7 +125,7 @@ example_population = generate_population(
 This can be useful for testing purposes, as it allows us to easily reproduce the same results.
 
 ```python
-print(tabulate(example_population, headers=['n', 'encoding', 'decoded x, y', 'cost'], floatfmt=".3f", tablefmt="simple"), end="\n\n")
+print_table(example_population)
 #   n  encoding                  decoded x, y       cost
 # ---  ------------------------  --------------  -------
 #   0  [0, 0, 1, 0, 1, 1, 1, 0]  [7.0, 13.67]     22.160
@@ -200,7 +207,7 @@ def update_population(current_population, offsprings, keep, x_range, y_range, m_
     return current_population
 ```
 
-After the offsprings have been generated, they are evaluated using the cost function and sorted based on their fitness. The `N_KEEP` fittest offsprings are then appended to the previous population to create and updated population, which is the starting point for the next generation.
+After the offsprings have been generated, they are evaluated using the cost function and sorted based on their fitness. The `N_KEEP` fittest offsprings are then appended to the previous population to create an updated population, which is the starting point for the next generation.
 
 ## <a name="3" class="anchor"></a> [BGA in action](#3)
 
@@ -231,11 +238,11 @@ x_range = [10, 20]
 y_range = [-5, 7]
 ```
 
-Below is the initial population.
+Here is the initial population,
 
 ```python
 current_population = generate_population(N_POP, x_range, y_range, M_BITS)
-print(tabulate(current_population, headers=['n', 'encoding', 'decoded x, y', 'cost'], floatfmt=".3f", tablefmt="simple"), end="\n\n")
+print_table(current_population)
 #   n  encoding                  decoded x, y       cost
 # ---  ------------------------  --------------  -------
 #   0  [0, 1, 1, 0, 1, 1, 1, 1]  [14.0, 7.0]      91.000
@@ -244,7 +251,7 @@ print(tabulate(current_population, headers=['n', 'encoding', 'decoded x, y', 'co
 #   3  [1, 1, 1, 1, 0, 0, 1, 0]  [20.0, -3.4]    234.000
 ```
 
-...and below is the final population.
+...and here is the final population.
 
 ```python
 for i in range(MAX_GEN):
@@ -255,7 +262,7 @@ for i in range(MAX_GEN):
     # update population
     current_population = update_population(current_population, offsprings, N_KEEP, x_range, y_range, M_BITS)
 
-print(tabulate(current_population, headers=['n', 'encoding', 'decoded x, y', 'cost'], floatfmt=".3f", tablefmt="simple"), end="\n\n")
+print_table(current_population)
 #   n  encoding                  decoded x, y      cost
 # ---  ------------------------  --------------  ------
 #   0  [0, 0, 0, 0, 1, 1, 1, 1]  [10.0, 7.0]     65.000
