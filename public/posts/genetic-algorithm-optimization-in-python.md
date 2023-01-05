@@ -21,7 +21,7 @@ import math
 from tabulate import tabulate
 ```
 
-## <a name="2" class="anchor"></a> [Binary Genetic Algorithm](#2)
+## <a name="2" class="anchor"></a> [Binary Genetic Algorithm (BGA)](#2)
 
 <!-- BGA need decision variables to be represented as binary chromosomes, where each gene is coded by `M_BITS`, and need to be decoded before evaluated by cost function `f`. A population, `N_POP`, is a group of chromosomes, each representing a potential solution to `f`. -->
 
@@ -77,6 +77,8 @@ The initial population of solutions are typically generated randomly and then en
 def generate_population(n_pop, x_range, y_range, m_bits, seed=False):
     if seed != False:
         random.seed(seed)
+    else:
+        random.seed(None)
     pop_lst = []
     for i in range(n_pop):
         x = random.randint(x_range[0], x_range[1])
@@ -146,7 +148,9 @@ def generate_offsprings(population, crossover):
 
 This process combines characteristics from both parent chromosomes in the offsprings, allowing for greater diversity in the population.
 
-### <a name="2.4" class="anchor"></a> [Mutation](#2.4)
+#### <a name="2.5" class="anchor"></a> [Mutation](#2.5)
+
+In genetic algorithms, mutation is a process by which small random changes are made to the chromosomes in the population. These changes, or mutations, are introduced to allow the algorithm to explore a wider range of potential solutions and avoid getting stuck in local minima. Mutation is typically achieved by randomly altering certain bits in the chromosomes, which can result in significant changes to the encoded solution. By introducing new information through mutation, the algorithm can continue to search for better solutions even after it has converged on a particular region of the cost surface.
 
 ```python
 def mutate(offsprings, mu, m_bits):
@@ -154,7 +158,7 @@ def mutate(offsprings, mu, m_bits):
     for i in range(nbits):
         offspring = random.randint(0, len(offsprings) - 1)
         bit = random.randint(0, m_bits * 2 - 1)
-        # swap bits
+        # flip bits
         if offsprings[offspring][bit] == 1:
             offsprings[offspring][bit] = 0
         else:
@@ -163,7 +167,11 @@ def mutate(offsprings, mu, m_bits):
     return offsprings
 ```
 
-### <a name="2.5" class="anchor"></a> [Update population](#2.5)
+The parameter `mu` is the mutation rate (denoted as `MUTATE_RATE`) and is used with `M_BITS` to decide how many bits to flip. The bits are flipped at random.
+
+#### <a name="2.6" class="anchor"></a> [Update population](#2.6)
+
+The population is continuously updated by replacing a certain number of the existing chromosomes with new offsprings that have been generated through crossover and mutation. The number of chromosomes that are kept from the previous population is determined by `keep` parameter (also denoted as `N_KEEP`).
 
 ```python
 def update_population(current_population, offsprings, keep, x_range, y_range, m_bits):
@@ -192,9 +200,11 @@ def update_population(current_population, offsprings, keep, x_range, y_range, m_
     return current_population
 ```
 
-## <a name="3" class="anchor"></a> [Running](#3)
+After the offsprings have been generated, they are evaluated using the cost function and sorted based on their fitness. The `N_KEEP` fittest offsprings are then appended to the previous population to create and updated population, which is the starting point for the next generation.
 
-Set configuration variables `M_BITS`, `N_POP`, `N_KEEP`, `MUTATE_RATE`, crossover locations, which could also be random, constraints, such as maxium number of iterations and range of decision variables, and define cost function.
+## <a name="3" class="anchor"></a> [BGA in action](#3)
+
+In this example, we are using configuration variables `M_BITS:4`, `N_POP:4`, `N_KEEP:2`, `MUTATE_RATE:0.1`, number of generations is set to `10000`, and crossover locations are `[3, 6]`, which also could be selected at random.
 
 ```python
 M_BITS = 4
@@ -202,9 +212,16 @@ N_POP = 4
 N_KEEP = 2
 MUTATE_RATE = 0.1
 
-# generations
+# number of generations
 MAX_GEN = 10000
 
+# crossover
+crossover = [3, 6]
+```
+
+The cost function is `f(x, y) = -x * (y / 2 - 10)`, where x-range is `[10, 20]` and y-range is `[-5, 7]`.
+
+```python
 # cost function
 def f(x, y):
     return -x * (y / 2 - 10)
@@ -212,26 +229,22 @@ def f(x, y):
 # range
 x_range = [10, 20]
 y_range = [-5, 7]
-
-# crossover
-crossover = [3, 6]
 ```
 
-Generate initial population.
+Below is the initial population.
 
 ```python
 current_population = generate_population(N_POP, x_range, y_range, M_BITS)
-print(tabulate(current_population, headers=['n', 'encoding', 'decoded x, y', 'cost'], floatfmt=".3f", tablefmt="github"), end="\n\n")
+print(tabulate(current_population, headers=['n', 'encoding', 'decoded x, y', 'cost'], floatfmt=".3f", tablefmt="simple"), end="\n\n")
+#   n  encoding                  decoded x, y       cost
+# ---  ------------------------  --------------  -------
+#   0  [0, 1, 1, 0, 1, 1, 1, 1]  [14.0, 7.0]      91.000
+#   1  [0, 0, 1, 0, 1, 0, 0, 1]  [11.33, 2.2]    100.840
+#   2  [1, 1, 1, 0, 1, 1, 1, 0]  [19.33, 6.2]    133.380
+#   3  [1, 1, 1, 1, 0, 0, 1, 0]  [20.0, -3.4]    234.000
 ```
 
-|   n | encoding                 | decoded x, y   |    cost |
-|-----|--------------------------|----------------|---------|
-|   0 | [1, 0, 0, 1, 1, 1, 0, 0] | [16.0, 4.6]    | 123.200 |
-|   1 | [0, 1, 0, 0, 0, 1, 1, 0] | [12.67, -0.2]  | 127.970 |
-|   2 | [0, 1, 1, 0, 0, 0, 1, 0] | [14.0, -3.4]   | 163.800 |
-|   3 | [1, 0, 0, 1, 0, 1, 0, 0] | [16.0, -1.8]   | 174.400 |
-
-Generate better population.
+...and below is the final population.
 
 ```python
 for i in range(MAX_GEN):
@@ -242,14 +255,11 @@ for i in range(MAX_GEN):
     # update population
     current_population = update_population(current_population, offsprings, N_KEEP, x_range, y_range, M_BITS)
 
-print(tabulate(current_population, headers=['n', 'encoding', 'decoded x, y', 'cost'], floatfmt=".3f", tablefmt="github"), end="\n\n")
+print(tabulate(current_population, headers=['n', 'encoding', 'decoded x, y', 'cost'], floatfmt=".3f", tablefmt="simple"), end="\n\n")
+#   n  encoding                  decoded x, y      cost
+# ---  ------------------------  --------------  ------
+#   0  [0, 0, 0, 0, 1, 1, 1, 1]  [10.0, 7.0]     65.000
+#   1  [0, 0, 0, 0, 1, 1, 1, 1]  [10.0, 7.0]     65.000
+#   2  [0, 0, 0, 0, 1, 1, 1, 1]  [10.0, 7.0]     65.000
+#   3  [0, 0, 0, 0, 1, 1, 1, 0]  [10.0, 6.2]     69.000
 ```
-
-|   n | encoding                 | decoded x, y   |   cost |
-|-----|--------------------------|----------------|--------|
-|   0 | [0, 0, 0, 0, 1, 1, 1, 1] | [10.0, 7.0]    | 65.000 |
-|   1 | [0, 0, 0, 0, 1, 1, 1, 1] | [10.0, 7.0]    | 65.000 |
-|   2 | [0, 0, 0, 0, 1, 1, 1, 1] | [10.0, 7.0]    | 65.000 |
-|   3 | [0, 0, 0, 0, 1, 1, 1, 0] | [10.0, 6.2]    | 69.000 |
-
-
