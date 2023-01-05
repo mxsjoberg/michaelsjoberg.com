@@ -219,12 +219,12 @@ MAX_GEN = 10000
 crossover = [3, 6]
 ```
 
-The cost function is `f(x, y) = -x * (y / 2 - 10)`, where x-range is `[10, 20]` and y-range is `[-5, 7]`.
+The cost function is `f(x, y) = -x * ((y / 2) - 10)`, where x-range is `[10, 20]` and y-range is `[-5, 7]`.
 
 ```python
 # cost function
 def f(x, y):
-    return -x * (y / 2 - 10)
+    return -x * ((y / 2) - 10)
 
 # range
 x_range = [10, 20]
