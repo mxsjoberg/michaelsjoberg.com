@@ -6,7 +6,9 @@
 
 ## <a name="1" class="anchor"></a> [Introduction](#1)
 
-Genetic algorithms is a subclass of evolutionary computing and part of population-based search methods inspired by the theory of evolution. The theory of evolution states that an offspring has many characteristics of its parents, which implies population is stable, and variations in characterisitcs between individuals passed from one generation to the next often is due to inherited characteristics, where some percentage of offsprings survive to adulthood. Genetic algorithms borrow much of its terminology from biology, such as natural selection, evolution, gene, chromosome, mating, crossover, and mutation. Binary genetic algorithms (BGA) work well with continuous and discrete variables, can handle large number of decision variables, and optimize decision variables for cost functions. A BGA is less likely to get stuck in local minimum and often find global minimum. The common components of a BGA implementation are: variable encoding and decoding, fitness function (cost function), initial population, selection, mutation, offspring generation, and convergance condition.
+<!-- Genetic algorithms is a subclass of evolutionary computing and part of population-based search methods inspired by the theory of evolution. The theory of evolution states that an offspring has many characteristics of its parents, which implies population is stable, and variations in characterisitcs between individuals passed from one generation to the next often is due to inherited characteristics, where some percentage of offsprings survive to adulthood. Genetic algorithms borrow much of its terminology from biology, such as natural selection, evolution, gene, chromosome, mating, crossover, and mutation. Binary genetic algorithms (BGA) work well with continuous and discrete variables, can handle large number of decision variables, and optimize decision variables for cost functions. A BGA is less likely to get stuck in local minimum and often find global minimum. The common components of a BGA implementation are: variable encoding and decoding, fitness function (cost function), initial population, selection, mutation, offspring generation, and convergance condition. -->
+
+Genetic algorithms are a type of computational method that uses concepts from biology, such as natural selection and evolution, to find solutions to problems. They are a subclass of evolutionary computing and are used to search through a large set of potential solutions to find the best one. One specific type of genetic algorithm, called a binary genetic algorithm (BGA), is effective at working with both continuous and discrete variables and optimizing many decision variables at once. It is also less likely to get stuck in local minima, meaning it can often find the overall best solution (global minimum). To use a BGA, you need to define certain components, including an encoding and decoding system for variables, a fitness function to evaluate potential solutions, an initial population of solutions, and rules for selection, mutation, and generating new solutions. The algorithm will continue to run until it meets a pre-defined convergence condition.
 
 #### <a name="1.1" class="anchor"></a> [Set-up](#1.1)
 
@@ -19,11 +21,13 @@ import math
 from tabulate import tabulate
 ```
 
-## <a name="2" class="anchor"></a> [Genetic algorithm functions](#2)
+## <a name="2" class="anchor"></a> [Binary Genetic Algorithm](#2)
 
-BGA need decision variables to be represented as binary chromosomes, where each gene is coded by `M_BITS`, and need to be decoded before evaluated by cost function `f`. A population, `N_POP`, is a group of chromosomes, each representing a potential solution to `f`.
+<!-- BGA need decision variables to be represented as binary chromosomes, where each gene is coded by `M_BITS`, and need to be decoded before evaluated by cost function `f`. A population, `N_POP`, is a group of chromosomes, each representing a potential solution to `f`. -->
 
-#### <a name="2.1.1" class="anchor"></a> [Encoding](#2.1.1)
+In order to use a binary genetic algorithm (BGA) for optimization, the decision variables must be represented as binary chromosomes. Each gene in the chromosome is coded using a certain number of bits (denoted as `M_BITS`) and must be decoded before it can be evaluated by the cost function (denoted as `f`). A population (denoted as `N_POP`) is a group of chromosomes, with each chromosome representing a potential solution to the optimization problem defined by the cost function `f`. The BGA works by searching through the population of chromosomes, selecting the fittest ones, and generating new solutions through crossover and mutation.
+
+#### <a name="2.1" class="anchor"></a> [Encoding](#2.1)
 
 The encoding equation is `B = (x - x_low) / [(x_high - x_low) / (2 ** m - 1)]` takes a number, `x`, range `[x_low, x_high]`, and precision `m`, and gives binary representation.
 
@@ -47,7 +51,7 @@ def encode(x, x_low, x_high, m):
 assert encode(9, -10, 14, 5) == [1, 1, 0, 0, 1]
 ```
 
-#### <a name="2.1.2" class="anchor"></a> [Decoding](#2.1.2)
+#### <a name="2.2" class="anchor"></a> [Decoding](#2.2)
 
 The decoding equation is `x = x_low + B * [(x_high - x_low) / ((2 ** m) - 1)]`, which takes binary representation as input and gives decimal number.
 
@@ -63,9 +67,9 @@ assert int(decode([1, 1, 0, 0, 1], -10, 14, 5)) == 9
 assert round(decode([1, 0, 0, 0], 10, 20, 4), 2) == 15.33
 ```
 
-### <a name="2.2" class="anchor"></a> [Initial population](#2.2)
+#### <a name="2.3" class="anchor"></a> [Generate population](#2.3)
 
-The initial population is generated at random, encoded and decoded for consistency, evaluated using the cost function, and then appended to cost table (sorted). Note that the index in cost table is mainly for readability and should not be updated when table is sorted, so needs to be generated after every iteration.
+The initial population is generated at random, encoded and decoded for consistency, evaluated using the cost function, and then appended to cost table (sorted). The index in cost table is fixed and should not be associated with a specific chromosome, so needs to be updated after each iteration (assuming there are better solutions).
 
 ```python
 def generate_population(n_pop, x_range, y_range, m_bits, seed=False):
@@ -117,7 +121,7 @@ print(tabulate(example_population, headers=['n', 'encoding', 'decoded x, y', 'co
 #   5  [1, 1, 0, 1, 0, 0, 0, 1]  [18.0, -3.67]   213.030
 ```
 
-### <a name="2.3" class="anchor"></a> [Generate offsprings](#2.3)
+#### <a name="2.4" class="anchor"></a> [Generate offsprings](#2.4)
 
 ```python
 def generate_offsprings(population, crossover):
