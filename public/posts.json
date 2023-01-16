@@ -15,9 +15,9 @@
         "short": false,
         "tags": ["computer science"],
         "date": "20230105",
-        "updated": "20230105",
+        "updated": "20230116",
         "draft": false,
-        "toc": false,
+        "toc": true,
         "read": 0,
         "image": false
     },
