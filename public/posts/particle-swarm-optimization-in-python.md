@@ -143,7 +143,7 @@ In the below examples, the maximum number of iterations is set to `50`, which sh
 
 ```python
 MAX_ITERATIONS = 50
-``
+```
 
 ```python
 random.seed(1234)
