@@ -6,11 +6,9 @@
 
 ## <a name="1" class="anchor"></a> [Introduction](#1)
 
-Genetic algorithms are a type of computational method that uses concepts from biology, such as natural selection and evolution, to find solutions to problems. They are a subclass of evolutionary computing and are used to search through a large set of potential solutions to find the best one. One specific type of genetic algorithm, called a binary genetic algorithm (BGA), is effective at working with both continuous and discrete variables and optimizing many decision variables at once. It is also less likely to get stuck in local minima, meaning it can often find the overall best solution (global minimum).
+Genetic algorithms are a type of computational method that uses concepts from biology, such as natural selection and evolution, to find solutions to problems. They are a subclass of evolutionary computing and are used to search through a large set of potential solutions to find the best one. A binary genetic algorithm (BGA) is one type of genetic algorithm effective at working with both continuous and discrete variables, as well as optimizing many decision variables at once. To use a BGA, we need to define its components, which includes encoding and decoding system for variables, fitness function to evaluate potential solutions, initial population of solutions, and rules for selection, mutation, and generating new solutions.
 
-To use a BGA, we need to define certain components, including an encoding and decoding system for variables, a fitness function to evaluate potential solutions, an initial population of solutions, and rules for selection, mutation, and generating new solutions. The algorithm will continue to run until it meets a pre-defined convergence condition.
-
-#### <a name="1.1" class="anchor"></a> [Setup](#1.1)
+### <a name="1.1" class="anchor"></a> [Setup](#1.1)
 
 Install and import dependencies.
 
@@ -19,6 +17,12 @@ import random
 import math
 # https://pypi.org/project/tabulate/
 from tabulate import tabulate
+```
+
+In the examples, the random seed is set to `1234`, so the algorithm will generate the same initial population and results given the same configuration variables.
+
+```python
+random.seed(1234)
 ```
 
 Helper function to print table using `tabulate`.
@@ -30,13 +34,11 @@ def print_table(population):
 
 ## <a name="2" class="anchor"></a> [Binary Genetic Algorithm (BGA)](#2)
 
-<!-- BGA need decision variables to be represented as binary chromosomes, where each gene is coded by `M_BITS`, and need to be decoded before evaluated by cost function `f`. A population, `N_POP`, is a group of chromosomes, each representing a potential solution to `f`. -->
+The decision variables are represented as binary chromosomes, where each gene in the chromosome is encoded using a certain number of bits, `M_BITS`, and must be decoded before it can be evaluated by the cost function, `f`. A population, `N_POP`, is a group of chromosomes, with each chromosome representing a potential solution to the optimization problem (cost function). The BGA works by searching through the population of chromosomes, selecting the fittest ones, and generating new solutions through crossover and mutation.
 
-The decision variables must be represented as binary chromosomes. Each gene in the chromosome is coded using a certain number of bits (denoted as `M_BITS`) and must be decoded before it can be evaluated by the cost function (denoted as `f`). A population (denoted as `N_POP`) is a group of chromosomes, with each chromosome representing a potential solution to the optimization problem defined by the cost function `f`. The BGA works by searching through the population of chromosomes, selecting the fittest ones, and generating new solutions through crossover and mutation.
+### <a name="2.1" class="anchor"></a> [Encoding](#2.1)
 
-#### <a name="2.1" class="anchor"></a> [Encoding](#2.1)
-
-The function for encoding a decimal number into a binary representation is as follows.
+The function for encoding decimal number into a binary representation is as follows.
 
 ```python
 def encode(x, x_low, x_high, m):
@@ -58,11 +60,11 @@ def encode(x, x_low, x_high, m):
 assert encode(9, -10, 14, 5) == [1, 1, 0, 0, 1]
 ```
 
-The values `x_low` and `x_high` represent the lower and upper bounds of the range within which the decimal number `x` must be. The value `m` is the number of bits used to encode each gene in the binary representation (denoted as `M_BITS`).
+The values `x_low` and `x_high` represent the lower and upper bounds of range within which the decimal number `x` must be. The value `m` is the number of bits used to encode each gene in the binary representation (it is also denoted as `M_BITS`).
 
-#### <a name="2.2" class="anchor"></a> [Decoding](#2.2)
+### <a name="2.2" class="anchor"></a> [Decoding](#2.2)
 
-The function for decoding a binary representation into a decimal number is `x = x_low + B * ((x_high - x_low) / ((2 ** m) - 1))`, where `B` is binary value to convert into decimal.
+The function for decoding binary representation into a decimal number is `x = x_low + B * ((x_high - x_low) / ((2 ** m) - 1))`, where `B` is binary value to convert into decimal.
 
 ```python
 def decode(B, x_low, x_high, m):    
@@ -71,21 +73,14 @@ def decode(B, x_low, x_high, m):
 
 ```python
 assert int(decode([1, 1, 0, 0, 1], -10, 14, 5)) == 9
-assert round(decode([1, 0, 0, 0], 10, 20, 4), 2) == 15.33
 ```
 
-#### <a name="2.3" class="anchor"></a> [Generate population](#2.3)
+### <a name="2.3" class="anchor"></a> [Generate population](#2.3)
 
-<!-- The initial population is generated at random, encoded and decoded for consistency, evaluated using the cost function, and then appended to cost table (sorted). The index in cost table is fixed and should not be associated with a specific chromosome, so needs to be updated after each iteration (assuming there are better solutions). -->
-
-The initial population of solutions are typically generated randomly and then encoded into binary chromosomes. The chromosomes are decoded and evaluated using the cost function to determine how well they solve the optimization problem. The resulting values are then appended to a cost table, which is sorted in ascending order (smaller is better fit). It is important to note that the index in the cost table should not be tied to a specific chromosome, as the population may change over time. Therefore, the index should be updated after each iteration in the BGA process, as there may be new, better solutions that have been added to the population.
+The initial population of potential solutions are generated randomly and then encoded into binary chromosomes. The chromosomes are decoded and evaluated using the cost functio and then appended to a cost table, which is sorted in ascending order (smaller is better fit). It is important to note that the index in the cost table should not be tied to a specific chromosome, as the population may change over time. Therefore, the index should be updated after each iteration in the BGA process, as there will be better solutions added to the population.
 
 ```python
-def generate_population(n_pop, x_range, y_range, m_bits, seed=False):
-    if seed != False:
-        random.seed(seed)
-    else:
-        random.seed(None)
+def generate_population(n_pop, x_range, y_range, m_bits):
     pop_lst = []
     for i in range(n_pop):
         x = random.randint(x_range[0], x_range[1])
@@ -109,34 +104,27 @@ def generate_population(n_pop, x_range, y_range, m_bits, seed=False):
     return pop_lst
 ```
 
-<!-- The `seed` parameter is used to set random seed to `42`, which should give same initial population as below (with same configuration variables). -->
-
-The `seed` parameter is used to set the random seed for generating the initial population. By setting the seed to a specific value, such as 42, the algorithm will always generate the same initial population given the same configuration variables.
-
 ```python
 example_population = generate_population(
     n_pop=6,
     x_range=[5, 20],
     y_range=[-5, 15],
-    m_bits=4,
-    seed=42)
+    m_bits=4)
 ```
-
-This can be useful for testing purposes, as it allows us to easily reproduce the same results.
 
 ```python
 print_table(example_population)
 #   n  encoding                  decoded x, y       cost
 # ---  ------------------------  --------------  -------
-#   0  [0, 0, 1, 0, 1, 1, 1, 0]  [7.0, 13.67]     22.160
-#   1  [0, 0, 1, 1, 1, 1, 0, 1]  [8.0, 12.33]     30.680
-#   2  [0, 0, 1, 1, 0, 0, 0, 0]  [8.0, -5.0]     100.000
-#   3  [1, 0, 0, 0, 0, 1, 0, 1]  [13.0, 1.67]    119.140
-#   4  [0, 1, 1, 1, 0, 0, 1, 1]  [12.0, -1.0]    126.000
-#   5  [1, 1, 0, 1, 0, 0, 0, 1]  [18.0, -3.67]   213.030
+#   0  [0, 0, 0, 0, 0, 0, 1, 0]  [5.0, -2.33]     55.820
+#   1  [0, 0, 1, 1, 1, 0, 0, 0]  [8.0, 5.67]      57.320
+#   2  [0, 0, 0, 0, 0, 0, 0, 0]  [5.0, -5.0]      62.500
+#   3  [0, 0, 0, 1, 0, 0, 1, 0]  [6.0, -2.33]     66.990
+#   4  [0, 1, 1, 1, 0, 0, 0, 0]  [12.0, -5.0]    150.000
+#   5  [1, 1, 1, 0, 0, 0, 1, 0]  [19.0, -2.33]   212.130
 ```
 
-#### <a name="2.4" class="anchor"></a> [Generate offsprings (double-point crossover)](#2.4)
+### <a name="2.4" class="anchor"></a> [Generate offsprings (double-point crossover)](#2.4)
 
 To generate offsprings using double-point crossover, we need to select two parent chromosomes from the population and choose two points within them as crossover points (at random or otherwise). We then split the chromosomes at these points to create four segments. The first and fourth segments are swapped between the two parent chromosomes to create two new offsprings.
 
@@ -155,9 +143,9 @@ def generate_offsprings(population, crossover):
 
 This process combines characteristics from both parent chromosomes in the offsprings, allowing for greater diversity in the population.
 
-#### <a name="2.5" class="anchor"></a> [Mutation](#2.5)
+### <a name="2.5" class="anchor"></a> [Mutation](#2.5)
 
-In genetic algorithms, mutation is a process by which small random changes are made to the chromosomes in the population. These changes, or mutations, are introduced to allow the algorithm to explore a wider range of potential solutions and avoid getting stuck in local minima. Mutation is typically achieved by randomly altering certain bits in the chromosomes, which can result in significant changes to the encoded solution. By introducing new information through mutation, the algorithm can continue to search for better solutions even after it has converged on a particular region of the cost surface.
+In genetic algorithms, mutation is a process by which small random changes are made to the chromosomes in the population. These changes, or mutations, are introduced to allow the algorithm to explore a wider range of potential solutions and avoid getting stuck in local minima.
 
 ```python
 def mutate(offsprings, mu, m_bits):
@@ -174,11 +162,11 @@ def mutate(offsprings, mu, m_bits):
     return offsprings
 ```
 
-The parameter `mu` is the mutation rate (denoted as `MUTATE_RATE`) and is used with `M_BITS` to decide how many bits to flip. The bits are flipped at random.
+The parameter `mu` is the mutation rate (it is also denoted as `MUTATE_RATE`) and is used with `M_BITS` to decide how many bits to flip. The bits are flipped at random.
 
-#### <a name="2.6" class="anchor"></a> [Update population](#2.6)
+### <a name="2.6" class="anchor"></a> [Update population](#2.6)
 
-The population is continuously updated by replacing a certain number of the existing chromosomes with new offsprings that have been generated through crossover and mutation. The number of chromosomes that are kept from the previous population is determined by `keep` parameter (also denoted as `N_KEEP`).
+The population is updated by replacing a number of the existing chromosomes with the new offsprings that have been generated through crossover and mutation. The number of chromosomes that are kept from the previous population is determined by the `keep` parameter (it is also denoted as `N_KEEP`).
 
 ```python
 def update_population(current_population, offsprings, keep, x_range, y_range, m_bits):
@@ -207,7 +195,7 @@ def update_population(current_population, offsprings, keep, x_range, y_range, m_
     return current_population
 ```
 
-After the offsprings have been generated, they are evaluated using the cost function and sorted based on their fitness. The `N_KEEP` fittest offsprings are then appended to the previous population to create an updated population, which is the starting point for the next generation.
+The offsprings are evaluated using the cost function and sorted based on their fitness. The `N_KEEP` fittest offsprings are then appended to the previous population to create an updated population, which is the starting point for the next generation.
 
 ## <a name="3" class="anchor"></a> [BGA in action](#3)
 
@@ -232,7 +220,9 @@ The cost function is `f(x, y) = -x * ((y / 2) - 10)`, where x-range is `[10, 20]
 # cost function
 def f(x, y):
     return -x * ((y / 2) - 10)
+```
 
+```python
 # range
 x_range = [10, 20]
 y_range = [-5, 7]
@@ -245,10 +235,10 @@ current_population = generate_population(N_POP, x_range, y_range, M_BITS)
 print_table(current_population)
 #   n  encoding                  decoded x, y       cost
 # ---  ------------------------  --------------  -------
-#   0  [0, 1, 1, 0, 1, 1, 1, 1]  [14.0, 7.0]      91.000
-#   1  [0, 0, 1, 0, 1, 0, 0, 1]  [11.33, 2.2]    100.840
-#   2  [1, 1, 1, 0, 1, 1, 1, 0]  [19.33, 6.2]    133.380
-#   3  [1, 1, 1, 1, 0, 0, 1, 0]  [20.0, -3.4]    234.000
+#   0  [1, 0, 0, 0, 1, 1, 0, 0]  [15.33, 4.6]    118.040
+#   1  [0, 0, 1, 1, 0, 0, 0, 1]  [12.0, -4.2]    145.200
+#   2  [1, 1, 1, 0, 1, 0, 0, 1]  [19.33, 2.2]    172.040
+#   3  [1, 1, 1, 0, 1, 0, 0, 1]  [19.33, 2.2]    172.040
 ```
 
 ...and here is the final population.
@@ -261,12 +251,14 @@ for i in range(MAX_GEN):
     offsprings = mutate(offsprings, MUTATE_RATE, M_BITS)
     # update population
     current_population = update_population(current_population, offsprings, N_KEEP, x_range, y_range, M_BITS)
+```
 
+```python
 print_table(current_population)
 #   n  encoding                  decoded x, y      cost
 # ---  ------------------------  --------------  ------
 #   0  [0, 0, 0, 0, 1, 1, 1, 1]  [10.0, 7.0]     65.000
 #   1  [0, 0, 0, 0, 1, 1, 1, 1]  [10.0, 7.0]     65.000
 #   2  [0, 0, 0, 0, 1, 1, 1, 1]  [10.0, 7.0]     65.000
-#   3  [0, 0, 0, 0, 1, 1, 1, 0]  [10.0, 6.2]     69.000
+#   3  [0, 0, 0, 0, 1, 1, 1, 1]  [10.0, 7.0]     65.000
 ```
