@@ -1,4 +1,15 @@
 {   
+    "particle-swarm-optimization-in-python": {
+        "title": "Particle Swarm Optimization in Python",
+        "short": false,
+        "tags": ["computer science"],
+        "date": "20230116",
+        "updated": "20230116",
+        "draft": false,
+        "toc": true,
+        "read": 0,
+        "image": false
+    },
     "genetic-algorithm-optimization-in-python": {
         "title": "Genetic Algorithm Optimization in Python",
         "short": false,
