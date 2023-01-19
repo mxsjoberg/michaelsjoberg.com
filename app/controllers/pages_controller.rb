@@ -7,7 +7,7 @@ class PagesController < ApplicationController
     # GET /
     def home
         @route_path = "home"
-        @meta_title = "Michael Sjöberg"
+        @meta_title = "michael sjöberg"
         # posts.json
         @posts = JSON.parse(File.read(Rails.public_path + 'posts.json'))
         @posts_array = Hash.new
@@ -27,7 +27,7 @@ class PagesController < ApplicationController
     # GET /programming
     def programming
         @route_path = "programming"
-        @meta_title = "Programming | Michael Sjöberg"
+        @meta_title = "Programming – michael sjöberg"
         # params
         @category = params[:category]
         @group = params[:group]
@@ -52,7 +52,7 @@ class PagesController < ApplicationController
     # GET /finance
     def finance
         @route_path = "finance"
-        @meta_title = "Finance | Michael Sjöberg"
+        @meta_title = "Finance – michael sjöberg"
         # finance.json
         @finance = JSON.parse(File.read(Rails.public_path + 'finance.json'))
         @url = @finance["url"]
@@ -62,7 +62,7 @@ class PagesController < ApplicationController
     # GET /projects
     def projects
         @route_path = "projects"
-        @meta_title = "Projects | Michael Sjöberg"
+        @meta_title = "Projects – michael sjöberg"
         # projects.json
         @projects = JSON.parse(File.read(Rails.public_path + 'projects.json'))
     end
@@ -70,7 +70,7 @@ class PagesController < ApplicationController
     # GET /writing
     def writing
         @route_path = "writing"
-        @meta_title = "Writing | Michael Sjöberg"
+        @meta_title = "Writing – michael sjöberg"
         # params
         @post = params[:post]
         # redirects
@@ -144,7 +144,7 @@ class PagesController < ApplicationController
     # GET /about/courses
     def courses
         @route_path = "courses"
-        @meta_title = "Course List | Michael Sjöberg"
+        @meta_title = "Course List – michael sjöberg"
         # courses
         @courses = JSON.parse(File.read(Rails.public_path + 'courses.json'))
     end
