@@ -1,3 +1,3 @@
 # michaelsjoeberg.com
 
-Personal website with programming examples in multiple programming languages.
+Michael Sjoeberg's personal website.
