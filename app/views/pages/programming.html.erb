@@ -3,103 +3,88 @@
 
 <!-- page-navigation -->
 <div class="row justify-content-center hidden-until-lg fixed">
-    <div class="col-12 p-0">
-        <nav class="navbar navbar-expand-md p-0 background--primary">
-            <ul class="navbar-nav ml-auto mr-auto">
-                <% @programming.keys.each do |category| %>
-                    <li class="nav-item">
-                        <a href="/<%= @route_path %>#<%= category %>" class="nav-link" data-turbolinks="true"><%= category.titleize %></a>
-                    </li>
-                <% end %>
-            </ul>
-        </nav>
-    </div>
+  <div class="col-12 p-0">
+    <nav class="navbar navbar-expand-md p-0 background--primary">
+      <ul class="navbar-nav ml-auto mr-auto">
+        <% @programming.keys.each do |category| %>
+        <li class="nav-item">
+          <a href="/<%= @route_path %>#<%= category %>" class="nav-link" data-turbolinks="true"><%= category.titleize %></a>
+        </li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
 </div>
 <!-- ./page-navigation -->
 
 <% @size = 12 %>
 <div class="container <% if @file_content != nil %>py-5<% else %>pb-5<% end %>">
-    <!-- content -->
-    <% if @file_content != nil %>
-        <%= render 'file_content', locals: { size: @size } %>
-    <!-- otherwise -->
-    <% else %>
-        <!-- header -->
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg-<%= @size %> text-md-right my-3 pt-3">
-                <input id="search" class="pl-3" name="search" placeholder="Search" type="text" data-list=".list" autocomplete="off">
-            </div>
-        </div>
-        <!-- summary -->
-        <% if false %>
-        <div class="row justify-content-center">
-            <%= render 'divider', locals: { size: @size } %>
-        </div>
-        <% end %>
-        <!-- list -->
-        <% @programming.keys.each do |category| %>
-        <div class="row justify-content-center mb-3">
-            <!-- category -->
-            <div class="col-12 col-lg-<%= @size %>">
-                <a name="<%= category %>" class="anchor-2"></a>
-                <h2 class="font-weight-bold">
-                    <a href="#<%= category %>" data-turbolinks="true"><%= category.titleize %></a>
-                </h2>
-            </div>
-            <% if false %>
-                <% if category == 'python' %>
-                <div class="col-12 col-lg-<%= @size %> mb-3">
-                    <p class="m-0">See also: <a href="https://michaelsjoeberg.github.io/A-Python-Primer-and-Cheat-Sheet/" target="_blank">A Python Primer and Cheat Sheet</a></p>
-                </div>
-                <% elsif category == 'scala' %>
-                <div class="col-12 col-lg-<%= @size %> mb-3">
-                    <p class="m-0">See also: <a href="https://michaelsjoeberg.github.io/A-Scala-Primer-and-Cheat-Sheet/" target="_blank">A Scala Primer and Cheat Sheet</a></p>
-                </div>
-                <% end %>
-            <% end %>
-            <!-- group -->
-            <div class="col-12 col-lg-<%= @size %>">
-                <div class="container-fluid">
-                    <div class="row list">
-                    <% @programming[category].keys.each do |group| %>
-                        <!-- header -->
-                        <li class="list_header background--grey col-12">
-                            <a name="<%= category %>_<%= group.gsub('-', '_') %>" class="anchor-2"></a>
-                            <p class="mt-2 mb-2"><%= group.titleize %></p>
-                        </li>
-                        <!-- list items -->
-                        <div class="container-fluid">
-                            <div class="row list border-solid--grey pt-3">
-                                <!-- intro file at top -->
-                                <% if @programming[category][group]["files"].include? "intro" %>
-                                    <a href="/<%= @route_path %>/<%= category %>/<%= group %>/intro" data-turbolinks="true" class="col-12 col-lg-4">
-                                        <li class="list-item mb-3">
-                                        <!-- <a href="/<%= @route_path %>/<%= category %>/<%= group %>/intro" data-turbolinks="true"> -->
-                                            <span><%= "READ ME FIRST" %></span>
-                                        <!-- </a> -->
-                                        </li>
-                                    </a>
-                                    <% @programming[category][group]["files"].delete("intro") %>
-                                <% end %>
-                                <% @programming[category][group]["files"].sort!.each do |file| %>
-                                <!-- file -->
-                                <a href="/<%= @route_path %>/<%= category %>/<%= group %>/<%= file %>" data-turbolinks="true" class="col-12 col-lg-4">
-                                    <li class="list-item mb-3">
-                                    <!-- <a href="/<%= @route_path %>/<%= category %>/<%= group %>/<%= file %>" data-turbolinks="true"> -->
-                                        <span><%= file.titleize %></span>
-                                    <!-- </a> -->
-                                    </li>
-                                </a>
-                                <% end %>
-                            </div>
-                        </div>
-                    <% end %>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <% end %>
+  <!-- content -->
+  <% if @file_content != nil %>
+    <%= render 'file_content', locals: { size: @size } %>
+  <!-- otherwise -->
+  <% else %>
+    <!-- header -->
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-<%= @size %> text-md-right my-3 pt-3">
+        <input id="search" class="pl-3" name="search" placeholder="Search" type="text" data-list=".list" autocomplete="off">
+      </div>
+    </div>
+    <!-- summary -->
+    <% if false %>
+    <div class="row justify-content-center">
+      <%= render 'divider', locals: { size: @size } %>
+    </div>
     <% end %>
+    <!-- list -->
+    <% @programming.keys.each do |category| %>
+    <div class="row justify-content-center mb-3">
+      <!-- category -->
+      <div class="col-12 col-lg-<%= @size %>">
+        <a name="<%= category %>" class="anchor-2"></a>
+        <h2 class="font-weight-bold">
+          <a href="#<%= category %>" data-turbolinks="true"><%= category.titleize %></a>
+        </h2>
+      </div>
+      <!-- group -->
+      <div class="col-12 col-lg-<%= @size %>">
+        <div class="container-fluid">
+          <div class="row list">
+            <% @programming[category].keys.each do |group| %>
+            <!-- header -->
+            <li class="list_header background--grey col-12">
+              <a name="<%= category %>_<%= group.gsub('-', '_') %>" class="anchor-2"></a>
+              <p class="mt-2 mb-2"><%= group.titleize %></p>
+            </li>
+            <!-- list items -->
+            <div class="container-fluid">
+              <div class="row list border-solid--grey pt-3">
+                <!-- intro file at top -->
+                <% if @programming[category][group]["files"].include? "intro" %>
+                  <a href="/<%= @route_path %>/<%= category %>/<%= group %>/intro" data-turbolinks="true" class="col-12 col-lg-4">
+                    <li class="list-item mb-3">
+                      <span><%= "READ ME FIRST" %></span>
+                    </li>
+                  </a>
+                  <% @programming[category][group]["files"].delete("intro") %>
+                <% end %>
+                <% @programming[category][group]["files"].sort!.each do |file| %>
+                  <!-- file -->
+                  <a href="/<%= @route_path %>/<%= category %>/<%= group %>/<%= file %>" data-turbolinks="true" class="col-12 col-lg-4">
+                    <li class="list-item mb-3">
+                      <span><%= file.titleize %></span>
+                    </li>
+                  </a>
+                <% end %>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  <% end %>
 </div>
 
 <%= render 'footer' %>

@@ -2,81 +2,80 @@
 
 <% @size = 8 %>
 <div class="container pb-5">
-    <!-- header -->
-    <div class="row justify-content-center">
-        <!-- search -->
-        <div class="col-12 col-lg-<%= @size %> text-md-right my-3 pt-3">
-            <input id="search" class="pl-3" name="search" placeholder="Search" type="text" data-list=".list" autocomplete="off">
-        </div>
+  <!-- header -->
+  <div class="row justify-content-center">
+    <!-- search -->
+    <div class="col-12 col-lg-<%= @size %> text-md-right my-3 pt-3">
+      <input id="search" class="pl-3" name="search" placeholder="Search" type="text" data-list=".list" autocomplete="off">
     </div>
-    <!-- summary -->
-    <% if false %>
-    <div class="row justify-content-center">
-        <!-- description -->
-        <div class="col-12 col-lg-<%= @size %>">
-            <p class="font-family-serif mb-0"><em>PG: postgraduate, UG: undergraduate, PRE: preparatory</em></p>
-        </div>
+  </div>
+  <!-- summary -->
+  <% if false %>
+  <div class="row justify-content-center">
+    <!-- description -->
+    <div class="col-12 col-lg-<%= @size %>">
+      <p class="font-family-serif mb-0"><em>PG: postgraduate, UG: undergraduate, PRE: preparatory</em></p>
     </div>
-    <% end %>
-
-    <!-- render course list -->
-    <div class="row justify-content-center">
-        <div class="col-12 col-lg-<%= @size %>">
+  </div>
+  <% end %>
+  <!-- render course list -->
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-<%= @size %>">
+      <div class="container-fluid">
+        <div class="row list">
+          <% @courses.keys.each do |course| %>
+          <!-- header -->
+          <% if @courses[course]['date'].equal?(@courses.keys.first['date']) %>
+          <% @header = @courses[course]['date'] %>
+          <li class="list_header background--grey col-12 mb-3">
+            <p class="mt-2 mb-2"><%= @header %></p>
+          </li>
+          <% end %>
+          <!-- update header -->
+          <% if @courses[course]['date'] != @header %>
+          <% @header = @courses[course]['date'] %>
+          <li class="list_header background--grey col-12 mb-3">
+            <p class="mt-2 mb-2"><%= @header %></p>
+          </li>
+          <% end %>
+          <!-- item -->
+          <li class="col-12 mb-3 p-0">
             <div class="container-fluid">
-                <div class="row list">
-                    <% @courses.keys.each do |course| %>
-                    <!-- header -->
-                    <% if @courses[course]['date'].equal?(@courses.keys.first['date']) %>
-                    <% @header = @courses[course]['date'] %>
-                    <li class="list_header background--grey col-12 mb-3">
-                        <p class="mt-2 mb-2"><%= @header %></p>
-                    </li>
-                    <% end %>
-                    <!-- update header -->
-                    <% if @courses[course]['date'] != @header %>
-                    <% @header = @courses[course]['date'] %>
-                    <li class="list_header background--grey col-12 mb-3">
-                        <p class="mt-2 mb-2"><%= @header %></p>
-                    </li>
-                    <% end %>
-                    <!-- item -->
-                    <li class="col-12 mb-3 p-0">
-                        <div class="container-fluid">
-                            <div class="row border-solid--grey py-3">
-                                <!-- course -->
-                                <div class="col-12 col-md-8">
-                                    <!-- name -->
-                                    <% unless @courses[course]['url'] == nil %>
-                                        <a href="<%= @courses[course]['url'] %>" target="_blank"><%= course %></a>
-                                    <% else %>
-                                        <p class="text-muted m-0"><%= course %></p>
-                                    <% end %>
-                                    <!-- description -->
-                                    <p class="m-0"><%= @courses[course]['description'] %></p>
-                                </div>
-                                <!-- meta -->
-                                <div class="col-12 col-md-4 text-md-right mt-3 mt-md-0">
-                                    <!-- school -->
-                                    <p class="text-muted m-0"><%= @courses[course]['school'] %></p>
-                                    <!-- credits -->
-                                    <% unless @courses[course]['ects'].nil? %>
-                                        <p class="text-muted m-0"><%= @courses[course]['ects'] %> ECTS, <%= @courses[course]['level'] %></p>
-                                    <% else%>
-                                        <p class="text-muted m-0"><%= @courses[course]['level'] %></p>
-                                    <% end %>
-                                    <!-- grade -->
-                                    <% unless @courses[course]['grade'].nil? %>
-                                        <p class="text-muted m-0"><%= @courses[course]['grade'] %></p>
-                                    <% end %>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <% end %>
+              <div class="row border-solid--grey py-3">
+                <!-- course -->
+                <div class="col-12 col-md-8">
+                  <!-- name -->
+                  <% unless @courses[course]['url'] == nil %>
+                  <a href="<%= @courses[course]['url'] %>" target="_blank"><%= course %></a>
+                  <% else %>
+                  <p class="text-muted m-0"><%= course %></p>
+                  <% end %>
+                  <!-- description -->
+                  <p class="m-0"><%= @courses[course]['description'] %></p>
                 </div>
+                <!-- meta -->
+                <div class="col-12 col-md-4 text-md-right mt-3 mt-md-0">
+                  <!-- school -->
+                  <p class="text-muted m-0"><%= @courses[course]['school'] %></p>
+                  <!-- credits -->
+                  <% unless @courses[course]['ects'].nil? %>
+                  <p class="text-muted m-0"><%= @courses[course]['ects'] %> ECTS, <%= @courses[course]['level'] %></p>
+                  <% else%>
+                  <p class="text-muted m-0"><%= @courses[course]['level'] %></p>
+                  <% end %>
+                  <!-- grade -->
+                  <% unless @courses[course]['grade'].nil? %>
+                  <p class="text-muted m-0"><%= @courses[course]['grade'] %></p>
+                  <% end %>
+                </div>
+              </div>
             </div>
+          </li>
+          <% end %>
         </div>
+      </div>
     </div>
+  </div>
 </div>
 
 <%= render 'footer' %>

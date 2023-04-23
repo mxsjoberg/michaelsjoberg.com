@@ -2,104 +2,77 @@
 <%= render 'navigation' %>
 
 <% @size = 8 %>
-<!-- <div class="container py-5 top--margin-1x"> -->
 <div class="container <% if @post != nil %>py-5<% else %>pb-5<% end %>">
-    <!-- post -->
-    <% if @post != nil %>
-        <%= render 'post', locals: { size: @size } %> 
-    <!-- otherwise -->
-    <% else %>
-        <!-- header -->
-        <div class="row justify-content-center">
-            <!-- title -->
-            <!-- <div class="col-12 col-lg-<%= @size %>">
-                <h1><%= @meta_title %></h1>
-            </div> -->
-            <!-- search -->
-            <!-- <div class="col-12 col-lg-<%= @size / 2 %> text-md-right">
-                <input id="search" class="pl-3" name="search" placeholder="Search" type="text" data-list=".list" autocomplete="off">
-            </div> -->
+  <!-- post -->
+  <% if @post != nil %>
+  <%= render 'post', locals: { size: @size } %> 
+  <!-- otherwise -->
+  <% else %>
+  <!-- page size wrapper -->
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-<%= @size %>">
+      <div class="divider"></div>
+      <!-- list all posts -->
+      <% if false %>
+      <div class="row justify-content-center mb-3">
+        <div class="col-12 col-lg-<%= @size %>">
+          <div class="row list">
+            <% @posts_array.keys.each do |post| %>
+            <% if @posts_array[post][:draft] == false %>
+            <!-- post:title -->
+            <a href="/<%= @route_path %>/<%= post %>" data-turbolinks="true" style="min-width:100%;">
+              <li class="list-item col-12 mb-3">
+                <span><%= @posts_array[post][:title] %></span>
+              </li>
+            </a>
+            <% elsif Rails.env == "development" %>
+            <a href="/<%= @route_path %>/<%= post %>" data-turbolinks="true" style="min-width:100%;">
+              <li class="list-item col-12 mb-3">
+                <span><% if @posts_array[post][:draft] %>[DRAFT]<% end %> <%= @posts_array[post][:title] %></span>
+              </li>
+            </a>
+            <% end %>
+            <% end %>
+          </div>
         </div>
-        <!-- summary -->
-        <div class="row justify-content-center">
-            <%= render 'divider', locals: { size: @size } %>
-        </div>
-        <!-- NEW list all posts -->
-        <div class="row justify-content-center mb-3">
-            <div class="col-12 col-lg-<%= @size %>">
-                <div class="row list">
-                    <% @posts_array.keys.each do |post| %>
-                        <% if @posts_array[post][:draft] == false %>
-                            <!-- post:title -->
-                            <a href="/<%= @route_path %>/<%= post %>" data-turbolinks="true" style="min-width:100%;">
-                                <li class="list-item col-12 mb-3">
-                                    <span><%= @posts_array[post][:title] %></span>
-                                </li>
-                            </a>
-                        <% elsif Rails.env == "development" %>
-                            <a href="/<%= @route_path %>/<%= post %>" data-turbolinks="true" style="min-width:100%;">
-                                <li class="list-item col-12 mb-3">
-                                    <span><% if @posts_array[post][:draft] %>[DRAFT]<% end %> <%= @posts_array[post][:title] %></span>
-                                </li>
-                            </a>
-                        <% end %>
-                    <% end %>
-                </div>
-            </div>
-        </div>
-        <!-- list all posts -->
-        <% if false %>
-        <div class="row justify-content-center mb-3">
-            <div class="col-12 col-lg-<%= @size %>">
-                <div class="row list">
-                    <% @posts_array.keys.each do |post| %>
-                    <!-- item -->
-                    <li class="list-item col-12 mb-3">
-                        <!-- post:title -->
-                        <h2 class="font-family-serif font-weight-bold mb-3">
-                            <a href="/<%= @route_path %>/<%= post %>" data-turbolinks="true">
-                                <% if @posts_array[post][:draft] %>[DRAFT]<% end %>
-                                <%= @posts_array[post][:title] %>
-                            </a>
-                        </h2>
-                        <!-- post:meta -->
-                        <% if false %>
-                        <p class="text-muted mb-3">
-                            <!-- post:date -->
-                            <% unless @posts_array[post][:draft] %>
-                            <span><%= Date.parse(@posts_array[post][:date]).strftime("%B %d, %Y") %></span>
-                            <% end %>
-                            <!-- time to read -->
-                            <span>&#9642; <%= @posts_array[post][:read] %> min read</span>
-                            <!-- updated -->
-                            <% unless Date.parse(@posts_array[post][:date]) == Date.parse(@posts_array[post][:updated]) %>
-                            <span>&#9642; <a href="https://github.com/michaelsjoeberg/michaelsjoeberg.com-4/commits/main/public/posts/<%= post %>.md">Updated on <%= Date.parse(@posts_array[post][:updated]).strftime("%b %d, %Y") %></a></span>
-                            <% end %>
-                            <!-- post:tags -->
-                            <!-- <span>
-                                &#9642;
-                                <% @posts_array[post][:tags].each do |tag| %>
-                                    <span>
-                                        <% if tag == tag.upcase %>
-                                            <%= tag %>
-                                        <% elsif tag.include?('.') %>
-                                            <%= tag.capitalize %>
-                                        <% else %>
-                                            <%= tag.titleize %>
-                                        <% end %>
-                                        <% unless tag.equal?(@posts_array[post][:tags].last) %> / <% end %>
-                                    </span>
-                                <% end %>
-                            </span> -->
-                        </p>
-                        <% end %>
-                    </li>
-                    <% end %>
-                </div>
-            </div>
-        </div>
+      </div>
+      <% end %>
+      <% if true %>
+      <div class="row list">
+        <% @posts_array.keys.each do |post| %>
+        <% if @posts_array[post][:draft] == false %>
+        <!-- item -->
+        <li class="list-item no-bullet col-12">
+          <!-- post:title -->
+          <h3 class="font-family-serif font-weight-bold mb-3">
+            <a href="/<%= @route_path %>/<%= post %>" data-turbolinks="true">
+              <% if @posts_array[post][:draft] %>[DRAFT]<% end %>
+              <%= @posts_array[post][:title] %>
+            </a>
+          </h3>
+          <!-- post:meta -->
+          <% if false %>
+          <p class="text-muted mb-3">
+            <!-- post:date -->
+            <% unless @posts_array[post][:draft] %>
+            <span><%= Date.parse(@posts_array[post][:date]).strftime("%B %d, %Y") %></span>
+            <% end %>
+            <!-- time to read -->
+            <span>&#9642; <%= @posts_array[post][:read] %> min read</span>
+            <!-- updated -->
+            <% unless Date.parse(@posts_array[post][:date]) == Date.parse(@posts_array[post][:updated]) %>
+            <span>&#9642; <a href="https://github.com/miqqeio/michaelsjoeberg.com/commits/main/public/posts/<%= post %>.md">Updated on <%= Date.parse(@posts_array[post][:updated]).strftime("%b %d, %Y") %></a></span>
+            <% end %>
+          </p>
+          <% end %>
+        </li>
         <% end %>
-    <% end %>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
 </div>
 
-<%= render 'footer' %>
+<% if @post == nil %><%= render 'footer' %><% end %>

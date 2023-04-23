@@ -4,50 +4,50 @@
 
 <!-- navigation -->
 <div class="row justify-content-center hidden-until-lg">
-    <div class="col-12 p-0">
-        <nav class="navbar navbar-expand-md p-0">
-            <ul class="navbar-nav ml-auto mr-auto">
-                <%= render 'navigation_links' %>
-            </ul>
-        </nav>
-    </div>
+  <div class="col-12 p-0">
+    <nav class="navbar navbar-expand-md p-0">
+      <ul class="navbar-nav ml-auto mr-auto">
+        <%= render 'navigation_links' %>
+      </ul>
+    </nav>
+  </div>
 </div>
 <!-- ./navigation -->
 
 <div class="container">
-    <!-- intro -->
-    <div class="row justify-content-center">
-        <%= render 'divider', locals: { size: @size / 2 } %>
-        <!-- two columns -->
-        <div class="col-12 col-lg-<%= @size %> hidden-until-md" style="column-count: 2;">
-            <%= render 'intro' %>
-        </div>
-        <!-- single column -->
-        <div class="col-12 col-lg-<%= @size %> hidden-from-md">
-            <%= render 'intro' %>
-        </div>
-        <%= render 'divider', locals: { size: @size / 2 } %>
+  <!-- intro -->
+  <div class="row justify-content-center">
+    <%= render 'divider', locals: { size: @size / 2 } %>
+    <!-- two columns -->
+    <div class="col-12 col-lg-<%= @size %> hidden-until-md" style="column-count: 2;">
+      <%= render 'intro' %>
     </div>
-    <!-- ./intro -->
+    <!-- single column -->
+    <div class="col-12 col-lg-<%= @size %> hidden-from-md">
+      <%= render 'intro' %>
+    </div>
+    <%= render 'divider', locals: { size: @size / 2 } %>
+  </div>
+  <!-- ./intro -->
 
-    <!-- most recent recent post -->
-    <div class="row justify-content-center mt-2 mb-5">
-        <div class="col-12 col-lg-<%= @size / 10 * 8 %>">
-            <div class="row justify-content-center">
-                <div class="col-12 mb-0 text-center">
-                    <p class="m-0">Most recent post:</p>
-                </div>
-                <% @posts_array.keys.each do |post| %>
-                    <div class="col-12 mb-3 text-center">
-                        <h2 class="font-family-serif font-weight-bold">
-                            <a href="writing/<%= post %>" data-turbolinks="true"><%= @posts_array[post][:title] %></a>
-                        </h2>
-                    </div>
-                <% end %>
-            </div>
+  <!-- most recent recent post -->
+  <div class="row justify-content-center mt-2 mb-5">
+    <div class="col-12 col-lg-<%= @size / 10 * 8 %>">
+      <div class="row justify-content-center">
+        <div class="col-12 mb-0 text-center">
+          <p class="m-0">Most recent post:</p>
         </div>
+        <% @posts_array.keys.each do |post| %>
+        <div class="col-12 mb-3 text-center">
+          <h2 class="font-family-serif font-weight-bold">
+            <a href="writing/<%= post %>" data-turbolinks="true"><%= @posts_array[post][:title] %></a>
+          </h2>
+        </div>
+        <% end %>
+      </div>
     </div>
-    <!-- ./most recent recent post -->
+  </div>
+  <!-- ./most recent recent post -->
 </div>
 
 <%= render 'footer' %>
