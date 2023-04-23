@@ -1,7 +1,7 @@
 {   
     "Evert.AI": {
         "description": [
-            "A block-based developer environment to experiment with automatically generated code (program synthesis)."
+            "Idea stage: Integrated environment for programming language design using large language models to verify and for assistance. The goal is to create a tool to lower the entry barrier and help language designers create better languages."
         ],
         "date": "",
         "url": "",
@@ -9,11 +9,12 @@
         "archived": false,
         "active": true,
         "github": false,
-        "website": false
+        "website": false,
+        "show": true
     },
     "Terminal": {
         "description": [
-            "A browser-based stock market data dashboard with customizable interface. The goal is to create a highly customizable and developer-like environment for financial professionals. Interesting future work include exploring user-driven approaches to generate web layouts, such as SQL-like language or using prompts in natural language."
+            "Browser-based and native (experimental) stock market data dashboard. The goal is to create a highly customizable and developer-like environment for financial professionals."
         ],
         "date": "2020-",
         "url": "https://terminal.frozenfork.com",
@@ -21,35 +22,38 @@
         "archived": false,
         "active": true,
         "github": false,
-        "website": false
+        "website": false,
+        "show": true
     },
-    "raknalang (räknalang)": {
+    "raknalang": {
         "description": [
-            "An interpreter and REPL to do arithmetic in natural languages, such as English or Swedish. The goal is to provide a programmatic way to express simple calculation and conditional problems like it would be expressed in native language."
+            "Domain-specific programming language for natural language arithmetic operations that is both simple and extensible. The parser is implemented as recursive-descent variant with precedence using stack structure instead of grammar rules."
         ],
         "date": "2021",
-        "url": "https://github.com/michaelsjoeberg/raknalang",
+        "url": "https://github.com/miqqeio/raknalang",
         "tags": [],
         "archived": false,
         "active": true,
         "github": false,
-        "website": false
+        "website": false,
+        "show": false
     },
-    "pas2wat (pascal-to-wat)": {
+    "pas2wat": {
         "description": [
-            "A compiler to translate subset of Pascal into WebAssembly text-format. The goal is to develop a modular and extendable compiler architecture in Rust, and to explore compatibility issues when translating legacy programming languages to web native languages. Interesting future work include handling files, read-write operations, and memory management."
+            "Compiler that translates subset of Pascal into WebAssembly text format (built on top of MSc project). Lexer, recursive-descent parser (predictive), and code generator are hand-written for better error reporting."
         ],
         "date": "2020-",
-        "url": "https://github.com/michaelsjoeberg/pas2wat",
+        "url": "https://github.com/miqqeio/pas2wat",
         "tags": [],
         "archived": false,
         "active": true,
         "github": false,
-        "website": false
+        "website": false,
+        "show": false
     },
     "EQZEN": {
         "description": [
-            "A browser-based collaborative financial portfolio management application. The goal was to explore use cases around security and collaboration in financial management and to improve workflow for financial advisors working with many clients. Discontinued."
+            "Browser-based collaborative financial portfolio management application. The goal was to improve workflow for financial advisors working with many clients. Discontinued."
         ],
         "date": "2018-2020",
         "url": "",
@@ -57,11 +61,12 @@
         "archived": false,
         "active": false,
         "github": false,
-        "website": false
+        "website": false,
+        "show": true
     },
     "Give Trees": {
         "description": [
-            "Mobile application to plant trees published by Plant for Earth LTD (co-founder, dissolved). Discontinued."
+            "Mobile application to gamify planting trees. It was published by Plant for Earth Company LTD (co-founded and dissolved)."
         ],
         "date": "2014-2017",
         "url": "",
@@ -69,28 +74,31 @@
         "archived": false,
         "active": false,
         "github": false,
-        "website": false
+        "website": false,
+        "show": true
     },
     "learnhub.io": {
         "description": [
             "A web-based skill tracker and social platform for self-learners. The goal was to create a community of self-learners that want to create and share pathways/ online curriculums to learn specific topics. A pathway was a curated list of available-online courses, such as MOOCs."
         ],
         "date": "2018",
-        "url": "https://github.com/michaelsjoeberg/learnhub.io",
+        "url": "https://github.com/miqqeio/learnhub.io",
         "tags": [],
         "archived": true,
         "active": false,
         "github": false,
-        "website": false
+        "website": false,
+        "show": true
     },
     "doolio.co": {
-        "description": ["An interactive resume. The goal was to learn PHP."],
+        "description": ["An interactive resume."],
         "date": "2017",
-        "url": "https://github.com/michaelsjoeberg/doolio.co",
+        "url": "https://github.com/miqqeio/doolio.co",
         "tags": [],
         "archived": true,
         "active": false,
         "github": false,
-        "website": false
+        "website": false,
+        "show": true
     }
 }
