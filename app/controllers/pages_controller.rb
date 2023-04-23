@@ -2,7 +2,7 @@ class PagesController < ApplicationController
     before_action :set_meta
 
     # version
-    $version = "4.5.0"
+    $version = "4.6.0"
 
     # GET /
     def home
@@ -99,6 +99,7 @@ class PagesController < ApplicationController
             @updated = @posts[@post]['updated']
             @draft = @posts[@post]['draft']
             @toc = @posts[@post]['toc']
+            # @intro = @posts[@post]['intro']
             # @image = @posts[@post]['image']
             @all_lines = File.read(Rails.public_path + 'posts/' + @file)
             @lines = File.readlines(Rails.public_path + 'posts/' + @file)
@@ -125,6 +126,7 @@ class PagesController < ApplicationController
                 @updated = @posts[post]['updated']
                 @draft = @posts[post]['draft']
                 @read = @posts[post]['read']
+                @intro = @posts[post]['intro']
                 @posts_array[post] = {
                     title: @title,
                     # short: @short,
@@ -133,7 +135,8 @@ class PagesController < ApplicationController
                     date: @date,
                     updated: @updated,
                     draft: @draft,
-                    read: @read
+                    read: @read,
+                    intro: @intro
                 }
             end
             # sort by date if not sorted already
