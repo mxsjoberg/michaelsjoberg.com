@@ -697,6 +697,10 @@ li.list-item {
     list-style-position     : inherit;
 }
 
+li.list-item.no-bullet {
+    list-style-type         : none;
+}
+
 .font-family-serif ol li {
     list-style-type         : auto;
 }
