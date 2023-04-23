@@ -63,33 +63,47 @@ $(document).on('turbolinks:load', function() {
     })
 
     // dark mode
-    var dark = sessionStorage.getItem('dark');
-    // no local
-    if (!dark) {
-        // match system
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            $('html').addClass('dark');
-        } else {
-            $('html').removeClass('dark');
-        }
-    // local
+    // var dark = sessionStorage.getItem('dark');
+    // // no local
+    // if (!dark) {
+    //     // match system
+    //     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    //         $('html').addClass('dark');
+    //     } else {
+    //         $('html').removeClass('dark');
+    //     }
+    // // local
+    // } else {
+    //     if (dark === 'true') {
+    //         $('html').addClass('dark');
+    //     } else {
+    //         $('html').removeClass('dark');
+    //     }
+    // }
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        $('html').addClass('dark');
     } else {
-        if (dark === 'true') {
-            $('html').addClass('dark');
-        } else {
-            $('html').removeClass('dark');
-        }
+        $('html').removeClass('dark');
     }
-    // dark mode : toggle
-    $('#toggle-dark-mode').on('click', function () {
-        if ($('html').hasClass('dark')) {
-            $('html').removeClass('dark');
-            sessionStorage.setItem('dark', false);
-        } else {
+    // watch for changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+        const newColorScheme = event.matches ? "dark" : "light";
+        if (newColorScheme === 'dark') {
             $('html').addClass('dark');
-            sessionStorage.setItem('dark', true);
+        } else {
+            $('html').removeClass('dark');
         }
     });
+    // dark mode : toggle
+    // $('#toggle-dark-mode').on('click', function () {
+    //     if ($('html').hasClass('dark')) {
+    //         $('html').removeClass('dark');
+    //         sessionStorage.setItem('dark', false);
+    //     } else {
+    //         $('html').addClass('dark');
+    //         sessionStorage.setItem('dark', true);
+    //     }
+    // });
 
     // highlight.js
     $('pre').each(function() {

@@ -68,9 +68,20 @@ $COLOR_DARK_BLUE            : #0B0823;
 
 // BASE 
 // --------------------------------------------------------
-html { 
-    background-color        : $WHITE_BASE;
+:root {
+    color-scheme            : light dark;
 }
+
+#toggle-dark-mode { display: none; }
+
+@supports not (color-scheme: light dark) {
+    html { background-color: $WHITE_BASE; }
+    #toggle-dark-mode { display: inline-block; }
+}
+
+// html { 
+//     background-color        : $WHITE_BASE;
+// }
 
 body {
     background-color        : transparent;
@@ -368,7 +379,7 @@ input#search:focus {
 .navbar { 
     font-family             : $FONT_FAMILY_BASE;
     color                   : $COLOR_DARK_BASE;
-    background-color        : $WHITE_BASE;
+    // background-color        : $WHITE_BASE;
 }
 
 .navbar .nav-item { 
@@ -960,7 +971,11 @@ sup code {
 
 // DARK THEME
 // --------------------------------------------------------
-html.dark { background-color: $COLOR_DARK_BASE; }
+// html.dark { background-color: $COLOR_DARK_BASE; }
+
+@supports not (color-scheme: light dark) {
+    html.dark { background-color: $COLOR_DARK_BASE; }
+}
 
 html.dark a,
 html.dark a:focus {
@@ -972,7 +987,7 @@ html.dark a:focus {
 //     li.list-item { color: $COLOR_GREEN; }
 // }
 
-html.dark .navbar { background-color: $COLOR_DARK_BASE; }
+// html.dark .navbar { background-color: $COLOR_DARK_BASE; }
 
 html.dark a.color-primary span,
 html.dark a.color-primary:focus span { color: $WHITE_SHADED; }
