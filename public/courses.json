@@ -152,6 +152,15 @@
         "date": "2017",
         "grade": null
     },
+    "Intermediate C++": {
+        "description": "Intermediate concepts in C++.",
+        "school": "Microsoft Corporation",
+        "url": null,
+        "ects": null,
+        "level": null,
+        "date": "2017",
+        "grade": null
+    },
     "Introduction to C++": {
         "description": "Introduction to programming with C++.",
         "school": "Microsoft Corporation",
