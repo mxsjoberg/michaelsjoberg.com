@@ -4,7 +4,7 @@
     November 16, 2022
 -->
 
-*This post is adapted from lecture notes taken during postgraduate studies at King's College London.*
+*This post is adapted from my own notes taken during postgraduate studies at King's College London.*
 
 ## <a name="1" class="anchor"></a> [1. Introduction](#1)
 
@@ -19,50 +19,52 @@ Nature-inspired methods are search-based optimization algorithms based on natura
 - population based global search
     - genetic algorithm, evolution strategies, ant colony optimization, particle optimization, differential evolution
 
-Nature-inspired methods are often used in biological computing, where biological process provides model (e.g., genetic algorithms, ant colony optimization, artificial immune system), computational biology, where computing provides model (e.g., cellular automata), computation with biological mechanism, such as DNA computing, and are particularly suitable to find solutions that are unusual or unintuitive (e.g., [Evolved antenna](https://en.wikipedia.org/wiki/Evolved_antenna)). Evolutionary algorithms are very good at approximating solutions, but computational complexity and cost can be a limiting factor in production.
+Nature-inspired methods are often used in biological computing, where biological process provides model (e.g., genetic algorithms, ant colony optimization, artificial immune system), computational biology, where computing provides model (e.g., cellular automata), computation with biological mechanism, such as DNA computing, and are particularly suitable to find solutions that are unusual or unintuitive (e.g., [Evolved antenna](https://en.wikipedia.org/wiki/Evolved_antenna)).
 
-### <a name="1.2" class="anchor"></a> [1.2 Optimisation problems](#1.2)
+Evolutionary algorithms are very good at approximating solutions, but computational complexity and cost can be a limiting factor in production environments.
 
-An optimization problem can be solved numerically by adjusting the input, or decision variable, to some function to find minimum or maximum output (note that goal is to the find decision variable that gives minimum or maximum output):
+### <a name="1.2" class="anchor"></a> [1.2 Optimization problems](#1.2)
 
-- minimization problem is the inverse of maximization, so finding $y = \textbf{MAX}\left[x(10 - x)\right]$ is equivalent to $y = \textbf{MIN}\left[-x(10 - x)\right]$
+An optimization problem can be solved numerically by adjusting the input (decision variable), to some function to find minimum or maximum output. Goal is to the find decision variable that gives minimum or maximum output.
 
-    ```python
-    y = lambda x : x * (10 - x)
-    def MAX(fn, res, range_):
-        for n in range_: res.append((n, fn(n)))
-        return print(max(res, key = lambda tuple: tuple[1]))
+A minimization problem is the inverse of maximization, so finding `y = MAX[x(10 - x)]` is equivalent to `y = MIN[-x(10 - x)]`.
 
-    MAX(y, [], range(100))
-    # (5, 25)
-    ```
+```python
+y = lambda x : x * (10 - x)
+def MAX(fn, res, range_):
+    for n in range_: res.append((n, fn(n)))
+    return print(max(res, key = lambda tuple: tuple[1]))
 
-    ```python
-    y = lambda x : -x * (10 - x)
-    def MIN(fn, res, range_):
-        for n in range_: res.append((n, fn(n)))
-        return print(min(res, key = lambda tuple: tuple[1]))
+MAX(y, [], range(100))
+# (5, 25)
+```
 
-    MIN(y, [], range(100))
-    # (5, -25)
-    ```
+```python
+y = lambda x : -x * (10 - x)
+def MIN(fn, res, range_):
+    for n in range_: res.append((n, fn(n)))
+    return print(min(res, key = lambda tuple: tuple[1]))
 
-- least-squares problem (analytical solution), $\textbf{MIN}\left[f(x)\right] = \|Ax - b\|^{2}$, where matrix is symmetric, so $A = A^{T}$, and transposition property is $(Ab)^{T} = b^{T} A^{T}$, then $x = (A^{T} A)^{-1} (A^{T} b)$
+MIN(y, [], range(100))
+# (5, -25)
+```
 
-    ```python
-    import numpy as np
+A least-squares problem (analytical solution), `MIN[f(x)] = abs(A * x - b) ** 2`, where matrix is symmetric, so `A = A^T`, and transposition property is `(Ab)^T = b^T A^T`, then `x = ((A^T)A)^(-1)((A^T)b)`.
 
-    A = np.random.randint(1, 100, size = (3, 3))
-    b = np.random.randint(1, 100, size = (3, 1))
+```python
+import numpy as np
 
-    x = (np.linalg.inv(A.T @ A)) (@ A.T @ b)
-    print(np.allclose(A @ x, b))
-    # True
+A = np.random.randint(1, 100, size = (3, 3))
+b = np.random.randint(1, 100, size = (3, 1))
 
-    # or numpy built in
-    print(np.allclose(A @ np.linalg.lstsq(A, b, rcond = -1)[0], b))
-    # True
-    ```
+x = (np.linalg.inv(A.T @ A)) (@ A.T @ b)
+print(np.allclose(A @ x, b))
+# True
+
+# or numpy built in
+print(np.allclose(A @ np.linalg.lstsq(A, b, rcond = -1)[0], b))
+# True
+```
 
 Solutions to optimization problems can be function-based (cost function) or trial-and-error, static or dynamic (subject to change), constrained or unconstrained (note that most optimization problems are constrained). To solve a constrained optimization problem:
 
