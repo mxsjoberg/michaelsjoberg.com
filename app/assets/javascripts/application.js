@@ -26,6 +26,33 @@ $(document).on('turbolinks:load', function() {
             packages: ['base', 'amsmath']
         }
     };
+    // sleep 2 seconds
+    setTimeout(function() {
+        if ($(window).width() > 992) {
+            // add expand button in top right corner of pre
+            $("pre").prepend(
+                "<button class='btn btn-primary border-solid--grey expand-button' \
+                style='position:absolute;right:2rem;'>\
+                <i class='fas fa-expand'></i></button>");
+            // toggle expand on pre on click
+            $("pre button.expand-button").on("click", function(e) {
+                if ($(this).parent().hasClass("expanded")) {
+                    $(this).parent().removeClass("expanded");
+                    // reset style
+                    $(this).parent().css("margin-left", "0%");
+                    $(this).parent().css("min-width", "100%");
+                    $(this).children().toggleClass("fa-expand fa-compress");
+                    $(this).css("right", "2rem");
+                } else {
+                    $(this).parent().addClass("expanded");
+                    $(this).parent().css("margin-left", "-40%");
+                    $(this).parent().css("min-width", "180%");
+                    $(this).children().toggleClass("fa-expand fa-compress");
+                    $(this).css("right", "-16.250rem");
+                }
+            });
+        }
+    }, 1000);
     // scroll
     window.onscroll = function() {
         try {
@@ -80,10 +107,20 @@ $(document).on('turbolinks:load', function() {
     //         $('html').removeClass('dark');
     //     }
     // }
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+
+
+    // if not already defined in local storage
+    var dark_local = sessionStorage.getItem('dark');
+    if (dark_local === 'true' && !$('html').hasClass('dark')) {
         $('html').addClass('dark');
-    } else {
+    } else if (dark_local === 'false') {
         $('html').removeClass('dark');
+    } else {
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            $('html').addClass('dark');
+        } else {
+            $('html').removeClass('dark');
+        }
     }
     // watch for changes
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
@@ -95,16 +132,15 @@ $(document).on('turbolinks:load', function() {
         }
     });
     // dark mode : toggle
-    // $('#toggle-dark-mode').on('click', function () {
-    //     if ($('html').hasClass('dark')) {
-    //         $('html').removeClass('dark');
-    //         sessionStorage.setItem('dark', false);
-    //     } else {
-    //         $('html').addClass('dark');
-    //         sessionStorage.setItem('dark', true);
-    //     }
-    // });
-
+    $('#toggle-dark-mode').on('click', function () {
+        if ($('html').hasClass('dark')) {
+            $('html').removeClass('dark');
+            sessionStorage.setItem('dark', false);
+        } else {
+            $('html').addClass('dark');
+            sessionStorage.setItem('dark', true);
+        }
+    });
     // highlight.js
     $('pre').each(function() {
         this.className = "hljs language-" + this.lang;
