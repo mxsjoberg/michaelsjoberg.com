@@ -5,55 +5,37 @@
     <i style="font-style:normal;line-height:1;"><span id="scroll-percent"></span>%</i>
   </button>
   <!-- post details -->
-  <div class="col-12 col-lg-<%= @size %>">
+  <div class="col-12 col-xl-<%= @size %>">
     <!-- meta -->
-    <p class="text-muted m-0">
-      <!-- draft -->
-      <% if @draft %>
-      <span>DRAFT &#9642;</span>
-      <% end %>
+    <p class="p-3 text-center border-solid--grey">
       <!-- date -->
       <% unless @draft %>
-      <span><%= Date.parse(@date).strftime("%b %d, %Y") %> &#9642;</span>
+        <span class="pr-3"><%= Date.parse(@date).strftime("%b %d, %Y") %></span>
+      <% else %>
+        <span class="text-muted pr-3">DRAFT</span>
       <% end %>
       <!-- time to read -->
       <% @time_to_read = @words / 75 %>
-      <span><%= @time_to_read %> min read (~<%= @words / 500 %> pages)</span>
-      <!-- words -->
-      <% if @draft %>
-      <span style="float:right;">~<%= @words %> words</span>
-      <% end %>
+      <span class="px-3"><%= @time_to_read %> min read ~<%= @words / 500 %> pages</span>
       <!-- tags -->
       <% if @tags %>
-      <span>
-        &#9642;
         <% @tags.each do |tag| %>
-        <span>
-          <% if tag == tag.upcase %>
-          <%= tag %>
-          <% elsif tag.include?('.') %>
-          <%= tag.capitalize %>
-          <% else %>
-          <%= tag.titleize %>
-          <% end %>
-          <% unless tag.equal?(@tags.last) %>/ <% end %>
-        </span>
+          <a href="/writing/<%= tag %>" data-turbolinks="true" class="px-3"><%= tag.gsub("-", " ").titleize %></a>
         <% end %>
-      </span>
-      <% end %>
-      <!-- updated -->
-      <% unless Date.parse(@date) == Date.parse(@updated) %>
-      <span>&#9642; <a href="https://github.com/michaelsjoeberg/michaelsjoeberg.com-4/commits/main/public/posts/<%= @post %>.md" target="_blank">Updated on <%= Date.parse(@updated).strftime("%b %d, %Y") %></a></span>
       <% end %>
     </p>
     <!-- title -->
     <h1 class="font-family-serif font-weight-bold <% if @toc%>my-3<% else %>mt-3<% end %>">
       <a href="/<%= @route_path %>/<%= @post %>" data-turbolinks="true"><%= @title %></a>
     </h1>
+    <!-- updated -->
+    <% unless Date.parse(@date) == Date.parse(@updated) %>
+      <a href="https://github.com/michaelsjoeberg/michaelsjoeberg.com-4/commits/main/public/posts/<%= @post %>.md" target="_blank" class="mb-3">Updated on <%= Date.parse(@updated).strftime("%b %d, %Y") %></a></span>
+    <% end %>
   </div>
   <!-- toc -->
   <% if @toc %>
-  <div id="toc" class="col-12 col-lg-<%= @size %> font-family-serif">
+  <div id="toc" class="col-12 col-xl-<%= @size %> font-family-serif">
     <div class="container-fluid mb-3 pb-3">
       <div class="row list border-solid--grey py-3 mb-3">
         <div class="col-12 split-columns p-0">
@@ -93,13 +75,22 @@
     <%= render 'divider', locals: { size: @size } %>
   <% end %>
   <!-- render post  -->
-  <div class="col-12 col-lg-<%= @size %> font-family-serif">
+  <div class="col-12 col-xl-<%= @size %> font-family-serif">
     <%= CommonMarker.render_html(@all_lines, [:UNSAFE, :GITHUB_PRE_LANG], [:table, :autolink]).html_safe %>
   </div>
-  <%= render 'divider' %>
-  <div class="col-12 col-lg-<%= @size %> text-md-center">
-    <p class="m-0"><a href="/writing" data-turbolinks="true">Browse all posts</a></p>
+  <!-- meta-navigation -->
+  <div class="col-12 col-xl-<%= @size %> text-center border-solid--grey py-3 my-5">
+    <p class="text-muted mb-0">
+      <!-- all posts -->
+      <a href="/writing" data-turbolinks="true" class="px-3">Browse all posts</a>
+      <!-- random -->
+      <a href="/writing/random" data-turbolinks="true" class="px-3">Random post</a>
+      <!-- twitter -->
+      <!-- <a href="https://twitter.com/miqqeio" target="_blank" class="px-3">@miqqeio</a> -->
+      <a href="https://twitter.com/messages/compose?recipient_id=140255012" class="px-3" data-screen-name="@miqqeio" target="_blank">Comments to @miqqeio</a>
+    </p>
   </div>
+  <!-- ./meta-navigation -->
 </div>
 <!-- mathjax -->
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
