@@ -6,7 +6,11 @@
 
 ## <a name="1" class="anchor"></a> [Introduction](#1)
 
-Particle swarm optimization (PSO) is a computational method used to find the optimal solution to problems. It is based on the behavior of large groups in nature, such as flocks of birds and swarms of insects, where individuals work together to find food or a new home. In PSO, each possible solution is represented by a particle that moves around in the solution space. The particles are guided by their own best solution (local best), as well as the best solution found by other particles (global best).
+<!-- Particle swarm optimization (PSO) is a computational method used to find the optimal solution to problems. It is based on the behavior of large groups in nature, such as flocks of birds and swarms of insects, where individuals work together to find food or a new home. In PSO, each possible solution is represented by a particle that moves around in the solution space. The particles are guided by their own best solution (local best), as well as the best solution found by other particles (global best). -->
+
+In this post, we'll implement particle swarm optimization (PSO) using Python. Here's the definition from [Wikipedia](https://en.wikipedia.org/wiki/Particle_swarm_optimization):
+
+> In computational science, particle swarm optimization (PSO)[1] is a computational method that optimizes a problem by iteratively trying to improve a candidate solution with regard to a given measure of quality. It solves a problem by having a population of candidate solutions, here dubbed particles, and moving these particles around in the search-space according to simple mathematical formula over the particle's position and velocity. Each particle's movement is influenced by its local best known position, but is also guided toward the best known positions in the search-space, which are updated as better positions are found by other particles. This is expected to move the swarm toward the best solutions.
 
 ### <a name="1.1" class="anchor"></a> [Setup](#1.1)
 
