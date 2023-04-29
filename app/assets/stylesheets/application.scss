@@ -741,6 +741,17 @@ li.list-item.no-bullet {
 
 .font-family-serif ol li {
     list-style-type         : auto;
+    padding-left            : 1rem;
+}
+
+.font-family-serif ol li::marker {
+    font-weight             : $FONT_WEIGHT_BOLD;
+    // display                 : inline-block;
+    font-size               : $FONT_SIZE_BASE;
+}
+
+#toc.font-family-serif ol li {
+    padding-left            : 0 !important;
 }
 
 #toc ol {
@@ -1057,7 +1068,9 @@ html.dark .background--grey,
 html.dark code,
 html.dark pre,
 html.dark .prettyprint.background--grey {
-    background                  : $WHITE_MUTED;
+    border                      : 1px solid $WHITE_MUTED;
+    // background                  : $WHITE_MUTED;
+    background                  : transparent;
     color                       : $WHITE_SHADED;
 }
 
