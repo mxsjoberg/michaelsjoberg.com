@@ -19,15 +19,16 @@
 //= require_tree .
 
 $(document).on('turbolinks:load', function() {
-    // mathjax init
-    MathJax = {
-        tex: {
-            inlineMath: [['$', '$']],
-            packages: ['base', 'amsmath']
-        }
-    };
-    // sleep 2 seconds
+    // sleep 2 seconds (load after DOM)
     setTimeout(function() {
+        // mathjax init
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$']],
+                packages: ['base', 'amsmath']
+            }
+        };
+        // expand buttons
         if ($(window).width() > 992) {
             // add expand button to longer code segments
             $("pre").each(function() {
@@ -37,7 +38,7 @@ $(document).on('turbolinks:load', function() {
                     $(this).prepend(
                         "<button class='btn btn-primary border-solid--grey expand-button' \
                                  style='position:absolute;right:2rem;'>\
-                            <i class='fas fa-expand'></i></button>");
+                            <i class='fas fa-fw fa-expand'></i></button>");
                 }
             });
             // toggle expand on pre on click
