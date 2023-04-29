@@ -37,10 +37,10 @@
         "short": false,
         "tags": ["computer-science"],
         "date": "20220827",
-        "updated": "20221012",
+        "updated": "20230429",
         "draft": false,
         "toc": true,
-        "read": 72,
+        "read": 73,
         "image": false
     },
     "lecture-notes-on-computer-vision": {

