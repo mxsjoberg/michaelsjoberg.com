@@ -29,11 +29,17 @@ $(document).on('turbolinks:load', function() {
     // sleep 2 seconds
     setTimeout(function() {
         if ($(window).width() > 992) {
-            // add expand button in top right corner of pre
-            $("pre").prepend(
-                "<button class='btn btn-primary border-solid--grey expand-button' \
-                style='position:absolute;right:2rem;'>\
-                <i class='fas fa-expand'></i></button>");
+            // add expand button to longer code segments
+            $("pre").each(function() {
+                var words = $(this).text().split(" ");
+                if (words.length > 20) {
+                    $(this).addClass("long");
+                    $(this).prepend(
+                        "<button class='btn btn-primary border-solid--grey expand-button' \
+                                 style='position:absolute;right:2rem;'>\
+                            <i class='fas fa-expand'></i></button>");
+                }
+            });
             // toggle expand on pre on click
             $("pre button.expand-button").on("click", function(e) {
                 if ($(this).parent().hasClass("expanded")) {
