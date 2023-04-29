@@ -27,14 +27,15 @@ $FONT_FAMILY_BASE           : "Mulish", sans-serif;
 // $FONT_FAMILY_MONO           : "Source Code Pro", monospace;
 // $FONT_FAMILY_SERIF          : "Source Serif Pro", serif;
 $FONT_FAMILY_MONO           : "Roboto Mono", monospace;
-$FONT_FAMILY_SERIF          : "Source Serif Pro", serif;
-$FONT_SIZE_LARGER           : 3.125rem; // +2.000
-$FONT_SIZE_LARGE            : 2.125rem; // +1.000
-$FONT_SIZE_MEDIUM           : 1.625rem; // +0.500
-$FONT_SIZE_BASE_PLUS        : 1.250rem; // +0.125
-$FONT_SIZE_BASE             : 1.125rem;
-$FONT_SIZE_BASE_MONO        : 1.000rem; // -0.125
-$FONT_SIZE_SMALL            : 0.875rem; // -0.250
+// $FONT_FAMILY_SERIF          : "Source Serif Pro", serif;
+$FONT_FAMILY_SERIF          : $FONT_FAMILY_BASE;
+$FONT_SIZE_LARGER           : 3.250rem; // +2.000
+$FONT_SIZE_LARGE            : 2.250rem; // +1.000
+$FONT_SIZE_MEDIUM           : 1.750rem; // +0.500
+$FONT_SIZE_BASE_PLUS        : 1.375rem; // +0.125
+$FONT_SIZE_BASE             : 1.250rem;
+$FONT_SIZE_BASE_MONO        : 1.125rem; // -0.125
+$FONT_SIZE_SMALL            : 1.000rem; // -0.250
 $FONT_WEIGHT_THIN           : 300;
 $FONT_WEIGHT_BASE           : 400;
 $FONT_WEIGHT_BOLD_MONO      : 600;
@@ -68,19 +69,18 @@ $COLOR_DARK_BLUE            : #0B0823;
 
 // BASE 
 // --------------------------------------------------------
-:root {
-    color-scheme            : light dark;
+// :root {
+//     color-scheme            : light dark;
+// }
+
+// #toggle-dark-mode { display: none; }
+
+html { 
+    background-color        : $WHITE_BASE;
 }
-
-#toggle-dark-mode { display: none; }
-
-@supports not (color-scheme: light dark) {
-    html { background-color: $WHITE_BASE; }
-    #toggle-dark-mode { display: inline-block; }
-}
-
-// html { 
-//     background-color        : $WHITE_BASE;
+// @supports not (color-scheme: light dark) {
+//     html { background-color: $WHITE_BASE; }
+//     #toggle-dark-mode { display: inline-block; }
 // }
 
 body {
@@ -151,15 +151,48 @@ html.dark .background--primary {
 code,
 pre,
 .prettyprint.background--grey {
+    transition              : all 0.15s;
     background              : $WHITE_BASE;
     // background              : $DARK_MUTED
     border                  : 1px solid $DARK_MUTED;
 }
 
+button.expand-button { display: none; }
+@include media-breakpoint-up(lg) {
+    button.expand-button { display: inline-block; }
+}
+
+.no-expand button.expand-button { display: none !important; }
+
+// code.expand,
+// pre.expand {
+//     transition              : all 0.15s;
+//     min-width               : 180%;
+//     margin-left             : -40%;
+// }
+
 html.dark code,
 html.dark pre,
 html.dark .prettyprint.background--grey {
     border                  : 1px solid transparent;
+}
+
+blockquote {
+    padding-left            : 1rem;
+    border-left             : 0.5rem solid $DARK_MUTED;
+    // margin-left             : 1rem;
+    
+    p {
+        color               : rgba($COLOR_DARK_BASE, 0.5);
+        font-style          : italic;
+    }
+}
+
+html.dark blockquote {
+    border-left             : 0.5rem solid $WHITE_MUTED;
+
+
+    p { color: rgba($WHITE_BASE, 0.5); }
 }
 
 a.anchor {
@@ -191,17 +224,17 @@ strong,
     font-weight             : $FONT_WEIGHT_BOLD !important;
 }
 
-a.color-primary span,
-a.color-primary:focus span { 
-    color                   : $COLOR_DARK_BASE;
-    -webkit-transition      : all .15s;
-    -moz-transition         : all .15s; 
-    transition              : all .15s;
-}
+// a.color-primary span,
+// a.color-primary:focus span { 
+//     color                   : $COLOR_DARK_BASE;
+//     -webkit-transition      : all .15s;
+//     -moz-transition         : all .15s; 
+//     transition              : all .15s;
+// }
 
-a.color-primary:hover span {
-    color                   : $COLOR_CONTRAST !important;
-}
+// a.color-primary:hover span {
+//     color                   : $COLOR_CONTRAST !important;
+// }
 
 li {
     list-style              : none;
@@ -242,6 +275,11 @@ html.dark td {
 .p-sm-3 {
     padding                 : 1rem;
 }
+
+// @media (min-width: 576px) { ... }
+// @media (min-width: 768px) { ... }
+// @media (min-width: 992px) { ... }
+// @media (min-width: 1200px) { ... }
 
 @include media-breakpoint-up(md) {
     .text-md-right                  { text-align: right !important; }
@@ -574,12 +612,12 @@ html.dark h5 a {
     color                   : rgba($WHITE_BASE, 0.5) !important;
 }
 
-h1 span.bg--green {
-    background              : $COLOR_GREEN !important;
-    font-weight             : $FONT_WEIGHT_BOLD !important;
-    display                 : inline-block;
-    width                   : 63px;
-}
+// h1 span.bg--green {
+//     background              : $COLOR_GREEN !important;
+//     font-weight             : $FONT_WEIGHT_BOLD !important;
+//     display                 : inline-block;
+//     width                   : 63px;
+// }
 
 h1,
 h2,
@@ -595,14 +633,14 @@ button.navbar-toggler {
     outline                 : none !important;
     line-height             : 1.5 !important;
 
-    span { 
-        font-family         : inherit;
-        font-size           : inherit;
-        font-weight         : inherit;
-        background-color    : $COLOR_DARK_BASE; 
-        color               : $WHITE_BASE;
-        font-weight         : $FONT_WEIGHT_BASE;
-    }
+    // span { 
+    //     font-family         : inherit;
+    //     font-size           : inherit;
+    //     font-weight         : inherit;
+    //     background-color    : $COLOR_DARK_BASE; 
+    //     color               : $WHITE_BASE;
+    //     font-weight         : $FONT_WEIGHT_BASE;
+    // }
 
     a,
     a:focus {
@@ -682,12 +720,12 @@ ul li ul li {
     list-style-type         : circle !important;
 }
 
-.font-family-serif p {
-    text-align: justify;
-}
+// .font-family-serif p {
+//     text-align: justify;
+// }
 
 .font-family-serif li p {
-    text-align: left !important;
+    text-align              : left !important;
 }
 
 .font-family-serif ul li,
@@ -749,7 +787,7 @@ li.list-item.no-bullet {
 .font-family-serif { 
     font-family             : $FONT_FAMILY_SERIF !important;
     // font-weight             : $FONT_WEIGHT_THIN;
-    line-height             : 1.6;
+    // line-height             : 1.6;
     font-size               : $FONT_SIZE_BASE_PLUS;
 }
 
@@ -842,9 +880,9 @@ a:hover {
     color                   : darken($COLOR_PRIMARY, 10%);
     // text-decoration         : none !important;
 
-    // span {
-    //     color               : $COLOR_GREEN !important;
-    // }
+    span {
+        color               : $COLOR_PRIMARY !important;
+    }
 
     li.list-item {
         color               : darken($COLOR_PRIMARY, 10%);
@@ -891,7 +929,7 @@ pre.prettyprint span {
     color                   : $COLOR_DARK_BASE;
     font-family             : $FONT_FAMILY_MONO;
     font-weight             : $FONT_WEIGHT_BASE;
-    font-size               : $FONT_SIZE_BASE; 
+    font-size               : $FONT_SIZE_BASE_MONO; 
     line-height             : 1.5 !important;
 }
 
@@ -975,11 +1013,10 @@ sup code {
 
 // DARK THEME
 // --------------------------------------------------------
-// html.dark { background-color: $COLOR_DARK_BASE; }
-
-@supports not (color-scheme: light dark) {
-    html.dark { background-color: $COLOR_DARK_BASE; }
-}
+html.dark { background-color: $COLOR_DARK_BASE; }
+// @supports not (color-scheme: light dark) {
+//     html.dark { background-color: $COLOR_DARK_BASE; }
+// }
 
 html.dark a,
 html.dark a:focus {
@@ -993,10 +1030,10 @@ html.dark a:focus {
 
 // html.dark .navbar { background-color: $COLOR_DARK_BASE; }
 
-html.dark a.color-primary span,
-html.dark a.color-primary:focus span { color: $WHITE_SHADED; }
+// html.dark a.color-primary span,
+// html.dark a.color-primary:focus span { color: $WHITE_SHADED; }
 
-html.dark a.color-primary:hover span { color: lighten($COLOR_PRIMARY, 10%) !important; }
+// html.dark a.color-primary:hover span { color: lighten($COLOR_PRIMARY, 10%) !important; }
 
 html.dark .navbar { color: $WHITE_SHADED; }
 
@@ -1036,10 +1073,10 @@ html.dark h5,
 html.dark button.navbar-toggler { 
     color: $WHITE_SHADED;
 
-    span { 
-        background-color        : $WHITE_SHADED; 
-        color                   : $COLOR_DARK_BASE; 
-    }
+    // span { 
+    //     background-color        : $WHITE_SHADED; 
+    //     color                   : $COLOR_DARK_BASE; 
+    // }
 
     a {
         color                   : $WHITE_SHADED;
