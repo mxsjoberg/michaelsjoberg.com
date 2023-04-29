@@ -18,7 +18,7 @@
 <!-- ./page-navigation -->
 
 <% @size = 12 %>
-<div class="container <% if @file_content != nil %>py-5<% else %>pb-5<% end %>">
+<div class="container <% if @file_content != nil %>py-5<% else %>pb-5<% end %> no-expand">
   <!-- content -->
   <% if @file_content != nil %>
     <%= render 'file_content', locals: { size: @size } %>
