@@ -1,10 +1,9 @@
 <!--
     Lecture notes on nature-inspired learning algorithms
     Michael Sjöberg
-    November 16, 2022
 -->
 
-*This post is adapted from my own notes taken during postgraduate studies at King's College London.*
+*This is a draft. This post is adapted from my own notes taken during postgraduate studies at King's College London.*
 
 ## <a name="1" class="anchor"></a> [1. Introduction](#1)
 
