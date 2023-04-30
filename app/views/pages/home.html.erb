@@ -1,6 +1,7 @@
 <%= render 'header' %>
 
 <% @size = 12 %>
+<% @d_size = 8 %>
 
 <!-- navigation -->
 <div class="row justify-content-center hidden-until-lg">
@@ -17,7 +18,7 @@
 <div class="container">
   <!-- intro -->
   <div class="row justify-content-center">
-    <%= render 'divider', locals: { size: @size } %>
+    <%= render 'divider', locals: { size: @d_size } %>
     <!-- two columns -->
     <div class="col-12 col-lg-<%= @size %> hidden-until-md" style="column-count: 2;">
       <%= render 'intro' %>
@@ -26,7 +27,7 @@
     <div class="col-12 col-lg-<%= @size %> hidden-from-md">
       <%= render 'intro' %>
     </div>
-    <%= render 'divider', locals: { size: @size } %>
+    <%= render 'divider', locals: { size: @d_size } %>
   </div>
   <!-- ./intro -->
 
