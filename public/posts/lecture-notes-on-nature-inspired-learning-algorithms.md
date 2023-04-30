@@ -7,20 +7,15 @@
 
 ## <a name="1" class="anchor"></a> [1. Introduction](#1)
 
-### <a name="1.1" class="anchor"></a> [1.1 Nature-inspired methods](#1.1)
+### <a name="1.1" class="anchor"></a> [1.1 Evolutionary algorithms](#1.1)
 
-Nature-inspired methods are search-based optimization algorithms based on natural phenomenon,
+Evolutionary algorithms are search-based global optimization algorithms based on natural phenomenon:
 
-- local search
-    - gradient descent, simplex method, line minimization, [Newton's method](https://en.wikipedia.org/wiki/Newton%27s_method)
-- non-population based global search
-    - grid search, random walk, exhaustive search, [simulated annealing](https://en.wikipedia.org/wiki/Simulated_annealing)
-- population based global search
-    - genetic algorithm, evolution strategies, ant colony optimization, particle optimization, differential evolution
+- local search, such as gradient descent, simplex method, line minimization, [Newton's method](https://en.wikipedia.org/wiki/Newton%27s_method)
+- non-population based global search, such as grid search, random walk, exhaustive search, [simulated annealing](https://en.wikipedia.org/wiki/Simulated_annealing)
+- population based global search, such as genetic algorithm, evolution strategies, ant colony optimization, particle swarm optimization, differential evolution
 
-Nature-inspired methods are often used in biological computing, where biological process provides model (e.g., genetic algorithms, ant colony optimization, artificial immune system), computational biology, where computing provides model (e.g., cellular automata), computation with biological mechanism, such as DNA computing, and are particularly suitable to find solutions that are unusual or unintuitive (e.g., [Evolved antenna](https://en.wikipedia.org/wiki/Evolved_antenna)).
-
-Evolutionary algorithms are very good at approximating solutions, but computational complexity and cost can be a limiting factor in production environments.
+Evolutionary algorithms are very good at approximating solutions, but computational complexity and cost can be a limiting factor in production environments (see [Evolved antenna](https://en.wikipedia.org/wiki/Evolved_antenna)).
 
 ### <a name="1.2" class="anchor"></a> [1.2 Optimization problems](#1.2)
 
@@ -48,150 +43,149 @@ MIN(y, [], range(100))
 # (5, -25)
 ```
 
-A least-squares problem (analytical solution), `MIN[f(x)] = abs(A * x - b) ** 2`, where matrix is symmetric, so `A = A^T`, and transposition property is `(Ab)^T = b^T A^T`, then `x = ((A^T)A)^(-1)((A^T)b)`.
+Optimization problems can be function-based (cost function) or trial-and-error, static or dynamic (subject to change), constrained or unconstrained (most optimization problems are constrained).
 
-```python
-import numpy as np
+To solve a constrained optimization problem:
 
-A = np.random.randint(1, 100, size = (3, 3))
-b = np.random.randint(1, 100, size = (3, 1))
+- [Lagrange multiplier method](https://en.wikipedia.org/wiki/Lagrange_multiplier), `MIN[f(x,y,z)]` s.b. `c = g(x,y,z)`
+    - Lagrange function is `L(x,y,z,l) = f(x,y,z) + l(g(x,y,z) - c)`, where `l` is the Lagrange multiplier, then stationary point is `L(x,y,z,l) = 0`
 
-x = (np.linalg.inv(A.T @ A)) (@ A.T @ b)
-print(np.allclose(A @ x, b))
-# True
-
-# or numpy built in
-print(np.allclose(A @ np.linalg.lstsq(A, b, rcond = -1)[0], b))
-# True
-```
-
-Solutions to optimization problems can be function-based (cost function) or trial-and-error, static or dynamic (subject to change), constrained or unconstrained (note that most optimization problems are constrained). To solve a constrained optimization problem:
-
-- [Lagrange multiplier method](https://en.wikipedia.org/wiki/Lagrange_multiplier), $\textbf{MIN}\left[f(x, y, z)\right]$ subject to condition $c = g(x, y, z)$, Lagrange function is $L(x, y, z, l) = f(x, y, z) + l(g(x, y, z) - c)$, where $l$ is Lagrange multiplier, and stationary point is $L(x, y, z, l) = 0$.
 
 #### <a name="1.2.1" class="anchor"></a> [Exhaustive search](#1.2.1)
 
-An exhaustive search method, or brute-force, is a numerical method that can be used to search a large but finite solution space using combinations of different variables. Brute-force methods do not get stuck in local minimum with fine sampling and work with both continuous or discontinuous functions (no derivatives). However, brute-force can take long time to find global minimum, or missed due to under-sampling, and only practical with small number of variables in limited search space.
+An exhaustive search method, or brute-force, is a numerical method that can be used to search a large but finite solution space using combinations of different variables.
+
+Brute-force methods do not get stuck in local minimum with fine sampling and work with both continuous or discontinuous functions (no derivatives). However, brute-force can take long time to find global best, or missed due to under-sampling, and only practical with small number of variables in limited search space.
 
 #### <a name="1.2.2" class="anchor"></a> [Nelder-Mead method](#1.2.2)
 
-The [Nelder-Mead method](https://en.wikipedia.org/wiki/Nelder%E2%80%93Mead_method), or downhill simplex method, can be used to find local minimum of function with several variables (a simplex is an elementary shape formed in dimension $n+1$, such as 2D triangle, where points are referred to as best ($B$), good ($G$), and worst ($W$):
+The [Nelder-Mead method](https://en.wikipedia.org/wiki/Nelder%E2%80%93Mead_method), or downhill simplex method, can be used to find local minimum of function with several variables (a simplex is an elementary shape formed in dimension `n + 1`, such as 2D triangle, where points are referred to as best, `B`, good, `G`, and worst, `W`.
 
-- process to search for local minimum is repeated until acceptable error, points $BGW$ are iterated when finding better points
-- for example, $f(x, y) = x + y$, where $x = 2$ and $y = 3$, gives $f(2,3) = 5$, where point $W = (4,5)$ gives $f(4,5) = 9$, so move towards $(2,3)$
-	- move towards local minimum (reflection, expansion), where reflection point is $R = M + (M - W) = 2M - W$ and expanding point is $E = R + (R - M) = 2R - M$
-    - contract around minimum (contraction, shrinking), where contraction points are $C_{1} = \frac{W + M}{2}$ and $C_{2} = \frac{M + R}{2}$, and shrink towards $B$, so shrink point is $S = \frac{B + W}{2}$ and midpoint is $M = \frac{B + G}{2}$
+The process to search for local minimum is repeated until acceptable error and the points `BGW` are iterated when finding better points:
 
-#### <a name="1.2.3" class="anchor"></a> [Line minimisation](#1.2.3)
+- `f(x,y) = x + y` with `x = 2` and `y = 3` gives `f(2,3) = 5`, and point `W = (4,5)` gives `f(4,5) = 9`, so move towards `(2,3)`, which is smaller (minimum)
 
-A line minimisation method, or line search, starts at random point and selects direction to move until cost function changes (increases or decreases depending on goal). Line search methods are generally robust and fast to converge, but use gradients, so function need to be differentiable, and is not guaranteed to find global minimum:
+    - move towards local minimum (reflection, expansion), where reflection point is `R = M + (M - W) = 2M - W` and expanding point is `E = R + (R - M) = 2R - M`
+
+    - contract around minimum (contraction, shrinking), where contraction points are `C1 = (W + M) / 2` and `C2 = (M + R) / 2`, and shrink towards `B`, so shrink point is `S = (B + W) / 2` and midpoint is `M = (B + G) / 2`
+
+#### <a name="1.2.3" class="anchor"></a> [Line minimization](#1.2.3)
+
+A line minimization method, or line search, starts at a random point and selects direction to move until cost function changes (increases or decreases depending on goal).
+
+Line search methods are generally robust and fast to converge, but use gradients, so function need to be differentiable, and is not guaranteed to find global minimum:
 
 1. initialise starting point
 2. compute search direction
 4. compute step length
-5. update, $x_{k+1} = x_{k} - \frac{f'(x_{k})}{f''(x_{k)})}$
+5. update
+    - `x[k+1] = x[k] - f'(x[k]) / f''(x[k]`
 6. check convergence, or repeat from step 2
 
 #### <a name="1.2.4" class="anchor"></a> [Random walk](#1.2.4)
 
 The random walk method use random numbers to move in different directions, which is particularly useful to avoid getting stuck in local minimum or explore different regions to locate additional minimums, concentrate search to smaller region to refine solution:
 
-1. initialise starting point and best point (note that this can be the same point)
+1. initialise starting point and best point (this can be the same point)
 2. evaluate starting point
 3. generate random correction
-4. update, $x_{k+1} = x_{k} + D_{k} h_{k}$, where $D$ is random search direction matrix and $h$ is step size vector
+4. update
+    - `x[k+1] = x[k] + D[k] * h[k]` where `D` is random search direction matrix and `h` is step size vector
 5. evaluate function at point and update best point
 6. return best point, or repeat step 3
 
-Random walk, and other methods using random numbers, work well with discrete and continuous variables, complicated functions, discontinuous functions, and non-differential functions (no derivatives). Random-based optimisation algorithms are not as sensitive to initial point selection, but more sensitive to control parameters (direction and step size), and most solutions are not repeatable, so multiple runs may be needed to verify some solution.
+Random walk and other methods using random numbers work with discrete and continuous variables, discontinuous functions and non-differential functions (no derivatives), and not as sensitive to initial point selection but more sensitive to control parameters (direction and step size).
 
-## <a name="2" class="anchor"></a> [2. Binary Genetic Algorithm](#2)
+Note that solutions found using random numbers are not repeatable so multiple runs may be needed to verify.
 
-### <a name="2.1" class="anchor"></a> [2.1 Genetic algorithms](#2.1)
+## <a name="2" class="anchor"></a> [2. Genetic algorithms (GA)](#2)
 
-Genetic algorithms is a subclass of evolutionary computing and describe population-based methods inspired by theory of evolution. The theory of evolution states that an offspring has many characteristics of its parents, which implies population is stable, and variations in characterisitcs between individuals passed from one generation to the next often is due to inherited characteristics, where some percentage of offsprings survive to adulthood. Genetic algorithms borrow much of its terminology from biology, such as natural selection, evolution, gene, chromosome, mating, crossover, and mutation. 
+Genetic algorithms describe population-based methods that are inspired by natural selection. 
 
-Binary genetic algorithms (BGA) work well with continuous and discrete variables, can handle large number of decision variables and optimize decision variables with cost functions. BGA is less likely to get stuck in local minimum and tend to find global minimum. Common components of the BGA are variable encoding and decoding, fitness function, population, selection, mutation, offspring, and convergance.
+> Natural selection is the differential survival and reproduction of individuals due to differences in phenotype. It is a key mechanism of evolution, the change in the heritable traits characteristic of a population over generations. Charles Darwin popularised the term "natural selection", contrasting it with artificial selection, which is intentional, whereas natural selection is not. [Wikipedia](https://en.wikipedia.org/wiki/Natural_selection)
+
+Darwin's theory of evolution states that an offspring has many characteristics of its parents, which implies population is stable, and variations in characterisitcs between individuals passed from one generation to the next often is from inherited characteristics, where some percentage of offsprings survive to adulthood. 
+
+### <a name="2.1" class="anchor"></a> [2.1 Binary Genetic Algorithms](#2.1)
+
+Binary genetic algorithms (BGA) work well with continuous and discrete variables and can handle large number of decision variables. The decision variables are evaluated with cost functions. BGA is less likely to get stuck in local minimum.
 
 #### <a name="2.1.1" class="anchor"></a> [Notation](#2.1.1)
 
 |     |     |
 | :-- | :-- |
-| $N_{var}$ | number of decision variables of chromosome |
-| $N_{bits}$ | total number of bits of chromosome |
-| $N_{pop}$ | population size |
-| $N_{pop} N_{bits}$ | total number of bits in population |
-| $X_{rate}$ | selection rate in step of natural selection |
-| $N_{keep} = N_{pop} X_{rate}$ | number of chromosomes that are kept for each generation |
-| $N_{pop} - N_{keep}$ | number of chromosomes to be discarded |
-| $x_{low}$ | lower bound of variable $x$ |
-| $x_{high}$ | upper bound of variable $x$ |
-| $P_{n}$ | probability of chromosome $n$ in mating pool $N_{keep}$ to be chosen |
-| $c_{n}$ | cost of chromosome $n$ |
-| $C_{n}$ | normalised cost of chromosome $n$ |
-| $\mu$ | mutation rate, which is probability of mutation |
+| `N[var]` | number of decision variables of chromosome|
+| `N[bits]` | total number of bits of chromosome |
+| `N[pop]` | population size |
+| `N[pop]N[bits]` | total number of bits in population |
+| `X` | selection rate in step of natural selection |
+| `N[keep] = XN[pop]` | number of chromosomes that are kept for each generation |
+| `N[pop] - N[keep]` | number of chromosomes to be discarded |
+| `x[low]` | lower bound of variable `x` |
+| `x[high]` | upper bound of variable `x` |
+| `P[n]` | probability of chromosome `n` in mating pool `N[keep]` to be chosen |
+| `c[n]` | cost of chromosome `n` |
+| `C[n]` | normalised cost of chromosome `n` |
+| `mu` | mutation rate, which is probability of mutation |
 
-Decision variables are represented as chromosomes, such as $[v_{1}, v_{2}, ..., v_{N_{var}}]$, where each gene is coded by $m$-bits, so total number of bits per chromosome is $N_{bits} = m(N_{var})$, cost is evaluated by some cost function, and result is typically presented as sorted table, or cost table. A population, $N_{pop}$, is a group of chromosomes, each representing a potential solution to function, such as $f(x, y)$, where $(x, y)$ represent some chromosome (e.g., $[1100011, 0011001]$).
+Decision variables are represented as chromosomes, such as `[v[1], v[2], ..., v[N[var]]`, where each gene is coded by `m`-bits, so total number of bits per chromosome is `N[bits] = mN[var]`, cost is evaluated by some cost function, and result is presented as sorted table, or cost table (most fit at top).
 
-#### <a name="2.1.2" class="anchor"></a> [Natural selection](#2.1.2)
+A population, `N[pop]`, is a group of chromosomes, each representing a potential solution to function, such as `f(x,y)`, where `(x, y)` represent some chromosome, such as `[1100011, 0011001]`.
 
-The selection process imitates natural selection, i.e. survival of the fittest, where only best potential solutions are selected. A selection occur each generation, or iteration, and selection rate, $X_rate$, is fraction of population that survive. The number of chromosomes that are kept is $N_{keep}$, where best are kept and worst will be discarded (replaced by offsprings):
+#### <a name="2.1.2" class="anchor"></a> [Natural selection in binary](#2.1.2)
 
-- if $N_{pop} = 8$ and $X_{rate} = 0.5$, then $N_{keep} = N_{pop} X_{rate} = 8(0.5) = 4$, so keep best 4 chromosomes in cost table
+The selection process imitates natural selection, where only best potential solutions are selected. A selection occur each generation, or iteration, and selection rate, `X`, is fraction of population that survive.
 
-In natural selection, thresholding is a computationally cheaper alternative to $X_{rate}$ and used to determine which chromosomes to keep or discard, where chromosomes with cost lower than threshold survive and higher are discarded (minimization). A new population is generated when no chromsome within threshold, where threshold can be updated with each generation.
+The number of chromosomes that are kept is `N[keep]`, where best are kept and worst are discarded (replaced by offsprings):
 
-#### <a name="2.1.3" class="anchor"></a> [**Example**: binary encoding and decoding](#2.1.2)
+- `N[pop] = 8` and `X = 0.5`, then `N[keep] = X * N[pop] = 8 * 0.5 = 4`, so keep best four chromosomes
 
-Below is an example of binary encoding and decoding a decimal, 25.3125 (base 10), to binary, $11001.0101$ (base 2):
+Note that thresholding is computationally cheaper to selection rate, where chromosomes with costs lower than threshold survive and higher are discarded (minimization). A new population is generated when no chromsomes are within threshold (threshold can be updated with each iteration).
 
-- convert to binary
-    - repeat divide integer part by 2 until 0 (rounded down), non-even result gives 1, otherwise 0, then flip (read from decimal point and out)
+#### <a name="2.1.3" class="anchor"></a> [Binary encoding and decoding](#2.1.2)
 
-        |     |     |     |
-        | :-- | :-- | :-- |
-        | $\frac{25}{2}$ | 12.5 | 1 |
-        | $\frac{12}{2}$ | 6    | 0 |
-        | $\frac{6}{2}$  | 3    | 0 |
-        | $\frac{3}{2}$  | 1.5  | 1 |
-        | $\frac{1}{2}$  | 0.5  | 1 |
+Below is an example of binary encoding and decoding:
 
-    - repeat multiply fractional part by 2 until 1, result greater or qual to 1 gives 1, otherwise 0
+- convert 25.3125 (base 10) integer part to binary by repeatedly dividing integer part by 2 until 0 (rounded down), non-even result gives 1, otherwise 0, then flip (read from decimal point and out), then 
 
-        |     |     |     |
-        | :-- | :-- | :-- |
-        | $2(0.3125)$ | 0.625 | 0 |
-        | $2(0.625)$  | 1.25  | 1 |
-        | $2(0.25)$   | 0.5   | 0 |
-        | $2(0.5)$    | 1     | 1 |
+|          |      |     |
+| :------- | :--- | :-- |
+| `25 / 2` | 12.5 | 1   |
+| `12 / 2` | 6    | 0   |
+| `6 / 2`  | 3    | 0   |
+| `3 / 2`  | 1.5  | 1   |
+| `1 / 2`  | 0.5  | 1   |
 
-- convert to decimal
+- convert 25.3125 (base 10) fraction part to binary by repeatedly multiplying fractional part by 2 until 1, result greater or qual to 1 gives 1, otherwise 0
 
-    - integer part, $1(2^{4}) + 1(2^{3}) + 0(2^{2}) + 0(2^{1}) + 1(2^{0}) = 25$
+|              |       |     |
+| :----------- | :---- | :-- |
+| `2 * 0.3125` | 0.625 | 0   |
+| `2 * 0.625`  | 1.25  | 1   |
+| `2 * 0.25`   | 0.5   | 0   |
+| `2 * 0.5`    | 1     | 1   |
+
+- convert `11001.0101` (base 2) integer part to decimal
+
+```python
+print(1 * (2 ** 4) + 1 * (2 ** 3) + 0 * (2 ** 2) + 0 * (2 ** 1) + 1 * (2 ** 0))
+# 25
+```
+
+- convert `11001.0101` (base 2) fractional part to decimal
+
+```python
+print(0 * (2 ** -1) + 1 * (2 ** -2) + 0 * (2 ** -3) + 1 * (2 ** - 4))
+# 0.3125
+```
+
+#### <a name="2.1.4" class="anchor"></a> [Bits required to achieve precision](#2.1.3)
+
+Below is an example to find bits required to achieve precision of `d` decimal places given a range:
+
+- `(x[high] - x[low]) / 10 ** -d <= 2 ** m - 1`
     
-        ```python
-        # python
-        print(1 * (2 ** 4) + 1 * (2 ** 3) + 0 * (2 ** 2) + 0 * (2 ** 1) + 1 * (2 ** 0))
-        # 25
-        ```
-
-    - fractional part, $0(2^{-1}) + 1(2^{-2}) + 0(2^{-3}) + 1(2^{-4}) = 0.3125$
-
-        ```python
-        # python
-        print(0 * (2 ** -1) + 1 * (2 ** -2) + 0 * (2 ** -3) + 1 * (2 ** - 4))
-        # 0.3125
-        ```
-
-#### <a name="2.1.4" class="anchor"></a> [**Example**: bits required to achieve precision](#2.1.3)
-
-Below is an example to find bits required to achieve precision of $d$ decimal places given a range:
-
-- $\frac{x_{high} - x_{low}}{10^{-d}} \leq 2^{m} - 1$
-    
-    - if $x_{low} = 25$, $x_{high} = 100$, and $d = 2$
-    
-    - then $\frac{100 - 25}{10^{-2}} \leq 2^{m} - 1$ gives $m = 12.8729$, or about 13 bits
+    - `x[low] = 25`, `x[high] = 100`, and `d = 2`, then `(100 - 25) / 10 ** -2 <= 2 ** m - 1` gives `m <= 12.8729`, so about 13 bits
 
 ### <a name="2.2" class="anchor"></a> [2.2 Selection](#2.2)
 
@@ -213,41 +207,72 @@ Weighted random pairing, or roulette wheel weighting, assign probabilities that 
 
 Tournament selection is problem independent and work best with larger population size, but sorting is time-consuming and computationally expensive, chromosomes with good quality have higher chance to be selected
 
-- randomly pick small subset of chromosomes from mating pool in $N_{keep}$, where chromosomes with lowest cost in subset become parent
+- randomly pick small subset of chromosomes from mating pool in `N[keep]`, where chromosomes with lowest cost in subset become parent
 
-### <a name="2.3" class="anchor"></a> [2.3 Crossover](#2.3)
+### <a name="2.3" class="anchor"></a> [2.3 Crossover and mutation](#2.3)
 
 The crossover process create offsprings by exchanging information between parents selected in the selection process:
 
 - single-point crossover
     1. crossover point randomly selected between first and last bits of parent chromosomes
     2. generate two offsprings by swapping chromosomes from crossover point between parents
-    3. replace any two chromosomes to be discarded in pool $N_{pop} - N_{keep}$
-    4. repeat from step 1 for next two parents until pool $N_{pop} - N_{keep}$ is replaced
+    3. replace any two chromosomes to be discarded in pool `N[pop] - N[keep]`
+    4. repeat from step 1 for next two parents until pool `N[pop] - N[keep]` is replaced
+
 - double-point crossover, segments between two randomly generated crossover points are swapped between parents
+
 - uniform crossover, bits are randomly selected for swapping between parents
 
-### <a name="2.4" class="anchor"></a> [2.4 Mutation](#2.4)
+A mutation is a random alteration of certain bits in cost table with chromosomes, this is to allow the algorithm to explore a wider cost surface by introducing new information:
 
-A mutation is random alteration of certain bits in cost table with chromosomes, this is to allow the algorithm to explore a wider cost surface by introducing new information:
+1. choose mutation rate, `mu`, which represent probability of mutation
 
-1. choose mutation rate, $\mu$, which represent probability of mutation
 2. determine number of bits to be mutated
-    - with elitism, $\mu(N_{pop} - 1) N_{bits}$
-    - without elitism, $\mu(N_{pop}) N_{bits}$
+    - with elitism, `mu(N[pop] - 1) * N[bits]`
+    - without elitism, `mu(N[pop]) * N[bits]`
+
 3. flip bits (at random or otherwise)
 
-### <a name="2.5" class="anchor"></a> [2.5 Convergence](#2.5)
-
-A convergence is the stop criteria, such as finding an acceptable solution, exceeded maximum number of iterations, no changes to chromosomes, no changes to cost, or population statistics on mean and minimum cost.
+Note that the selection, crossover, and mutation processes should continue until the population meets some stopping criteria (convergence), such as finding an acceptable solution, exceeded maximum number of iterations, no changes to chromosomes, no changes to cost, or population statistics on mean and minimum cost.
 
 ## <a name="3" class="anchor"></a> [3. Continuous Genetic Algorithm](#3)
 
-In this section:
+Continuous genetic algorithms (CGA) are similar to a binary genetic algorithm, except that the chromosome is represented by a string of real numbers, and the crossover and mutation process is different. It is more logical to represent machine precision in floating-point and results in faster execution (no encoding and decoding).
+
+CGAs can deal with complex problems with high dimensionality and only limited to internal precision errors in computers.
+
+### <a name="3.1" class="anchor"></a> [3.1 Crossover and mutation](#3.1)
+
+Crossover is similar to BGA, but exchanging variables instead of bits, so the crossover point is a random number between first and last variable of parent chromosomes:
+
+- blending is a linear process done for all variables left and right of crossover point, blending ensure that we do not introduce more extreme variables than already present in population (sometimes disadvantage)
+
+    - `O[1] = B * P[1][m] + (1 - B) * P[2][m]` and `O[2] = (1 - B) * P[1][m] + B * P[2][m]`, where `B` is random variable between 0 and 1 (blending), `O[n]` is offspring, `P[n]` is parent chromosomes, and `m` is `m`-th variable in parent
+
+- extrapolation allows introduction of variables outside of parent values (can be discarded if outside allowed range)
+
+    - `O[1] = P[1][m] - B(P[1][n] - P[2][n])` and `O[2] = P[2][m] + B(P[1][n] - P[2][n])`, where `B` is random variable
+
+In CGA, total number of variables that can be mutated in population is `mu * (N[pop] - 1) * N[var]` (elitism) and mutate chosen variables `P'[n] = P[n] + C * N[n](0, 1)`, where `C` is constant and `N[n](0, 1)` is normal distribution.
 
 ## <a name="4" class="anchor"></a> [4. Advanced topics in GA](#4)
 
-In this section:
+#### <a name="4.0.1" class="anchor"></a> [Handling expensive cost functions](#4.0.1)
+
+A complicated cost function can be computationally expensive and time consuming for evaluation. Here are a few approaches to reduce the number of function evaluations:
+
+- identical chromosomes are not evaluated more than once (duplicate evaluation)
+- only allow unique chromosomes in population
+- duplicate offsprings are discarded (search time is less than evaluation time)
+- only evaluate cost of offsprings with mutated chromosomes
+
+### <a name="4.0.2" class="anchor"></a> [Multiple-objective optimization](#4.0.2)
+
+Multiple-objective optimization refers to optimizing for a set of cost functions where objectives conflict:
+
+- optimizing one cost function degrade the other (not always possible to optimize all cost functions)
+- goal is to find feasible solution (maximizing yield or minimizing cost) 
+
 
 ## <a name="5" class="anchor"></a> [5. Evolution strategies](#5)
 
