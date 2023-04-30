@@ -15,11 +15,11 @@
             <!-- title -->
             <div class="col-12 mb-0">
               <h3 class="font-family-base font-weight-bold pb-0 <% if @projects[project]['url'] == "" %>text-muted<% end %>">
-                <span class="text-muted"><% if @projects[project]['archived'] %>[ARCHIVED]<% end %></span>
                 <% if @projects[project]['url'] != "" %>
                 <a href="<%= @projects[project]['url'] %>" target="_blank">
                   <%= project %>
                 </a>
+                <span class="text-muted"><% if @projects[project]['archived'] %>[ARCHIVED]<% end %></span>
                 <% else %>
                   <%= project %>
                 <% end %>
