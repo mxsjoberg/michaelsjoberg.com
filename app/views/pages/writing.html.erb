@@ -3,7 +3,7 @@
 <% @size = 8 %>
 <% @d_size = 8 %>
 
-<div class="container <% if @post != nil %>py-5<% else %>pb-0<% end %>">
+<div class="container">
   <!-- post -->
   <% if @post != nil %>
     <%= render 'post', locals: { size: @size } %> 
@@ -14,7 +14,7 @@
     <div class="col-12 col-lg-<%= @size %>">
       <!-- tag -->
       <% if @tag%>
-        <p class="p-3 text-center border-solid--grey my-3">
+        <p class="p-3 border-solid--grey mt-4 mb-0">
           Posts in: <a href="/writing/<%= @tag %>" class="px-3"></i> <%= @tag.gsub("-", " ").titleize %></a>
           <!-- clear tags -->
           <a href="/writing" class="float-right">Clear</a>
@@ -44,13 +44,26 @@
             </li>
           <% end %>
           <!-- item -->
-          <li class="list-item no-bullet col-12">
+          <li class="list-item no-bullet col-12 mb-3">
+            <!-- post:date -->
+            <p class="text-muted font-family-serif mb-0">
+              <% if @posts_array[post][:draft] %>
+                <span class="text-muted">DRAFT</span>
+              <% else %>
+                <%= Date.parse(@posts_array[post][:date]).strftime("%b -%d, %Y").gsub("-0", "").gsub("-", "") %>
+              <% end %>
+            </p>
             <!-- post:title -->
-            <h3 class="font-family-serif font-weight-bold">
-              <a href="/<%= @route_path %>/<%= post %>" data-turbolinks="true">
-                <% if @posts_array[post][:draft] %><span class="text-muted">[DRAFT]</span><% end %>
+            <h3 class="font-family-serif font-weight-bold pb-0">
+              <% if @posts_array[post][:draft] %>
+              <a href="https://github.com/miqqeio/michaelsjoeberg.com/blob/main/public/posts/<%= post %>.md" data-turbolinks="true" class="text-muted" target="_blank">
                 <%= @posts_array[post][:title] %>
               </a>
+              <% else %>
+              <a href="/<%= @route_path %>/<%= post %>" data-turbolinks="true" class="<% if @posts_array[post][:draft] %>text-muted<% end %>">
+                <%= @posts_array[post][:title] %>
+              </a>
+              <% end %>
             </h3>
           </li>
         <% end %>
