@@ -1,17 +1,17 @@
-<%= render 'header' %>
 <%= render 'navigation' %>
 
 <% @size = 8 %>
-<div class="container pb-5">
+<% @d_size = 8 %>
+
+<div class="container">
   <!-- page size wrapper -->
   <div class="row justify-content-center">
     <div class="col-12 col-lg-<%= @size %>">
-      <!-- <div class="divider"></div> -->
       <p class="p-3 text-center border-solid--grey my-4">See also open source projects on <a href="https://github.com/miqqeio" target="_blank"><i class="fab fa-github pl-1"></i> GitHub</a></p>
       <!-- projects -->
       <% @projects.keys.each do |project| %>
         <% if @projects[project]['show'] == true %>
-          <div class="row justify-content-center mb-3">
+          <div class="row justify-content-center">
             <!-- title -->
             <div class="col-12 mb-0">
               <h3 class="font-family-base font-weight-bold pb-0 <% if @projects[project]['url'] == "" %>text-muted<% end %>">
@@ -27,7 +27,7 @@
             </div>
             <!-- body -->
             <% if @projects[project]['description'] != [] %>
-            <div class="col-12 mb-3 mt-2">
+            <div class="col-12 mt-2">
               <blockquote>
                 <!-- description -->
                 <% @projects[project]['description'].each do |paragraph| %>
@@ -48,6 +48,7 @@
         <% end %>
       <% end %>
     </div>
+    <%= render 'divider', locals: { size: @d_size } %>
   </div><!-- ./page size wrapper -->
 </div>
 
