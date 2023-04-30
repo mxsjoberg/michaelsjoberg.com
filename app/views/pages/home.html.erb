@@ -19,12 +19,7 @@
   <!-- intro -->
   <div class="row justify-content-center">
     <%= render 'divider', locals: { size: @d_size } %>
-    <!-- two columns -->
-    <div class="col-12 col-lg-<%= @size %> hidden-until-md" style="column-count: 2;">
-      <%= render 'intro' %>
-    </div>
-    <!-- single column -->
-    <div class="col-12 col-lg-<%= @size %> hidden-from-md">
+    <div class="col-12 col-lg-<%= @size %> split-columns my-4">
       <%= render 'intro' %>
     </div>
     <%= render 'divider', locals: { size: @d_size } %>
