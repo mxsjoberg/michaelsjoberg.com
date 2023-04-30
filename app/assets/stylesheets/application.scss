@@ -791,8 +791,17 @@ li.list-item.no-bullet {
 @include media-breakpoint-up(lg) {
     .split-columns {
         column-count        : 2;
-    }    
+    }
+    #programming_wrapper.split-columns {
+        column-count        : 3;   
+    }
 }
+
+// @include media-breakpoint-up(xl) {
+//     .split-columns {
+//         column-count        : 3;
+//     }    
+// }
 
 .font-family-mono { 
     font-family             : $FONT_FAMILY_MONO !important;
