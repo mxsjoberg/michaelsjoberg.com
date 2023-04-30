@@ -18,7 +18,7 @@
 <!-- ./page-navigation -->
 
 <% @size = 12 %>
-<div class="container <% if @file_content != nil %>py-5<% else %>pb-5<% end %> no-expand">
+<div class="container no-expand my-4">
   <!-- content -->
   <% if @file_content != nil %>
     <%= render 'file_content', locals: { size: @size } %>
@@ -26,7 +26,7 @@
   <% else %>
     <!-- header -->
     <div class="row justify-content-center">
-      <div class="col-12 col-lg-<%= @size %> text-md-right my-3 pt-3">
+      <div class="col-12 col-lg-<%= @size %> mt-3">
         <input id="search" class="pl-3" name="search" placeholder="Search" type="text" data-list=".list" autocomplete="off">
       </div>
     </div>
@@ -38,13 +38,13 @@
     <% end %>
     <!-- list -->
     <% @programming.keys.each do |category| %>
-    <div class="row justify-content-center mb-3">
+    <div class="row justify-content-center">
       <!-- category -->
-      <div class="col-12 col-lg-<%= @size %>">
+      <div class="col-12 col-lg-<%= @size %> mt-3">
         <a name="<%= category %>" class="anchor-2"></a>
-        <h2 class="font-weight-bold">
+        <h3 class="font-weight-bold pb-0">
           <a href="#<%= category %>" data-turbolinks="true"><%= category.titleize %></a>
-        </h2>
+        </h3>
       </div>
       <!-- group -->
       <div class="col-12 col-lg-<%= @size %>">
@@ -52,16 +52,18 @@
           <div class="row list">
             <% @programming[category].keys.each do |group| %>
             <!-- header -->
-            <li class="list_header background--grey col-12">
+            <li class="list_header background--grey col-12 my-3">
               <a name="<%= category %>_<%= group.gsub('-', '_') %>" class="anchor-2"></a>
               <p class="mt-2 mb-2"><%= group.titleize %></p>
             </li>
+
             <!-- list items -->
             <div class="container-fluid">
               <div class="row list border-solid--grey pt-3">
+                <div id="programming_wrapper" class="col-12 split-columns p-0">
                 <!-- intro file at top -->
                 <% if @programming[category][group]["files"].include? "intro" %>
-                  <a href="/<%= @route_path %>/<%= category %>/<%= group %>/intro" data-turbolinks="true" class="col-12 col-lg-4">
+                  <a href="/<%= @route_path %>/<%= category %>/<%= group %>/intro" data-turbolinks="true" class="col-12">
                     <li class="list-item mb-3">
                       <span><%= "READ ME FIRST" %></span>
                     </li>
@@ -70,12 +72,13 @@
                 <% end %>
                 <% @programming[category][group]["files"].sort!.each do |file| %>
                   <!-- file -->
-                  <a href="/<%= @route_path %>/<%= category %>/<%= group %>/<%= file %>" data-turbolinks="true" class="col-12 col-lg-4">
+                  <a href="/<%= @route_path %>/<%= category %>/<%= group %>/<%= file %>" data-turbolinks="true" class="col-12">
                     <li class="list-item mb-3">
                       <span><%= file.titleize %></span>
                     </li>
                   </a>
                 <% end %>
+              </div>
               </div>
             </div>
             <% end %>
