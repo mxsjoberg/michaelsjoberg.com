@@ -116,14 +116,14 @@ html.dark em {
 
 hr,
 .divider {
-    margin                  : 2rem 0;
+    // margin                  : 2rem 0;
     border                  : 0;
     border-top              : 1px solid $DARK_MUTED;
 }
 
 .divider--bold {
-    margin-top              : 1rem;
-    margin-bottom           : 1rem;
+    // margin-top              : 1rem;
+    // margin-bottom           : 1rem;
     border                  : 0;
     border-top              : 0.25rem solid $DARK_MUTED;
 }
@@ -194,6 +194,9 @@ html.dark blockquote {
 
     p { color: rgba($WHITE_BASE, 0.5); }
 }
+
+a { font-weight: $FONT_WEIGHT_BOLD; }
+html.dark a { font-weight: $FONT_WEIGHT_BASE; }
 
 a.anchor {
     display                 : block;
@@ -379,6 +382,10 @@ input#search:focus {
     border                  : 1px solid $DARK_MUTED;
 }
 
+.no-border-top {
+    border-top              : 0 !important;
+}
+
 .border-solid:hover { 
     border-color            : $COLOR_CONTRAST !important;
     -webkit-transition      : all .15s;
@@ -431,7 +438,7 @@ input#search:focus {
         color               : $COLOR_DARK_BASE;
         font-family         : $FONT_FAMILY_BASE;
         font-size           : $FONT_SIZE_BASE; 
-        // font-weight         : $FONT_WEIGHT_BOLD;
+        // font-weight         : $FONT_WEIGHT_BASE;
         text-decoration     : none !important;
     }
 
