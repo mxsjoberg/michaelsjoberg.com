@@ -1,8 +1,9 @@
-<% if @post == nil %><%= render 'header' %><% end %>
 <%= render 'navigation' %>
 
 <% @size = 8 %>
-<div class="container <% if @post != nil %>py-5<% else %>pb-5<% end %>">
+<% @d_size = 8 %>
+
+<div class="container <% if @post != nil %>py-5<% else %>pb-0<% end %>">
   <!-- post -->
   <% if @post != nil %>
     <%= render 'post', locals: { size: @size } %> 
@@ -11,7 +12,6 @@
   <!-- page size wrapper -->
   <div class="row justify-content-center">
     <div class="col-12 col-lg-<%= @size %>">
-      <!-- <div class="divider"></div> -->
       <!-- tag -->
       <% if @tag%>
         <p class="p-3 text-center border-solid--grey my-3">
@@ -21,7 +21,7 @@
         </p>
       <% else %>
         <!-- links with all tags -->
-        <p class="p-3 text-center border-solid--grey my-4">
+        <p class="p-3 text-center border-solid--grey mt-4 mb-0">
           <% @tags_all.each do |tag| %>
           <!-- replace space with - -->
           <a href="/writing/<%= tag %>" class="px-3"><%= tag.gsub("-", " ").titleize %></a>
@@ -36,9 +36,12 @@
           <% if @posts_array[post][:date][0..3] != @year %>
             <% @year = @posts_array[post][:date][0..3] %>
             <!-- year -->
-            <div class="col-12">
+            <!-- <div class="col-12">
               <p class="text-muted font-family-serif mb-3"><%= @year %></p>
-            </div>
+            </div> -->
+            <li class="list_header col-12">
+              <p class="background--grey my-3 px-3 py-2"><%= @year %></p>
+            </li>
           <% end %>
           <!-- item -->
           <li class="list-item no-bullet col-12">
@@ -53,6 +56,7 @@
         <% end %>
       </div>
     </div>
+    <%= render 'divider', locals: { size: @d_size } %>
   </div>
   <% end %>
 </div>
