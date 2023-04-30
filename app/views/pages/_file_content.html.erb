@@ -3,21 +3,25 @@
   <!-- post details -->
   <div class="col-12 col-lg-<%= @size %>">
     <!-- meta -->
-    <p class="text-muted m-0">
-      <a href="/<%= @route_path %>#<%= @category %>" data-turbolinks="true"><%= @category.titleize %></a> / <a href="/<%= @route_path %>#<%= @category %>_<%= @group.gsub('-', '_')%>" data-turbolinks="true"><%= @group.gsub('-', ' ').titleize %></a>
+    <p class="text-muted mb-3">
+      <a href="/<%= @route_path %>#<%= @category %>" data-turbolinks="true" class="pr-3"><%= @category.titleize %></a>
+      <a href="/<%= @route_path %>#<%= @category %>_<%= @group.gsub('-', '_')%>" data-turbolinks="true" class="px-3"><%= @group.gsub('-', ' ').titleize %></a>
     </p>
     <!-- title -->
-    <h1 class="my-0">
+    <h1 class="my-3">
       <a href="/<%= @route_path %>/<%= @category %>/<%= @group %>/<%= @file %>" data-turbolinks="true"><%= @file.gsub('-', ' ').titleize %></a>
     </h1>
   </div>
   <!-- content -->
-  <div class="col-12 col-lg-<%= @size %> mb-3">
+  <div class="col-12 col-lg-<%= @size %>">
     <div class="container-fluid">
       <div class="row">
         <!-- header -->
-        <div class="col-12 background--grey d-none">
-          <p class="mt-2 mb-2"><%= @file %><%= @format %></p>
+        <div class="col-12 background--grey">
+          <p class="mt-2 mb-2">
+            <span><%= @file %><%= @format %></span>
+            <span class="float-right d-none d-lg-inline-block"><a href="<%= @url %><%= @group %>/<%= @file %><%= @format %>" target="_blank">View on GitHub</a></span>
+          </p>
         </div>
         <!-- body -->
         <% @lang = @category %>
@@ -31,15 +35,11 @@
         <% @lang = 'x86asm' %>
         <% end %>
         <div class="col-12 p-0">
-          <pre lang="<%= @lang %>" class="prettyprint background--grey language-<%= @lang %>"><%= @file_content %>
+          <pre lang="<%= @lang %>" class="prettyprint language-<%= @lang %>"><%= @file_content %>
           </pre>
         </div>
       </div>
     </div>
-  </div>
-  <!-- github -->
-  <div class="col-12 col-lg-<%= @size %> text-md-center">
-    <p class="m-0"><a href="<%= @url %><%= @group %>/<%= @file %><%= @format %>" target="_blank">View on GitHub</a></p>
   </div>
 </div>
 <!-- ./file_content
