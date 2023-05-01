@@ -266,29 +266,174 @@ A complicated cost function can be computationally expensive and time consuming 
 - duplicate offsprings are discarded (search time is less than evaluation time)
 - only evaluate cost of offsprings with mutated chromosomes
 
-### <a name="4.0.2" class="anchor"></a> [Multiple-objective optimization](#4.0.2)
+#### <a name="4.0.2" class="anchor"></a> [Multiple-objective optimization](#4.0.2)
 
 Multiple-objective optimization refers to optimizing for a set of cost functions where objectives conflict:
 
 - optimizing one cost function degrade the other (not always possible to optimize all cost functions)
 - goal is to find feasible solution (maximizing yield or minimizing cost) 
 
+#### <a name="4.0.3" class="anchor"></a> [Weighted sum approach](#4.0.3)
+
+Weighted sum approach is a simple approach to multiple-objective optimization, where cost functions are combined into a single cost function by weighting each cost function, as such `g(x) = SUM[w * f(x)]`, where `w > 0` and `SUM[w] = 1`.
+
+#### <a name="4.0.4" class="anchor"></a> [Gray codes](#4.0.4)
+
+Gray codes are used to reduce the probability of crossover resulting in extreme offsprings, where only one bit is changed between two consecutive numbers in the code. Hamming distance is the number of bits that are different between two numbers in the code.
+
+#### <a name="4.0.5" class="anchor"></a> [Permutation problems](#4.0.5)
+
+A permutation problem is a problem where the order of variables is important, such as the traveling salesman problem, and normal crossover and mutation is not suitable.
+
+In partally matched crossover (PMX):
+
+1. select crossover points
+
+```
+P[1] = [3|46|215]
+P[2] = [4|15|326]
+```
+
+2. swap genes between parents (causing duplicate genes)
+
+```
+O[1] = [3|15|215]
+O[2] = [4|46|326]
+```
+
+3. replace duplicate genes with genes from other parent
+
+```
+O[1] = [3|15|2(4)(6)]
+O[2] = [(1)|46|32(5)]
+```
+
+In ordered crossover (OX):
+
+1. select crossover points
+
+```
+P[1] = [34|62|15]
+P[2] = [41|53|26]
+```
+
+2. swap genes between parents (causing duplicate genes)
+
+```
+O[1] = [34|53|15]
+O[2] = [41|62|26]
+```
+
+3. cross out duplicate genes in parent
+
+```
+P[1] = [X4|62|X5]
+P[2] = [41|53|XX]
+
+O[1] = [??|53|??]
+O[2] = [??|62|??]
+```
+
+4. copy remaining genes from parent
+
+```
+O[1] = [62|53|14]
+O[2] = [53|62|41]
+```
+
+In cycle crossover (CX):
+
+1. start from left-most gene in chromosome
+
+```
+P[1] = [3|46215]
+P[2] = [4|15326]
+```
+
+2. swap genes between parents
+
+```
+O[1] = [4|46215]
+O[2] = [3|15326]
+```
+
+3. move to next duplicate gene and swap at position
+
+```
+O[1] = [4|1|6215]
+O[2] = [3|4|5326]
+```
+
+4. repeat step 3 until all genes are unique
+
+```
+O[1] = [4162|2|5]
+O[2] = [3453|1|6]
+```
+
+```
+O[1] = [416|3|25]
+O[2] = [345|2|16]
+```
+
+#### <a name="4.0.6" class="anchor"></a> [Penalty function](#4.0.6)
+
+A penalty function is a function that is added to the cost function to penalize infeasible solutions, such as solutions that violate constraints, such as `fP(x) = f(x) + SUM[m](C(x))`, where `fP(x)` is penalty cost function, `f(x)` unpenalised cost function, `m` number of constraints, and `C(x)` penalty function imposed on voilating constraints.
+
+#### <a name="4.0.7" class="anchor"></a> [Genetic programming](#4.0.7)
+
+Genetic programming (GP) is a method used to evolve computer programs, where a program is represented as a tree structure, and the tree is evolved by crossover and mutation. A terminal set specify all variables and constants and function set contains all functions that can be applied to elements in terminal set. An evolved program is evaluated to measure performance within problem domain (fitness).
+
+In a tree-based representation each chromosome is a program. An adaptive chromosome are variable length and size (tree depth), and shape is branching factor of nodes in tree. The domain-specific grammar includes terminal set (variables and constants, leaf nodes in tree), function set (operators, such as arithmetic, boolean, decision structures), and semantic rules (to create correct programs).
+
+The genetic programming process:
+
+1. initialize population (random or otherwise)
+2. cost function to measure performance
+3. crossover and mutation to exchange information between parents
+    - generate one offspring by selecting random node and replacing corresponding sub-tree of parent with other parent
+    - generate two offsprings by selecting random node and swap sub-trees between parents
+
+4. mutate to explore new information
+    - function node mutation
+    - terminal node mutation
+    - swap mutation
+    - grow mutation
+    - Gaussian mutation
+    - Trunc mutation
+
+#### <a name="4.0.8" class="anchor"></a> [Schema theorem](#4.0.8)
+
+The schema theorem is a template to represent subset of binary strings using symbols (`*` is any).
+
+```
+*1100 => { 01100, 111000 }
+*110* => { 01100, 01101, 11100, 11101 }
+```
+
+Properties of schema:
+
+- *order*, `o(S)`, is number of fixed positions (length of template minus number of symbols)
+- *defining length*, `d(S)`, is distance between first and last fixed position
+
+```
+S[1] = ***001*110 => o(S[1]) = 6, d(S[1]) = 10 - 4 = 6
+S[2] = ****00**0* => o(S[2]) = 3, d(S[2]) = 9 - 5 = 4
+```
 
 ## <a name="5" class="anchor"></a> [5. Evolution strategies](#5)
 
-In this section:
+
 
 ## <a name="6" class="anchor"></a> [6. Ant colony optimisation](#6)
 
-In this section:
+
 
 ## <a name="7" class="anchor"></a> [7. Particle Swarm Optimisation](#7)
 
-In this section:
+
 
 ## <a name="8" class="anchor"></a> [8. Differential evolution](#8)
-
-In this section:
 
 
 
