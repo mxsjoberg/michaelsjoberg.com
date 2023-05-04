@@ -18,6 +18,14 @@ GiveTrees was a project that me and a friend started on the side in 2014. The id
 
 ![givetrees.jpg](/images/givetrees.jpg)
 
+## <a name="learnhub" class="anchor"></a> [LearnHub](#learnhub)
+
+LearnHub was the evolution of [Doolio](#doolio). The goal was to create a community of self-learners that wanted to create and share pathways to learn specific topics using available-online resources, such as MOOCs. The source code is archived on [GitHub](https://github.com/miqqeio/learnhub.io).
+
+## <a name="doolio" class="anchor"></a> [Doolio](#doolio)
+
+Doolio was a skill tracker and online interactive resume. The source code is archived on [GitHub](https://github.com/miqqeio/doolio.co).
+
 ## <a name="puffy" class="anchor"></a> [Adventures of Puffy](#puffy)
 
 Adventures of Puffy was my first successful attempt at creating a game. It was a flappy bird-type of game that just goes on forever. It was available on iOS for a while, but automatically removed from stores later due to inactivity.
