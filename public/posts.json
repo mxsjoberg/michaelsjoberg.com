@@ -1,4 +1,15 @@
 {   
+    "projects-graveyard": {
+        "title": "Projects Graveyard",
+        "short": false,
+        "tags": ["projects"],
+        "date": "20230505",
+        "updated": "20230505",
+        "draft": false,
+        "toc": true,
+        "read": 5,
+        "image": false
+    },
     "particle-swarm-optimization-in-python": {
         "title": "Particle Swarm Optimization in Python",
         "short": false,
