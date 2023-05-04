@@ -148,6 +148,10 @@ html.dark .background--primary {
     background              : $DARK_MUTED;
 }
 
+img {
+    max-width               : 100%;
+}
+
 code,
 pre,
 .prettyprint.background--grey {
