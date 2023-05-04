@@ -12,6 +12,32 @@
         "website": false,
         "show": true
     },
+    "hlwasm": {
+        "description": [
+            "Idea stage: A high-level representation for WebAssembly."
+        ],
+        "date": "2023-",
+        "url": "https://github.com/miqqeio/hlwasm",
+        "tags": [],
+        "archived": false,
+        "active": true,
+        "github": false,
+        "website": false,
+        "show": true
+    },
+    "playcode": {
+        "description": [
+            "A playful programming language. In very early development."
+        ],
+        "date": "2023-",
+        "url": "https://github.com/miqqeio/playcode",
+        "tags": [],
+        "archived": false,
+        "active": true,
+        "github": false,
+        "website": false,
+        "show": true
+    },
     "Terminal": {
         "description": [
             "Browser-based and native (experimental) stock market data dashboard. The goal is to create a highly customizable and developer-like environment for financial professionals."
@@ -29,7 +55,7 @@
         "description": [
             "Domain-specific programming language for natural language arithmetic operations that is both simple and extensible. The parser is implemented as recursive-descent variant with precedence using stack structure instead of grammar rules."
         ],
-        "date": "2021",
+        "date": "2021-",
         "url": "https://github.com/miqqeio/raknalang",
         "tags": [],
         "archived": false,
