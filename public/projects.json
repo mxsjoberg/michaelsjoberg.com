@@ -36,7 +36,7 @@
         "active": true,
         "github": false,
         "website": false,
-        "show": false
+        "show": true
     },
     "pas2wat": {
         "description": [
@@ -47,56 +47,6 @@
         "tags": [],
         "archived": false,
         "active": true,
-        "github": false,
-        "website": false,
-        "show": false
-    },
-    "EQZEN": {
-        "description": [
-            "Browser-based collaborative financial portfolio management application. The goal was to improve workflow for financial advisors working with many clients. Discontinued."
-        ],
-        "date": "2018-2020",
-        "url": "",
-        "tags": [],
-        "archived": false,
-        "active": false,
-        "github": false,
-        "website": false,
-        "show": true
-    },
-    "Give Trees": {
-        "description": [
-            "Mobile application to gamify planting trees. It was published by Plant for Earth Company LTD (co-founded and dissolved)."
-        ],
-        "date": "2014-2017",
-        "url": "",
-        "tags": [],
-        "archived": false,
-        "active": false,
-        "github": false,
-        "website": false,
-        "show": true
-    },
-    "learnhub.io": {
-        "description": [
-            "A web-based skill tracker and social platform for self-learners. The goal was to create a community of self-learners that want to create and share pathways/ online curriculums to learn specific topics. A pathway was a curated list of available-online courses, such as MOOCs."
-        ],
-        "date": "2018",
-        "url": "https://github.com/miqqeio/learnhub.io",
-        "tags": [],
-        "archived": true,
-        "active": false,
-        "github": false,
-        "website": false,
-        "show": true
-    },
-    "doolio.co": {
-        "description": ["An interactive resume."],
-        "date": "2017",
-        "url": "https://github.com/miqqeio/doolio.co",
-        "tags": [],
-        "archived": true,
-        "active": false,
         "github": false,
         "website": false,
         "show": true
