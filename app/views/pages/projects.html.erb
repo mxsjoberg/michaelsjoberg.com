@@ -7,7 +7,8 @@
   <!-- page size wrapper -->
   <div class="row justify-content-center">
     <div class="col-12 col-lg-<%= @size %>">
-      <p class="p-3 text-center border-solid--grey my-4">See also open source projects on <a href="https://github.com/miqqeio" target="_blank"><i class="fab fa-github pl-1"></i> GitHub</a></p>
+      <!-- <p class="p-3 text-center border-solid--grey my-4">See also open source projects on <a href="https://github.com/miqqeio" target="_blank"><i class="fab fa-github pl-1"></i> GitHub</a></p> -->
+      <p class="p-3 text-center border-solid--grey my-4">This is a list of projects that I am currently involved in. See list of previous projects here: <a href="/writing/projects-graveyard">Projects Graveyard</a>.</p>
       <!-- projects -->
       <% @projects.keys.each do |project| %>
         <% if @projects[project]['show'] == true %>
