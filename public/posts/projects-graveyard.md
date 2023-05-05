@@ -14,7 +14,7 @@ EQZEN was a project and business idea I started to work on in 2015 (during under
 
 ## <a name="givetrees" class="anchor"></a> [GiveTrees (Plant for Earth)](#givetrees)
 
-GiveTrees was a project that me and a friend started on the side in 2014. The idea was to create a game-like mobile application where people could plant trees. The trees planted by each user were tracked and actually planted in real-life. We managed to plant some thousands of trees, but the project was shut down in 2020 due to lack of interest.
+GiveTrees was a project that me and a friend started on the side in 2014. The idea was to create a game-like mobile application where people could plant trees. The trees planted by each user were tracked and actually planted in real-life. We managed to plant some thousands of trees, but the project was shut down in 2017 due to lack of interest.
 
 ![givetrees.jpg](/images/givetrees.jpg)
 
