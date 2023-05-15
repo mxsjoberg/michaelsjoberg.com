@@ -1,20 +1,7 @@
 {   
-    "Evert.AI": {
-        "description": [
-            "Idea stage: Integrated environment for programming language design using large language models to verify and for assistance. The goal is to create a tool to lower the entry barrier and help language designers create better languages."
-        ],
-        "date": "",
-        "url": "",
-        "tags": [],
-        "archived": false,
-        "active": true,
-        "github": false,
-        "website": false,
-        "show": true
-    },
     "hlwasm": {
         "description": [
-            "Idea stage: A high-level representation for WebAssembly."
+            "Idea stage/ side project: A high-level representation for WebAssembly."
         ],
         "date": "2023-",
         "url": "https://github.com/miqqeio/hlwasm",
