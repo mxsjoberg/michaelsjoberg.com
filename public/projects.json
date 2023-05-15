@@ -38,12 +38,12 @@
         "website": false,
         "show": true
     },
-    "Terminal": {
+    "Stockstack.AI (previously Terminal)": {
         "description": [
-            "Browser-based and native (experimental) stock market data dashboard. The goal is to create a highly customizable and developer-like environment for financial professionals."
+            "Browser-based and AI-assisted stock market data dashboard. The goal is to create a highly customizable and developer-like environment for financial professionals and stock-picking hobbyists."
         ],
         "date": "2020-",
-        "url": "https://terminal.frozenfork.com",
+        "url": "https://stockstack.ai",
         "tags": [],
         "archived": false,
         "active": true,
