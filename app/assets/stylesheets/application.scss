@@ -1084,13 +1084,12 @@ html.dark .border-left {
 }
 
 html.dark .background--grey,
-
 html.dark code,
 html.dark pre,
 html.dark .prettyprint.background--grey {
-    border                      : 1px solid $WHITE_MUTED;
-    // background                  : $WHITE_MUTED;
-    background                  : transparent;
+    // border                      : 1px solid $WHITE_MUTED;
+    background                  : $WHITE_MUTED;
+    // background                  : transparent;
     color                       : $WHITE_SHADED;
 }
 
