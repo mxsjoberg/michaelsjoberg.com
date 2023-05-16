@@ -33,40 +33,42 @@
       <div class="row list">
         <% @year = 0 %>
         <% @posts_array.keys.each do |post| %>
-          <!-- write year from date and put posts per year -->
-          <% if @posts_array[post][:date][0..3] != @year %>
-            <% @year = @posts_array[post][:date][0..3] %>
-            <!-- year -->
-            <!-- <div class="col-12">
-              <p class="text-muted font-family-serif mb-3"><%= @year %></p>
-            </div> -->
-            <li class="list_header col-12">
-              <p class="background--grey my-3 px-3 py-2"><%= @year %></p>
+          <% if !@posts_array[post][:draft] %>
+            <!-- write year from date and put posts per year -->
+            <% if @posts_array[post][:date][0..3] != @year %>
+              <% @year = @posts_array[post][:date][0..3] %>
+              <!-- year -->
+              <!-- <div class="col-12">
+                <p class="text-muted font-family-serif mb-3"><%= @year %></p>
+              </div> -->
+              <li class="list_header col-12">
+                <p class="background--grey my-3 px-3 py-2"><%= @year %></p>
+              </li>
+            <% end %>
+            <!-- item -->
+            <li class="list-item no-bullet col-12 mb-3">
+              <!-- post:date -->
+              <p class="text-muted font-family-serif mb-0">
+                <% if @posts_array[post][:draft] %>
+                  <span class="text-muted">DRAFT</span>
+                <% else %>
+                  <%= Date.parse(@posts_array[post][:date]).strftime("%b -%d, %Y").gsub("-0", "").gsub("-", "") %>
+                <% end %>
+              </p>
+              <!-- post:title -->
+              <h3 class="font-family-serif font-weight-bold pb-0">
+                <% if @posts_array[post][:draft] %>
+                <a href="https://github.com/miqqeio/michaelsjoeberg.com/blob/main/public/posts/<%= post %>.md" data-turbolinks="true" class="text-muted" target="_blank">
+                  <%= @posts_array[post][:title] %>
+                </a>
+                <% else %>
+                <a href="/<%= @route_path %>/<%= post %>" data-turbolinks="true" class="<% if @posts_array[post][:draft] %>text-muted<% end %>">
+                  <%= @posts_array[post][:title] %>
+                </a>
+                <% end %>
+              </h3>
             </li>
           <% end %>
-          <!-- item -->
-          <li class="list-item no-bullet col-12 mb-3">
-            <!-- post:date -->
-            <p class="text-muted font-family-serif mb-0">
-              <% if @posts_array[post][:draft] %>
-                <span class="text-muted">DRAFT</span>
-              <% else %>
-                <%= Date.parse(@posts_array[post][:date]).strftime("%b -%d, %Y").gsub("-0", "").gsub("-", "") %>
-              <% end %>
-            </p>
-            <!-- post:title -->
-            <h3 class="font-family-serif font-weight-bold pb-0">
-              <% if @posts_array[post][:draft] %>
-              <a href="https://github.com/miqqeio/michaelsjoeberg.com/blob/main/public/posts/<%= post %>.md" data-turbolinks="true" class="text-muted" target="_blank">
-                <%= @posts_array[post][:title] %>
-              </a>
-              <% else %>
-              <a href="/<%= @route_path %>/<%= post %>" data-turbolinks="true" class="<% if @posts_array[post][:draft] %>text-muted<% end %>">
-                <%= @posts_array[post][:title] %>
-              </a>
-              <% end %>
-            </h3>
-          </li>
         <% end %>
       </div>
     </div>
