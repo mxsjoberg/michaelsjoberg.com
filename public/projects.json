@@ -1,41 +1,32 @@
 {   
+    "Stockstack.AI": {
+        "description": [
+            "AI-assisted personal stock market data dashboard. The goal is to create a highly customizable and developer-like alternative to Yahoo Finance for stock-picking hobbyists."
+        ],
+        "date": "2020-",
+        "url": "https://stockstack.ai",
+        "github": false,
+        "active": true,
+        "show": true
+    },
     "hlwasm": {
         "description": [
-            "Idea stage/ side project: A high-level representation for WebAssembly."
+            "A high-level representation for WebAssembly."
         ],
         "date": "2023-",
         "url": "https://github.com/miqqeio/hlwasm",
-        "tags": [],
-        "archived": false,
+        "github": true,
         "active": true,
-        "github": false,
-        "website": false,
         "show": true
     },
     "playcode": {
         "description": [
-            "A playful programming language. In very early development."
+            "A playful programming language."
         ],
         "date": "2023-",
         "url": "https://github.com/miqqeio/playcode",
-        "tags": [],
-        "archived": false,
+        "github": true,
         "active": true,
-        "github": false,
-        "website": false,
-        "show": true
-    },
-    "Stockstack.AI (previously Terminal)": {
-        "description": [
-            "Browser-based and AI-assisted stock market data dashboard. The goal is to create a highly customizable and developer-like environment for financial professionals and stock-picking hobbyists."
-        ],
-        "date": "2020-",
-        "url": "https://stockstack.ai",
-        "tags": [],
-        "archived": false,
-        "active": true,
-        "github": false,
-        "website": false,
         "show": true
     },
     "raknalang": {
@@ -44,11 +35,8 @@
         ],
         "date": "2021-",
         "url": "https://github.com/miqqeio/raknalang",
-        "tags": [],
-        "archived": false,
+        "github": true,
         "active": true,
-        "github": false,
-        "website": false,
         "show": true
     },
     "pas2wat": {
@@ -57,11 +45,8 @@
         ],
         "date": "2020-",
         "url": "https://github.com/miqqeio/pas2wat",
-        "tags": [],
-        "archived": false,
+        "github": true,
         "active": true,
-        "github": false,
-        "website": false,
         "show": true
     }
 }
