@@ -1,88 +1,101 @@
 <!DOCTYPE html>
 <html class="dark">
-    <head>
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-FPF1MCLY5P"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
+  <head>
+    <!-- gtag
+    ---------------------------------------------- -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FPF1MCLY5P"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-          gtag('config', 'G-FPF1MCLY5P');
-        </script>
-        <!-- title -->
-        <title><%= @meta_title %></title>
-        <!-- meta -->
-        <%= favicon_link_tag 'fav.png' %>
-        <%= csrf_meta_tags %>
-        <%= csp_meta_tag %>
-        <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-        <%= stylesheet_link_tag 'https://use.fontawesome.com/releases/v5.4.2/css/all.css' %>
-        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-        <!-- mobile -->
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <!-- Facebook META -->
-        <meta property="og:title" content="<%= @meta_title %>">
-        <meta property="og:description" content="<%= @meta_description %>">
-        <meta property="og:image" content="<%= @meta_image %>">
-        <meta property="og:url" content="<%= @meta_url %>">
-        <meta property="og:site_name" content="<%= @meta_site_name %>">
-        <!-- Twitter META -->
-        <meta name="twitter:card" content="<%= @meta_card_type %>">
-        <meta name="twitter:image:alt" content="<%= @meta_description %>">
-        <meta name="twitter:creator" content="<%= @meta_author %>">
-    </head>
-    <body>
-        <!-- wrapper -->
-        <!-- <div class="wrapper <% if request.path == '/' %>center<% end %>"> -->
-        <div class="wrapper">
-            <div class="container-fluid">
-                <%= yield %>
-            </div>
+      gtag('config', 'G-FPF1MCLY5P');
+    </script>
+    <!-- ./gtag
+    ---------------------------------------------- -->
+    <title><%= @meta_title %></title>
+    <!-- meta
+    ---------------------------------------------- -->
+    <%= favicon_link_tag 'fav.jpg' %>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'https://use.fontawesome.com/releases/v5.4.2/css/all.css' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- mobile viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- facebook -->
+    <meta property="og:title" content="<%= @meta_title %>">
+    <meta property="og:description" content="<%= @meta_description %>">
+    <meta property="og:image" content="<%= @meta_image %>">
+    <meta property="og:url" content="<%= @meta_url %>">
+    <meta property="og:site_name" content="<%= @meta_site_name %>">
+    <!-- twitter -->
+    <meta name="twitter:card" content="<%= @meta_card_type %>">
+    <meta name="twitter:image:alt" content="<%= @meta_description %>">
+    <meta name="twitter:creator" content="<%= @meta_author %>">
+    <!-- ./meta
+    ---------------------------------------------- -->
+  </head>
+  <body>
+    <!-- wrapper
+    ---------------------------------------------- -->
+    <div class="wrapper">
+      <div class="container-fluid">
+        <%= yield %>
+      </div>
+    </div>
+    <!-- ./wrapper
+    ---------------------------------------------- -->
+    <!-- buttons
+    ---------------------------------------------- -->
+    <span class="nav-buttons fixed">
+      <!-- back-to-top -->
+      <button id="back-to-top" type="button" class="d-none btn btn-primary"><i class="fa fa-arrow-up fa-fw"></i></button>
+      <!-- toggle-dark-mode -->
+      <button id="toggle-dark-mode" type="button" class="btn btn-primary"><i class="fas fa-adjust fa-fw"></i></button>
+      <!-- mobile-navigation -->
+      <button id="modal-mobile-navigation" type="button" class="btn btn-primary hidden-from-lg" data-toggle="modal" data-target="#mobile-navigation"><i class="fa fa-ellipsis-v fa-fw"></i></button>
+    </span>
+    <!-- ./buttons
+    ---------------------------------------------- -->
+    <!-- mobile menu
+    ---------------------------------------------- -->
+    <div class="modal fade" id="mobile-navigation" tabindex="-1" role="dialog" aria-labelledby="mobile-navigation" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body text-center">
+            <ul class="navbar-nav mr-auto ml-auto">
+              <!-- / -->
+              <li class="nav-item">
+                  <a class="nav-link p-3 my-3 no-decoration" href="/" data-turbolinks="true">Home</a>
+              </li>
+              <!-- /projects -->
+              <li class="nav-item">
+                  <a class="nav-link p-3 my-3 no-decoration" href="/projects" data-turbolinks="true">Projects</a>
+              </li>
+              <!-- /writing -->
+              <li class="nav-item">
+                  <a class="nav-link p-3 my-3 no-decoration" href="/writing" data-turbolinks="true">Writing</a>
+              </li>
+              <!-- /programming -->
+              <li class="nav-item">
+                  <a class="nav-link p-3 my-3 no-decoration" href="/programming" data-turbolinks="true">Programming</a>
+              </li>
+              <!-- /github -->
+              <li class="nav-item">
+                  <a class="nav-link p-3 my-3 no-decoration" href="https://github.com/miqqeio"><i class="fab fa-github fa-fw"></i> GitHub</a>
+              </li>
+              <!-- /linkedin -->
+              <li class="nav-item">
+                  <a class="nav-link p-3 my-3 no-decoration" href="https://www.linkedin.com/in/miqqeio"><i class="fab fa-linkedin fa-fw"></i> LinkedIn</a>
+              </li>
+            </ul>
+          </div>
         </div>
-        <!-- ./wrapper -->
-        <span class="nav-buttons fixed">
-            <!-- back-to-top -->
-            <button id="back-to-top" type="button" class="d-none btn btn-primary"><i class="fa fa-arrow-up fa-fw"></i></button>
-            <!-- toggle-dark-mode -->
-            <button id="toggle-dark-mode" type="button" class="btn btn-primary"><i class="fas fa-adjust fa-fw"></i></button>
-            <!-- mobile-navigation -->
-            <button id="modal-mobile-navigation" type="button" class="btn btn-primary hidden-from-lg" data-toggle="modal" data-target="#mobile-navigation"><i class="fa fa-ellipsis-v fa-fw"></i></button>
-        </span>
-        <div class="modal fade" id="mobile-navigation" tabindex="-1" role="dialog" aria-labelledby="mobile-navigation" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-body text-center">
-                        <ul class="navbar-nav mr-auto ml-auto">
-                            <!-- / -->
-                            <li class="nav-item">
-                                <a class="nav-link p-3 my-3 no-decoration" href="/" data-turbolinks="true">Home</a>
-                            </li>
-                            <!-- /projects -->
-                            <li class="nav-item">
-                                <a class="nav-link p-3 my-3 no-decoration" href="/projects" data-turbolinks="true">Projects</a>
-                            </li>
-                            <!-- /writing -->
-                            <li class="nav-item">
-                                <a class="nav-link p-3 my-3 no-decoration" href="/writing" data-turbolinks="true">Writing</a>
-                            </li>
-                            <!-- /programming -->
-                            <li class="nav-item">
-                                <a class="nav-link p-3 my-3 no-decoration" href="/programming" data-turbolinks="true">Programming</a>
-                            </li>
-                            <!-- /github -->
-                            <li class="nav-item">
-                                <a class="nav-link p-3 my-3 no-decoration" href="https://github.com/miqqeio"><i class="fab fa-github fa-fw"></i> GitHub</a>
-                            </li>
-                            <!-- /linkedin -->
-                            <li class="nav-item">
-                                <a class="nav-link p-3 my-3 no-decoration" href="https://www.linkedin.com/in/msjoeberg"><i class="fab fa-linkedin fa-fw"></i> LinkedIn</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- ./mobile-navigation -->
-    </body>
+      </div>
+    </div>
+    <!-- ./mobile menu
+    ---------------------------------------------- -->
+  </body>
 </html>
