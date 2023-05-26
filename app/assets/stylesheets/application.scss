@@ -14,21 +14,16 @@
  *= require_self
  */
 
-@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;700&display=swap');
-// @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
-// @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;600');
 @import "bootstrap";
 
 // CONSTANTS 
 // --------------------------------------------------------
 $FONT_FAMILY_BASE           : "Mulish", sans-serif;
-// $FONT_FAMILY_MONO           : "Source Code Pro", monospace;
-// $FONT_FAMILY_SERIF          : "Source Serif Pro", serif;
 $FONT_FAMILY_MONO           : "Roboto Mono", monospace;
-// $FONT_FAMILY_SERIF          : "Source Serif Pro", serif;
 $FONT_FAMILY_SERIF          : $FONT_FAMILY_BASE;
+
 $FONT_SIZE_LARGER           : 3.250rem; // +2.000
 $FONT_SIZE_LARGE            : 2.250rem; // +1.000
 $FONT_SIZE_MEDIUM           : 1.750rem; // +0.500
@@ -36,53 +31,33 @@ $FONT_SIZE_BASE_PLUS        : 1.375rem; // +0.125
 $FONT_SIZE_BASE             : 1.250rem;
 $FONT_SIZE_BASE_MONO        : 1.125rem; // -0.125
 $FONT_SIZE_SMALL            : 1.000rem; // -0.250
-$FONT_WEIGHT_THIN           : 300;
-$FONT_WEIGHT_BASE           : 400;
-$FONT_WEIGHT_BOLD_MONO      : 600;
-$FONT_WEIGHT_BOLD           : 700;
+
+$FONT_WEIGHT_400            : 400;
+$FONT_WEIGHT_500            : 500;
+$FONT_WEIGHT_600            : 600;
+$FONT_WEIGHT_700            : 700;
 
 // colors
+$COLOR_BLACK                : #101010;
+$COLOR_GREY_DARK            : #1C1C1C;
+$COLOR_GREY_LIGHT           : #F1F1F1;
+$COLOR_SNOW                 : #FAFAFA;
+$COLOR_WHITE                : #FFFFFF;
+
 $COLOR_BLUE                 : #0070FF;
 $COLOR_PURPLE               : #DE09F7;
-$COLOR_GREEN                : #17D50A;
+$COLOR_GREEN                : #50FA7B;
 $COLOR_ORANGE               : #FF8200;
 $COLOR_RED                  : #D50000;
 
-// $DARK_MUTED                 : #E7E7E7;
-$DARK_MUTED                 : #F1F1F1;
-$WHITE_MUTED                : #1C1C1C;
-
-// system
-$COLOR_DARK_BASE            : #101010;
-// $COLOR_DARK_MUTED           : rgba($COLOR_DARK_BASE, 0.5);
-$COLOR_DARK_MUTED           : $DARK_MUTED;
-$COLOR_DARK_LIGHT           : rgba($COLOR_DARK_BASE, 0.1);
 $COLOR_PRIMARY              : $COLOR_BLUE;
 $COLOR_CONTRAST             : $COLOR_RED;
-$WHITE_BASE                 : #FFFFFF;
-$WHITE_SHADED               : #FAFAFA;
 
-$COLOR_DARK_BLUE            : #0B0823;
-
-// $DARK_MUTED                 : #E7E7E7;
-// $WHITE_MUTED                : #1C1C1C;
-
-// BASE 
+// BASE
 // --------------------------------------------------------
-// :root {
-//     color-scheme            : light dark;
-// }
-
-// #toggle-dark-mode { display: none; }
-
 html { 
-    background-color        : $WHITE_BASE;
+    background-color        : $COLOR_WHITE;
 }
-// @supports not (color-scheme: light dark) {
-//     html { background-color: $WHITE_BASE; }
-//     #toggle-dark-mode { display: inline-block; }
-// }
-
 body {
     background-color        : transparent;
     width                   : 100%;
@@ -92,161 +67,41 @@ body {
     outline                 : 0;
     font-family             : $FONT_FAMILY_BASE;
     font-size               : $FONT_SIZE_BASE;
-    font-weight             : $FONT_WEIGHT_BASE;
-    color                   : $COLOR_DARK_BASE;
+    font-weight             : $FONT_WEIGHT_400;
+    color                   : $COLOR_BLACK;
 }
-
-.wrapper {
-    position                : absolute;
-    top                     : 0;
-    left                    : 0;
-    right                   : 0;
-}
-
+// .wrapper {
+//     position                : absolute;
+//     top                     : 0;
+//     left                    : 0;
+//     right                   : 0;
+// }
 em {
-    color                   : rgba($COLOR_DARK_BASE, 0.5) !important;
-    // display                 : inline-block;
-    // min-width               : 100%;
-    // text-align              : center;
+    color                   : rgba($COLOR_BLACK, 0.5) !important;
 }
-
-html.dark em {
-    color                   : rgba($WHITE_BASE, 0.5) !important;
-}
-
-hr,
-.divider {
-    // margin                  : 2rem 0;
-    border                  : 0;
-    border-top              : 1px solid $DARK_MUTED;
-}
-
-.divider--bold {
-    // margin-top              : 1rem;
-    // margin-bottom           : 1rem;
-    border                  : 0;
-    border-top              : 0.25rem solid $DARK_MUTED;
-}
-
-.background--dark { 
-    background              : $COLOR_DARK_BASE !important;
-    color                   : $WHITE_BASE;
-}
-
-.background--primary { 
-    // background              : $COLOR_PRIMARY !important;
-    background              : $DARK_MUTED !important;
-    color                   : $COLOR_DARK_BASE;
-}
-
-html.dark .background--primary {
-    background              : $WHITE_MUTED !important;
-    color                   : $WHITE_BASE;
-}
-
-.background--grey {
-    background              : $DARK_MUTED;
-}
-
 img {
     max-width               : 100%;
 }
-
 code,
-pre,
-.prettyprint.background--grey {
+pre {
     transition              : all 0.15s;
-    background              : $WHITE_BASE;
-    // background              : $DARK_MUTED
-    border                  : 1px solid $DARK_MUTED;
+    background              : $COLOR_GREY_LIGHT;
+    color                   : $COLOR_BLACK;
+    border                  : 0;
+    border-radius           : 2rem;
 }
-
-button.expand-button { display: none; }
-@include media-breakpoint-up(lg) {
-    button.expand-button { display: inline-block; }
-}
-
-.no-expand button.expand-button { display: none !important; }
-
-// code.expand,
-// pre.expand {
-//     transition              : all 0.15s;
-//     min-width               : 180%;
-//     margin-left             : -40%;
-// }
-
-html.dark code,
-html.dark pre,
-html.dark .prettyprint.background--grey {
-    border                  : 1px solid transparent;
-}
-
 blockquote {
     padding-left            : 1rem;
-    border-left             : 0.5rem solid $DARK_MUTED;
-    // margin-left             : 1rem;
-    
-    p {
-        color               : rgba($COLOR_DARK_BASE, 0.5);
-        font-style          : italic;
-    }
+    border-left             : 0.5rem solid $COLOR_GREY_LIGHT;
 }
 
-html.dark blockquote {
-    border-left             : 0.5rem solid $WHITE_MUTED;
-
-
-    p { color: rgba($WHITE_BASE, 0.5); }
+blockquote p {
+    color                   : rgba($COLOR_BLACK, 0.5);
+    font-style              : italic;
 }
-
-a { font-weight: $FONT_WEIGHT_BOLD; }
-html.dark a { font-weight: $FONT_WEIGHT_BASE; }
-
-a.anchor {
-    display                 : block;
-    position                : relative;
-    top                     : calc(-50px - 1rem);
-    visability              : hidden;
-}
-
-a.anchor-2 {
-    display                 : block;
-    position                : relative;
-    top                     : calc(-100px - 1rem);
-    visability              : hidden;
-}
-
-.text-muted {
-    color                   : rgba($COLOR_DARK_BASE, 0.5) !important;
-}
-.text-lowercase {
-    text-transform          : lowercase !important;
-}
-.text-larger {
-    font-size               : $FONT_SIZE_LARGER !important;
-}
-
-strong,
-.strong {
-    font-weight             : $FONT_WEIGHT_BOLD !important;
-}
-
-// a.color-primary span,
-// a.color-primary:focus span { 
-//     color                   : $COLOR_DARK_BASE;
-//     -webkit-transition      : all .15s;
-//     -moz-transition         : all .15s; 
-//     transition              : all .15s;
-// }
-
-// a.color-primary:hover span {
-//     color                   : $COLOR_CONTRAST !important;
-// }
-
 li {
     list-style              : none;
 }
-
 table {
     margin-bottom           : 1rem;
     display                 : inline-block;
@@ -254,21 +109,92 @@ table {
 }
 td {
     padding                 : 0.5rem 1rem;
-    color                   : $COLOR_DARK_BASE;
-    border                  : 1px solid $DARK_MUTED;
+    color                   : $COLOR_BLACK;
+    border                  : 1px solid $COLOR_GREY_LIGHT;
     text-align              : center;
     vertical-align          : middle;
 }
-
 td[align=left] {
     text-align              : left;
 }
 
-html.dark td {
-    color                   : $WHITE_BASE;
-    border                  : 1px solid $WHITE_MUTED;
+html.dark {
+    background-color        : $COLOR_BLACK;
+
+    em {
+        color               : rgba($COLOR_WHITE, 0.5) !important;
+    }
+    code,
+    pre {
+        background          : $COLOR_GREY_DARK;
+        color               : $COLOR_SNOW;
+    }
+    blockquote {
+        border-left         : 0.5rem solid $COLOR_GREY_DARK;
+    }
+    blockquote p {
+        color               : rgba($COLOR_WHITE, 0.5);   
+    }
+    td {
+        color               : $COLOR_WHITE;
+        border              : 1px solid $COLOR_GREY_DARK;
+    }
 }
 
+// MISC 
+// --------------------------------------------------------
+.text-lowercase {
+    text-transform          : lowercase !important;
+}
+.text-larger {
+    font-size               : $FONT_SIZE_LARGER !important;
+}
+strong,
+.strong {
+    font-weight             : $FONT_WEIGHT_700 !important;
+}
+button.expand-button {
+    display                 : none;
+}
+.no-expand button.expand-button {
+    display                 : none !important;
+}
+.text-muted {
+    color                   : rgba($COLOR_BLACK, 0.5) !important;
+}
+.background--grey {
+    background              : $COLOR_GREY_LIGHT;
+}
+
+html.dark {
+    .text-muted             { color: rgba($COLOR_WHITE, 0.5) !important; }
+    .background--grey       { background: $COLOR_GREY_DARK; }
+}
+
+@include media-breakpoint-up(lg) {
+    button.expand-button    { display: inline-block; }
+}
+
+// LINKS
+// --------------------------------------------------------
+a {
+    font-weight             : $FONT_WEIGHT_700;
+}
+a.anchor {
+    display                 : block;
+    position                : relative;
+    top                     : calc(-50px - 1rem);
+    visability              : hidden;
+}
+a.anchor-2 {
+    display                 : block;
+    position                : relative;
+    top                     : calc(-100px - 1rem);
+    visability              : hidden;
+}
+
+// UTIL
+// --------------------------------------------------------
 .hidden-until-md,
 .hidden-until-lg {
     display                 : none;
@@ -289,19 +215,19 @@ html.dark td {
 // @media (min-width: 1200px) { ... }
 
 @include media-breakpoint-up(md) {
-    .text-md-right                  { text-align: right !important; }
-    .text-md-left                   { text-align: left !important; }
-    .hidden-until-md                { display: initial !important; }
-    .hidden-from-md                 { display: none !important; }
-    .p-md-5                         { padding: 3rem !important; }
-    .mt-md-2                        { margin-top: 0.5rem !important; }
+    .text-md-right          { text-align: right !important; }
+    .text-md-left           { text-align: left !important; }
+    .hidden-until-md        { display: initial !important; }
+    .hidden-from-md         { display: none !important; }
+    .p-md-5                 { padding: 3rem !important; }
+    .mt-md-2                { margin-top: 0.5rem !important; }
 }
 
 @include media-breakpoint-up(lg) {
-    .top--margin-1x                 { margin-top: 50px !important; }
-    .top--margin-2x                 { margin-top: 100px !important; }
-    .hidden-until-lg                { display: block !important; }
-    .hidden-from-lg                 { display: none !important; }
+    .top--margin-1x         { margin-top: 50px !important; }
+    .top--margin-2x         { margin-top: 100px !important; }
+    .hidden-until-lg        { display: block !important; }
+    .hidden-from-lg         { display: none !important; }
     .center {
         position            : absolute;
         top                 : 50%;
@@ -309,12 +235,13 @@ html.dark td {
     }
 }
 
-// modal : mobile menu
+// MODAL
+// --------------------------------------------------------
 .modal {
-    top: auto;
-    bottom: 0;
-    height: auto;
-    z-index: 2000;
+    top                     : auto;
+    bottom                  : 0;
+    height                  : auto;
+    z-index                 : 2000;
 }
 .modal .modal-dialog {
     max-width               : 100%;
@@ -326,18 +253,26 @@ html.dark td {
     border                  : 0;
     border-radius           : 0;
     height                  : 100%;
-    background-color        : $WHITE_BASE; 
+    background-color        : $COLOR_WHITE; 
 }
 
-.modal .modal-dialog .modal-content .modal-header { border: 0; }
+.modal .modal-dialog .modal-content .modal-header {
+    border-radius           : 0;
+}
+
+html.dark {
+    .modal .modal-dialog .modal-content {
+        background-color    : $COLOR_BLACK;
+    }
+}
 
 // SEARCH 
 // --------------------------------------------------------
 input#search {
     background-color        : transparent;
     font-family             : $FONT_FAMILY_BASE; 
-    color                   : rgba($COLOR_DARK_BASE, 0.5); 
-    border                  : 1px solid $DARK_MUTED;
+    color                   : rgba($COLOR_BLACK, 0.5); 
+    border                  : 1px solid $COLOR_GREY_LIGHT;
     outline                 : 0;
     min-width               : 100%;
 
@@ -345,37 +280,36 @@ input#search {
     -moz-transition         : all .15s;
     transition              : all .15s;
 
-    &::-webkit-input-placeholder    { color: rgba($COLOR_DARK_BASE, 0.5);; }
-    &::-moz-placeholder             { color: rgba($COLOR_DARK_BASE, 0.5);; }
-    &:-ms-input-placeholder         { color: rgba($COLOR_DARK_BASE, 0.5);; }
-    &:-moz-placeholder              { color: rgba($COLOR_DARK_BASE, 0.5);; }
+    &::-webkit-input-placeholder    { color: rgba($COLOR_BLACK, 0.5);; }
+    &::-moz-placeholder             { color: rgba($COLOR_BLACK, 0.5);; }
+    &:-ms-input-placeholder         { color: rgba($COLOR_BLACK, 0.5);; }
+    &:-moz-placeholder              { color: rgba($COLOR_BLACK, 0.5);; }
 }
 
 input#search:hover {
-    color                   : $COLOR_DARK_BASE;
+    color                   : $COLOR_BLACK;
 
-    &::-webkit-input-placeholder    { color: $COLOR_DARK_BASE; }
-    &::-moz-placeholder             { color: $COLOR_DARK_BASE; }
-    &:-ms-input-placeholder         { color: $COLOR_DARK_BASE; }
-    &:-moz-placeholder              { color: $COLOR_DARK_BASE; }
+    &::-webkit-input-placeholder    { color: $COLOR_BLACK; }
+    &::-moz-placeholder             { color: $COLOR_BLACK; }
+    &:-ms-input-placeholder         { color: $COLOR_BLACK; }
+    &:-moz-placeholder              { color: $COLOR_BLACK; }
 }
 
 input#search:focus {
-    color                   : $COLOR_DARK_BASE;
-    background-color        : $DARK_MUTED;
-    // border-color            : $COLOR_DARK_BASE;
+    color                   : $COLOR_BLACK;
+    background-color        : $COLOR_GREY_LIGHT;
 
-    &::-webkit-input-placeholder    { color: $COLOR_DARK_BASE; }
-    &::-moz-placeholder             { color: $COLOR_DARK_BASE; }
-    &:-ms-input-placeholder         { color: $COLOR_DARK_BASE; }
-    &:-moz-placeholder              { color: $COLOR_DARK_BASE; }
+    &::-webkit-input-placeholder    { color: $COLOR_BLACK; }
+    &::-moz-placeholder             { color: $COLOR_BLACK; }
+    &:-ms-input-placeholder         { color: $COLOR_BLACK; }
+    &:-moz-placeholder              { color: $COLOR_BLACK; }
 }
 
 // BORDER
 // --------------------------------------------------------
 .border-solid { 
     background-color        : transparent;
-    border-left             : 1rem solid $COLOR_DARK_BASE;
+    border-left             : 1rem solid $COLOR_BLACK;
     border-bottom           : 0px solid;
     -webkit-transition      : all .15s;
     -moz-transition         : all .15s; 
@@ -383,7 +317,7 @@ input#search:focus {
 }
 
 .border-solid--grey {
-    border                  : 1px solid $DARK_MUTED;
+    border                  : 1px solid $COLOR_GREY_LIGHT;
 }
 
 .no-border-top {
@@ -400,7 +334,7 @@ input#search:focus {
 .border-solid p,
 .border-solid span,
 .border-solid a { 
-    color                   : $COLOR_DARK_BASE;
+    color                   : $COLOR_BLACK;
     -webkit-transition      : all .15s;
     -moz-transition         : all .15s; 
     transition              : all .15s;
@@ -413,7 +347,7 @@ input#search:focus {
 }
 
 .border-left { 
-    border-left             : 0.25rem solid $DARK_MUTED !important;
+    border-left             : 0.25rem solid $COLOR_GREY_LIGHT !important;
     -webkit-transition      : all .15s;
     -moz-transition         : all .15s; 
     transition              : all .15s;
@@ -426,101 +360,48 @@ input#search:focus {
 // NAVBAR 
 // --------------------------------------------------------
 .navbar { 
-    font-family             : $FONT_FAMILY_BASE;
-    color                   : $COLOR_DARK_BASE;
-    // background-color        : $WHITE_BASE;
+    color                   : $COLOR_BLACK;
+}
+.navbar .nav-item {
+    display                 : table-cell;
+    margin                  : 0 0.25rem;
+}
+.navbar .nav-item a {
+    color                   : $COLOR_BLACK;
+    font-size               : $FONT_SIZE_BASE;
+    text-decoration         : none !important;
+}
+.navbar .nav-item a.nav-link {
+    padding                 : 0.5rem 1.5rem;
+    border-radius           : 2rem;
+}
+.navbar .nav-item.show a.nav-link,
+.navbar .nav-item:hover a.nav-link {
+    background              : $COLOR_GREY_LIGHT;
+}
+.navbar .nav-item:hover a,
+.navbar .nav-item:focus a,
+.navbar .nav-item.show a { 
+    color                   : darken($COLOR_PRIMARY, 10%);
+    text-decoration         : none !important;
 }
 
-.navbar .nav-item { 
-    background-color        : transparent; 
-    padding-left            : 1rem;
-    padding-right           : 1rem;
-    border-top              : 0.25rem solid transparent;
-    border-bottom           : 0.25rem solid transparent;
-    
-    a {
-        color               : $COLOR_DARK_BASE;
-        font-family         : $FONT_FAMILY_BASE;
-        font-size           : $FONT_SIZE_BASE; 
-        // font-weight         : $FONT_WEIGHT_BASE;
-        text-decoration     : none !important;
+html.dark {
+    .navbar {
+        color               : $COLOR_WHITE;
     }
-
-    .dropdown-menu {
-        min-width           : 100%;
-        margin              : 0;
-        padding             : 0;
-        border              : 0;
-        border-radius       : 0;
-
-        padding-left        : 1rem;
-        padding-right       : 1rem;
+    .navbar .nav-item a {
+        color               : $COLOR_WHITE;
     }
-}
-
-.navbar.background--primary .nav-item {
-    a {
-        font-weight         : $FONT_WEIGHT_BASE !important;
+    .navbar .nav-item.show a.nav-link,
+    .navbar .nav-item:hover a.nav-link {
+        background          : $COLOR_GREY_DARK;
     }
-}
-
-.navbar .nav-item:hover,
-.navbar .nav-item:focus,
-.navbar .nav-item.show { 
-    border-bottom           : 0.25rem solid darken($COLOR_PRIMARY, 10%);
-
-    a {
-        color               : darken($COLOR_PRIMARY, 10%);
-        text-decoration     : none !important;
+    .navbar .nav-item:hover a,
+    .navbar .nav-item:focus a,
+    .navbar .nav-item.show a { 
+        color               : darken($COLOR_GREEN, 10%);
     }
-
-    // .dropdown-menu {
-    //     background-color    : $COLOR_DARK_BASE;
-
-    //     a {
-    //         color           : $WHITE_BASE;
-    //         text-decoration : none !important;
-    //     }
-
-    //     a:hover,
-    //     a:focus {
-    //         text-decoration : none !important;
-    //     }
-    // }
-}
-
-.navbar .nav-item.no--border {
-    border-bottom           : 0.25rem solid transparent !important;
-}
-
-html.dark .navbar .nav-item:hover,
-html.dark .navbar .nav-item:focus,
-html.dark .navbar .nav-item.show {
-    border-bottom           : 0.25rem solid $COLOR_GREEN;
-
-    a {
-        color               : $COLOR_GREEN;
-    }
-}
-
-.navbar.background--primary .nav-item:hover,
-.navbar.background--primary .nav-item:focus,
-.navbar.background--primary .nav-item.show { 
-    border-bottom           : 0.25rem solid transparent;
-
-    a {
-        color               : darken($COLOR_PRIMARY, 10%);
-    }
-}
-
-html.dark .navbar.background--primary .nav-item:hover,
-html.dark .navbar.background--primary .nav-item:focus,
-html.dark .navbar.background--primary .nav-item.show { 
-    border-bottom           : 0.25rem solid transparent;
-
-    // a {
-    //     color               : $COLOR_CONTRAST;
-    // }
 }
 
 // BUTTONS 
@@ -539,21 +420,21 @@ button {
 .btn.btn-primary,
 .btn.btn-primary:active,
 .btn.btn-primary:focus {
-    border-radius           : 0;
+    border-radius           : 50%;
     font-size               : 1.125rem;
     box-shadow              : none;
-    background-color        : $WHITE_BASE;
-    color                   : $COLOR_DARK_BASE; 
+    background-color        : $COLOR_WHITE;
+    color                   : $COLOR_BLACK; 
     border                  : 0; 
-    border-color            : $WHITE_BASE;
+    border-color            : $COLOR_WHITE;
     line-height             : 0;
     padding                 : 1rem;
 }
 
 .btn.btn-primary:active, 
 .btn.btn-primary:active:focus {
-    background-color        : $WHITE_BASE !important;
-    border-color            : $WHITE_BASE !important;
+    background-color        : $COLOR_WHITE !important;
+    border-color            : $COLOR_WHITE !important;
 }
 
 .btn.btn-primary i {
@@ -561,9 +442,9 @@ button {
 }
 
 .btn.btn-primary:not(.no-hover):hover { 
-    background-color        : $COLOR_DARK_BASE !important;
-    color                   : $WHITE_BASE !important; 
-    border-color            : $COLOR_DARK_BASE !important;
+    background-color        : $COLOR_BLACK !important;
+    color                   : $COLOR_WHITE !important; 
+    border-color            : $COLOR_BLACK !important;
     box-shadow              : none !important;
 }
 
@@ -608,11 +489,11 @@ h5 {
 h5,
 h5 a {
     font-size               : $FONT_SIZE_BASE_PLUS !important;
-    color                   : rgba($COLOR_DARK_BASE, 0.5) !important;
+    color                   : rgba($COLOR_BLACK, 0.5) !important;
     display                 : inline-block;
     min-width               : 100%;
     text-align              : center;
-    font-weight             : $FONT_WEIGHT_BASE !important;
+    font-weight             : $FONT_WEIGHT_400 !important;
     font-style              : italic;
 }
 
@@ -620,12 +501,12 @@ h5 a {
 // html.dark h4 a,
 html.dark h5,
 html.dark h5 a {
-    color                   : rgba($WHITE_BASE, 0.5) !important;
+    color                   : rgba($COLOR_WHITE, 0.5) !important;
 }
 
 // h1 span.bg--green {
 //     background              : $COLOR_GREEN !important;
-//     font-weight             : $FONT_WEIGHT_BOLD !important;
+//     font-weight             : $FONT_WEIGHT_700 !important;
 //     display                 : inline-block;
 //     width                   : 63px;
 // }
@@ -637,8 +518,8 @@ h4,
 h5,
 button.navbar-toggler {
     font-family             : $FONT_FAMILY_BASE;
-    font-weight             : $FONT_WEIGHT_BOLD; 
-    color                   : $COLOR_DARK_BASE;
+    font-weight             : $FONT_WEIGHT_700; 
+    color                   : $COLOR_BLACK;
     text-transform          : none;  
     margin-bottom           : 0;
     outline                 : none !important;
@@ -648,14 +529,14 @@ button.navbar-toggler {
     //     font-family         : inherit;
     //     font-size           : inherit;
     //     font-weight         : inherit;
-    //     background-color    : $COLOR_DARK_BASE; 
-    //     color               : $WHITE_BASE;
-    //     font-weight         : $FONT_WEIGHT_BASE;
+    //     background-color    : $COLOR_BLACK; 
+    //     color               : $COLOR_WHITE;
+    //     font-weight         : $FONT_WEIGHT_400;
     // }
 
     a,
     a:focus {
-        color               : $COLOR_DARK_BASE;
+        color               : $COLOR_BLACK;
         text-decoration     : none !important; 
     }
 
@@ -687,13 +568,13 @@ a.break-all {
 
 // paragraph
 p a {
-    // font-weight             : $FONT_WEIGHT_BOLD;
+    // font-weight             : $FONT_WEIGHT_700;
     display                 : inline !important;
 }
 
 // p a:hover,
 // p a:focus {
-//     // color                   : $WHITE_BASE;
+//     // color                   : $COLOR_WHITE;
 //     // background-color        : $COLOR_PRIMARY;
 //     color                   : $COLOR_PRIMARY;
 //     // text-decoration         : underline !important;
@@ -756,7 +637,7 @@ li.list-item.no-bullet {
 }
 
 .font-family-serif ol li::marker {
-    font-weight             : $FONT_WEIGHT_BOLD;
+    font-weight             : $FONT_WEIGHT_700;
     // display                 : inline-block;
     font-size               : $FONT_SIZE_BASE;
 }
@@ -817,8 +698,6 @@ li.list-item.no-bullet {
 }
 .font-family-serif { 
     font-family             : $FONT_FAMILY_SERIF !important;
-    // font-weight             : $FONT_WEIGHT_THIN;
-    // line-height             : 1.6;
     font-size               : $FONT_SIZE_BASE_PLUS;
 }
 
@@ -828,7 +707,7 @@ li.list-item.no-bullet {
 .font-family-serif h4,
 .font-family-serif h5 {
     font-family             : $FONT_FAMILY_SERIF !important;
-    font-weight             : $FONT_WEIGHT_BOLD;
+    font-weight             : $FONT_WEIGHT_700;
     line-height             : 2;
 }
 
@@ -869,7 +748,7 @@ span.text-large {
 }
 
 .font-weight-bold {
-    font-weight             : $FONT_WEIGHT_BOLD !important;
+    font-weight             : $FONT_WEIGHT_700 !important;
 }
 
 h1 span.left,
@@ -903,7 +782,7 @@ a:focus {
     }
 
     li.list-item {
-        color               : $DARK_MUTED;
+        color               : $COLOR_GREY_LIGHT;
     }
 }
 
@@ -957,18 +836,18 @@ pre .hljs-string {
 pre,
 pre.prettyprint,
 pre.prettyprint span {
-    color                   : $COLOR_DARK_BASE;
+    color                   : $COLOR_BLACK;
     font-family             : $FONT_FAMILY_MONO;
-    font-weight             : $FONT_WEIGHT_BASE;
+    font-weight             : $FONT_WEIGHT_400;
     font-size               : $FONT_SIZE_BASE_MONO; 
     line-height             : 1.5 !important;
 }
 
 code {
-    color                   : $COLOR_DARK_BASE;
+    color                   : $COLOR_BLACK;
     font-family             : $FONT_FAMILY_MONO;
-    // font-weight             : $FONT_WEIGHT_BOLD_MONO;
-    font-weight             : $FONT_WEIGHT_BASE;
+    // font-weight             : $FONT_WEIGHT_600;
+    font-weight             : $FONT_WEIGHT_400;
     font-size               : $FONT_SIZE_BASE_MONO;
     // font-size               : $FONT_SIZE_BASE; 
     padding                 : 0 0.5rem;
@@ -978,7 +857,7 @@ code {
 }
 
 html.dark code {
-    color                   : $WHITE_BASE;
+    color                   : $COLOR_WHITE;
 }
 
 sub,
@@ -998,7 +877,7 @@ sup code {
 
     // parameters
     .hljs-params,
-    .hljs-regexp                    { color: $COLOR_DARK_BASE !important; }
+    .hljs-regexp                    { color: $COLOR_BLACK !important; }
 
     // parameter type
     .hljs-params .hljs-type         { color: $COLOR_RED !important; }
@@ -1012,13 +891,13 @@ sup code {
     .hljs-subst                     { color: $COLOR_PURPLE !important; }
 
     // built-in
-    // .hljs-built_in { color: $COLOR_DARK_BASE !important; }
+    // .hljs-built_in { color: $COLOR_BLACK !important; }
     .hljs-built_in                  { color: $COLOR_PURPLE !important; }
 
     // comment
     .hljs-comment,
     .hljs-doctag,
-    .hljs-quote                     { color: rgba($COLOR_DARK_BASE, 0.5) !important; }
+    .hljs-quote                     { color: rgba($COLOR_BLACK, 0.5) !important; }
     
     // type
     .hljs-type                      { color: $COLOR_PURPLE !important; }
@@ -1044,58 +923,37 @@ sup code {
 
 // DARK THEME
 // --------------------------------------------------------
-html.dark { background-color: $COLOR_DARK_BASE; }
-// @supports not (color-scheme: light dark) {
-//     html.dark { background-color: $COLOR_DARK_BASE; }
-// }
-
 html.dark a,
 html.dark a:focus {
     // color: $COLOR_GREEN;
-    li.list-item { color: $WHITE_MUTED; }
+    li.list-item { color: $COLOR_GREY_DARK; }
 }
 
-// html.dark a:hover { 
-//     li.list-item { color: $COLOR_GREEN; }
-// }
+html.dark .navbar { color: $COLOR_SNOW; }
 
-// html.dark .navbar { background-color: $COLOR_DARK_BASE; }
-
-// html.dark a.color-primary span,
-// html.dark a.color-primary:focus span { color: $WHITE_SHADED; }
-
-// html.dark a.color-primary:hover span { color: lighten($COLOR_PRIMARY, 10%) !important; }
-
-html.dark .navbar { color: $WHITE_SHADED; }
-
-html.dark .navbar a { color: $WHITE_SHADED; }
+html.dark .navbar a { color: $COLOR_SNOW; }
 
 html.dark p,
 html.dark ul,
-html.dark ol { color: $WHITE_SHADED; }
-
-html.dark .text-muted { color: rgba($WHITE_BASE, 0.5) !important; }
+html.dark ol { color: $COLOR_SNOW; }
 
 html.dark hr,
-html.dark .divider { border-top: 1px solid $WHITE_MUTED; }
+html.dark .divider { border-top: 1px solid $COLOR_GREY_DARK; }
 
 html.dark .border-left {
-    border-left: 0.25rem solid $WHITE_MUTED !important;
+    border-left: 0.25rem solid $COLOR_GREY_DARK !important;
 }
 
-html.dark .background--grey,
-html.dark code,
-html.dark pre,
-html.dark .prettyprint.background--grey {
-    // border                      : 1px solid $WHITE_MUTED;
-    background                  : $WHITE_MUTED;
-    // background                  : transparent;
-    color                       : $WHITE_SHADED;
-}
+// html.dark code,
+// html.dark pre,
+// html.dark .prettyprint.background--grey {
+//     // border                      : 1px solid $COLOR_GREY_DARK;
+//     background                  : $COLOR_GREY_DARK;
+//     // background                  : transparent;
+//     color                       : $COLOR_SNOW;
+// }
 
-html.dark .border-solid--grey { border: 1px solid $WHITE_MUTED; }
-
-// html.dark li.list-item::marker { color: $WHITE_SHADED; }
+html.dark .border-solid--grey { border: 1px solid $COLOR_GREY_DARK; }
 
 html.dark h1,
 html.dark h2,
@@ -1103,15 +961,10 @@ html.dark h3,
 html.dark h4,
 html.dark h5,
 html.dark button.navbar-toggler { 
-    color: $WHITE_SHADED;
-
-    // span { 
-    //     background-color        : $WHITE_SHADED; 
-    //     color                   : $COLOR_DARK_BASE; 
-    // }
+    color: $COLOR_SNOW;
 
     a {
-        color                   : $WHITE_SHADED;
+        color                   : $COLOR_SNOW;
     }
 
     a:hover,
@@ -1121,62 +974,58 @@ html.dark button.navbar-toggler {
 
 }
 
-html.dark .border-solid { border-color: $WHITE_SHADED !important; }
+html.dark .border-solid { border-color: $COLOR_SNOW !important; }
 html.dark .border-solid:hover,
 html.dark .border-solid:focus { border-color: lighten($COLOR_PRIMARY, 10%) !important; }
 
 html.dark .border-solid p,
 html.dark .border-solid span,
-html.dark .border-solid a { color: $WHITE_SHADED; }
+html.dark .border-solid a { color: $COLOR_SNOW; }
 
 html.dark .btn.btn-primary {
-    background-color        : $COLOR_DARK_BASE;
-    color                   : $WHITE_SHADED; 
-    border-color            : $COLOR_DARK_BASE;
+    background-color        : $COLOR_BLACK;
+    color                   : $COLOR_SNOW; 
+    border-color            : $COLOR_BLACK;
 }
 
 html.dark .btn.btn-primary:not(.no-hover):hover { 
-    background-color        : $WHITE_SHADED !important;
-    color                   : $COLOR_DARK_BASE !important; 
-    border-color            : $WHITE_SHADED !important;
-}
-
-html.dark .modal .modal-dialog .modal-content {
-    background-color        : $COLOR_DARK_BASE; 
+    background-color        : $COLOR_SNOW !important;
+    color                   : $COLOR_BLACK !important; 
+    border-color            : $COLOR_SNOW !important;
 }
 
 html.dark input#search {
     background-color        : transparent;
-    color                   : rgba($WHITE_BASE, 0.5);
-    border                  : 1px solid $WHITE_MUTED; 
+    color                   : rgba($COLOR_WHITE, 0.5);
+    border                  : 1px solid $COLOR_GREY_DARK; 
 
-    &::-webkit-input-placeholder    { color: rgba($WHITE_BASE, 0.5); }
-    &::-moz-placeholder             { color: rgba($WHITE_BASE, 0.5); }
-    &:-ms-input-placeholder         { color: rgba($WHITE_BASE, 0.5); }
-    &:-moz-placeholder              { color: rgba($WHITE_BASE, 0.5); }
+    &::-webkit-input-placeholder    { color: rgba($COLOR_WHITE, 0.5); }
+    &::-moz-placeholder             { color: rgba($COLOR_WHITE, 0.5); }
+    &:-ms-input-placeholder         { color: rgba($COLOR_WHITE, 0.5); }
+    &:-moz-placeholder              { color: rgba($COLOR_WHITE, 0.5); }
 }
 
 html.dark input#search:hover {
-    color                   : $WHITE_SHADED;
+    color                   : $COLOR_SNOW;
 
-    &::-webkit-input-placeholder    { color: $WHITE_SHADED; }
-    &::-moz-placeholder             { color: $WHITE_SHADED; }
-    &:-ms-input-placeholder         { color: $WHITE_SHADED; }
-    &:-moz-placeholder              { color: $WHITE_SHADED; }
+    &::-webkit-input-placeholder    { color: $COLOR_SNOW; }
+    &::-moz-placeholder             { color: $COLOR_SNOW; }
+    &:-ms-input-placeholder         { color: $COLOR_SNOW; }
+    &:-moz-placeholder              { color: $COLOR_SNOW; }
 }
 
 html.dark input#search:focus {
-    background-color        : $WHITE_MUTED;
-    color                   : $WHITE_SHADED;
+    background-color        : $COLOR_GREY_DARK;
+    color                   : $COLOR_SNOW;
 
-    &::-webkit-input-placeholder    { color: $WHITE_SHADED; }
-    &::-moz-placeholder             { color: $WHITE_SHADED; }
-    &:-ms-input-placeholder         { color: $WHITE_SHADED; }
-    &:-moz-placeholder              { color: $WHITE_SHADED; }
+    &::-webkit-input-placeholder    { color: $COLOR_SNOW; }
+    &::-moz-placeholder             { color: $COLOR_SNOW; }
+    &:-ms-input-placeholder         { color: $COLOR_SNOW; }
+    &:-moz-placeholder              { color: $COLOR_SNOW; }
 }
 
 html.dark pre.prettyprint,
-html.dark pre.prettyprint span { color: $WHITE_SHADED; }
+html.dark pre.prettyprint span { color: $COLOR_SNOW; }
 
 
 @media screen {
@@ -1188,7 +1037,7 @@ html.dark pre.prettyprint span { color: $WHITE_SHADED; }
 
     // parameters
     html.dark .hljs-params,
-    html.dark .hljs-regexp { color: $WHITE_SHADED !important; }
+    html.dark .hljs-regexp { color: $COLOR_SNOW !important; }
 
     // parameter type
     html.dark .hljs-params .hljs-type { color: $COLOR_RED !important; }
@@ -1202,13 +1051,13 @@ html.dark pre.prettyprint span { color: $WHITE_SHADED; }
     html.dark .hljs-subst { color: $COLOR_PURPLE !important; }
 
     // built-in
-    // html.dark .hljs-built_in { color: $WHITE_SHADED !important; }
+    // html.dark .hljs-built_in { color: $COLOR_SNOW !important; }
     html.dark .hljs-built_in { color: $COLOR_PURPLE !important; }
 
     // comment
     html.dark .hljs-comment,
     html.dark .hljs-doctag,
-    html.dark .hljs-quote { color: rgba($WHITE_BASE, 0.5) !important; }
+    html.dark .hljs-quote { color: rgba($COLOR_WHITE, 0.5) !important; }
 
     // type
     html.dark .hljs-type { color: $COLOR_PURPLE !important; }
@@ -1229,6 +1078,6 @@ html.dark pre.prettyprint span { color: $WHITE_SHADED; }
 
     // nested
     html.dark .hljs-function .hljs-keyword,
-    html.dark .hljs-class .hljs-keyword { color: $WHITE_SHADED !important; }
+    html.dark .hljs-class .hljs-keyword { color: $COLOR_SNOW !important; }
 }
 // --------------------------------------------------------
