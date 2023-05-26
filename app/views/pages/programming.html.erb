@@ -1,10 +1,7 @@
-<% if false %><% if @file_content == nil %><%= render 'header' %><% end %><% end %>
-<%= render 'navigation' %>
-
 <!-- page-navigation -->
 <div class="row justify-content-center hidden-until-lg fixed">
   <div class="col-12 p-0">
-    <nav class="navbar navbar-expand-md p-0 background--primary">
+    <nav class="navbar navbar-expand-md p-0">
       <ul class="navbar-nav ml-auto mr-auto">
         <% @programming.keys.each do |category| %>
         <li class="nav-item">
@@ -89,5 +86,3 @@
     <% end %>
   <% end %>
 </div>
-
-<%= render 'footer' %>
