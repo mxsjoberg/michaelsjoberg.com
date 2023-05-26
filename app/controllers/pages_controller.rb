@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   before_action :set_meta
   $version = "5.0.0"
+  $updated = "May 26, 2023"
   # ----------------------------------------------
   # GET /
   # ----------------------------------------------
@@ -8,19 +9,38 @@ class PagesController < ApplicationController
     @route_path = "home"
     @meta_title = "Michael Sjöberg"
     # posts.json
-    @posts = JSON.parse(File.read(Rails.public_path + 'posts.json'))
-    @posts_array = Hash.new
-    @max_len = 1
-    @posts.keys.each do |post|
-      unless @posts[post]['draft'] == true || @posts_array.length >= @max_len
-        @posts_array[post] = {
-          title: @posts[post]['title'],
-          date: @posts[post]['date']
-        }
-      end
-    end
+    # @posts = JSON.parse(File.read(Rails.public_path + 'posts.json'))
+    # @posts_array = Hash.new
+    # @max_len = 1
+    # @posts.keys.each do |post|
+    #   unless @posts[post]['draft'] == true || @posts_array.length >= @max_len
+    #     @posts_array[post] = {
+    #       title: @posts[post]['title'],
+    #       date: @posts[post]['date']
+    #     }
+    #   end
+    # end
     # sort by date if not sorted already
-    @posts_array = @posts_array.sort_by{ |_,h| -h[:date].to_i }.to_h
+    # @posts_array = @posts_array.sort_by{ |_,h| -h[:date].to_i }.to_h
+    @dir_posts = []
+    Dir.glob(Rails.public_path + 'posts/*.md') do |filename|
+      next if filename.include? 'OLD'
+      @post_details = File.readlines(filename).first(4) # array
+      # TODO remove this when all posts are updated
+      next if @post_details[0].include? '<'
+      # post details
+      @title = @post_details[0].strip
+      @author = @post_details[1].strip
+      @date = @post_details[2].strip
+      @updated = @post_details[3].strip
+      @dir_posts.push({ 
+        title: @title,
+        author: @author,
+        date: @date,
+        updated: @updated
+      })
+    end
+    @dir_posts.sort! { |a, b|  a[:date] <=> b[:date] }
   end
   # ----------------------------------------------
   # GET /programming
@@ -79,25 +99,25 @@ class PagesController < ApplicationController
     # posts.json
     @posts = JSON.parse(File.read(Rails.public_path + 'posts.json'))
     # random
-    if @post == "random"
-      # pick random sample in posts.json
-      @post = @posts.keys.sample
-      # redirect
-      redirect_to "/writing/#{@post}"
-    end
+    # if @post == "random"
+    #   # pick random sample in posts.json
+    #   @post = @posts.keys.sample
+    #   # redirect
+    #   redirect_to "/writing/#{@post}"
+    # end
     # redirects
-    if @post == "a-few-notes-on-investing" || @post == "investing-in-stocks-like-a-pro" || @post == "how-to-invest-in-stocks-like-a-pro"
-      @post = "how-to-invest-in-stocks"
-    end
-    if @post == "computer-vision-in-a-hurry" || @post == "a-deep-dive-into-computer-vision"
-      @post = "lecture-notes-on-computer-vision"
-    end
-    if @post == "why-are-financial-data-apps-so-bad"
-      @post = "building-an-alternative-to-yahoo-finance"
-    end
-    if @post == "computer-systems-and-low-level-software-security" || @post == "a-computer-systems-primer-for-application-developers"
-      @post = "lecture-notes-on-security-engineering"
-    end
+    # if @post == "a-few-notes-on-investing" || @post == "investing-in-stocks-like-a-pro" || @post == "how-to-invest-in-stocks-like-a-pro"
+    #   @post = "how-to-invest-in-stocks"
+    # end
+    # if @post == "computer-vision-in-a-hurry" || @post == "a-deep-dive-into-computer-vision"
+    #   @post = "lecture-notes-on-computer-vision"
+    # end
+    # if @post == "why-are-financial-data-apps-so-bad"
+    #   @post = "building-an-alternative-to-yahoo-finance"
+    # end
+    # if @post == "computer-systems-and-low-level-software-security" || @post == "a-computer-systems-primer-for-application-developers"
+    #   @post = "lecture-notes-on-security-engineering"
+    # end
     # render post
     unless (@post.nil?)
       # tag
@@ -138,19 +158,27 @@ class PagesController < ApplicationController
         @meta_title = "Computer Science"
       else
         @file = @post + '.md'
-        @title = @posts[@post]['title']
-        @tags = @posts[@post]['tags']
-        @date = @posts[@post]['date']
-        @updated = @posts[@post]['updated']
-        @draft = @posts[@post]['draft']
+        @post_details = File.readlines(Rails.public_path + 'posts/' + @file).first(4) # array
+        # post details
+        @title = @post_details[0].strip
+        @author = @post_details[1].strip
+        @date = @post_details[2].strip
+        @updated = @post_details[3].strip
+        # @filename = filename.split('/').last.split('.').first
+        # @title = @posts[@post]['title']
+        # @tags = @posts[@post]['tags']
+        # @date = @posts[@post]['date']
+        # @updated = @posts[@post]['updated']
+        # @draft = @posts[@post]['draft']
         if @draft
           # set date to this year, format YYYYMMDD
           @date = Time.now.strftime("%Y%m%d")
           @updated = @date
         end
-        @toc = @posts[@post]['toc']
-        @all_lines = File.read(Rails.public_path + 'posts/' + @file)
-        @lines = File.readlines(Rails.public_path + 'posts/' + @file)
+        # @toc = @posts[@post]['toc']
+        # @all_lines = File.read(Rails.public_path + 'posts/' + @file)
+        @lines = File.readlines(Rails.public_path + 'posts/' + @file).drop(4)
+        @all_lines = @lines.join
         # override meta title
         @meta_title = @title + " | Michael Sjöberg"
         # count words
@@ -164,42 +192,63 @@ class PagesController < ApplicationController
       end
     # render all posts unless hash already created by filter
     else
-      @tags_all = Array.new
-      @posts_array = Hash.new
-      @posts.keys.each do |post|
-        @file = post + '.md'
-        @title = @posts[post]['title']
-        @tags = @posts[post]['tags']
-        @date = @posts[post]['date']
-        @updated = @posts[post]['updated']
-        @draft = @posts[post]['draft']
-        if @draft
-          # set date to this year, format YYYYMMDD
-          @date = Time.now.strftime("%Y%m%d")
-          @updated = @date
-        end
-        @read = @posts[post]['read']
-        @intro = @posts[post]['intro']
-        @posts_array[post] = {
+      # @tags_all = Array.new
+      # @posts_array = Hash.new
+      # @posts.keys.each do |post|
+      #   @file = post + '.md'
+      #   @title = @posts[post]['title']
+      #   @tags = @posts[post]['tags']
+      #   @date = @posts[post]['date']
+      #   @updated = @posts[post]['updated']
+      #   @draft = @posts[post]['draft']
+      #   if @draft
+      #     # set date to this year, format YYYYMMDD
+      #     @date = Time.now.strftime("%Y%m%d")
+      #     @updated = @date
+      #   end
+      #   @read = @posts[post]['read']
+      #   @intro = @posts[post]['intro']
+      #   @posts_array[post] = {
+      #     title: @title,
+      #     tags: @tags,
+      #     date: @date,
+      #     updated: @updated,
+      #     draft: @draft,
+      #     read: @read,
+      #     intro: @intro
+      #   }
+      #   # add tags to array
+      #   @tags.each do |tag|
+      #     @tags_all.push(tag)
+      #   end
+      # end
+      # # sort by date if not sorted already
+      # @posts_array = @posts_array.sort_by{ |_,h| -h[:date].to_i }.to_h
+      # # remove duplicate in tags_array
+      # @tags_all = @tags_all.uniq!
+      # # sort tags_all
+      # @tags_all = @tags_all.sort
+      @dir_posts = []
+      Dir.glob(Rails.public_path + 'posts/*.md') do |filename|
+        next if filename.include? 'OLD'
+        @post_details = File.readlines(filename).first(4) # array
+        # TODO remove this when all posts are updated
+        next if @post_details[0].include? '<'
+        # post details
+        @title = @post_details[0].strip
+        @author = @post_details[1].strip
+        @date = @post_details[2].strip
+        @updated = @post_details[3].strip
+        @filename = filename.split('/').last.split('.').first
+        @dir_posts.push({ 
           title: @title,
-          tags: @tags,
+          author: @author,
           date: @date,
           updated: @updated,
-          draft: @draft,
-          read: @read,
-          intro: @intro
-        }
-        # add tags to array
-        @tags.each do |tag|
-          @tags_all.push(tag)
-        end
+          filename: @filename
+        })
       end
-      # sort by date if not sorted already
-      @posts_array = @posts_array.sort_by{ |_,h| -h[:date].to_i }.to_h
-      # remove duplicate in tags_array
-      @tags_all = @tags_all.uniq!
-      # sort tags_all
-      @tags_all = @tags_all.sort
+      @dir_posts.sort! { |a, b|  a[:date] <=> b[:date] }
     end
   end
   # ----------------------------------------------
