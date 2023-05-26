@@ -7,7 +7,7 @@
   <!-- post details -->
   <div class="col-12 col-xl-<%= @size %>">
     <!-- meta -->
-    <p class="p-3 text-center border-solid--grey my-4">
+    <p class="p-3 text-center border-solid--grey">
       <!-- date -->
       <% unless @draft %>
         <span class="pr-3"><%= Date.parse(@date).strftime("%b %d, %Y").gsub("-0", "").gsub("-", "") %></span>
@@ -16,10 +16,10 @@
       <% end %>
       <!-- time to read -->
       <% @time_to_read = @words / 75 %>
-      <span class="px-3"><%= @time_to_read %> min read ~<%= @words / 500 %> pages</span>
+      <span class="px-3"><%= @time_to_read %> min read</span>
       <!-- updated -->
       <% unless Date.parse(@date) == Date.parse(@updated) %>
-        <a href="https://github.com/miqqeio/michaelsjoeberg.com/commits/main/public/posts/<%= @post %>.md" target="_blank" class="mb-3">Updated on <%= Date.parse(@updated).strftime("%b %d, %Y").gsub("-0", "").gsub("-", "") %></a></span>
+        <a href="https://github.com/miqqeio/michaelsjoeberg.com/commits/main/public/posts/<%= @post %>.md" target="_blank" class="px-3">Updated on <%= Date.parse(@updated).strftime("%b %d, %Y").gsub("-0", "").gsub("-", "") %></a></span>
       <% end %>
       <!-- tags -->
       <% if @tags %>
@@ -29,7 +29,7 @@
       <% end %>
     </p>
     <!-- title -->
-    <p class="h1">
+    <p class="h1 my-4">
       <a href="/<%= @route_path %>/<%= @post %>" data-turbolinks="true"><%= @title %></a>
     </p>
   </div>
