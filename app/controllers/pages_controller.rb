@@ -8,39 +8,25 @@ class PagesController < ApplicationController
   def home
     @route_path = "home"
     @meta_title = "Michael Sjöberg"
-    # posts.json
-    # @posts = JSON.parse(File.read(Rails.public_path + 'posts.json'))
-    # @posts_array = Hash.new
-    # @max_len = 1
-    # @posts.keys.each do |post|
-    #   unless @posts[post]['draft'] == true || @posts_array.length >= @max_len
-    #     @posts_array[post] = {
-    #       title: @posts[post]['title'],
-    #       date: @posts[post]['date']
-    #     }
-    #   end
+    # @dir_posts = []
+    # Dir.glob(Rails.public_path + 'posts/*.md') do |filename|
+    #   next if filename.include? 'OLD'
+    #   @post_details = File.readlines(filename).first(4) # array
+    #   # TODO remove this when all posts are updated
+    #   next if @post_details[0].include? '<'
+    #   # post details
+    #   @title = @post_details[0].strip
+    #   @author = @post_details[1].strip
+    #   @date = @post_details[2].strip
+    #   @updated = @post_details[3].strip
+    #   @dir_posts.push({ 
+    #     title: @title,
+    #     author: @author,
+    #     date: @date,
+    #     updated: @updated
+    #   })
     # end
-    # sort by date if not sorted already
-    # @posts_array = @posts_array.sort_by{ |_,h| -h[:date].to_i }.to_h
-    @dir_posts = []
-    Dir.glob(Rails.public_path + 'posts/*.md') do |filename|
-      next if filename.include? 'OLD'
-      @post_details = File.readlines(filename).first(4) # array
-      # TODO remove this when all posts are updated
-      next if @post_details[0].include? '<'
-      # post details
-      @title = @post_details[0].strip
-      @author = @post_details[1].strip
-      @date = @post_details[2].strip
-      @updated = @post_details[3].strip
-      @dir_posts.push({ 
-        title: @title,
-        author: @author,
-        date: @date,
-        updated: @updated
-      })
-    end
-    @dir_posts.sort! { |a, b|  a[:date] <=> b[:date] }
+    # @dir_posts.sort! { |a, b| Date.parse(b[:date]) <=> Date.parse(a[:date]) }
   end
   # ----------------------------------------------
   # GET /programming
@@ -248,7 +234,7 @@ class PagesController < ApplicationController
           filename: @filename
         })
       end
-      @dir_posts.sort! { |a, b|  a[:date] <=> b[:date] }
+      @dir_posts.sort! { |a, b| Date.parse(b[:date]) <=> Date.parse(a[:date]) }
     end
   end
   # ----------------------------------------------
