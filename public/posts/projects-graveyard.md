@@ -1,8 +1,7 @@
-<!--
-    Projects Graveyard
-    Michael Sjöberg
-    May 4, 2023
--->
+Projects Graveyard
+Michael Sjöberg
+May 4, 2023
+May 4, 2023
 
 *Here's a list of projects that I've worked on in the past but stopped due to lack of interest or some other reason. Most recent at top.*
 
