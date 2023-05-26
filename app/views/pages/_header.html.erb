@@ -1,8 +1,64 @@
 <div class="container">
-  <div class="row justify-content-center mt-5 mb-4 py-5">
-    <div class="col text-center">
-      <img src="<%= image_path('fav.png') %>" class="px-5" style="max-height:140px;" />
-      <h1 class="font-family-base text-larger d-lg-inline" style="vertical-align:middle;">Michael Sjöberg</h1>
+  <div class="row justify-content-center mt-5">
+    <div class="col-12 text-center">
+      <!-- <img src="<%= image_path('fav.png') %>" style="max-height:100px;" /> -->
+      <h1 class="font-family-base text-larger d-lg-inline">
+        <a href="/" data-turbolinks="false">Michael Sjöberg</a>
+      </h1>
+      <nav class="navbar navbar-expand-md p-0 d-inline">
+        <ul class="navbar-nav ml-auto mr-auto" style="display:table;">
+          <!-- github -->
+          <li class="nav-item">
+            <a href="https://github.com/miqqeio"><i class="fab fa-github fa-fw"></i></a>
+          </li>
+          <!-- twitter -->
+          <li class="nav-item pl-3">
+            <a href="https://www.twitter.com/miqqeio"><i class="fab fa-twitter fa-fw"></i></a>
+          </li>
+          <!-- soundcloud -->
+          <li class="nav-item pl-3">
+            <a href="https://soundcloud.com/miqqe"><i class="fab fa-soundcloud fa-fw"></i></a>
+          </li>
+          <!-- linkedin -->
+          <li class="nav-item pl-3">
+            <a href="https://www.linkedin.com/in/miqqeio"><i class="fab fa-linkedin-in fa-fw"></i></a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="col-12 hidden-until-lg text-center my-5">
+      <nav class="navbar navbar-expand-md p-0">
+        <ul class="navbar-nav ml-auto mr-auto" style="display:table;">
+          <!-- /home -->
+          <li class="nav-item <% if request.path == '/' %>show<% end %>">
+            <a class="nav-link" href="/" data-turbolinks="true">About</a>
+          </li>
+          <!-- /projects -->
+          <li class="nav-item px-1 <% if request.path == '/projects' %>show<% end %>">
+            <a class="nav-link" href="/projects" data-turbolinks="true">Projects</a>
+          </li>
+          <!-- /writing -->
+          <li class="nav-item px-1 <% if request.path == '/writing' %>show<% end %>">
+            <a class="nav-link" href="/writing" data-turbolinks="true">Writing</a>
+          </li>
+          <!-- /programming -->
+          <li class="nav-item px-1 <% if request.path == '/programming' %>show<% end %>">
+            <a class="nav-link" href="/programming" data-turbolinks="true">Programming</a>
+          </li>
+          <!-- linkedin -->
+          <!-- <li class="nav-item px-3">
+            <a href="https://www.linkedin.com/in/miqqeio"><i class="fab fa-linkedin fa-fw"></i> LinkedIn</a>
+          </li> -->
+          <!-- github -->
+          <!-- <li class="nav-item px-3">
+            <a href="https://github.com/miqqeio"><i class="fab fa-github fa-fw"></i> Code</a>
+          </li> -->
+          <!-- twitter -->
+          <!-- <li class="nav-item px-3">
+            <a href="https://www.twitter.com/miqqeio"><i class="fab fa-twitter fa-fw"></i> Tweets</a>
+          </li> -->
+        </ul>
+      </nav>
     </div>
   </div>
 </div>
