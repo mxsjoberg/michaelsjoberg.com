@@ -17,6 +17,10 @@
       <!-- time to read -->
       <% @time_to_read = @words / 75 %>
       <span class="px-3"><%= @time_to_read %> min read ~<%= @words / 500 %> pages</span>
+      <!-- updated -->
+      <% unless Date.parse(@date) == Date.parse(@updated) %>
+        <a href="https://github.com/miqqeio/michaelsjoeberg.com/commits/main/public/posts/<%= @post %>.md" target="_blank" class="mb-3">Updated on <%= Date.parse(@updated).strftime("%b %d, %Y").gsub("-0", "").gsub("-", "") %></a></span>
+      <% end %>
       <!-- tags -->
       <% if @tags %>
         <% @tags.each do |tag| %>
@@ -25,13 +29,9 @@
       <% end %>
     </p>
     <!-- title -->
-    <h1 class="font-family-serif font-weight-bold <% if @toc%>my-3<% else %>mt-3<% end %>">
+    <p class="h1">
       <a href="/<%= @route_path %>/<%= @post %>" data-turbolinks="true"><%= @title %></a>
-    </h1>
-    <!-- updated -->
-    <% unless Date.parse(@date) == Date.parse(@updated) %>
-      <a href="https://github.com/miqqeio/michaelsjoeberg.com/commits/main/public/posts/<%= @post %>.md" target="_blank" class="mb-3">Updated on <%= Date.parse(@updated).strftime("%b %d, %Y").gsub("-0", "").gsub("-", "") %></a></span>
-    <% end %>
+    </p>
   </div>
   <!-- toc -->
   <% if @toc %>
@@ -76,19 +76,6 @@
   <div class="col-12 col-xl-<%= @size %> font-family-serif">
     <%= CommonMarker.render_html(@all_lines, [:UNSAFE, :GITHUB_PRE_LANG], [:table, :autolink]).html_safe %>
   </div>
-  <!-- meta-navigation -->
-  <div class="col-12 col-xl-<%= @size %> text-center py-3 my-5">
-    <p class="text-muted mb-0">
-      <!-- all posts -->
-      <a href="/writing" data-turbolinks="true" class="px-3">Browse all posts</a>
-      <!-- random -->
-      <a href="/writing/random" data-turbolinks="true" class="px-3">Random post</a>
-      <!-- twitter -->
-      <!-- <a href="https://twitter.com/miqqeio" target="_blank" class="px-3">@miqqeio</a> -->
-      <a href="https://twitter.com/messages/compose?recipient_id=140255012" class="px-3" data-screen-name="@miqqeio" target="_blank">Comments to @miqqeio</a>
-    </p>
-  </div>
-  <!-- ./meta-navigation -->
 </div>
 <!-- mathjax -->
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
