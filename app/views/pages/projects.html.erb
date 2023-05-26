@@ -1,6 +1,3 @@
-<%= render 'header' %>
-<%= render 'navigation' %>
-
 <% @size = 8 %>
 <% @d_size = 8 %>
 
@@ -9,8 +6,8 @@
   ---------------------------------------------- -->
   <div class="row justify-content-center">
     <div class="col-12 col-lg-<%= @size %>">
-      <p class="p-3 text-center border-solid--grey my-4">Read about my previous projects in <a href="/writing/projects-graveyard">Projects Graveyard</a>.</p>
-      <p class="background--grey my-3 px-3 py-2">Software Products</p>
+      <!-- <p class="p-3 text-center border-solid--grey my-4">Read about my previous projects in <a href="/writing/projects-graveyard">Projects Graveyard</a>.</p> -->
+      <p class="background--grey px-3 py-2">Software Products</p>
       <!-- projects -->
       <% @projects.keys.each do |project| %>
         <% if @projects[project]['show'] == true && !@projects[project]['github'] %>
@@ -96,5 +93,3 @@
   <!-- ./github
   ---------------------------------------------- -->
 </div>
-
-<%= render 'footer' %>
