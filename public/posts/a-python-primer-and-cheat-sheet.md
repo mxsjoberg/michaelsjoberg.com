@@ -1,8 +1,7 @@
-<!--
-    A Python Primer and Cheat Sheet
-    Michael Sjöberg
-    Nov 4, 2018
--->
+A Python Primer and Cheat Sheet
+Michael Sjöberg
+Nov 4, 2018
+Nov 4, 2018
 
 ## <a name="1" class="anchor"></a> [1. Introduction](#1)
 
