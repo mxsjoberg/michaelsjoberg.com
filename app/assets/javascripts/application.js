@@ -117,27 +117,33 @@ $(document).on('turbolinks:load', function() {
 
 
     // if not already defined in local storage
+    // var dark_local = sessionStorage.getItem('dark');
+    // if (dark_local === 'true' && !$('html').hasClass('dark')) {
+    //     $('html').addClass('dark');
+    // } else if (dark_local === 'false') {
+    //     $('html').removeClass('dark');
+    // } else {
+    //     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    //         $('html').addClass('dark');
+    //     } else {
+    //         $('html').removeClass('dark');
+    //     }
+    // }
     var dark_local = sessionStorage.getItem('dark');
     if (dark_local === 'true' && !$('html').hasClass('dark')) {
         $('html').addClass('dark');
     } else if (dark_local === 'false') {
         $('html').removeClass('dark');
-    } else {
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            $('html').addClass('dark');
-        } else {
-            $('html').removeClass('dark');
-        }
     }
     // watch for changes
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
-        const newColorScheme = event.matches ? "dark" : "light";
-        if (newColorScheme === 'dark') {
-            $('html').addClass('dark');
-        } else {
-            $('html').removeClass('dark');
-        }
-    });
+    // window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+    //     const newColorScheme = event.matches ? "dark" : "light";
+    //     if (newColorScheme === 'dark') {
+    //         $('html').addClass('dark');
+    //     } else {
+    //         $('html').removeClass('dark');
+    //     }
+    // });
     // dark mode : toggle
     $('#toggle-dark-mode').on('click', function () {
         if ($('html').hasClass('dark')) {
