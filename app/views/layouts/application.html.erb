@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="dark">
+<html>
   <head>
     <!-- gtag
     ---------------------------------------------- -->
@@ -40,9 +40,11 @@
   <body>
     <!-- wrapper
     ---------------------------------------------- -->
-    <div class="wrapper">
+    <div class="wrapper py-5">
       <div class="container-fluid">
+        <%= render 'header' %>
         <%= yield %>
+        <%= render 'footer' %>
       </div>
     </div>
     <!-- ./wrapper
@@ -68,7 +70,7 @@
             <ul class="navbar-nav mr-auto ml-auto">
               <!-- / -->
               <li class="nav-item">
-                  <a class="nav-link p-3 my-3 no-decoration" href="/" data-turbolinks="true">Home</a>
+                  <a class="nav-link p-3 my-3 no-decoration" href="/" data-turbolinks="true">About</a>
               </li>
               <!-- /projects -->
               <li class="nav-item">
@@ -83,13 +85,13 @@
                   <a class="nav-link p-3 my-3 no-decoration" href="/programming" data-turbolinks="true">Programming</a>
               </li>
               <!-- /github -->
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                   <a class="nav-link p-3 my-3 no-decoration" href="https://github.com/miqqeio"><i class="fab fa-github fa-fw"></i> GitHub</a>
-              </li>
+              </li> -->
               <!-- /linkedin -->
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                   <a class="nav-link p-3 my-3 no-decoration" href="https://www.linkedin.com/in/miqqeio"><i class="fab fa-linkedin fa-fw"></i> LinkedIn</a>
-              </li>
+              </li> -->
             </ul>
           </div>
         </div>
