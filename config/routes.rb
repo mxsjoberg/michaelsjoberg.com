@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
-    #root to: "pages#home"
-    get "/"                                             => "pages#home", as: "home"
+    get "/"                                             => "pages#about"
+    get "/about"                                        => "pages#about", as: "about"
+    get "/about/stack"                                  => "pages#stack", as: "stack"
+    get "/about/courses"                                => "pages#courses", as: "courses"
     get "/programming"                                  => "pages#programming", as: "programming"
     get "/programming/:category/:group/:file"           => 'pages#programming', as: "file"
     get "/projects"                                     => "pages#projects", as: "projects"
-    # get "/about"                                        => "pages#about", as: "about"
-    get "/about/courses"                                => "pages#courses", as: "courses"
+    get "/projects/attefall"                            => "pages#attefall", as: "attefall"
     get "/writing"                                      => "pages#writing", as: "writing"
     get "/writing/:post"                                => "pages#writing", as: "post"
-    get "/finance"                                  	=> "pages#finance", as: "finance"
 end
