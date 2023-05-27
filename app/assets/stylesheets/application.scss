@@ -66,7 +66,7 @@ body {
     outline                 : none !important;
     outline                 : 0;
     font-family             : $FONT_FAMILY_BASE;
-    font-size               : $FONT_SIZE_BASE;
+    font-size               : $FONT_SIZE_BASE_PLUS;
     font-weight             : $FONT_WEIGHT_400;
     color                   : $COLOR_BLACK;
 }
@@ -751,7 +751,7 @@ html.dark .font-family-serif h5 {
 .text-small,
 p.text-small,
 span.text-small {
-    font-size               : $FONT_SIZE_SMALL;
+    font-size               : $FONT_SIZE_BASE;
 }
 
 .text-normal,
