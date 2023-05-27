@@ -13,14 +13,14 @@
         <div class="row list">
           <% @stack.keys.each do |category| %>
           <!-- header -->
-          <!-- <li class="col-12">
+          <!-- <li class="col-12 text-center">
             <p class="font-weight-bold my-3 px-3 py-2"><%= category.titleize %></p>
           </li> -->
           <% @stack[category].keys.each do |item| %>
           <!-- item -->
           <li class="col-12">
             <div class="container-fluid">
-              <div class="row border-solid--grey py-3 <% if @stack[category].keys.first != item or @stack.keys.first != category %>no-border-top<% end %>">
+              <div class="row border-solid--grey py-3 <% if @stack.keys.first == category and @stack[category].keys.first == item %>border-top-rounded<% end %> <% if @stack.keys.last == category and @stack[category].keys.last == item %>border-bottom-rounded<% end %> <% if @stack[category].keys.first != item or @stack.keys.first != category %>no-border-top<% end %>">
                 <!-- item -->
                 <div class="col-12">
                   <!-- name -->
