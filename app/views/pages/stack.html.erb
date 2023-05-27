@@ -1,29 +1,40 @@
 <% @size = 8 %>
 
 <div class="container">
+  <!-- <div class="row justify-content-center">
+    <div class="col-12 col-lg-<%= @size %>">
+      <p>Here's a list of things </p>
+    </div>
+  </div> -->
   <div class="row justify-content-center">
     <!-- render stack list -->
     <div class="col-12 col-lg-<%= @size %>">
         <div class="row list">
-          <% @stack.keys.each do |item| %>
+          <% @stack.keys.each do |category| %>
+          <!-- header -->
+          <li class="col-12">
+            <p class="font-weight-bold my-3 px-3 py-2"><%= category.titleize %></p>
+          </li>
+          <% @stack[category].keys.each do |item| %>
           <!-- item -->
           <li class="col-12">
             <div class="container-fluid">
-              <div class="row border-solid--grey py-3">
+              <div class="row border-solid--grey py-3 <% if @stack[category].keys.first != item %>no-border-top<% end %>">
                 <!-- item -->
                 <div class="col-12">
                   <!-- name -->
-                  <% unless @stack[item]['url'] == nil %>
-                  <a href="<%= @stack[item]['url'] %>" target="_blank"><%= item %></a>
+                  <% unless @stack[category][item]['url'] == nil %>
+                  <a href="<%= @stack[category][item]['url'] %>" target="_blank"><%= item %></a>
                   <% else %>
                   <p class="text-muted m-0"><%= item %></p>
                   <% end %>
                   <!-- description -->
-                  <p class="m-0"><%= @stack[item]['description'] %></p>
+                  <p class="m-0"><%= @stack[category][item]['description'] %></p>
                 </div>
               </div>
             </div>
           </li>
+          <% end %>
           <% end %>
         </div>
     </div>
