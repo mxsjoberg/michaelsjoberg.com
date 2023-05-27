@@ -2,6 +2,9 @@
 <!-- intro -->
 <div class="row justify-content-center">
   <div class="col-12 col-lg-<%= @size %> text-center">
+    <p class="h1">
+      <a href="/<%= @route_path %>/<%= @post %>" data-turbolinks="true"><%= @title %></a>
+    </p>
     <p class="mb-0">
       <!-- date -->
       <span><%= Date.parse(@date).strftime("%b %d, %Y").gsub("-0", "").gsub("-", "") %></span>
@@ -16,12 +19,24 @@
 </div>
 <!-- post -->
 <div class="row justify-content-center mt-5">
-  <div class="col-12 col-lg-<%= @size %>">
+  <% if false%>
+  <div class="col-12 col-lg-<%= @size %> text-center">
     <!-- title -->
-    <p class="h1 mb-5">
+    <p class="h1">
       <a href="/<%= @route_path %>/<%= @post %>" data-turbolinks="true"><%= @title %></a>
     </p>
+    <p class="mb-0">
+      <!-- date -->
+      <span><%= Date.parse(@date).strftime("%b %d, %Y").gsub("-0", "").gsub("-", "") %></span>
+      <!-- time to read -->
+      <span class="pl-3"><%= @time_to_read %> min read</span>
+      <!-- updated -->
+      <% unless Date.parse(@date) == Date.parse(@updated) %>
+        <a href="https://github.com/miqqeio/michaelsjoeberg.com/commits/main/public/posts/<%= @post %>.md" target="_blank" class="pl-3">Updated on <%= Date.parse(@updated).strftime("%b %d, %Y").gsub("-0", "").gsub("-", "") %></a></span>
+      <% end %>
+    </p>
   </div>
+  <% end %>
   <!-- toc -->
   <% if false %>
   <div id="toc" class="col-12 col-xl-<%= @size %> font-family-serif">
