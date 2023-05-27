@@ -192,7 +192,35 @@ a.anchor-2 {
     top                     : calc(-100px - 1rem);
     visability              : hidden;
 }
+// card
+// --------------------------------------------------------
+.card-columns {
+    column-count            : 2;
+}
+@include media-breakpoint-up(lg) {
+    .card-columns {
+        column-count        : 3;
+    }
+}
+.card {
+    background              : transparent;
+    border                  : 0;
+}
+.card a img {
+    border-radius           : 2rem;
+    filter                  : grayscale(1);
 
+    -webkit-transition      : all .15s;
+    -moz-transition         : all .15s;
+    transition              : all .15s;
+}
+.card a:hover img {
+    filter                  : none;
+
+    -webkit-transition      : all .15s;
+    -moz-transition         : all .15s;
+    transition              : all .15s;
+}
 // UTIL
 // --------------------------------------------------------
 .hidden-until-md,
