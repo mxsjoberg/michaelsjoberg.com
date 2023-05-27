@@ -4,29 +4,34 @@ class PagesController < ApplicationController
   $updated = "May 26, 2023"
   # ----------------------------------------------
   # GET /
+  # GET /about
   # ----------------------------------------------
-  def home
-    @route_path = "home"
+  def about
+    @route_path = "about"
     @meta_title = "Michael Sjöberg"
-    # @dir_posts = []
-    # Dir.glob(Rails.public_path + 'posts/*.md') do |filename|
-    #   next if filename.include? 'OLD'
-    #   @post_details = File.readlines(filename).first(4) # array
-    #   # TODO remove this when all posts are updated
-    #   next if @post_details[0].include? '<'
-    #   # post details
-    #   @title = @post_details[0].strip
-    #   @author = @post_details[1].strip
-    #   @date = @post_details[2].strip
-    #   @updated = @post_details[3].strip
-    #   @dir_posts.push({ 
-    #     title: @title,
-    #     author: @author,
-    #     date: @date,
-    #     updated: @updated
-    #   })
-    # end
-    # @dir_posts.sort! { |a, b| Date.parse(b[:date]) <=> Date.parse(a[:date]) }
+    @images = []
+    Dir.glob(Rails.public_path + 'images/attefall/*.jpg') do |filename|
+      @file = filename.split('/').last
+      @images.push(@file)
+    end
+  end
+  # ----------------------------------------------
+  # GET /about/courses
+  # ----------------------------------------------
+  def courses
+    @route_path = "courses"
+    @meta_title = "Course List"
+    # courses
+    @courses = JSON.parse(File.read(Rails.public_path + 'courses.json'))
+  end
+  # ----------------------------------------------
+  # GET /about/stack
+  # ----------------------------------------------
+  def stack
+    @route_path = "stack"
+    @meta_title = "My Stack"
+    # stack
+    @stack = JSON.parse(File.read(Rails.public_path + 'stack.json'))
   end
   # ----------------------------------------------
   # GET /programming
@@ -73,6 +78,19 @@ class PagesController < ApplicationController
     @meta_title = "Projects"
     # projects.json
     @projects = JSON.parse(File.read(Rails.public_path + 'projects.json'))
+  end
+  # ----------------------------------------------
+  # GET /projects/attefall
+  # ----------------------------------------------
+  def attefall
+    @route_path = "attefall"
+    @meta_title = "Building a small house in Sweden"
+    @images = []
+    Dir.glob(Rails.public_path + 'images/attefall/*.jpg') do |filename|
+      next if filename.include? '_sm'
+      @file = filename.split('/').last
+      @images.push(@file)
+    end
   end
   # ----------------------------------------------
   # GET /writing
@@ -236,15 +254,6 @@ class PagesController < ApplicationController
       end
       @dir_posts.sort! { |a, b| Date.parse(b[:date]) <=> Date.parse(a[:date]) }
     end
-  end
-  # ----------------------------------------------
-  # GET /about/courses
-  # ----------------------------------------------
-  def courses
-    @route_path = "courses"
-    @meta_title = "Course List"
-    # courses
-    @courses = JSON.parse(File.read(Rails.public_path + 'courses.json'))
   end
   # ----------------------------------------------
   # private
