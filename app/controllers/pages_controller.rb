@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   before_action :set_meta
+  $author = "Michael Sjöberg"
   $version = "5.0.0"
   $updated = "May 26, 2023"
   # ----------------------------------------------
@@ -8,7 +9,7 @@ class PagesController < ApplicationController
   # ----------------------------------------------
   def about
     @route_path = "about"
-    @meta_title = "Michael Sjöberg"
+    @meta_title = $author
     @images = []
     Dir.glob(Rails.public_path + 'images/attefall/*.jpg') do |filename|
       @file = filename.split('/').last
@@ -20,7 +21,7 @@ class PagesController < ApplicationController
   # ----------------------------------------------
   def courses
     @route_path = "courses"
-    @meta_title = "Course List"
+    @meta_title = "Course List | " + $author
     # courses
     @courses = JSON.parse(File.read(Rails.public_path + 'courses.json'))
   end
@@ -29,7 +30,7 @@ class PagesController < ApplicationController
   # ----------------------------------------------
   def stack
     @route_path = "stack"
-    @meta_title = "My Stack"
+    @meta_title = "Stack | " + $author
     # stack
     @stack = JSON.parse(File.read(Rails.public_path + 'stack.json'))
   end
@@ -38,7 +39,7 @@ class PagesController < ApplicationController
   # ----------------------------------------------
   def programming
     @route_path = "programming"
-    @meta_title = "Programming"
+    @meta_title = "Programming | " + $author
     # params
     @category = params[:category]
     @group = params[:group]
@@ -75,7 +76,7 @@ class PagesController < ApplicationController
   # ----------------------------------------------
   def projects
     @route_path = "projects"
-    @meta_title = "Projects"
+    @meta_title = "Projects | " + $author
     # projects.json
     @projects = JSON.parse(File.read(Rails.public_path + 'projects.json'))
   end
@@ -84,7 +85,7 @@ class PagesController < ApplicationController
   # ----------------------------------------------
   def attefall
     @route_path = "attefall"
-    @meta_title = "Building a small house in Sweden"
+    @meta_title = "Building a small house in Sweden | " + $author
     @images = []
     Dir.glob(Rails.public_path + 'images/attefall/*.jpg') do |filename|
       next if filename.include? '_sm'
@@ -97,7 +98,7 @@ class PagesController < ApplicationController
   # ----------------------------------------------
   def writing
     @route_path = "writing"
-    @meta_title = "Writing"
+    @meta_title = "Writing | " + $author
     # params
     @post = params[:post]
     # posts.json
@@ -261,7 +262,7 @@ class PagesController < ApplicationController
   private
     # meta
     def set_meta
-      @meta_image = ""
+      @meta_image = "fav.png"
       @meta_site_name = "michaelsjoeberg.com"
       @meta_card_type = "summary"
       @meta_author = "@miqqeio"
