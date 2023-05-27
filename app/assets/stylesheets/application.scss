@@ -505,7 +505,6 @@ h5 {
 
 h4 {
     color                   : rgba($COLOR_BLACK, 0.5) !important;
-    // margin-bottom           : 0;
 }
 h4 a {
     display                 : block !important;
@@ -517,18 +516,6 @@ h4 a:hover {
     color                   : $COLOR_BLUE !important;
     text-decoration         : underline !important;
 }
-html.dark {
-    h4 a {
-        color                   : $COLOR_GREEN !important;
-    }
-}
-// h4 a:first-child {
-//     float: left;
-// }
-// h4 a:last-child {
-//     float: right;
-// }
-
 h5,
 h5 a {
     font-size               : $FONT_SIZE_BASE_PLUS !important;
@@ -540,12 +527,13 @@ h5 a {
     font-style              : italic;
 }
 
-// html.dark h4,
-// html.dark h4 a,
 html.dark {
-    // h4 a {
-    //     color               : rgba($COLOR_WHITE, 0.5) !important;
-    // }
+    h4 {
+        color               : rgba($COLOR_WHITE, 0.5) !important;
+    }
+    h4 a {
+        color               : $COLOR_GREEN !important;
+    }
     h5,
     h5 a {
         color               : rgba($COLOR_WHITE, 0.5) !important;
