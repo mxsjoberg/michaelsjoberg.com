@@ -21,7 +21,7 @@ class PagesController < ApplicationController
   # ----------------------------------------------
   def courses
     @route_path = "courses"
-    @meta_title = "Course List | " + $author
+    @meta_title = "Courses | " + $author
     # courses
     @courses = JSON.parse(File.read(Rails.public_path + 'courses.json'))
   end
