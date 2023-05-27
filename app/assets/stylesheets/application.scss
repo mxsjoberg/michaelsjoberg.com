@@ -352,6 +352,15 @@ input#search:focus {
     border-top              : 0 !important;
 }
 
+.border-top-rounded {
+    border-top-left-radius  : 2rem;
+    border-top-right-radius : 2rem;
+}
+.border-bottom-rounded {
+    border-bottom-left-radius  : 2rem;
+    border-bottom-right-radius : 2rem;
+}
+
 .border-solid:hover { 
     border-color            : $COLOR_CONTRAST !important;
     -webkit-transition      : all .15s;
