@@ -383,16 +383,16 @@ input#search:focus {
     color                   : $COLOR_CONTRAST;
 }
 
-.border-left { 
-    border-left             : 0.25rem solid $COLOR_GREY_LIGHT !important;
-    -webkit-transition      : all .15s;
-    -moz-transition         : all .15s; 
-    transition              : all .15s;
+// .border-left { 
+//     border-left             : 0.25rem solid $COLOR_GREY_LIGHT !important;
+//     -webkit-transition      : all .15s;
+//     -moz-transition         : all .15s; 
+//     transition              : all .15s;
 
-    &.primary {
-        border-left         : 0.25rem solid darken($COLOR_PRIMARY, 10%) !important;
-    }
-}
+//     &.primary {
+//         border-left         : 0.25rem solid darken($COLOR_PRIMARY, 10%) !important;
+//     }
+// }
 
 // NAVBAR 
 // --------------------------------------------------------
@@ -513,16 +513,24 @@ h3 {
 h4,
 h5 {
     font-size               : $FONT_SIZE_BASE_PLUS !important;
-    // padding-bottom          : 1rem;
 }
 
-// h4 {
-//     padding-top: 1rem;
-//     padding-bottom: 0.5rem;
+h4 {
+    color                   : rgba($COLOR_BLACK, 0.5) !important;
+    // margin-bottom           : 0;
+}
+h4 a {
+    display                 : block;
+    text-align              : center;
+    margin-top              : 3rem;
+}
+// h4 a:first-child {
+//     float: left;
+// }
+// h4 a:last-child {
+//     float: right;
 // }
 
-// h4,
-// h4 a,
 h5,
 h5 a {
     font-size               : $FONT_SIZE_BASE_PLUS !important;
@@ -536,17 +544,15 @@ h5 a {
 
 // html.dark h4,
 // html.dark h4 a,
-html.dark h5,
-html.dark h5 a {
-    color                   : rgba($COLOR_WHITE, 0.5) !important;
+html.dark {
+    h4 a {
+        color               : rgba($COLOR_WHITE, 0.5) !important;
+    }
+    h5,
+    h5 a {
+        color               : rgba($COLOR_WHITE, 0.5) !important;
+    }
 }
-
-// h1 span.bg--green {
-//     background              : $COLOR_GREEN !important;
-//     font-weight             : $FONT_WEIGHT_700 !important;
-//     display                 : inline-block;
-//     width                   : 63px;
-// }
 
 h1,
 h2,
@@ -810,12 +816,12 @@ p:hover span.right {
 
 a,
 a:focus { 
-    color                   : darken($COLOR_PRIMARY, 10%);
+    color                   : $COLOR_BLUE;
     // text-decoration         : none;
     display                 : inline-block;
 
     span {
-        color               : darken($COLOR_PRIMARY, 10%) !important;
+        color               : $COLOR_BLUE !important;
     }
 
     li.list-item {
@@ -911,51 +917,81 @@ sup code {
     .hljs-meta .hljs-meta-string,
     .hljs-meta .hljs-keyword,
     .hljs-meta .hljs-string         { color: $COLOR_RED !important; }
-
     // parameters
     .hljs-params,
     .hljs-regexp                    { color: $COLOR_BLACK !important; }
-
     // parameter type
     .hljs-params .hljs-type         { color: $COLOR_RED !important; }
-
     // string
-    .hljs-string                    { color: darken($COLOR_GREEN, 5%) !important; }
-
+    .hljs-string                    { color: $COLOR_ORANGE !important; }
     // keywords
     .hljs-keyword,
     .hljs-selector-tag,
     .hljs-subst                     { color: $COLOR_PURPLE !important; }
-
     // built-in
     // .hljs-built_in { color: $COLOR_BLACK !important; }
     .hljs-built_in                  { color: $COLOR_PURPLE !important; }
-
     // comment
     .hljs-comment,
     .hljs-doctag,
     .hljs-quote                     { color: rgba($COLOR_BLACK, 0.5) !important; }
-    
     // type
     .hljs-type                      { color: $COLOR_PURPLE !important; }
-    
     // symbols
     .hljs-number                    { color: $COLOR_ORANGE !important; }
-    
     // literal
     .hljs-literal,
     .hljs-symbol                    { color: $COLOR_RED !important; }
-
     // function
     .hljs-title,
     .hljs-function,
     .hljs-class,
     .hljs-function .hljs-title,
-    .hljs-class .hljs-title         { color: darken($COLOR_PRIMARY, 10%) !important; }
-
+    .hljs-class .hljs-title         { color: $COLOR_BLUE !important; }
     // nested
     .hljs-function .hljs-keyword,
-    .hljs-class .hljs-keyword       { color: darken($COLOR_PRIMARY, 10%) !important; }
+    .hljs-class .hljs-keyword       { color: $COLOR_BLUE !important; }
+}
+@media screen {
+    html.dark .hljs-meta,
+    html.dark .hljs-meta .hljs-meta-keyword,
+    html.dark .hljs-meta .hljs-meta-string,
+    html.dark .hljs-meta .hljs-keyword,
+    html.dark .hljs-meta .hljs-string   { color: $COLOR_RED !important; }
+    // parameters
+    html.dark .hljs-params,
+    html.dark .hljs-regexp              { color: $COLOR_SNOW !important; }
+    // parameter type
+    html.dark .hljs-params .hljs-type   { color: $COLOR_RED !important; }
+    // string
+    html.dark .hljs-string              { color: $COLOR_ORANGE !important; }
+    // keywords
+    html.dark .hljs-keyword,
+    html.dark .hljs-selector-tag,
+    html.dark .hljs-subst               { color: $COLOR_PURPLE !important; }
+    // built-in
+    // html.dark .hljs-built_in { color: $COLOR_SNOW !important; }
+    // html.dark .hljs-built_in { color: $COLOR_PURPLE !important; }
+    // comment
+    html.dark .hljs-comment,
+    html.dark .hljs-doctag,
+    html.dark .hljs-quote               { color: rgba($COLOR_WHITE, 0.5) !important; }
+    // type
+    // html.dark .hljs-type { color: $COLOR_PURPLE !important; }
+    // symbols
+    // html.dark .hljs-number { color: $COLOR_ORANGE !important; }
+    // literal
+    // html.dark .hljs-literal,
+    // html.dark .hljs-symbol { color: $COLOR_RED !important; }
+    // function
+    html.dark .hljs-title,
+    html.dark .hljs-function,
+    html.dark .hljs-class,
+    html.dark .hljs-function .hljs-title,
+    html.dark .hljs-class .hljs-title   { color: $COLOR_GREEN !important; }
+    // nested
+    html.dark .hljs-function .hljs-keyword,
+    html.dark .hljs-class .hljs-keyword { color: $COLOR_GREEN !important; }
 }
 
 // DARK THEME
@@ -1063,58 +1099,4 @@ html.dark input#search:focus {
 
 html.dark pre.prettyprint,
 html.dark pre.prettyprint span { color: $COLOR_SNOW; }
-
-
-@media screen {
-    html.dark .hljs-meta,
-    html.dark .hljs-meta .hljs-meta-keyword,
-    html.dark .hljs-meta .hljs-meta-string,
-    html.dark .hljs-meta .hljs-keyword,
-    html.dark .hljs-meta .hljs-string { color: $COLOR_RED !important; }
-
-    // parameters
-    html.dark .hljs-params,
-    html.dark .hljs-regexp { color: $COLOR_SNOW !important; }
-
-    // parameter type
-    html.dark .hljs-params .hljs-type { color: $COLOR_RED !important; }
-
-    // string
-    html.dark .hljs-string { color: $COLOR_GREEN !important; }
-
-    // keywords
-    html.dark .hljs-keyword,
-    html.dark .hljs-selector-tag,
-    html.dark .hljs-subst { color: $COLOR_PURPLE !important; }
-
-    // built-in
-    // html.dark .hljs-built_in { color: $COLOR_SNOW !important; }
-    html.dark .hljs-built_in { color: $COLOR_PURPLE !important; }
-
-    // comment
-    html.dark .hljs-comment,
-    html.dark .hljs-doctag,
-    html.dark .hljs-quote { color: rgba($COLOR_WHITE, 0.5) !important; }
-
-    // type
-    html.dark .hljs-type { color: $COLOR_PURPLE !important; }
-
-    // symbols
-    html.dark .hljs-number { color: $COLOR_ORANGE !important; }
-
-    // literal
-    html.dark .hljs-literal,
-    html.dark .hljs-symbol { color: $COLOR_RED !important; }
-
-    // function
-    html.dark .hljs-title,
-    html.dark .hljs-function,
-    html.dark .hljs-class,
-    html.dark .hljs-function .hljs-title,
-    html.dark .hljs-class .hljs-title { color: lighten($COLOR_PRIMARY, 10%) !important; }
-
-    // nested
-    html.dark .hljs-function .hljs-keyword,
-    html.dark .hljs-class .hljs-keyword { color: $COLOR_SNOW !important; }
-}
 // --------------------------------------------------------
