@@ -1,11 +1,62 @@
 {   
-    "Apple Macbook Pro 16": {
+    "Python + Flask": {
+        "description": "Micro web application framework for Python",
+        "url": "https://flask.palletsprojects.com/en/2.3.x/"
+    },
+    "Ruby + Ruby on Rails": {
+        "description": "Web application framework for Ruby",
+        "url": "https://rubyonrails.org/"
+    },
+    "Bootstrap": {
+        "description": "CSS framework",
+        "url": "https://getbootstrap.com/"
+    },
+    "Brave Browser": {
+        "description": "Open source and privacy-focused web browser",
+        "url": "https://brave.com/"
+    },
+    "Sublime Text + LSP-copilot": {
+        "description": "Light-weight text editor with LSP-copilot plugin for GitHub Copilot",
+        "url": "https://www.sublimetext.com/"
+    },
+    "Render": {
+        "description": "Cloud hosting with auto deploys from GitHub",
+        "url": "https://render.com/"
+    },
+    "Amazon Web Services": {
+        "description": "Cloud hosting",
+        "url": "https://aws.amazon.com/"
+    },
+    "Apple Macbook Pro 16 (32GB, 1TB, Space Gray)": {
         "description": "Laptop computer from Apple",
-        "school": null,
-        "url": null,
-        "ects": null,
-        "level": null,
-        "date": null,
-        "grade": null
+        "url": "https://www.apple.com/se/shop/buy-mac/macbook-pro/16-tum"
+    },
+    "Samsung Ultrawide Monitor": {
+        "description": "34-inch curved monitor from Samsung",
+        "url": "https://amzn.to/3MExEZn"
+    },
+    "Apple Magic Keyboard with Numeric Keypad (Space Gray)": {
+        "description": "Keyboard from Apple",
+        "url": "https://amzn.to/3OGGCbi"
+    },
+    "Keychron K3 Mechanical Keyboard": {
+        "description": " Ultra-slim wireless mechanical keyboard from Keychron",
+        "url": "https://amzn.to/43u2ta1"
+    },
+    "Xtrfy M4 Mouse": {
+        "description": "Ultra-light wireless mouse from Xtrfy",
+        "url": "https://amzn.to/3BZsVg0"
+    },
+    "Sony WH-XB900N Headphones": {
+        "description": "Noise cancelling headphones with mic from Sony",
+        "url": "https://amzn.to/3q3ohuH"
+    },
+    "Deltaco USB-C to 4xUSB": {
+        "description": "USB Hub from Deltaco",
+        "url": "https://amzn.to/3q3ohuH"
+    },
+    "Whitelines Notebook": {
+        "description": "Graph ruled notebook from Whitelines",
+        "url": "https://amzn.to/3II2HlY"
     }
 }
