@@ -1,21 +1,22 @@
-<!-- page-navigation -->
-<div class="row justify-content-center hidden-until-lg fixed">
+<% @size = 12 %>
+
+<% if @file_content == nil %>
+<div class="row justify-content-center hidden-until-lg fixed mb-5">
   <div class="col-12 p-0">
     <nav class="navbar navbar-expand-md p-0">
       <ul class="navbar-nav ml-auto mr-auto">
         <% @programming.keys.each do |category| %>
         <li class="nav-item">
-          <a href="/<%= @route_path %>#<%= category %>" class="nav-link" data-turbolinks="true"><%= category.titleize %></a>
+          <a href="/<%= @route_path %>#<%= category %>" class="<% if @programming.keys.first != category %>pl-3<% end %>" data-turbolinks="true"><%= category.titleize %></a>
         </li>
         <% end %>
       </ul>
     </nav>
   </div>
 </div>
-<!-- ./page-navigation -->
+<% end %>
 
-<% @size = 12 %>
-<div class="container no-expand my-4">
+<div class="container">
   <!-- content -->
   <% if @file_content != nil %>
     <%= render 'file_content', locals: { size: @size } %>
