@@ -4,10 +4,10 @@
             "description": "Micro web application framework for Python",
             "url": "https://flask.palletsprojects.com/en/2.3.x/"
         },
-        "Ruby + Ruby on Rails": {
-            "description": "Web application framework for Ruby",
-            "url": "https://rubyonrails.org/"
-        },
+        // "Ruby + Ruby on Rails": {
+        //     "description": "Web application framework for Ruby",
+        //     "url": "https://rubyonrails.org/"
+        // },
         "Bootstrap": {
             "description": "CSS framework",
             "url": "https://getbootstrap.com/"
@@ -27,8 +27,12 @@
             "url": "https://render.com/"
         },
         "Amazon Web Services": {
-            "description": "Cloud hosting",
+            "description": "Cloud hosting for web applications",
             "url": "https://aws.amazon.com/"
+        },
+        "MongoDB Atlas": {
+            "description": "Cloud database",
+            "url": "https://www.mongodb.com/atlas/database"
         }
     },
     "hardware": {
