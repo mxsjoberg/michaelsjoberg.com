@@ -13,14 +13,14 @@
         <div class="row list">
           <% @courses.keys.each do |year| %>
           <!-- header -->
-          <li class="col-12">
+          <li class="col-12 text-center">
             <p class="font-weight-bold <% if @courses.keys.first != year %>my-3<% else %>mb-3<% end %> px-3 py-2"><%= year %></p>
           </li>
           <% @courses[year].keys.each do |course| %>
           <!-- course -->
           <li class="col-12">
             <div class="container-fluid">
-              <div class="row border-solid--grey py-3 <% if @courses[year].keys.first != course %>no-border-top<% end %>">
+              <div class="row border-solid--grey py-3 <% if @courses[year].keys.first == course %>border-top-rounded<% end %> <% if @courses[year].keys.last == course %>border-bottom-rounded<% end %> <% if @courses[year].keys.first != course %>no-border-top<% end %>">
                 <!-- course -->
                 <div class="col-12">
                   <!-- name -->
@@ -29,6 +29,8 @@
                   <% else %>
                   <p class="text-muted m-0"><%= course %></p>
                   <% end %>
+                  <!-- school -->
+                  <p class="text-muted"><%= @courses[year][course]['school'] %></p>
                   <!-- description -->
                   <p class="m-0"><%= @courses[year][course]['description'] %></p>
                 </div>
