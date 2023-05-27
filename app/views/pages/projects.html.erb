@@ -2,94 +2,33 @@
 <% @d_size = 8 %>
 
 <div class="container">
-  <!-- products
-  ---------------------------------------------- -->
   <div class="row justify-content-center">
     <div class="col-12 col-lg-<%= @size %>">
       <!-- <p class="p-3 text-center border-solid--grey my-4">Read about my previous projects in <a href="/writing/projects-graveyard">Projects Graveyard</a>.</p> -->
-      <p class="background--grey px-3 py-2">Software Products</p>
       <!-- projects -->
       <% @projects.keys.each do |project| %>
-        <% if @projects[project]['show'] == true && !@projects[project]['github'] %>
           <div class="row justify-content-center">
             <!-- title -->
             <div class="col-12 mb-0">
               <h3 class="font-family-base font-weight-bold pb-0 <% if @projects[project]['url'] == "" %>text-muted<% end %>">
-                <% if @projects[project]['url'] != "" %>
-                <a href="<%= @projects[project]['url'] %>" target="_blank">
-                  <%= project %>
-                </a>
-                <span class="text-muted"><% if @projects[project]['archived'] %>[ARCHIVED]<% end %></span>
+                <% if @projects[project]['url'] %>
+                <a href="<%= @projects[project]['url'] %>"><%= project %></a>
                 <% else %>
-                  <%= project %>
+                <span class="text-muted"><%= project %></span>
                 <% end %>
               </h3>
             </div>
             <!-- body -->
-            <% if @projects[project]['description'] != [] %>
+            <% if @projects[project]['description'] %>
             <div class="col-12 mt-2">
               <blockquote>
                 <!-- description -->
-                <% @projects[project]['description'].each do |paragraph| %>
-                  <p class="<% unless paragraph.equal?(@projects[project]['description'].last) %>mb-3<% else %>m-0<% end %> font-family-serif"><em><%= paragraph %></em></p>
-                <% end %>
-                <!-- website -->
-                <% if @projects[project]['website'] %>
-                  <p class="mb-0 mt-3">Website: <a href="<%= @projects[project]['website'] %>" target="_blank"><%= @projects[project]['website'] %></a></p>
-                <% end %>
+                <p><em><%= @projects[project]['description'] %></em></p>
               </blockquote>
             </div>
             <% end %>
           </div>
-        <% end %>
       <% end %>
     </div>
   </div>
-  <!-- ./products
-  ---------------------------------------------- -->
-  <!-- github
-  ---------------------------------------------- -->
-  <div class="row justify-content-center">
-    <div class="col-12 col-lg-<%= @size %>">
-      <p class="background--grey my-3 px-3 py-2">Open Source</p>
-      <!-- projects -->
-      <% @projects.keys.each do |project| %>
-        <% if @projects[project]['show'] == true && @projects[project]['github'] %>
-          <div class="row justify-content-center">
-            <!-- title -->
-            <div class="col-12 mb-0">
-              <h3 class="font-family-base font-weight-bold pb-0 <% if @projects[project]['url'] == "" %>text-muted<% end %>">
-                <% if @projects[project]['url'] != "" %>
-                <a href="<%= @projects[project]['url'] %>" target="_blank">
-                  <%= project %>
-                </a>
-                <span class="text-muted"><% if @projects[project]['archived'] %>[ARCHIVED]<% end %></span>
-                <% else %>
-                  <%= project %>
-                <% end %>
-              </h3>
-            </div>
-            <!-- body -->
-            <% if @projects[project]['description'] != [] %>
-            <div class="col-12 mt-2">
-              <blockquote>
-                <!-- description -->
-                <% @projects[project]['description'].each do |paragraph| %>
-                  <p class="<% unless paragraph.equal?(@projects[project]['description'].last) %>mb-3<% else %>m-0<% end %> font-family-serif"><em><%= paragraph %></em></p>
-                <% end %>
-                <!-- website -->
-                <% if @projects[project]['website'] %>
-                  <p class="mb-0 mt-3">Website: <a href="<%= @projects[project]['website'] %>" target="_blank"><%= @projects[project]['website'] %></a></p>
-                <% end %>
-              </blockquote>
-            </div>
-            <% end %>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
-    <%= render 'divider', locals: { size: @d_size } %>
-  </div>
-  <!-- ./github
-  ---------------------------------------------- -->
 </div>
