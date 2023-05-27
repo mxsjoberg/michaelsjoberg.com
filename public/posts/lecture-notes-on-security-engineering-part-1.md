@@ -7,7 +7,7 @@ May 27, 2023
 
 A computer program is a sequence of bits (0 or 1), and organized as 8-bit bytes, where one byte is 8-bits and each byte represent some text character (ASCII standard). Most programs are developed in a high-level programming language, then compiled, or translated, into an object file, which is executed by a process, and finally terminated. An object file contains application and libraries, such as program code in binary format, relocation information, which are things that need to be fixed once loaded into memory, symbol information as defined by object (or imported), and optional debugging information (note that some interpreted languages are translated into an intermediate format).
 
-#### <a name="1.1" class="anchor"></a> [Compilation system](#1.1)
+#### Compilation system
 
 The compilation system typically includes a preprocessor, compiler, assembler, and linker, and is used to translate programs into a sequence of machine-language instructions, which is packed into an executable object file. The compilation process (note that most program code and file suffix refer to programs written in the C programming language and using [gcc](https://linux.die.net/man/1/gcc) to compile):
 
@@ -52,7 +52,7 @@ _main:
 
 Linking is the process to resolve references to external objects, such as variables and functions (for example `printf`), where static linking is performed at compile-time and dynamic linking is performed at run-time.
 
-#### <a name="1.2" class="anchor"></a> [Tools](#1.2)
+#### Tools
 
 A few useful tools for working with programs:
 
@@ -78,7 +78,7 @@ Most modern computers are organized as an assemble of buses, I/O devices, main m
 
 - processor, or central processing unit (CPU), is the engine that interprets and executes the machine-level instructions stored in the main memory
 
-#### <a name="2.1" class="anchor"></a> [CPU](#2.1)
+#### CPU
 
 The CPU has a word size storage device (register) called program counter (PC) that points at some instruction in main memory. Instructions are executed in a strict sequence, which is to read and interpret the instruction as pointed to by program counter, perform operation (as per the instruction), and then update the counter to point to next instruction (note that each instruction has its own unique address). An operation, as performed by the CPU, use main memory, register file, which is a small storage device with collection of word-size registers, and the arithmetic logic unit (ALU) to compute new data and address values:
 
@@ -129,11 +129,11 @@ int main() {
 
 A system call is a function executed by the operating system, such as accessing hard drive and creating processes, whereas system command is a program implementing functions (system calls are used by programs to request services from the operating system). In C, and most other programming languages, system commands, such as `write`, is wrapped in some other function, such as `printf`.
 
-#### <a name="4.1" class="anchor"></a> [Processes](#4.1)
+#### Processes
 
 A process is an abstraction for processor, main memory, and I/O devices, and represent a running program, where its context is the state information the process needs to run. The processor can switch between multiple running programs, such as shell and program, using context switching, which saves the state of current process and restores the state of some new process. A thread is multiple execution units within a process with access to the same code and global data, and kernel is collection of code and data structures that is always in memory. A kernel is used to manage all processes and called using a system call instruction, or `syscall`, which transfers control to the kernel when the program need some action by the operating system, such as read or write to file.
 
-#### <a name="4.2" class="anchor"></a> [Virtual memory](#4.2)
+#### Virtual memory
 
 Virtual memory is an abstraction for main memory and local disks, which provides each program with a virtual address space to make it seem as if programs have exclusive use of memory:
 
@@ -143,6 +143,8 @@ Virtual memory is an abstraction for main memory and local disks, which provides
 - stack is at top of user virtual address space and used by compiler to implement function calls, it expands and contracts its size dynamically at run-time (note that stack grows with each function call and contracts on return)
 - kernel virtual memory is at top of virtual memory space, which is reserved for kernel, programs must call kernel to read or write in this space
 
-#### <a name="4.3" class="anchor"></a> [Files](#4.3)
+#### Files
 
 A file is an abstraction for I/O devices, which provides a uniform view of devices, where most input and output in a system is reading and writing to files.
+
+#### [Next part](lecture-notes-on-security-engineering-part-2)
