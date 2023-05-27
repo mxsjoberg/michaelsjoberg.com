@@ -1,18 +1,27 @@
-<% @size = 12 %>
+<% @size = 10 %>
 
 <div class="container">
-  <div class="row justify-content-center mb-5">
-    <div class="card-columns">
-      <% @images.each do |image| %>
-      <div class="card">
-        <div class="card-body p-0">
-          <a href="<%= '/images/attefall/' + image %>" target="_blank">
-            <% image = image.split('.')[0] + '_sm.' + image.split('.')[1] %>
-            <img src="<%= '/images/attefall/' + image %>">
-          </a>
+  <!-- intro -->
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-<%= @size %> text-center">
+      <p class="mb-0">A small (about 30sqm, legal limit without permit) house built from scratch.</p>
+    </div>
+  </div>
+  <!-- attefall -->
+  <div class="row justify-content-center mt-5">
+    <div class="col-12 col-xl-<%= @size %>">
+      <div class="card-columns">
+        <% @images.each do |image| %>
+        <div class="card">
+          <div class="card-body p-0">
+            <a href="<%= '/images/attefall/' + image %>" target="_blank">
+              <% image = image.split('.')[0] + '_sm.' + image.split('.')[1] %>
+              <img src="<%= '/images/attefall/' + image %>">
+            </a>
+          </div>
         </div>
+        <% end %>
       </div>
-      <% end %>
     </div>
   </div>
 </div>
