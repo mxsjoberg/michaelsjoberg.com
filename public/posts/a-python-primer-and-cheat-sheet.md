@@ -3,9 +3,9 @@ Michael Sjöberg
 Nov 4, 2018
 Nov 4, 2018
 
-## <a name="1" class="anchor"></a> [1. Introduction](#1)
+## <a name="1" class="anchor"></a> [Introduction](#1)
 
-Python program structure (build and run with `$ python <filename>.py`).
+Python program structure, build and run with `$ python <filename>.py`.
 
 ```python
 #!/usr/bin/python
@@ -14,8 +14,7 @@ def main():
     # do something
     return
 
-if (__name__ == "__main__"):
-    main()
+if (__name__ == "__main__"): main()
 ```
 
 Handling exceptions.
@@ -23,6 +22,7 @@ Handling exceptions.
 ```python
 try:
     # do something
+    pass
 except ZeroDivisionError:
     print('Cannot divide with zero.')
     # do something
@@ -31,98 +31,77 @@ except Exception as e:
     # do something
 finally:
     # do something
+    pass
 ```
 
-## <a name="2" class="anchor"></a> [2. Arithmetic Operators](#2)
+## <a name="2" class="anchor"></a> [Arithmetic Operators](#2)
 
 Basic arithmetic operators.
 
 ```python
-10 + 20
-# 30
-20 - 10
-# 10
-10 * 20
-# 200
-20 / 10
-# 2
+10 + 20             # 30
+20 - 10             # 10
+10 * 20             # 200
+20 / 10             # 2
 ```
 
 Power operator.
 
 ```python
-10 ** 2
-# 100
+10 ** 2             # 100
 ```
 
 Automatic floating point conversion.
 
 ```python
-10.0 + (10 + 20)
-# 40.0
-20.0 - (10 + 10)
-# 0.0
-10.0 * (10 * 2)
-# 200.0
+10.0 + (10 + 20)    # 40.0
+20.0 - (10 + 10)    # 0.0
+10.0 * (10 * 2)     # 200.0
 ```
 
 Be aware of this common division error.
 
 ```python
-30 / 20
-# 1
-30.0 / 20.0
-# 1.5
+30 / 20             # 1
+30.0 / 20.0         # 1.5
 ```
 
 Integer divison (quotient).
 
 ```python
-20.0 // 20.0
-# 1.0
-30.0 // 20.0
-# 1.0
-40.0 // 20.0
-# 2.0
+20.0 // 20.0        # 1.0
+30.0 // 20.0        # 1.0
+40.0 // 20.0        # 2.0
 ```
 
 Modulo (remainder).
 
 ```python
-12.5 % 10.0
-# 2.5
-10.0 % 20.0
-# 10.0
+12.5 % 10.0         # 2.5
+10.0 % 20.0         # 10.0
 ```
 
 Built in numerical operations.
 
 ```python
-abs(-20)
-# 20
-sum([1, 2, 3, 4])
-# 10
-min(1, 2, 3, 4)
-# 1
-max(1, 2, 3, 4)
-# 4
+abs(-20)            # 20
+sum([1, 2, 3, 4])   # 10
+min(1, 2, 3, 4)     # 1
+max(1, 2, 3, 4)     # 4
 ```
 
 Rounding values.
 
 ```python
-round(2.945)
-# 3.0
-round(2.495)
-# 2.0
+round(2.945)        # 3.0
+round(2.495)        # 2.0
 ```
 
 ```python
-round(2.945, 2)
-# 2.94
+round(2.945, 2)     # 2.94
 ```
 
-## <a name="3" class="anchor"></a> [3. Variables](#3)
+## <a name="3" class="anchor"></a> [Variables](#3)
 
 Basic variables.
 
@@ -141,14 +120,10 @@ x, y, z, a
 Using `type` built-in.
 
 ```python
-type(x)
-# int
-type(y)
-# str
-type(z)
-# float
-type(a)
-# int
+type(x)             # int
+type(y)             # str
+type(z)             # float
+type(a)             # int
 ```
 
 Multiple assignments.
@@ -202,9 +177,9 @@ n
 # NameError: name 'n' is not defined
 ```
 
-## <a name="4" class="anchor"></a> [4. Strings](#4)
+## <a name="4" class="anchor"></a> [Strings](#4)
 
-### <a name="4.1" class="anchor"></a> [4.1 Indexing](#4.1)
+#### Indexing
 
 String indexing.
 
@@ -213,14 +188,10 @@ string = 'proton'
 ```
 
 ```python
-string[:]
-# proton
-string[:2]
-# pr
-string[-2:]
-# on
-string[1:3]
-# ro
+string[:]           # proton
+string[:2]          # pr
+string[-2:]         # on
+string[1:3]         # ro
 ```
 
 Reverse a string.
@@ -237,7 +208,7 @@ string[0:-1:2]
 # poo
 ```
 
-### <a name="4.2" class="anchor"></a> [4.2 Operations](#4.2)
+#### Operations
 
 String operations.
 
@@ -246,14 +217,10 @@ string = 'proton neutron'
 ```
 
 ```python
-string.capitalize()
-# Proton neutron
-string.title()
-# Proton Neutron
-string.upper()
-# PROTON NEUTRON
-string.lower()
-# proton neutron
+string.capitalize() # Proton neutron
+string.title()      # Proton Neutron
+string.upper()      # PROTON NEUTRON
+string.lower()      # proton neutron
 ```
 
 ```python
@@ -262,15 +229,12 @@ string.center(20, '.')
 ```
 
 ```python
-string.isdigit()
-# False
-string.islower()
-# True
-string.isupper()
-# False
+string.isdigit()    # False
+string.islower()    # True
+string.isupper()    # False
 ```
 
-#### <a name="4.2.1" class="anchor"></a> [Counting and finding letters in text](#4.2.1)
+#### Counting and finding letters in text
 
 ```python
 string.count('p', 0, len(string))
@@ -279,24 +243,21 @@ string.find('t', 1, len(string))
 # 3
 ```
 
-#### <a name="4.2.2" class="anchor"></a> [Removing whitespace from string](#4.2.2)
+#### Removing whitespace from string
 
 ```python
 string = '    some text    '
 ```
 
 ```python
-string.lstrip()
-# 'some text    '
-string.rstrip()
-# '    some text'
-string.strip()
-# 'some text'
+string.lstrip()     # 'some text    '
+string.rstrip()     # '    some text'
+string.strip()      # 'some text'
 ```
 
-## <a name="5" class="anchor"></a> [5. Data structures](#5)
+## <a name="5" class="anchor"></a> [Data structures](#5)
 
-### <a name="5.1" class="anchor"></a> [5.1 Lists](#5.1)
+#### Lists
 
 Lists are mutable.
 
@@ -306,19 +267,15 @@ list_two = [200, -2, [1.0, 0.0]]
 ```
 
 ```python
-list_one[0] = 'ADD'
-# ['ADD', 'RANDOM']
-list_one[1]
-# RANDOM
+list_one[0] = 'ADD' # ['ADD', 'RANDOM']
+list_one[1]         # RANDOM
 ```
 
 Length of lists.
 
 ```python
-len(list_one)
-# 2
-len(list_two)
-# 3
+len(list_one)       # 2
+len(list_two)       # 3
 ```
 
 Concatenate lists.
@@ -337,14 +294,14 @@ list.sort()
 # [-2, 200, [1.0, 0.0], 'ADD', 'NULL', 'RANDOM']
 ```
 
-#### <a name="5.1.1" class="anchor"></a> [Create list from a string](#5.1.1)
+#### Create list from a string
 
 ```python
 list_string = list('100B')
 # ['1', '0', '0', 'B']
 ```
 
-### <a name="5.2" class="anchor"></a> [5.2 Tuples](#5.2)
+#### Tuples
 
 Tuples are immutable.
 
@@ -354,12 +311,9 @@ tuple_two = ('Alpha', 'Bravo', (1, 0))
 ```
 
 ```python
-tuple_one
-# (1.0, 'String', 4)
-tuple_two
-# ('Alpha', 'Bravo', (1, 0))
-tuple_two[2][1]
-# 0
+tuple_one           # (1.0, 'String', 4)
+tuple_two           # ('Alpha', 'Bravo', (1, 0))
+tuple_two[2][1]     # 0
 ```
 
 Concatenate tuples.
@@ -369,14 +323,14 @@ tuple = tuple_one + tuple_two
 # (1.0, 'String', 4, 'Alpha', 'Bravo', (1, 0))
 ```
 
-#### <a name="5.2.1" class="anchor"></a> [Create tuple from a list](#5.2.1)
+#### Create tuple from a list
 
 ```python
 tuple_list = tuple([100, 'B'])
 # (100, 'B')
 ```
 
-### <a name="5.3" class="anchor"></a> [5.3 Dictionaries](#5.3)
+#### Dictionaries
 
 Dictionaries are key-value pairs.
 
@@ -428,7 +382,7 @@ del dict['Cole']
 # True
 ```
 
-#### <a name="5.3.1" class="anchor"></a> [Create dictionary from a list of tuples](#5.3.1)
+#### Create dictionary from a list of tuples
 
 ```python
 dict_list_tuples = dict([(1, "x"), (2, "y"), (3, "z")])
@@ -439,35 +393,33 @@ dict_list_tuples
 # {1: 'x', 2: 'y', 3: 'z'}
 ```
 
-### <a name="5.4" class="anchor"></a> [5.4 Sets](#5.4)
+#### Sets
 
 Sets are unordered collections.
 
 ```python
-set = {1.0, 10, 'String', (1, 0, 1, 0)}
+set_ = {1.0, 10, 'String', (1, 0, 1, 0)}
 ```
 
 ```python
-set
+set_
 # set([(1, 0, 1, 0), 10, 'String', 1.0])
 ```
 
 ```python
-'String' in set
-# True
-'Java' in set
-# False
+'String' in set_    # True
+'Java' in set_      # False
 ```
 
 Add and remove from set.
 
 ```python
-set.add('Python')
+set_.add('Python')
 # set(['Python', (1, 0, 1, 0), 10, 'String', 1.0])
 ```
 
 ```python
-set.remove('Python')
+set_.remove('Python')
 # set([(1, 0, 1, 0), 10, 'String', 1.0])
 ```
 
@@ -482,13 +434,13 @@ set_two = {3, 4, 5}
 
 ```python
 set_one | set_two
-# set([1, 2, 3, 4, 5])      (Union)
+# set([1, 2, 3, 4, 5])  (Union)
 set_one & set_two
-# set([3])                  (Intersection)
+# set([3])              (Intersection)
 set_one - set_two
-# set([1, 2])               (Difference)
+# set([1, 2])           (Difference)
 set_one ^ set_two
-# set([1, 2, 4, 5])         (Symmetric difference)
+# set([1, 2, 4, 5])     (Symmetric difference)
 ```
 
 Subset and superset.
@@ -501,16 +453,16 @@ set_c = {1, 2, 3, 4, 5}
 
 ```python
 set_a < set_b
-# False                     (Strict subset)
+# False                 (Strict subset)
 set_a <= set_b
-# True                      (Subset)
+# True                  (Subset)
 set_c > set_a
-# True                      (Strict superset)
+# True                  (Strict superset)
 ```
 
-## <a name="6" class="anchor"></a> [6. Conditionals](#6)
+## <a name="6" class="anchor"></a> [Conditionals](#6)
 
-### <a name="6.1" class="anchor"></a> [6.1 If-Else](#6.1)
+#### If-Else
 
 ```python
 a = 1.0
@@ -520,20 +472,23 @@ b = 5.0
 ```python
 if (a < 1.0):
     # do something
+    pass
 elif (a == 1.0):
     # do something
+    pass
 else:
     # do something
+    pass
 ```
 
-#### <a name="6.1.1" class="anchor"></a> [Single line expressions](#6.1.1)
+#### Single line expressions
 
 ```python
 c = (a / b) if a != 0 else a
 # 0.2
 ```
 
-### <a name="6.2" class="anchor"></a> [6.2 Logical Operators](#6.2)
+#### Logical Operators
 
 Booleans.
 
@@ -543,31 +498,25 @@ F = False
 ```
 
 ```python
-T or F
-# True
-T and (T and F)
-# False
+T or F              # True
+T and (T and F)     # False
 ```
 
 ```python
-not T
-# False
-not (not T)
-# True
+not T               # False
+not (not T)         # True
 ```
 
 Numbers.
 
 ```python
-1 == 2
-# False
-1 != 2
-# True
+1 == 2              # False
+1 != 2              # True
 ```
 
-## <a name="7" class="anchor"></a> [7. Loops](#7)
+## <a name="7" class="anchor"></a> [Loops](#7)
 
-### <a name="7.1" class="anchor"></a> [7.1 For](#7.1)
+#### For
 
 ```python
 numbers = [1, 2, 3, 4]
@@ -576,6 +525,7 @@ numbers = [1, 2, 3, 4]
 ```python
 for number in numbers:
     # do something
+    pass
 ```
 
 Nested for loops.
@@ -584,30 +534,31 @@ Nested for loops.
 for i in range(10):
     for j in range(10):
         # do something
+        pass
 ```
 
-#### <a name="7.1.1" class="anchor"></a> [Using for-loops and dictionaries](#7.1.1)
+#### Using for-loops and dictionaries
 
 ```python
-dict = {'Alpha': 1, 'Beta': 2}
+dict = { 'Alpha': 1, 'Beta': 2 }
 ```
 
 ```python
 for key in dict.keys():
     print(key)
-# Alpha
-# Beta
+    # Alpha
+    # Beta
 for value in dict.values():
     print(value)
-# 1
-# 2
+    # 1
+    # 2
 for key, value in dict.items():
     print(key, value)
-# ('Alpha', 1)
-# ('Beta', 2)
+    # ('Alpha', 1)
+    # ('Beta', 2)
 ```
 
-### <a name="7.2" class="anchor"></a> [7.2 While](#7.2)
+#### While
 
 ```python
 a = 0
@@ -625,7 +576,7 @@ print(a)
 # 5
 ```
 
-## <a name="8" class="anchor"></a> [8. Functions](#8)
+## <a name="8" class="anchor"></a> [Functions](#8)
 
 Functions are defined with `def` keyword.
 
@@ -685,7 +636,7 @@ print (function.__doc__)
 # This is a docstring.
 ```
 
-## <a name="9" class="anchor"></a> [9. Classes](#9)
+## <a name="9" class="anchor"></a> [Classes](#9)
 
 Classes are defined with `class` keyword.
 
@@ -740,7 +691,7 @@ virtual_money
 # 20 DIS (use before 2018-12-31)
 ```
 
-## <a name="10" class="anchor"></a> [10. Files](#10)
+## <a name="10" class="anchor"></a> [I/O](#10)
 
 Reading from files.
 
@@ -759,6 +710,7 @@ Read lines from text-file.
 with open('path/to/file.txt', 'r') as file:
     for line in file.readlines():
         # do something
+        pass
 ```
 
 Write to text-file.
@@ -768,9 +720,9 @@ with open('path/to/file.txt', 'w') as file:
     file.write('This is some text to write.')
 ```
 
-## <a name="11" class="anchor"></a> [11. Modules](#11)
+## <a name="11" class="anchor"></a> [Modules](#11)
 
-### <a name="11.1" class="anchor"></a> [11.1 Datetime](#11.1)
+#### Datetime
 
 ```python
 from datetime import datetime
@@ -785,16 +737,11 @@ future = now + timedelta(12)
 ```
 
 ```python
-now.year
-# 2018
-now.month
-# 6
-now.day
-# 15
-now.hour
-# 18
-now.minute
-# 23
+now.year        # 2018
+now.month       # 6
+now.day         # 15
+now.hour        # 18
+now.minute      # 23
 ```
 
 Difference between dates.
@@ -810,17 +757,15 @@ difference.days
 # 12
 ```
 
-### <a name="11.2" class="anchor"></a> [11.2 Math](#11.2)
+#### Math
 
 ```python
 import math
 ```
 
 ```python
-math.pi
-# 3.14159265359
-math.e
-# 2.71828182846
+math.pi         # 3.14159265359
+math.e          # 2.71828182846
 ```
 
 Mathematical operations.
