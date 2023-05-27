@@ -3,13 +3,9 @@ Michael Sjöberg
 May 4, 2023
 May 4, 2023
 
-*Here's a list of projects that I've worked on in the past but stopped due to lack of interest or some other reason. Most recent at top.*
-
 ## <a name="eqzen" class="anchor"></a> [EQZEN](#eqzen)
 
 EQZEN was a project and business idea I started to work on in 2015 (during undergraduate-studies at The Open University). I also developed a small web application to manipulate XML files all in the browser as my undergraduate final project to aid further development of this project. It had some users, but no one seemed to stick around very long. A company in Australia contacted me about developing a tailored version only for them, which they would pay for when done, but did not feel right.
-
-<!-- ![eqzen.png](/images/eqzen.png) -->
 
 ## <a name="givetrees" class="anchor"></a> [GiveTrees (Plant for Earth)](#givetrees)
 
@@ -30,8 +26,6 @@ Doolio was a skill tracker and online interactive resume. The source code is arc
 Adventures of Puffy was my first successful attempt at creating a game. It was a flappy bird-type of game that just goes on forever. It was available on iOS for a while, but automatically removed from stores later due to inactivity.
 
 ![puffy.png](/images/puffy.png)
-
-*Note also the name used: FrozenFork. I still use this today as DBA for Terminal at [terminal.frozenfork.com](https://terminal.frozenfork.com)*
 
 ## <a name="clusterly" class="anchor"></a> [Clusterly](#clusterly)
 
