@@ -4,8 +4,6 @@
     July 13, 2022
 -->
 
-*This post is adapted from lecture notes taken during postgraduate studies at King's College London.*
-
 ## <a name="1" class="anchor"></a> [1. Introduction](#1)
 
 ### <a name="1.1" class="anchor"></a> [1.1 What is computer vision?](#1.1)
