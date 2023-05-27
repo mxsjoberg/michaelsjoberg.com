@@ -520,9 +520,9 @@ h4 {
     // margin-bottom           : 0;
 }
 h4 a {
-    display                 : block;
-    text-align              : center;
-    margin-top              : 3rem;
+    display                 : block !important;
+    text-align              : center !important;
+    margin-top              : 3rem !important;
 }
 // h4 a:first-child {
 //     float: left;
