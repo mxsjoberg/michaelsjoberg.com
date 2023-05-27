@@ -1,35 +1,17 @@
 <% @size = 8 %>
-<% @d_size = 8 %>
 
 <div class="container">
   <div class="row justify-content-center">
     <!-- render stack list -->
-    <% @first_item = false %>
-    <div class="col-12 col-lg-<%= @size %> mb-4">
+    <div class="col-12 col-lg-<%= @size %>">
         <div class="row list">
           <% @stack.keys.each do |item| %>
-          <!-- header -->
-          <% if @stack[item]['date'].equal?(@stack.keys.first['date']) %>
-            <% @header = @stack[item]['date'] %>
-            <li class="list_header col-12">
-              <p class="background--grey my-3 px-3 py-2"><%= @header %></p>
-            </li>
-            <% end %>
-            <!-- update header -->
-            <% if @stack[item]['date'] != @header %>
-            <% @header = @stack[item]['date'] %>
-            <% @first_item = true %>
-            <li class="list_header col-12">
-              <p class="background--grey my-3 px-3 py-2"><%= @header %></p>
-            </li>
-          <% end %>
           <!-- item -->
           <li class="col-12">
             <div class="container-fluid">
-              <div class="row border-solid--grey py-3 <% if @first_item %><% else %>no-border-top<% end %>">
-                <% @first_item = false %>
+              <div class="row border-solid--grey py-3">
                 <!-- item -->
-                <div class="col-12 col-md-8">
+                <div class="col-12">
                   <!-- name -->
                   <% unless @stack[item]['url'] == nil %>
                   <a href="<%= @stack[item]['url'] %>" target="_blank"><%= item %></a>
@@ -38,21 +20,6 @@
                   <% end %>
                   <!-- description -->
                   <p class="m-0"><%= @stack[item]['description'] %></p>
-                </div>
-                <!-- meta -->
-                <div class="col-12 col-md-4 text-md-right mt-3 mt-md-0">
-                  <!-- school -->
-                  <p class="text-muted m-0"><%= @stack[item]['school'] %></p>
-                  <!-- credits -->
-                  <% unless @stack[item]['ects'].nil? %>
-                  <p class="text-muted m-0"><%= @stack[item]['ects'] %> ECTS, <%= @stack[item]['level'] %></p>
-                  <% else%>
-                  <p class="text-muted m-0"><%= @stack[item]['level'] %></p>
-                  <% end %>
-                  <!-- grade -->
-                  <% unless @stack[item]['grade'].nil? %>
-                  <p class="text-muted m-0"><%= @stack[item]['grade'] %></p>
-                  <% end %>
                 </div>
               </div>
             </div>
