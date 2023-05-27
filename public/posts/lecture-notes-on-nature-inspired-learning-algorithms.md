@@ -3,8 +3,6 @@
     Michael Sjöberg
 -->
 
-*This is a draft. This post is adapted from my own notes taken during postgraduate studies at King's College London.*
-
 ## <a name="1" class="anchor"></a> [1. Introduction](#1)
 
 ### <a name="1.1" class="anchor"></a> [1.1 Evolutionary algorithms](#1.1)
