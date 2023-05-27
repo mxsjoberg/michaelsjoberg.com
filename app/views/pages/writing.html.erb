@@ -1,4 +1,4 @@
-<% @size = 10 %>
+<% @size = 8 %>
 
 <div class="container">
   <!-- post -->
@@ -6,14 +6,20 @@
     <%= render 'post', locals: { size: @size } %> 
   <!-- otherwise -->
   <% else %>
-  <!-- page size wrapper -->
+  <!-- intro -->
   <div class="row justify-content-center">
+    <div class="col-12 col-lg-<%= @size %> text-center">
+      <p class="mb-0">A collection of writings on various topics.</p>
+    </div>
+  </div>
+  <!-- projects -->
+  <div class="row justify-content-center mt-5">
     <div class="col-12 col-lg-<%= @size %>">
       <div class="row list">
         <% @dir_posts.each do |post| %>
         <li class="list-item no-bullet col-12 mb-3">
           <!-- post:date -->
-          <p class="text-muted mb-0">
+          <p class="text-small text-muted mb-0">
             <%= Date.parse(post[:date]).strftime("%b -%d, %Y").gsub("-0", "").gsub("-", "") %>
           </p>
           <!-- post:title -->
