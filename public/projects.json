@@ -1,52 +1,51 @@
-{   
+{
     "Stockstack.AI": {
-        "description": [
-            "AI-assisted personal stock market data dashboard. The goal is to create a highly customizable and developer-like alternative to Yahoo Finance for stock-picking hobbyists."
-        ],
-        "date": "2020-",
-        "url": "https://stockstack.ai",
-        "github": false,
-        "active": true,
-        "show": true
+        "description": "AI-assisted personal stock market data dashboard",
+        "url": "https://stockstack.ai"
+    },
+    "Attefall": {
+        "description": "Building a small house in Sweden",
+        "url": "/projects/attefall"
     },
     "hlwasm": {
-        "description": [
-            "A high-level representation for WebAssembly."
-        ],
-        "date": "2023-",
-        "url": "https://github.com/miqqeio/hlwasm",
-        "github": true,
-        "active": true,
-        "show": true
+        "description": "High-level representation for WebAssembly",
+        "url": "https://github.com/miqqeio/hlwasm"
     },
     "playcode": {
-        "description": [
-            "A playful programming language."
-        ],
-        "date": "2023-",
-        "url": "https://github.com/miqqeio/playcode",
-        "github": true,
-        "active": true,
-        "show": true
+        "description": "A playful programming language",
+        "url": "https://github.com/miqqeio/playcode"
     },
     "raknalang": {
-        "description": [
-            "Domain-specific programming language for natural language arithmetic operations that is both simple and extensible. The parser is implemented as recursive-descent variant with precedence using stack structure instead of grammar rules."
-        ],
-        "date": "2021-",
-        "url": "https://github.com/miqqeio/raknalang",
-        "github": true,
-        "active": true,
-        "show": true
+        "description": "Interpreter for basic arithmetics in natural languages",
+        "url": "https://github.com/miqqeio/raknalang"
     },
     "pas2wat": {
-        "description": [
-            "Compiler that translates subset of Pascal into WebAssembly text format (built on top of MSc project). Lexer, recursive-descent parser (predictive), and code generator are hand-written for better error reporting."
-        ],
-        "date": "2020-",
-        "url": "https://github.com/miqqeio/pas2wat",
-        "github": true,
-        "active": true,
-        "show": true
+        "description": "Pascal to WebAssembly text format compiler",
+        "url": "https://github.com/miqqeio/pas2wat"
+    },
+    "EQZEN": {
+        "description": "Collaborative portfolio management application"
+    },
+    "Give Trees": {
+        "description": "Mobile app to plant trees"
+    },
+    "LearnHub": {
+        "description": "Community of self-learners"
+    },
+    "AnonChat": {
+        "description": "Text-based chat application with no login",
+        "url": "https://anonchat.sjoberg.dev"
+    },
+    "Doolio": {
+        "description": "Interactive online resume"
+    },
+    "Adventures of Puffy": {
+        "description": "Flappy Bird-like game for iOS"
+    },
+    "formul.as": {
+        "description": "Cheatsheet for mathematics and physics"
+    },
+    "räkna.nu": {
+        "description": "Q&A website for homework help"
     }
 }
