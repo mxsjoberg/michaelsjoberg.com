@@ -7,10 +7,10 @@
         "description": "Building a small house in Sweden",
         "url": "/projects/attefall"
     },
-    "hlwasm": {
-        "description": "High-level representation for WebAssembly",
-        "url": "https://github.com/miqqeio/hlwasm"
-    },
+    // "hlwasm": {
+    //     "description": "High-level representation for WebAssembly",
+    //     "url": "https://github.com/miqqeio/hlwasm"
+    // },
     "playcode": {
         "description": "A playful programming language",
         "url": "https://github.com/miqqeio/playcode"
