@@ -1,35 +1,25 @@
-<!-- post -->
+<% @time_to_read = @words / 75 %>
+<!-- intro -->
 <div class="row justify-content-center">
-  <!-- scroll-percent-wrapper -->
-  <button id="scroll-percent-wrapper" class="d-none text-muted btn btn-primary no-hover" style="position:fixed;bottom:1rem;left:1rem;cursor:default;z-index:1000;">
-    <i style="font-style:normal;line-height:1;"><span id="scroll-percent"></span>%</i>
-  </button>
-  <!-- post details -->
-  <div class="col-12 col-xl-<%= @size %>">
-    <!-- meta -->
-    <p class="p-3 text-center border-solid--grey">
+  <div class="col-12 col-lg-<%= @size %> text-center">
+    <p class="mb-0">
       <!-- date -->
-      <% unless @draft %>
-        <span class="pr-3"><%= Date.parse(@date).strftime("%b %d, %Y").gsub("-0", "").gsub("-", "") %></span>
-      <% else %>
-        <span class="text-muted pr-3">DRAFT</span>
-      <% end %>
+      <span><%= Date.parse(@date).strftime("%b %d, %Y").gsub("-0", "").gsub("-", "") %></span>
       <!-- time to read -->
-      <% @time_to_read = @words / 75 %>
-      <span class="px-3"><%= @time_to_read %> min read</span>
+      <span class="pl-3"><%= @time_to_read %> min read</span>
       <!-- updated -->
       <% unless Date.parse(@date) == Date.parse(@updated) %>
-        <a href="https://github.com/miqqeio/michaelsjoeberg.com/commits/main/public/posts/<%= @post %>.md" target="_blank" class="px-3">Updated on <%= Date.parse(@updated).strftime("%b %d, %Y").gsub("-0", "").gsub("-", "") %></a></span>
-      <% end %>
-      <!-- tags -->
-      <% if @tags %>
-        <% @tags.each do |tag| %>
-          <a href="/writing/<%= tag %>" data-turbolinks="true" class="px-3"><%= tag.gsub("-", " ").titleize %></a>
-        <% end %>
+        <a href="https://github.com/miqqeio/michaelsjoeberg.com/commits/main/public/posts/<%= @post %>.md" target="_blank" class="pl-3">Updated on <%= Date.parse(@updated).strftime("%b %d, %Y").gsub("-0", "").gsub("-", "") %></a></span>
       <% end %>
     </p>
+  </div>
+</div>
+<!-- post -->
+<div class="row justify-content-center mt-5">
+  <!-- post details -->
+  <div class="col-12 col-lg-<%= @size %>">
     <!-- title -->
-    <p class="h1 my-4">
+    <p class="h1 mb-5">
       <a href="/<%= @route_path %>/<%= @post %>" data-turbolinks="true"><%= @title %></a>
     </p>
   </div>
@@ -73,10 +63,14 @@
   </div>
   <% end %>
   <!-- render post  -->
-  <div class="col-12 col-xl-<%= @size %> font-family-serif">
+  <div class="col-12 col-lg-<%= @size %> font-family-serif">
     <%= CommonMarker.render_html(@all_lines, [:UNSAFE, :GITHUB_PRE_LANG], [:table, :autolink]).html_safe %>
   </div>
 </div>
+<!-- scroll-percent-wrapper -->
+<button id="scroll-percent-wrapper" class="d-none text-muted btn btn-primary no-hover" style="position:fixed;bottom:1rem;left:1rem;cursor:default;z-index:1000;">
+  <i style="font-style:normal;line-height:1;"><span id="scroll-percent"></span>%</i>
+</button>
 <!-- mathjax -->
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
