@@ -1,11 +1,13 @@
 Lecture notes on security engineering, part 2: Programs and processes
 Michael Sjöberg
-Aug 27, 2022
+Aug 28, 2022
 May 27, 2023
 
-### <a name="1" class="anchor"></a> File permissions [#](#1)
+## <a name="1" class="anchor"></a> [File permissions](#1)
 
-In UNIX-based systems, a process has real UID/GID, which is the user who started or own the process, effective UID/GID, which is referred to as EUID and used to determine permissions, and saved UID/GID, which is referred to as SUID and used to drop and gain privileges. A program with the SUID bit set has the effective UID/GID changed to that of the program owner. File permissions are set using command, such as `-rwxr-xr-x root root <file>`:
+In UNIX-based systems, a process has real UID/GID, which is the user who started or own the process, effective UID/GID, which is referred to as EUID and used to determine permissions, and saved UID/GID, which is referred to as SUID and used to drop and gain privileges. A program with the SUID bit set has the effective UID/GID changed to that of the program owner.
+
+File permissions are set using command, such as `-rwxr-xr-x root root <file>`:
 
 - `rwx`, or read-write-execute, is first root (file owner)
 - first ``r-x``, or read-execute, is second root (group owner)
@@ -13,10 +15,10 @@ In UNIX-based systems, a process has real UID/GID, which is the user who started
 
 The kernel will check EUID when the user is trying to write to file (root user id is 0), so changing EUID, `chmod 4755 <file>`, which replaces ``rwx`` with ``rws``, can make it writable to other users (fixed effective user id for file).
 
-### <a name="2" class="anchor"></a> [Address space](#2)
+## <a name="2" class="anchor"></a> [Address space](#2)
 
-An address space is the range of addresses available to some process: 
-    
+An address space is the range of addresses available to some process.
+
 ```c
 int z;
 int w = 10;
@@ -29,7 +31,7 @@ int main() {
 }
 ```
 
-- locations in buffer (note that address space is based on Linux legacy VM layout)
+Below are the locations in buffer (address space is based on Linux legacy VM layout).
 
 |     |     |
 | :-- | --- |
@@ -46,7 +48,7 @@ int main() {
 | | `*p = 42` (write 42 in address in heap) |
 | | kernel space ~1GB |
 
-### <a name="3" class="anchor"></a> [Application-level vulnerabilities](#3)
+## <a name="3" class="anchor"></a> [Application-level vulnerabilities](#3)
 
 Vulnerabilities in applications are often due to deployment of overprivileged applications, such as mobile applications asking for all permissions or when applications are writable instead of only readable, and implementation issues with unexpected inputs or errors:
 
@@ -55,49 +57,45 @@ Vulnerabilities in applications are often due to deployment of overprivileged ap
 
 Most local attacks exploit vulnerabilities in SUID-root programs to obtain root privileges. Bad inputs can be supplied at startup via command line and environment, or during execution via dynamic-linked objects and files. Unintended interaction with environment can result in creation of new files, accessing files via file system, or invoking commands and processes. Local attacks often result in memory corruption (control hijacking, data brainwashing), command injection, and information leaks.
 
-#### <a name="3.1" class="anchor"></a> [Environment attacks](#3.1)
+#### Environment attacks
 
 An environment attack can occur when applications invoke external commands to carry out tasks, such as `system()` to execute some command, `popen()` to open a process, or `execlp()` and `execvp()` to use the `PATH` environment variable to locate applications. A `PATH` substitution attack use commands without a complete path, where attacker modifies the `PATH` variable to run script, or the `HOME` variable to control execution of commands, such as accessing files.
 
-#### <a name="3.2" class="anchor"></a> [Input argument attacks](#3.2)
+#### Input argument attacks
 
 An input argument attack can occur when applications are supplied arguments via the command-line (this also applies to web applications and databases), where user-provided inputs can be used to inject commands, such as `./program "; rm -rf /"`, which would call `program` and then inject command to delete everything, traverse directories (dot-dot attack), overflow buffer, and perform format string attacks:
 
 - always check size to avoid overflow, such as when copied into buffers (`snprintf` limits size to `n`)
-
 - always sanitize user-provided input to avoid bad formats, such as excluding known bad inputs, define allowed input, or escaping special characters
 
-#### <a name="3.3" class="anchor"></a> [File access attacks](#3.3)
+#### File access attacks
 
 A file access attack can occur when applications create and use files: 
 
 - always check that file exist (and is not symbolic link)
-
 - [race conditions](https://en.wikipedia.org/wiki/Race_condition), such as [time-of-check to time-of-use (TOCTTOU)](https://en.wikipedia.org/wiki/Time-of-check_to_time-of-use), can occur when there is conflicting access to shared data by multiple processes, where at least one has write access
 
-```c
-// `access()` checks real UID and `open()` checks effective UID
+    ```c
+    // `access()` checks real UID and `open()` checks effective UID
 
-/* real UID */
-if (access("file", W_OK) == 0) {
-    /* symlink("/etc/passwd", "file"); */
-    
-    /* effective UID */
-    if((f = open("file", O_WRONLY)) < 0) {
-        /* ... */
+    /* real UID */
+    if (access("file", W_OK) == 0) {
+        /* symlink("/etc/passwd", "file"); */
+        
+        /* effective UID */
+        if((f = open("file", O_WRONLY)) < 0) {
+            /* ... */
+        }
+        /* potentially writing to "/etc/passwd" */
+        write(f, buffer, count);
     }
-    /* potentially writing to "/etc/passwd" */
-    write(f, buffer, count);
-}
-```
+    ```
 
-#### <a name="3.4" class="anchor"></a> [Buffer overflow attacks](#3.4)
+#### Buffer overflow attacks
 
 A buffer overflow attack can occur when programs try to store more elements in a buffer (set of memory locations) than it can contain. Systems can sometimes detect and block potential overflows, such as in Java, and others do not detect, in which case the operation is executed (it is not detected in C by default).
 
-<!-- #### <a name="2.3.5" class="anchor"></a> [**Example:** buffer overflow](#2.3.5) -->
-
-An example program vulnerable to the buffer overflow attack (executing this would result in overflow of `buffer_1` into `buffer_2`):
+Below is an example program that is vulnerable to the buffer overflow attack (executing this would result in overflow of `buffer_1` into `buffer_2`).
     
 ```c
 int main() {
@@ -112,3 +110,6 @@ int main() {
     return 0;
 }
 ```
+
+#### [Next part](lecture-notes-on-security-engineering-part-3)
+
