@@ -92,6 +92,7 @@ class PagesController < ApplicationController
       @file = filename.split('/').last
       @images.push(@file)
     end
+    # @images.sort_by(&:to_i)
   end
   # ----------------------------------------------
   # GET /writing
