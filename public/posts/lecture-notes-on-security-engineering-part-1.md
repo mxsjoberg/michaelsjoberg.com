@@ -3,6 +3,8 @@ Michael Sjöberg
 Aug 27, 2022
 May 27, 2023
 
+This is the first post in a series of lecture notes on security engineering, based on the postgraduate-level course with the same name at King's College London. These notes cover most of the topics, but not as deep and without assignments, and are primarily intended as a reference for myself.
+
 ## <a name="1" class="anchor"></a> [Computer programs and compilation](#1)
 
 A computer program is a sequence of bits (0 or 1), and organized as 8-bit bytes, where one byte is 8-bits and each byte represent some text character (ASCII standard). Most programs are developed in a high-level programming language, then compiled, or translated, into an object file, which is executed by a process, and finally terminated.
@@ -21,11 +23,13 @@ int main() {
 }
 ```
 
-The compilation system typically includes a preprocessor, compiler, assembler, and linker, and is used to translate programs into a sequence of machine-language instructions, which is packed into an executable object file. The compilation process (note that most program code in this post refer to programs written in the C programming language and using [gcc](https://linux.die.net/man/1/gcc) to compile):
+The compilation system typically includes a preprocessor, compiler, assembler, and linker, and is used to translate programs into a sequence of machine-language instructions, which is packed into an executable object file.
 
-1. preprocessor, such as [cpp](https://linux.die.net/man/1/cpp), modifies the program according to directives that begin with `#`, in this case `#include <stdio.h>`, and are imported into the program text, resulting in an intermediate file with `.i` suffix, use flag `-E` to see intermediate file
+The compilation process (note that most program code in this post refer to programs written in the C programming language and using [gcc](https://linux.die.net/man/1/gcc) to compile):
 
-2. compiler translates the intermediate file into an assembly program with `.s` suffix, where each line describe one instruction, use flag `-S` to generate assembly program (note that below assembly is generated on 64-bit macOS, operand size suffix and special directives for assembler is omitted for clarity)
+- preprocessor, such as [cpp](https://linux.die.net/man/1/cpp), modifies the program according to directives that begin with `#`, in this case `#include <stdio.h>`, and are imported into the program text, resulting in an intermediate file with `.i` suffix, use flag `-E` to see intermediate file
+
+- compiler translates the intermediate file into an assembly program with `.s` suffix, where each line describe one instruction, use flag `-S` to generate assembly program (note that below assembly is generated on 64-bit macOS, operand size suffix and special directives for assembler is omitted for clarity)
 
     ```x86asm
     .section __TEXT
@@ -48,15 +52,15 @@ The compilation system typically includes a preprocessor, compiler, assembler, a
         L_.str: .asciz  "hello c\n"
     ```
 
-3. assembler, such as [as](https://linux.die.net/man/1/as), translates assembly program instructions into machine-level instructions, use flag `-c` to compile assembly program, resulting in a relocatable object file with `.o` suffix (this is a binary file)
+- assembler, such as [as](https://linux.die.net/man/1/as), translates assembly program instructions into machine-level instructions, use flag `-c` to compile assembly program, resulting in a relocatable object file with `.o` suffix (this is a binary file)
 
-4. linker, such as [ld](https://linux.die.net/man/1/ld), merges one or more relocatable object files, which are separate and precompiled `.o`-files that the program is using, such as `printf.o`, resulting in an executable file (or simply executable) with no suffix, ready to be loaded into memory and executed by the system
+- linker, such as [ld](https://linux.die.net/man/1/ld), merges one or more relocatable object files, which are separate and precompiled `.o`-files that the program is using, such as `printf.o`, resulting in an executable file (or simply executable) with no suffix, ready to be loaded into memory and executed by the system
 
 Linking is the process to resolve references to external objects, such as variables and functions (for example `printf`), where static linking is performed at compile-time and dynamic linking is performed at run-time.
 
 #### Tools
 
-A few useful tools for working with programs:
+Useful tools for working with programs from a systems perspective:
 
 - [gdp](https://www.sourceware.org/gdb/), GNU debugger
 - `objdump` such as `objdump -d <filename>` to display information about object file (disassembler)
