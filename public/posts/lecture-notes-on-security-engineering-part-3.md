@@ -5,45 +5,43 @@ May 27, 2023
 
 ## <a name="1" class="anchor"></a> [Assembly basics](#1)
 
-An assembly language is a low-level symbolic language with processor specific instructions and syntax, such as those developed by AT&T and Intel. Instructions and syntax, as well as data types, registers, and hardware support, is typically specified by some instruction set architecture (ISA), which is an abstract model of some computer implementation. An assembly program is a sequence of instructions, where each instruction represents an actual operation to be performed by the processor.
+An assembly language is a low-level symbolic language with processor specific instructions and syntax, such as those developed at AT&T and Intel. Instructions, syntax, data types, registers, and hardware support are typically specified in the instruction set architecture (ISA), which represent an abstract model of some computer implementation.
 
-In most assembly-like languages, an instruction has the form `mnemonic <source>, <destination>` (AT&T syntax), such as `mov %eax, %ebx` to copy value from `%eax` to `%ebx`, or `mnemonic <destination>, <source>` (Intel syntax):
+An assembly program is a sequence of instructions, where each instruction represents an actual operation to be performed by the processor.
 
-- mnemonics tell the CPU what to do
-    - `mov` `add` `sub` `push` `pop` `call` `jmp`
+In most assembly-like languages, an instruction has the form `mnemonic <source>, <destination>` (AT&T syntax, or `mnemonic <destination>, <source>` in Intel syntax) such as `mov %eax, %ebx`, which is instruction to copy value from `%eax` to `%ebx`:
 
+- mnemonics tell the CPU what to do, such as `mov`, `add`, `sub`, `push`, `pop`, `call`, and `jmp`
 - source and destination
-    - registers, `%eax` `%esp` `%al`
+    - registers, such as `%eax`, `%esp`, or `%al`
     - memory location, such as `0x401000, 8(%ebp)` or `%edx, %ecx, 4`
     - constants (source only), such as `$42` or `$0x401000`
 
 - directives are commands for assembler
     - `.data` to identify section with variables
     - `.text` to identify section with code
-    -  `.byte` `.word` `.long` to define integer as 8, 16, or 32-bit (respectively)
-    - `.ascii` or `.asciz` to define string with and without terminator
+    - `.byte`, `.word`, or `.long` to define integer as 8, 16, or 32-bit
+    - `.ascii` or `.asciz` to define string with or without terminator
 
-- labels are symbol at current address, so `number: .byte 42` is same as `char number = 42;` in C (global variable)
+- labels represent symbols at current address, so `number: .byte 42` is same as `char number = 42;` in the C programming language
 
 #### Registers
 
-A register is a memory location on the CPU and prefixed with `%`, such as general-purpose registers, including stack pointer `%esp`, frame pointer `%ebp`, instruction pointer `%eip`, and flags register (note that `%esp`, `%ebp`, and `%eip` is 32 bit, and `%rsp`, `%rbp`, and `%rip` is equivalent 64 bit):
+A register is a memory location on the CPU and prefixed with `%`. There are general-purpose registers, which includes stack pointer `%esp`, frame pointer `%ebp`, and instruction pointer `%eip`, and flags registers:
 
-- extended (32-bit)
-    - `%eax` `%ebx` `%ecx` `%edx` `%esi` `%edi`
-- smaller parts (16-bit)
-    - `%ax` `%bx` `%cx` `%dx` `%sp` (stack pointer) `%bp` (frame pointer) `%si` `%di`
-- lower byte
-    - `%a1` `%b1` `%c1` `%d1`
-- second byte
-    - `%ah` `%bh` `%ch` `%dh`
+- extended (32-bit), such as `%eax`, `%ebx`, `%ecx`, `%edx`, `%esi`, and `%edi`
+- smaller parts (16-bit), such as `%ax`, `%bx`, `%cx`, `%dx`, `%sp` (stack pointer), `%bp` (frame pointer), `%si`, and `%di`
+- lower byte, such as `%a1`, `%b1`, `%c1`, and `%d1`
+- second byte, such as `%ah`, `%bh`, `%ch`, and `%dh`
 
-A constant is prefixed with `$` and the operand size is specified as suffix to mnemonic, so byte is `b` (8 bit), word is `w` (16 bit), and long is `l` (32-bit or 64-bit floating point). An initial layout (bits 0-15 is `%ax` and 0-31 is extended, `%eax`) and final layout after `mov $1, %eax`, copy 1 and set rest to zero:
+A constant is prefixed with `$` and operand size is specified as suffix to mnemonic, where byte is `b` (8 bit), word is `w` (16 bit), and long is `l` (32-bit or 64-bit floating point). 
 
-|     |      |      |      |
-| --- | ---  | ---  | ---  |
-| `%a1` | `%ah` |
-| 0 | 8 | 16 | 31 |
+Below is the initial layout and final layout after `mov $1, %eax`, or copy 1 and set rest to zero (note that `%ax` is bits 0-15 and `%eax` is bits 0-31):
+
+|       |       |     |     |
+| ----- | ----- | --- | --- |
+| `%a1` | `%ah` |     |     |
+| 0     | 8     | 16  | 31  |
 
 |     |     |     |     |
 | --- | ---  | ---  | ---  |
@@ -51,15 +49,15 @@ A constant is prefixed with `$` and the operand size is specified as suffix to m
 | 10000000 | 00000000 | 0 – 0 | 0 – 0 |
 | 0 | 8 | 16 | 31 |
 
-Memory is accessed using pointers, which are variables that store memory addresses. Dereferencing a pointer means accessing the value stored at the memory address pointed to by the pointer. In order to dereference a pointer, the memory address must be computed based on the contents of the base and index registers, and an optional constant displacement and scaling factor scale.
+In programs, a memory location is accessed using pointers, which are variables that store memory addresses. Dereferencing a pointer means accessing the value stored at the memory address pointed to by the pointer.
 
-The exact syntax for dereferencing a pointer depends on the architecture and instruction set used by the processor.
+In order to dereference a pointer, the memory address must be computed based on the contents of the base and index registers with an optional constant displacement and scaling factor (determined by architecture and instruction set).
 
 ## <a name="2" class="anchor"></a> [Assembly programming](#2)
 
-Assembly programs are typically generated by compilers, but it can sometimes be necessary to inspect or change manually. Writing programs using only assembly instructions is not very efficient and can be very error prone.
+Assembly programs are practically always generated by compilers and hand-writing programs using assembly instructions is not very efficient (and can be very error prone).
 
-Below is an assembly program to output `hello assembly`.
+Below is an assembly program to output `hello assembly` (note that `r*` is 64 bit).
 
 ```x86asm
 ; assembly program (64-bit, intel syntax)
@@ -85,6 +83,8 @@ It is often easier to explore assembly programs in emulators, such as [nasm Onli
 
 #### Data transfer
 
+Data transfer instructions are used to move data between registers, memory, and stack.
+
 ```x86asm
 ; set destination as source
 mov <source>, <destination>
@@ -100,6 +100,8 @@ pop <destination>
 ```
 
 #### Binary arithmetic
+
+Binary arithmetic instriuctions are used to perform arithmetic operations on binary data.
 
 ```x86asm
 ; addition, destination += source
@@ -120,6 +122,8 @@ neg <destination>
 
 #### Logical operators
 
+Logical operator instructions are used to perform logical operations on binary data.
+
 ```x86asm
 ; and, destination &= source
 and <source>, <destination>
@@ -136,6 +140,8 @@ not <destination>
 
 #### Unconditional branches
 
+Unconditional branch instructions are used to change the flow of execution.
+
 ```x86asm
 ; jump to address
 jmp <address>
@@ -151,6 +157,8 @@ int <const>
 ```
 
 #### Conditional branches
+
+Conditional branch instructions are used to change the flow of execution based on the value of the flags register.
 
 ```x86asm
 ; jump below (unsigned), %eax < %ebx (label is location)
@@ -171,6 +179,8 @@ jns <label>
 ```
 
 #### Other instructions
+
+Other common instructions, such as `lea` and `nop`.
 
 ```x86asm
 ; load effective address (source must be in memory), destination = &source
