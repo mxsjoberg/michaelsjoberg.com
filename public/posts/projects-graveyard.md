@@ -1,7 +1,9 @@
+<!--
 Projects Graveyard
 Michael Sjöberg
 May 4, 2023
 May 4, 2023
+-->
 
 ## <a name="eqzen" class="anchor"></a> [EQZEN](#eqzen)
 
