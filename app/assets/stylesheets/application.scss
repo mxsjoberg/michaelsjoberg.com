@@ -89,6 +89,7 @@ pre {
     color                   : $COLOR_BLACK;
     border                  : 0;
     border-radius           : 2rem;
+    // white-space             : pre;
 }
 blockquote {
     padding-left            : 1rem;
@@ -104,15 +105,21 @@ li {
 }
 table {
     margin-bottom           : 1rem;
-    display                 : inline-block;
+    // display                 : inline-block;
     vertical-align          : top;
+    width                   : 100%;
+}
+table thead {
+    display                 : none;
 }
 td {
     padding                 : 0.5rem 1rem;
-    color                   : $COLOR_BLACK;
+    color                   : rgba($COLOR_BLACK, 0.5);
     border                  : 1px solid $COLOR_GREY_LIGHT;
     text-align              : center;
     vertical-align          : middle;
+    width                   : 25%;
+    font-size               : $FONT_SIZE_BASE;
 }
 td[align=left] {
     text-align              : left;
@@ -877,7 +884,7 @@ code {
     padding                 : 0 0.5rem;
     // override
     font-style              : normal;
-    word-break              : inherit;
+    word-break              : break-word;
 }
 
 html.dark code {
