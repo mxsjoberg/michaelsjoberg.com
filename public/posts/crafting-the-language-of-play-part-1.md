@@ -1,7 +1,7 @@
 Crafting the Language of Play, Part 1: Introduction and operator precedence
 Michael Sjöberg
-May 28, 2023
-May 28, 2023
+May 29, 2023
+May 29, 2023
 
 This is the first post in a series of posts on implementing the new non-trivial programming language, PlayCode. It is open source and all code is available [here](https://github.com/miqqeio/playcode).
 
