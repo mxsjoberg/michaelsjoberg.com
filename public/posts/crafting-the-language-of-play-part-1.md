@@ -420,7 +420,9 @@ print_tree(tree)
 
 ## <a name="5" class="anchor"></a> [Interpreter](#5)
 
-The interpreter is the final step. It takes the tree, recursively evaluates it, and returns the result. Nothing more than that as of yet.
+The interpreter is the final step. It takes the tree, recursively evaluates it, and returns the result. Nothing more than that as of yet. It works by matching the left-most node, which should be a keyword, operator, or number, and evaluating the right (children).
+
+In our example program, it matches the keyword (currently only `PRINT`) and calls `interpret` on the right node. If it is an operator then it evaluates the expression on the right node and returns the result. A number simply returns the number.
 
 ```python
 def interpret(tree):
