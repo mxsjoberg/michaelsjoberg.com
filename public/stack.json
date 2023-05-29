@@ -33,6 +33,10 @@
         "MongoDB Atlas": {
             "description": "Cloud database",
             "url": "https://www.mongodb.com/atlas/database"
+        },
+        "Cloudflare": {
+            "description": "CDN",
+            "url": "https://www.cloudflare.com/en-gb/"
         }
     },
     "hardware": {
