@@ -13,15 +13,15 @@
     // },
     "playcode": {
         "description": "A playful programming language",
-        "url": "https://github.com/miqqeio/playcode"
+        "url": "https://github.com/mixmaester/playcode"
     },
     "raknalang": {
         "description": "Interpreter for basic arithmetics in natural languages",
-        "url": "https://github.com/miqqeio/raknalang"
+        "url": "https://github.com/mixmaester/raknalang"
     },
     "pas2wat": {
         "description": "Pascal to WebAssembly text format compiler",
-        "url": "https://github.com/miqqeio/pas2wat"
+        "url": "https://github.com/mixmaester/pas2wat"
     },
     "EQZEN": {
         "description": "Collaborative portfolio management application"
