@@ -6,7 +6,7 @@
 
 ## <a name="1" class="anchor"></a> [1. Introduction](#1)
 
-This is an evolving list with learning material and recommended programming languages for computer science students. It works well on its own (for self-learners) or in addition to an undergraduate degree in computer science (or related field). The goal is to provide a solid foundation to build upon, degree or no degree. It will be updated to fix broken links and to keep learning material up to date. If you are interested in computer science and engineering (and have plenty of time to spare), see [github.com/michaelsjoeberg/the-ultimate-computer-science-and-engineering-curriculum](https://github.com/michaelsjoeberg/the-ultimate-computer-science-and-engineering-curriculum).
+This is an evolving list with learning material and recommended programming languages for computer science students. It works well on its own (for self-learners) or in addition to an undergraduate degree in computer science (or related field). The goal is to provide a solid foundation to build upon, degree or no degree. It will be updated to fix broken links and to keep learning material up to date. If you are interested in computer science and engineering (and have plenty of time to spare), see [github.com/michaelsjoeberg/the-ultimate-computer-science-and-engineering-curriculum](https://github.com/mixmaester/the-ultimate-computer-science-and-engineering-curriculum).
 
 ## <a name="2" class="anchor"></a> [2. Programming](#2)
 
