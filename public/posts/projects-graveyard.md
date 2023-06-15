@@ -17,11 +17,11 @@ GiveTrees was a project that me and a friend started on the side in 2014. The id
 
 ## <a name="learnhub" class="anchor"></a> [LearnHub](#learnhub)
 
-LearnHub was the evolution of [Doolio](#doolio). The goal was to create a community of self-learners that wanted to create and share pathways to learn specific topics using available-online resources, such as MOOCs. The source code is archived on [GitHub](https://github.com/miqqeio/learnhub.io).
+LearnHub was the evolution of [Doolio](#doolio). The goal was to create a community of self-learners that wanted to create and share pathways to learn specific topics using available-online resources, such as MOOCs. The source code is archived on [GitHub](https://github.com/mixmaester/learnhub.io).
 
 ## <a name="doolio" class="anchor"></a> [Doolio](#doolio)
 
-Doolio was a skill tracker and online interactive resume. The source code is archived on [GitHub](https://github.com/miqqeio/doolio.co).
+Doolio was a skill tracker and online interactive resume. The source code is archived on [GitHub](https://github.com/mixmaester/doolio.co).
 
 ## <a name="puffy" class="anchor"></a> [Adventures of Puffy](#puffy)
 
