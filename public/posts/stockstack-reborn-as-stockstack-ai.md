@@ -5,15 +5,21 @@ Jul 8, 2023
 Jul 8, 2023
 -->
 
+## New beginnings
+
 I recently re-launched Stockstack/ Terminal as Stockstack.AI, available here: [stockstack.ai](https://stockstack.ai). I might change domain again since nothing seems to beat .com, so sorry in advance!
 
 Stockstack.AI is a slimmed down version of Terminal with focus on distraction-free stock market data. The goal is to beat Yahoo Finance in data coverage and user experience. To hone in on this goal (and to reduce workload!), I removed several features, including portfolio tracker, batch requests, and query.
+
+## Updated features
 
 The updated version shipped with an improved grid for organizing data widgets. Widgets now have scalable text, support multiple columns (great for financials), and are freely resizable and movable around the workspace. I also updated most data in widgets and added several new sources. If you add your own API key for Seeking Alpha (requires an active subscription), you can basically have five different news widgets, which should be more than enough to give a fairly comprehensive overview of the market.
 
 Other new and interesting widgets show interest rates by various institutions, market status, upcoming holidays, and company filings (both today and historical for ticker). The old chart widget is replace by four widgets with charts for different ranges, so can view all at same time.
 
-There's also an AI-assistant widget, obviously. It's not as good or fast as looking at data widgets to provide pricing data, but great for providing wikipedia-style information about less known companies or CEOs.
+## AI-assistant
+
+There's an AI-assistant widget, obviously. It's not as good or fast as looking at data widgets for pricing data, but great for providing wikipedia-style information about less known companies or CEOs.
 
 Here's a few example responses:
 
@@ -23,8 +29,8 @@ Here's a few example responses:
 
 This kind of information is not available as structured data via some API and could previously only be found via google, no more.
 
+## Pricing
+
 Pricing starts at USD 10.00, but will increase to USD 29.00 in a few weeks. I am still thinking about adding a proper free plan.
-
-
 
 
