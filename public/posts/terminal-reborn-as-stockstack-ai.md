@@ -12,7 +12,14 @@ Stockstack.AI is a slimmed down version of Terminal with a more narrow focus on 
 
 ## Updated features
 
-The updated version shipped with an improved grid for organizing data widgets. Widgets now have scalable text, support multiple columns (great for financials), and are freely resizable and movable around the workspace. I also updated most data in widgets and added several new sources. If you add your own API key for Seeking Alpha (requires an active subscription), you can basically have five different news widgets, which should be more than enough to give a fairly comprehensive overview of the market.
+The updated version shipped with an improved grid for organizing data widgets. Widgets now have scalable text, support multiple columns (great for financials), and are freely resizable and movable around the workspace.
+
+![https://stockstack.ai/images/data.png](https://stockstack.ai/images/data.png)
+
+I also updated most data in widgets and added several new sources. If you add your own API key for Seeking Alpha (requires an active subscription), you can basically have five different news widgets, which should be more than enough to give a fairly comprehensive 
+overview of the market.
+
+![https://stockstack.ai/images/news.png](https://stockstack.ai/images/news.png)
 
 Other new and interesting widgets show interest rates by various institutions, market status, upcoming holidays, and company filings (both today and historical for ticker). The old chart widget is replace by four widgets with charts for different ranges, so can view all at same time.
 
