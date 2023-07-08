@@ -1,9 +1,9 @@
-<!--
+
 Stockstack reborn as Stockstack.AI
 Michael Sjöberg
 Jul 8, 2023
 Jul 8, 2023
--->
+
 
 ## New beginnings
 
