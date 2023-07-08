@@ -8,7 +8,7 @@ Jul 8, 2023
 
 I recently re-launched Terminal as Stockstack.AI, available here: [stockstack.ai](https://stockstack.ai). I might change domain again since nothing seems to beat .com, so sorry in advance! If you can't stand the .AI hype, it's also available here: [trystockstack.com](https://www.trystockstack.com/).
 
-Stockstack.AI is a slimmed down version of Terminal with focus on distraction-free stock market data. The goal is to beat Yahoo Finance in data coverage and user experience. To hone in on this goal (and to reduce workload!), I removed several features, including portfolio tracker, batch requests, and query.
+Stockstack.AI is a slimmed down version of Terminal with a more narrow focus on distraction-free stock market data. The goal is to beat Yahoo Finance in data coverage and user experience. To hone in on this goal (and to reduce workload!), I removed several features, including portfolio tracker, batch requests, and query.
 
 ## Updated features
 
