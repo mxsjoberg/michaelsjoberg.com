@@ -1,10 +1,14 @@
 {
-    "Stockstack.AI": {
-        "description": "AI-assisted personal stock market data dashboard",
-        "url": "https://stockstack.ai"
+    "Hackerman.AI": {
+        "description": "Level up your coding skills with AI-generated programs",
+        "url": "https://hackerman.ai"
+    },
+    "Stockstack": {
+        "description": "Distraction-free stock market research",
+        "url": "https://trystockstack.com"
     },
     "Attefall": {
-        "description": "Building a small house in Sweden",
+        "description": "Building a small house in Sweden from scratch",
         "url": "/projects/attefall"
     },
     // "hlwasm": {
@@ -16,7 +20,7 @@
         "url": "https://github.com/mixmaester/playcode"
     },
     "raknalang": {
-        "description": "Interpreter for basic arithmetics in natural languages",
+        "description": "Arithmetics in native natural languages",
         "url": "https://github.com/mixmaester/raknalang"
     },
     "pas2wat": {
