@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   before_action :set_meta
   $author = "Michael Sjöberg"
   $version = "5.0.0"
-  $updated = "May 27, 2023"
+  $updated = "July 11, 2023"
   # ----------------------------------------------
   # GET /
   # GET /about
