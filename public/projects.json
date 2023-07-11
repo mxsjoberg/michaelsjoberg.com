@@ -1,55 +1,55 @@
 {
+    // "hlwasm": {
+    //     "description": "High-level representation for WebAssembly",
+    //     "url": "https://github.com/miqqeio/hlwasm"
+    // },
     "Hackerman.AI": {
-        "description": "Level up your coding skills with AI-generated programs",
+        "description": "Level up your coding skills with AI-generated programs (Python)",
         "url": "https://hackerman.ai"
     },
     "Stockstack": {
-        "description": "Distraction-free stock market research",
+        "description": "Distraction-free stock market research (Python, Vue.js)",
         "url": "https://trystockstack.com"
     },
     "Attefall": {
         "description": "Building a small house in Sweden from scratch",
         "url": "/projects/attefall"
     },
-    // "hlwasm": {
-    //     "description": "High-level representation for WebAssembly",
-    //     "url": "https://github.com/miqqeio/hlwasm"
-    // },
-    "playcode": {
-        "description": "A playful programming language",
+    "PlayCode": {
+        "description": "Programming language for testing experimental programming language features (Python, C++)",
         "url": "https://github.com/mixmaester/playcode"
     },
     "raknalang": {
-        "description": "Arithmetics in native natural languages",
+        "description": "REPL for arithmetics in native natural languages (Python)",
         "url": "https://github.com/mixmaester/raknalang"
     },
     "pas2wat": {
-        "description": "Pascal to WebAssembly text format compiler",
+        "description": "Pascal to WebAssembly text format translator (Rust)",
         "url": "https://github.com/mixmaester/pas2wat"
     },
     "EQZEN": {
-        "description": "Collaborative portfolio management application"
+        "description": "Collaborative portfolio tracker application (Python)"
     },
-    "Give Trees": {
-        "description": "Mobile app to plant trees"
+    "GiveTrees": {
+        "description": "Mobile application to plant trees (Lua)"
     },
     "LearnHub": {
-        "description": "Community of self-learners"
+        "description": "Community of self-learners (Python)"
     },
     "AnonChat": {
-        "description": "Text-based chat application with no login",
+        "description": "Text-based chat application with no login (JavaScript)",
         "url": "https://anonchat.sjoberg.dev"
     },
     "Doolio": {
-        "description": "Interactive online resume"
+        "description": "Interactive online resume (PHP)"
     },
     "Adventures of Puffy": {
-        "description": "Flappy Bird-like game for iOS"
+        "description": "Mobile game for iOS (Lua)"
     },
     "formul.as": {
-        "description": "Cheatsheet for mathematics and physics"
+        "description": "Cheatsheet for mathematics and physics (HTMl, CSS)"
     },
     "räkna.nu": {
-        "description": "Q&A website for homework help"
+        "description": "Q&A website for homework help (PHP)"
     }
 }
