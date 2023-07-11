@@ -37,7 +37,7 @@
         "description": "Community of self-learners (Python)"
     },
     "AnonChat": {
-        "description": "Text-based chat application with no login (JavaScript)",
+        "description": "Text-based chat application with no login (JavaScript, PHP)",
         "url": "https://anonchat.sjoberg.dev"
     },
     "Doolio": {
