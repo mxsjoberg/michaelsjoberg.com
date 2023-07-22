@@ -11,11 +11,13 @@
       <!-- time to read -->
       <span class="pl-3"><%= @time_to_read %> min read</span>
       <!-- programming language -->
-      <% if @language != 'None' %>
-      <span class="pl-3"><%= @language.titleize %></span>
+      <% if @language %>
+        <span class="pl-3"><%= @language.titleize %></span>
       <% end %>
       <!-- category -->
-      <span class="pl-3"><%= @category.titleize %></span>
+      <% if @category %>
+        <span class="pl-3"><%= @category.titleize %></span>
+      <% end %>
       <!-- updated -->
       <!-- <% unless Date.parse(@date) == Date.parse(@updated) %>
         <a href="https://github.com/mixmaester/michaelsjoeberg.com/commits/main/public/posts/<%= @post %>.md" target="_blank" class="pl-3">Updated on <%= Date.parse(@updated).strftime("%b %d, %Y").gsub("-0", "").gsub("-", "") %></a></span>
@@ -44,10 +46,10 @@
   </div>
   <% end %>
   <!-- toc -->
-  <div id="toc" class="col-2 col-xl-3 font-family-serif d-none d-xl-block" style="position:fixed;left:0">
+  <div id="toc" class="col-2 col-xl-3 font-family-serif d-none d-xl-block" style="position:absolute;left:0">
     <div class="container-fluid mb-3">
       <div class="row list py-3 mb-3">
-        <div class="col-12 p-0">
+        <div class="text-small col-12 p-0">
           <% @open = false %>
           <% @lines.each do |line| %>
             <% if line[0..2] == '## ' %>
@@ -67,7 +69,7 @@
                 </div>
             <!-- subsubitem -->
             <% elsif line[0..4] == '#### ' || line[0..5] == '##### ' %>
-                <div class="text-normal list-item subitem subsubitem pl-4">
+                <div class="list-item subitem subsubitem pl-4">
                   <%= CommonMarker.render_html("- #{line.split('</a>')[1]}", :UNSAFE, [:table, :autolink]).html_safe %>
                 </div>
             <% end %>
