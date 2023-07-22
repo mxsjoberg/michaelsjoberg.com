@@ -57,6 +57,42 @@ class PagesController < ApplicationController
     end
   end
   # ----------------------------------------------
+  # GET /post
+  # ----------------------------------------------
+  def post
+    @route_path = "post"
+    @meta_title = $author
+    # params
+    @post = params[:post]
+    # render post
+    unless (@post.nil?)
+      @file = @post + '.md'
+      @post_details = File.readlines(Rails.public_path + 'posts/' + @file).first(4) # array
+      # post details
+      @title = @post_details[0].strip
+      @author = @post_details[1].strip
+      @date = @post_details[2].strip
+      @updated = @post_details[3].strip
+      if @draft
+        # set date to this year, format YYYYMMDD
+        @date = Time.now.strftime("%Y%m%d")
+        @updated = @date
+      end
+      @lines = File.readlines(Rails.public_path + 'posts/' + @file).drop(4)
+      @all_lines = @lines.join
+      # override meta title
+      @meta_title = @title
+      # count words
+      @words = 0
+      @lines.drop(5).each do |line|
+        words = line.split(' ')
+        words.each do |word|
+          @words += 1
+        end
+      end
+    end
+  end
+  # ----------------------------------------------
   # GET /programming
   # ----------------------------------------------
   def programming
