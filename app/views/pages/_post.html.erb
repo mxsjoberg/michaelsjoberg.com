@@ -18,7 +18,7 @@
   </div>
 </div>
 <!-- post -->
-<div class="row justify-content-center mt-5">
+<div class="row justify-content-center mt-3">
   <% if false%>
   <div class="col-12 col-lg-<%= @size %> text-center">
     <!-- title -->
@@ -38,11 +38,10 @@
   </div>
   <% end %>
   <!-- toc -->
-  <% if false %>
-  <div id="toc" class="col-12 col-xl-<%= @size %> font-family-serif">
+  <div id="toc" class="col-1 col-xl-2 font-family-serif d-none d-xl-block" style="position:fixed;left:0">
     <div class="container-fluid mb-3">
-      <div class="row list border-solid--grey py-3 mb-3">
-        <div class="col-12 split-columns p-0">
+      <div class="row list py-3 mb-3">
+        <div class="col-12 p-0">
           <% @open = false %>
           <% @lines.each do |line| %>
             <% if line[0..2] == '## ' %>
@@ -75,7 +74,6 @@
       </div>
     </div>
   </div>
-  <% end %>
   <!-- render post  -->
   <div class="col-12 col-lg-<%= @size %> font-family-serif">
     <%= CommonMarker.render_html(@all_lines, [:UNSAFE, :GITHUB_PRE_LANG], [:table, :autolink]).html_safe %>
