@@ -26,11 +26,11 @@
             </div>
             <!-- body -->
             <% if @projects[project]['description'] %>
-            <div class="col-12 mt-2">
-              <blockquote>
+            <div class="col-12">
+              <!-- <blockquote> -->
                 <!-- description -->
-                <p><em><%= @projects[project]['description'] %></em></p>
-              </blockquote>
+                <p class="<% unless @projects[project]['url'] %>text-muted<% end %>"><%= @projects[project]['description'] %></p>
+              <!-- </blockquote> -->
             </div>
             <% end %>
           </div>
