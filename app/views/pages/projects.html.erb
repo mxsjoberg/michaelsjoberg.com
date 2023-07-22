@@ -10,8 +10,6 @@
   <!-- projects -->
   <div class="row justify-content-center mt-5">
     <div class="col-12 col-lg-<%= @size %>">
-      <!-- <p class="p-3 text-center border-solid--grey my-4">Read about my previous projects in <a href="/writing/projects-graveyard">Projects Graveyard</a>.</p> -->
-      <!-- projects -->
       <% @projects.keys.each do |project| %>
           <div class="row justify-content-center">
             <!-- title -->
@@ -27,10 +25,7 @@
             <!-- body -->
             <% if @projects[project]['description'] %>
             <div class="col-12">
-              <!-- <blockquote> -->
-                <!-- description -->
                 <p class="<% unless @projects[project]['url'] %>text-muted<% end %>"><%= @projects[project]['description'] %></p>
-              <!-- </blockquote> -->
             </div>
             <% end %>
           </div>
