@@ -92,6 +92,11 @@ pre {
     border-radius           : 2rem;
     // white-space             : pre;
 }
+code {
+    background              : transparent;
+    // color                   : $COLOR_BLACK;
+    font-weight             : $FONT_WEIGHT_700 !important;
+}
 blockquote {
     padding-left            : 1rem;
     border-left             : 0.5rem solid $COLOR_GREY_LIGHT;
@@ -136,6 +141,10 @@ html.dark {
     pre {
         background          : $COLOR_GREY_DARK;
         color               : $COLOR_SNOW;
+    }
+    code {
+        background              : transparent;
+        // color                   : $COLOR_SNOW;
     }
     blockquote {
         border-left         : 0.5rem solid $COLOR_GREY_DARK;
@@ -880,7 +889,7 @@ pre.prettyprint span {
 }
 
 code {
-    color                   : $COLOR_BLACK;
+    // color                   : $COLOR_BLACK;
     font-family             : $FONT_FAMILY_MONO;
     // font-weight             : $FONT_WEIGHT_600;
     font-weight             : $FONT_WEIGHT_400;
@@ -892,9 +901,9 @@ code {
     word-break              : break-word;
 }
 
-html.dark code {
-    color                   : $COLOR_WHITE;
-}
+// html.dark code {
+//     color                   : $COLOR_WHITE;
+// }
 
 sub,
 sup,
