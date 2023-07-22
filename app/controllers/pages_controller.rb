@@ -102,69 +102,93 @@ class PagesController < ApplicationController
     # params
     @post = params[:post]
     # posts.json
-    @posts = JSON.parse(File.read(Rails.public_path + 'posts.json'))
+    # @posts = JSON.parse(File.read(Rails.public_path + 'posts.json'))
     # render post
     unless (@post.nil?)
       # tag
-      if @post == "algorithms" || @post == "computer-science" || @post == "machine-learning" || @post == "finance" || @post == "misc" || @post == "projects"
-        @tag = @post
-        # filter posts.json by tag
-        @posts_array = Hash.new
-        @posts.keys.each do |post|
-          if @posts[post]['tags'].include? @post
-            @title = @posts[post]['title']
-            @tags = @posts[post]['tags']
-            @date = @posts[post]['date']
-            @updated = @posts[post]['updated']
-            @draft = @posts[post]['draft']
-            if @draft
-              # set date to this year, format YYYYMMDD
-              @date = Time.now.strftime("%Y%m%d")
-              @updated = @date
-            end
-            @read = @posts[post]['read']
-            @intro = @posts[post]['intro']
-            @posts_array[post] = {
-              title: @title,
-              tags: @tags,
-              date: @date,
-              updated: @updated,
-              draft: @draft,
-              read: @read,
-              intro: @intro
-            }
-          end
-        end
-        # set post to nil
-        @post = nil
-        # sort by date if not sorted already
-        @posts_array = @posts_array.sort_by{ |_,h| -h[:date].to_i }.to_h
-        # override meta title
-        @meta_title = "Computer Science"
-      else
-        @file = @post + '.md'
-        @post_details = File.readlines(Rails.public_path + 'posts/' + @file).first(4) # array
-        # post details
-        @title = @post_details[0].strip
-        @author = @post_details[1].strip
-        @date = @post_details[2].strip
-        @updated = @post_details[3].strip
-        if @draft
-          # set date to this year, format YYYYMMDD
-          @date = Time.now.strftime("%Y%m%d")
-          @updated = @date
-        end
-        @lines = File.readlines(Rails.public_path + 'posts/' + @file).drop(4)
-        @all_lines = @lines.join
-        # override meta title
-        @meta_title = @title + " | Michael Sjöberg"
-        # count words
-        @words = 0
-        @lines.drop(5).each do |line|
-          words = line.split(' ')
-          words.each do |word|
-            @words += 1
-          end
+      # if @post == "algorithms" || @post == "computer-science" || @post == "machine-learning" || @post == "finance" || @post == "misc" || @post == "projects"
+      #   @tag = @post
+      #   # filter posts.json by tag
+      #   @posts_array = Hash.new
+      #   @posts.keys.each do |post|
+      #     if @posts[post]['tags'].include? @post
+      #       @title = @posts[post]['title']
+      #       @tags = @posts[post]['tags']
+      #       @date = @posts[post]['date']
+      #       @updated = @posts[post]['updated']
+      #       @draft = @posts[post]['draft']
+      #       if @draft
+      #         # set date to this year, format YYYYMMDD
+      #         @date = Time.now.strftime("%Y%m%d")
+      #         @updated = @date
+      #       end
+      #       @read = @posts[post]['read']
+      #       @intro = @posts[post]['intro']
+      #       @posts_array[post] = {
+      #         title: @title,
+      #         tags: @tags,
+      #         date: @date,
+      #         updated: @updated,
+      #         draft: @draft,
+      #         read: @read,
+      #         intro: @intro
+      #       }
+      #     end
+      #   end
+      #   # set post to nil
+      #   @post = nil
+      #   # sort by date if not sorted already
+      #   @posts_array = @posts_array.sort_by{ |_,h| -h[:date].to_i }.to_h
+      #   # override meta title
+      #   @meta_title = "Computer Science"
+      # else
+      #   @file = @post + '.md'
+      #   @post_details = File.readlines(Rails.public_path + 'posts/' + @file).first(4) # array
+      #   # post details
+      #   @title = @post_details[0].strip
+      #   @author = @post_details[1].strip
+      #   @date = @post_details[2].strip
+      #   @updated = @post_details[3].strip
+      #   if @draft
+      #     # set date to this year, format YYYYMMDD
+      #     @date = Time.now.strftime("%Y%m%d")
+      #     @updated = @date
+      #   end
+      #   @lines = File.readlines(Rails.public_path + 'posts/' + @file).drop(4)
+      #   @all_lines = @lines.join
+      #   # override meta title
+      #   @meta_title = @title + " | Michael Sjöberg"
+      #   # count words
+      #   @words = 0
+      #   @lines.drop(5).each do |line|
+      #     words = line.split(' ')
+      #     words.each do |word|
+      #       @words += 1
+      #     end
+      #   end
+      # end
+      @file = @post + '.md'
+      @post_details = File.readlines(Rails.public_path + 'posts/' + @file).first(4) # array
+      # post details
+      @title = @post_details[0].strip
+      @author = @post_details[1].strip
+      @date = @post_details[2].strip
+      @updated = @post_details[3].strip
+      if @draft
+        # set date to this year, format YYYYMMDD
+        @date = Time.now.strftime("%Y%m%d")
+        @updated = @date
+      end
+      @lines = File.readlines(Rails.public_path + 'posts/' + @file).drop(4)
+      @all_lines = @lines.join
+      # override meta title
+      @meta_title = @title + " | Michael Sjöberg"
+      # count words
+      @words = 0
+      @lines.drop(5).each do |line|
+        words = line.split(' ')
+        words.each do |word|
+          @words += 1
         end
       end
     # render all posts unless hash already created by filter
