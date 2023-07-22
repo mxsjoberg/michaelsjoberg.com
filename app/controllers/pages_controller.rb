@@ -189,37 +189,38 @@ class PagesController < ApplicationController
       rescue
         @file_content = nil
       end
-    end
-    # NEW
-    @dir_programming = []
-    Dir.glob(Rails.public_path + 'programming/*.md') do |filename|
-      next if filename.include? 'OLD'
-      @post_details = File.readlines(filename).first(6)
-      # draft
-      next if @post_details[0].include? '<'
-      # post details
-      @title = @post_details[0].strip
-      @author = @post_details[1].strip
-      @date = @post_details[2].strip
-      @updated = @post_details[3].strip
-      @language = @post_details[4].strip
-      @category = @post_details[5].strip
-      @filename = filename.split('/').last.split('.').first
-      @dir_programming.push({ 
-        title: @title,
-        author: @author,
-        date: @date,
-        updated: @updated,
-        language: @language,
-        category: @category,
-        filename: @filename
-      })
-    end
-    @dir_programming.sort! { |a, b| Date.parse(b[:date]) <=> Date.parse(a[:date]) }
-    # group on language then category
-    @dir_programming_grouped = @dir_programming.group_by { |d| d[:language] }
-    @dir_programming_grouped.each do |key, value|
-      @dir_programming_grouped[key] = value.group_by { |d| d[:category] }
+    else
+      # NEW
+      @dir_programming = []
+      Dir.glob(Rails.public_path + 'programming/*.md') do |filename|
+        next if filename.include? 'OLD'
+        @post_details = File.readlines(filename).first(6)
+        # draft
+        next if @post_details[0].include? '<'
+        # post details
+        @title = @post_details[0].strip
+        @author = @post_details[1].strip
+        @date = @post_details[2].strip
+        @updated = @post_details[3].strip
+        @language = @post_details[4].strip
+        @category = @post_details[5].strip
+        @filename = filename.split('/').last.split('.').first
+        @dir_programming.push({ 
+          title: @title,
+          author: @author,
+          date: @date,
+          updated: @updated,
+          language: @language,
+          category: @category,
+          filename: @filename
+        })
+      end
+      @dir_programming.sort! { |a, b| Date.parse(b[:date]) <=> Date.parse(a[:date]) }
+      # group on language then category
+      @dir_programming_grouped = @dir_programming.group_by { |d| d[:language] }
+      @dir_programming_grouped.each do |key, value|
+        @dir_programming_grouped[key] = value.group_by { |d| d[:category] }
+      end
     end
   end
   # ----------------------------------------------
