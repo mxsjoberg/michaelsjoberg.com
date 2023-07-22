@@ -2,10 +2,10 @@ Crafting the Language of Play, Part 1: Introduction and operator precedence
 Michael Sjöberg
 May 29, 2023
 May 29, 2023
+Python
+Programming Languages
 
 This is the first post in a series of posts on implementing the new non-trivial programming language, PlayCode. It is open source and all code is available [here](https://github.com/mixmaester/playcode).
-
-Note that it is likely going to change a lot until there is a better understanding of what this programming language is supposed to be.
 
 ## <a name="1" class="anchor"></a> [What is PlayCode?](#1)
 
@@ -53,7 +53,7 @@ print x -> 2
 
 There are two ways to include comments, `--` and `->`, which also can be used as helpers in source for more readable code.
 
-#### Implementation language and method
+### <a name="1.1" class="anchor"></a> [Implementation language and method](1.1)
 
 I started working on PlayCode before writing this post and managed to implement a basic but working structure for lexer and parser in C++ (mainly to refresh my knowledge of C++ programming). The code is available [here](https://github.com/mixmaester/playcode/blob/main/fpc.cpp). However, having to refresh it in the first place is probably due to its insane complexity. It is not a very fun language to work with, so decided to start over in Python. I could always rewrite in C++, C, or something like Zig later if performance is important. 
 
@@ -265,7 +265,7 @@ def parse(tokens):
     return tree
 ```
 
-#### Program
+### <a name="4.1" class="anchor"></a> [Program](4.1)
 
 The program production rule is the starting point in the grammar, so `parse_program` is the first non-terminal called. It matches the current token with `PRINT`, which is currently the only acceptable statement in the language. It then calls `parse_expression` to parse the expression as per the grammar rule.
 
@@ -288,7 +288,7 @@ def parse_program(tokens, current_token_index):
     return program, current_token_index
 ```
 
-#### Expression
+### <a name="4.2" class="anchor"></a> [Expression](4.2)
 
 The expression, term, and factor rules are primarily there to enforce operator precedence, where the expression rule is the highest precedence, followed by term, and then factor.
 
@@ -323,7 +323,7 @@ def parse_expression(tokens, current_token_index):
     return expression, current_token_index
 ```
 
-#### Term
+### <a name="4.3" class="anchor"></a> [Term](4.3)
 
 The term rule is similar to the expression rule but matches `MULTIPLY` or `DIVIDE` instead of `PLUS` or `MINUS`. It first calls `parse_factor`, which is non-optional, then the optional part zero or more times.
 
@@ -356,7 +356,7 @@ def parse_term(tokens, current_token_index):
     return term, current_token_index
 ```
 
-#### Factor
+### <a name="4.4" class="anchor"></a> [Factor](4.4)
 
 The factor rule has the lowest precedence and matches either an `INTEGER` or `LPAR`, which indicates the start of another expression. If `LPAR` is matched, then it calls `parse_expression` and the process starts all over again. It finally matches `RPAR` or raises an error (no closing parantheses).
 
