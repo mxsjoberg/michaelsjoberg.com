@@ -120,7 +120,6 @@ blockquote {
     padding-left            : 1rem;
     border-left             : 0.5rem solid rgba($COLOR_GREY_LIGHT, 0.1);
 }
-
 blockquote p {
     color                   : rgba($COLOR_BLACK, 0.5);
     font-style              : italic;
@@ -140,7 +139,7 @@ table thead {
 td {
     padding                 : 0.5rem 1rem;
     color                   : rgba($COLOR_BLACK, 0.5);
-    border                  : 1px solid $COLOR_GREY_LIGHT;
+    border                  : 1px solid rgba($COLOR_GREY_LIGHT, 0.1);
     text-align              : center;
     vertical-align          : middle;
     width                   : 25%;
@@ -190,7 +189,7 @@ button.expand-button {
     color                   : rgba($COLOR_BLACK, 0.5) !important;
 }
 .background--grey {
-    background              : $COLOR_GREY_LIGHT;
+    background              : rgba($COLOR_GREY_LIGHT, 0.1);
 }
 
 html.dark {
@@ -372,7 +371,7 @@ input#search:focus {
 }
 
 .border-solid--grey {
-    border                  : 1px solid $COLOR_GREY_LIGHT;
+    border                  : 1px solid rgba($COLOR_GREY_LIGHT, 0.1);
 }
 
 .no-border-top {
