@@ -232,7 +232,7 @@ class PagesController < ApplicationController
       @lines = File.readlines(Rails.public_path + 'posts/' + @file).drop(4)
       @all_lines = @lines.join
       # override meta title
-      @meta_title = @title + " | Michael Sjöberg"
+      @meta_title = @title
       # count words
       @words = 0
       @lines.drop(5).each do |line|
