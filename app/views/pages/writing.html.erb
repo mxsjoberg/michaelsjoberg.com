@@ -8,22 +8,24 @@
   <!-- otherwise -->
   <% else %>
   <!-- intro -->
-  <div class="row justify-content-center">
+  <!-- <div class="row justify-content-center">
     <div class="col-12 col-lg-<%= @size %> text-center">
       <p class="mb-0">List of writings</p>
     </div>
-  </div>
+  </div> -->
   <!-- writing -->
-  <div class="row justify-content-center mt-5">
+  <div class="row justify-content-center">
     <div class="col-12 col-lg-<%= @size %>">
       <div class="row list">
         <% @dir_posts.each do |post| %>
         <% if post[:date].last(4) != year %>
           <% year = post[:date].last(4) %>
           <!-- year -->
-          <li class="col-12 text-center">
-            <p class="font-weight-bold <% if @dir_posts.first != post %>my-3<% else %>mb-3<% end %>"><%= year %></p>
+          <% if post[:date].last(4).to_s != Time.new.year.to_s%>
+          <li class="col-12">
+            <p class="text-muted mb-3"><%= year %></p>
           </li>
+          <% end %>
         <% end %>
         <!-- post:meta -->
         <li class="list-item no-bullet col-12">
