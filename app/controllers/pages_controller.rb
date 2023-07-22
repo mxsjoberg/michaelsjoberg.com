@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   before_action :set_meta
   $author = "Michael Sjöberg"
   $version = "5.0.0"
-  $updated = "July 11, 2023"
+  $updated = "July 22, 2023"
   # ----------------------------------------------
   # GET /
   # GET /about
@@ -21,7 +21,7 @@ class PagesController < ApplicationController
   # ----------------------------------------------
   def courses
     @route_path = "courses"
-    @meta_title = "Courses | " + $author
+    @meta_title = $author
     # courses
     @courses = JSON.parse(File.read(Rails.public_path + 'courses.json'))
   end
@@ -30,16 +30,39 @@ class PagesController < ApplicationController
   # ----------------------------------------------
   def stack
     @route_path = "stack"
-    @meta_title = "Stack | " + $author
+    @meta_title = $author
     # stack
     @stack = JSON.parse(File.read(Rails.public_path + 'stack.json'))
+  end
+  # ----------------------------------------------
+  # GET /projects
+  # ----------------------------------------------
+  def projects
+    @route_path = "projects"
+    @meta_title = $author
+    # projects.json
+    @projects = JSON.parse(File.read(Rails.public_path + 'projects.json'))
+  end
+  # ----------------------------------------------
+  # GET /projects/attefall
+  # ----------------------------------------------
+  def attefall
+    @route_path = "attefall"
+    @meta_title = $author
+    @images = []
+    Dir.glob(Rails.public_path + 'images/attefall/*.jpg') do |filename|
+      next if filename.include? '_sm'
+      @file = filename.split('/').last
+      @images.push(@file)
+    end
   end
   # ----------------------------------------------
   # GET /programming
   # ----------------------------------------------
   def programming
     @route_path = "programming"
-    @meta_title = "Programming | " + $author
+    @meta_title = $author
+    # OLD
     # params
     @category = params[:category]
     @group = params[:group]
@@ -59,35 +82,37 @@ class PagesController < ApplicationController
         @file_content = nil
       end
     end
-  end
-  # ----------------------------------------------
-  # GET /projects
-  # ----------------------------------------------
-  def projects
-    @route_path = "projects"
-    @meta_title = "Projects | " + $author
-    # projects.json
-    @projects = JSON.parse(File.read(Rails.public_path + 'projects.json'))
-  end
-  # ----------------------------------------------
-  # GET /projects/attefall
-  # ----------------------------------------------
-  def attefall
-    @route_path = "attefall"
-    @meta_title = "Building a small house in Sweden | " + $author
-    @images = []
-    Dir.glob(Rails.public_path + 'images/attefall/*.jpg') do |filename|
-      next if filename.include? '_sm'
-      @file = filename.split('/').last
-      @images.push(@file)
+    # NEW
+    @dir_programming = []
+    Dir.glob(Rails.public_path + 'programming/*.md') do |filename|
+      next if filename.include? 'OLD'
+      @post_details = File.readlines(filename).first(5) # array
+      # draft
+      next if @post_details[0].include? '<'
+      # post details
+      @title = @post_details[0].strip
+      @author = @post_details[1].strip
+      @date = @post_details[2].strip
+      @updated = @post_details[3].strip
+      @category = @post_details[4].strip
+      @filename = filename.split('/').last.split('.').first
+      @dir_programming.push({ 
+        title: @title,
+        author: @author,
+        date: @date,
+        updated: @updated,
+        category: @category,
+        filename: @filename
+      })
     end
+    @dir_programming.sort! { |a, b| Date.parse(b[:date]) <=> Date.parse(a[:date]) }
   end
   # ----------------------------------------------
   # GET /writing
   # ----------------------------------------------
   def writing
     @route_path = "writing"
-    @meta_title = "Writing | " + $author
+    @meta_title = $author
     # params
     @post = params[:post]
     # posts.json
@@ -212,8 +237,8 @@ class PagesController < ApplicationController
     # meta
     def set_meta
       @meta_image = "fav.png"
-      @meta_site_name = "michaelsjoeberg.com"
+      @meta_site_name = "michaelsjoberg.com"
       @meta_card_type = "summary"
-      @meta_author = "@miqqeio"
+      @meta_author = "@mixmaester"
     end
 end
