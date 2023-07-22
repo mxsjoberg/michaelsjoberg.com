@@ -163,10 +163,10 @@ html.dark {
         color               : $COLOR_WHITE !important;
     }
     blockquote {
-        border-left         : 0.5rem solid $COLOR_GREY_DARK;
+        border-left         : 0.5rem solid rgba($COLOR_GREY_LIGHT, 0.5);
     }
     blockquote p {
-        color               : rgba($COLOR_WHITE, 0.5);   
+        color               : $COLOR_GREY_LIGHT;
     }
     td {
         color               : $COLOR_WHITE;
@@ -196,12 +196,12 @@ button.expand-button {
     color                   : rgba($COLOR_BLACK, 0.5) !important;
 }
 .background--grey {
-    background              : rgba($COLOR_GREY_LIGHT, 0.1);
+    background              : rgba($COLOR_BLACK, 0.05);
 }
 
 html.dark {
     .text-muted             { color: $COLOR_GREY_LIGHT !important; }
-    .background--grey       { background: $COLOR_GREY_DARK; }
+    .background--grey       { background: $COLOR_BLACK; }
 }
 
 @include media-breakpoint-up(lg) {
@@ -1009,7 +1009,7 @@ html.dark .border-left {
     border-left: 0.25rem solid $COLOR_GREY_DARK !important;
 }
 
-html.dark .border-solid--grey { border: 1px solid $COLOR_GREY_DARK; }
+html.dark .border-solid--grey { border: 4px solid $COLOR_BLACK; }
 
 html.dark h1,
 html.dark h2,
