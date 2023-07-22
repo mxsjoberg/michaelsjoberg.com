@@ -3,7 +3,7 @@ Michael Sjöberg
 Sep 1, 2022
 May 27, 2023
 C
-Lecture Notes
+Lecture-Notes
 
 ## <a name="1" class="anchor"></a> [Hardware and software solutions](#1)
 
