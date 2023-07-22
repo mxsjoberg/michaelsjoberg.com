@@ -81,6 +81,7 @@ em {
 }
 img {
     max-width               : 100%;
+    border-radius           : 2rem;
 }
 code,
 pre {
@@ -713,9 +714,9 @@ li.list-item.no-bullet {
     .split-columns {
         column-count        : 2;
     }
-    #programming_wrapper.split-columns {
-        column-count        : 3;   
-    }
+    // #programming_wrapper.split-columns {
+    //     column-count        : 2;
+    // }
 }
 
 // @include media-breakpoint-up(xl) {
