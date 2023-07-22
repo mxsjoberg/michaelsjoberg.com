@@ -139,7 +139,7 @@ table thead {
 td {
     padding                 : 0.5rem 1rem;
     color                   : $COLOR_BLACK;
-    border                  : 1px solid rgba($COLOR_GREY_LIGHT, 0.1);
+    border                  : 4px solid #EDEDEA;
     text-align              : center;
     vertical-align          : middle;
     width                   : 25%;
@@ -149,11 +149,18 @@ td[align=left] {
     text-align              : left;
 }
 
+#scroll-percent-wrapper {
+    background              : transparent !important;
+}
+
 html.dark {
     background-color        : darken($COLOR_BLACK, 2%);
 
     em {
         color               : rgba($COLOR_WHITE, 0.5) !important;
+    }
+    code {
+        color               : $COLOR_WHITE !important;
     }
     blockquote {
         border-left         : 0.5rem solid $COLOR_GREY_DARK;
@@ -163,7 +170,7 @@ html.dark {
     }
     td {
         color               : $COLOR_WHITE;
-        border              : 1px solid $COLOR_GREY_DARK;
+        border              : 4px solid $COLOR_BLACK;
     }
 }
 
