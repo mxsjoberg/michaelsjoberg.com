@@ -5,15 +5,8 @@ May 28, 2023
 Python
 Computational-Intelligence
 
-## <a name="1" class="anchor"></a> [Genetic algorithms](#1)
+In this post, we'll implement the binary genetic algorithm (BGA) in Python.
 
-Genetic algorithms is a subclass of evolutionary computing and works by searching through a large set of potential solutions to find the best one based on some measurement of fitness (as in survival of the fittest). As in biology, diversification in solutions is introduced via different selection methods, crossover, and mutation.
-
-A binary genetic algorithm (BGA) is one type of genetic algorithm that is effective at working with both continuous and discrete variables, as well as optimizing for many decision variables at once.
-
-#### Dependencies
-
-Python and `tabulate` (optional but makes tables pretty).
 
 ```python
 import random
@@ -33,13 +26,13 @@ def print_table(population):
     print(tabulate(population, headers=['n', 'encoding', 'decoded x, y', 'cost'], floatfmt=".3f", tablefmt="simple"), end="\n\n")
 ```
 
-## <a name="2" class="anchor"></a> [Binary Genetic Algorithm](#2)
+## <a name="2" class="anchor"></a> [BGA](#2)
 
-In BGA, decision variables are represented as binary chromosomes and each gene in the chromosome is encoded using a certain number of bits, `M_BITS`. Variables encoded for selection, crossover, and mutation, and then decoded for fitness evaluation using the cost function `f`. 
+In BGA, decision variables are represented as binary chromosomes where each gene is encoded using a certain number of bits, `M_BITS`. The decision variables are encoded for selection, crossover, and mutation, and then decoded again to evaluate fitness using the cost function `f`. 
 
-A population `N_POP` is a group of chromosomes, where each chromosome represent a potential solution to the optimization problem.
+The population `N_POP` is a group of chromosomes. A chromosome represent a potential solution to the optimization problem.
 
-#### Encoding
+### <a name="2.1" class="anchor"></a> [Encoding](#2.1)
 
 The function for encoding a decimal number into its binary representation.
 
@@ -63,11 +56,11 @@ def encode(x, x_low, x_high, m):
 assert encode(9, -10, 14, 5) == [1, 1, 0, 0, 1]
 ```
 
-The variables `x_low` and `x_high` represent lower and upper bounds of the range for `x`. The variable `m` is the number of bits used to encode genes (note that `m` is also referred to as `M_BITS`).
+The variables `x_low` and `x_high` are lower and upper bounds for `x`. The variable `m` is the number of bits used to encode genes (note that `m` is also referred to as `M_BITS`).
 
-#### Decoding
+### <a name="2.2" class="anchor"></a> [Decoding](#2.2)
 
-The function for decoding a binary representation into its decimal number is `x = x_low + B * ((x_high - x_low) / ((2 ** m) - 1))`, where `B` is binary value to convert into decimal.
+The function for decoding a binary representation into its decimal number, `x = x_low + B * ((x_high - x_low) / ((2 ** m) - 1))`, where `B` is binary value to convert into decimal.
 
 ```python
 def decode(B, x_low, x_high, m):    
@@ -78,9 +71,9 @@ def decode(B, x_low, x_high, m):
 assert int(decode([1, 1, 0, 0, 1], -10, 14, 5)) == 9
 ```
 
-#### Generate population
+### <a name="2.3" class="anchor"></a> [Generate population](#2.3)
 
-The initial population is generated arbitrarily. The chromosomes are decoded and evaluated using the cost function and appended to a cost table, which is sorted in ascending order (lower cost is better).
+The initial population is generated using `random`. The chromosomes are decoded and evaluated using the cost function `f` and then appended to the cost table, which is sorted in ascending order (lower cost is better).
 
 ```python
 def generate_population(n_pop, x_range, y_range, m_bits):
@@ -107,7 +100,7 @@ def generate_population(n_pop, x_range, y_range, m_bits):
     return pop_lst
 ```
 
-Below is an example population.
+Here is an example population.
 
 ```python
 example_population = generate_population(
@@ -128,9 +121,9 @@ print_table(example_population)
 #   5  [1, 1, 1, 0, 0, 0, 1, 0]  [19.0, -2.33]   212.130
 ```
 
-#### Generate offsprings (double-point crossover)
+### <a name="2.4" class="anchor"></a> [Generate offsprings (double-point crossover)](#2.4)
 
-Offsprings are generated using double-point crossover (there are other methods).
+In this post, offsprings are generated using double-point crossover, but there are many other methods.
 
 ```python
 def generate_offsprings(population, crossover):
@@ -145,11 +138,16 @@ def generate_offsprings(population, crossover):
     return offsprings_lst
 ```
 
-Basically, select two parent chromosomes from the population and choose two points within them as crossover points (at random or otherwise). Split the chromosomes at these points to create four segments. The first and fourth segments are swapped between the two parent chromosomes to create two new offsprings.
+Basically, this function:
 
-#### Mutation
+- selects two parent chromosomes from the population
+- chooses two points within them as crossover points (random or otherwise)
+- split the chromosomes at these points to create four segments
+- swap first and fourth segments between the two parent chromosomes to create two new offsprings
 
-Mutation works by introducing small random changes to the chromosomes. Mutations allows the algorithm to explore a wider range of potential solutions and avoids getting stuck in local optima.
+### <a name="2.5" class="anchor"></a> [Mutation](#2.5)
+
+Mutation is the process used to introduce random changes to the chromosomes. Mutation is useful to allow the algorithm to explore a wider range of potential solutions and to avoid getting stuck in local optima.
 
 ```python
 def mutate(offsprings, mu, m_bits):
@@ -168,7 +166,7 @@ def mutate(offsprings, mu, m_bits):
 
 The parameter `mu` (also referred to as `MUTATE_RATE`) is the mutation rate and is used with `M_BITS` to decide how many bits to flip. The bits are flipped at random.
 
-#### Update population
+### <a name="2.6" class="anchor"></a> [Update population](#2.6)
 
 The population is updated by replacing some or all of the existing chromosomes with the new offsprings. The number of chromosomes that are kept from the previous population is determined by the `keep` parameter (also referred to as `N_KEEP`).
 
@@ -199,7 +197,7 @@ def update_population(current_population, offsprings, keep, x_range, y_range, m_
     return current_population
 ```
 
-The offsprings are evaluated using the cost function and sorted based on their fitness. The `N_KEEP` fittest offsprings then replace the same number of least fit chromosomes in the previous population.
+The offsprings are evaluated using the cost function and sorted based on their fitness (lowest cost). The `N_KEEP` fittest offsprings then replaces the same number of least-fit chromosomes in the previous population.
 
 ## <a name="3" class="anchor"></a> [Testing](#3)
 
@@ -210,13 +208,13 @@ M_BITS = 4
 N_POP = 4
 N_KEEP = 2
 MUTATE_RATE = 0.1
-# max number of generations (for sanity check)
+# max number of generations (feel free to change to stop at convergence)
 MAX_GEN = 10000
-# crossover
+# crossover points
 crossover = [3, 6]
 ```
 
-The cost function is `f(x, y) = -x * ((y / 2) - 10)`, x-range is `[10, 20]`, and y-range is `[-5, 7]`.
+The cost function to minimize is `f(x, y) = -x * ((y / 2) - 10)`, where bounds for x-range is `[10, 20]`, and bounds for y-range is `[-5, 7]`.
 
 ```python
 # cost function
