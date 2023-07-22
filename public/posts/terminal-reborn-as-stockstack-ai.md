@@ -2,8 +2,8 @@ Terminal reborn as Stockstack.AI
 Michael Sjöberg
 Jul 8, 2023
 Jul 8, 2023
-None
-Projects
+
+
 
 I recently re-launched Terminal as Stockstack.AI, available here: [stockstack.ai](https://stockstack.ai). I might change domain again since nothing seems to beat .com, so sorry in advance! If you can't stand the .AI hype, it's also available here: [trystockstack.com](https://www.trystockstack.com/).
 
