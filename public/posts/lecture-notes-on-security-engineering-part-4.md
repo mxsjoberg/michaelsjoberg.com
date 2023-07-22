@@ -2,6 +2,8 @@ Lecture notes on security engineering, part 4: The stack
 Michael Sjöberg
 Aug 30, 2022
 May 27, 2023
+C
+Lecture Notes
 
 ## <a name="1" class="anchor"></a> [Stack layout](#1)
 
@@ -55,7 +57,7 @@ A frame contains function parameters, which are pushed to stack by caller, retur
 
 The epilogue is executed by the callee to deallocate local variables, `%esp = %ebp`, save result in some register, such as `%eax`, restore frame pointer of caller function, and then resume execution from saved return address.
 
-#### Function calls and stack layout
+### <a name="2.1" class="anchor"></a> [Function calls and stack layout](#2.1)
 
 ```c
 int convert(char *str) {
@@ -98,7 +100,7 @@ Frame pushed by `convert`.
 | `result` | `0xbfff7fdc` |
 | paramater to `atoi` | `0xbfff7fd8` |
 
-#### Function calls in assembly
+### <a name="2.2" class="anchor"></a> [Function calls in assembly](#2.2)
 
 Below is a function call and its assembly code. The assembly code is generated with [Compiler Explorer](https://godbolt.org/) using `x86-64 gcc 4.1.2` and flag `-m32` for 32-bit, AT&T syntax).
 
@@ -164,13 +166,13 @@ main:
 
 A stack overflow, or stack smashing, is a special case of buffer overflow on the stack or heap, where data can overflow allocated buffer and overwrite other memory locations, such as return address.
 
-#### NOP slide
+### <a name="3.1" class="anchor"></a> [NOP slide](#3.1)
 
 A [NOP slide](https://en.wikipedia.org/wiki/NOP_slide), or `nop`-sled, is a sequence of do-nothing instructions used to fill stack and eventually reach a jump to some injected shellcode.
 
 Shellcode is any code used to start a shell, such as `execve("/bin/sh")`.
 
-#### Stack-based buffer overflow attacks
+### <a name="3.2" class="anchor"></a> [Stack-based buffer overflow attacks](#3.2)
 
 Below is a program vulnerable to a buffer overflow attack using `nop`-sled and injected shellcode.
 
