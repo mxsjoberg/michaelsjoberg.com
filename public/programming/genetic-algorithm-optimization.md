@@ -3,6 +3,7 @@ Michael Sjöberg
 Jan 05, 2023
 May 28, 2023
 Python
+Computational Intelligence
 
 ## <a name="1" class="anchor"></a> [Genetic algorithms](#1)
 
