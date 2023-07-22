@@ -37,9 +37,9 @@
           <div class="row list">
             <% @dir_programming_grouped[language].keys.each do |category| %>
             <!-- header -->
-            <li class="list_header background--grey col-12 mb-3">
+            <li class="list_header background--grey border-top-rounded border-bottom-rounded col-12 mb-3">
               <a name="<%= language %>_<%= category.gsub('-', '_') %>" class="anchor-2"></a>
-              <p class="mt-2 mb-2"><%= category.titleize %></p>
+              <p class="my-2"><%= category.titleize %></p>
             </li>
             <!-- links -->
             <div class="container-fluid">
@@ -64,9 +64,9 @@
           <div class="row list">
             <% @programming[language.downcase].keys.each do |category| %>
             <!-- header -->
-            <li class="list_header background--grey col-12 my-3">
+            <li class="list_header background--grey border-top-rounded border-bottom-rounded col-12 mb-3">
               <a name="<%= language.downcase %>_<%= category.gsub('-', '_') %>" class="anchor-2"></a>
-              <p class="mt-2 mb-2"><%= category.titleize %></p>
+              <p class="my-2"><%= category.titleize %></p>
             </li>
             <!-- list items -->
             <div class="container-fluid">
@@ -133,9 +133,9 @@
           <div class="row list">
             <% @programming[category].keys.each do |group| %>
             <!-- header -->
-            <li class="list_header background--grey col-12 mb-3">
+            <li class="list_header background--grey border-top-rounded border-bottom-rounded col-12 mb-3">
               <a name="<%= category %>_<%= group.gsub('-', '_') %>" class="anchor-2"></a>
-              <p class="mt-2 mb-2"><%= group.titleize %></p>
+              <p class="my-2"><%= group.titleize %></p>
             </li>
             <!-- list items -->
             <div class="container-fluid">
