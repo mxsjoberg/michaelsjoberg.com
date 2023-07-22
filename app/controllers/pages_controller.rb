@@ -72,18 +72,19 @@ class PagesController < ApplicationController
       # get file in files
       @file = @files.select { |file| file.include? @file }.first
       # @post_details = File.readlines(Rails.public_path + 'posts/' + @file).first(4) # array
-      @post_details = File.readlines(@file).first(4) # array
+      @post_details = File.readlines(@file).first(5) # array
       # post details
       @title = @post_details[0].strip
       @author = @post_details[1].strip
       @date = @post_details[2].strip
       @updated = @post_details[3].strip
+      @category = @post_details[4].strip
       if @draft
         # set date to this year, format YYYYMMDD
         @date = Time.now.strftime("%Y%m%d")
         @updated = @date
       end
-      @lines = File.readlines(Rails.public_path + 'posts/' + @file).drop(4)
+      @lines = File.readlines(Rails.public_path + 'posts/' + @file).drop(5)
       @all_lines = @lines.join
       # override meta title
       @meta_title = @title
