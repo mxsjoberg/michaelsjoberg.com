@@ -61,17 +61,6 @@ class PagesController < ApplicationController
     end
   end
   # ----------------------------------------------
-  # GET /finance
-  # ----------------------------------------------
-  # def finance
-  #   @route_path = "finance"
-  #   @meta_title = "Finance"
-  #   # finance.json
-  #   @finance = JSON.parse(File.read(Rails.public_path + 'finance.json'))
-  #   @url = @finance["url"]
-  #   @format = @finance["format"]
-  # end
-  # ----------------------------------------------
   # GET /projects
   # ----------------------------------------------
   def projects
