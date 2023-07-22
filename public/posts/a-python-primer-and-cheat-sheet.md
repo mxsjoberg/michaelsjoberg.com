@@ -3,7 +3,7 @@ Michael Sjöberg
 Nov 4, 2018
 Nov 4, 2018
 
-## <a name="1" class="anchor"></a> [Introduction](#1)
+
 
 Python program structure, build and run with `$ python <filename>.py`.
 
@@ -179,7 +179,7 @@ n
 
 ## <a name="4" class="anchor"></a> [Strings](#4)
 
-#### Indexing
+### <a name="4.1" class="anchor"></a> [Indexing](#4.1)
 
 String indexing.
 
@@ -208,7 +208,7 @@ string[0:-1:2]
 # poo
 ```
 
-#### Operations
+### <a name="4.2" class="anchor"></a> [Operations](#4.2)
 
 String operations.
 
@@ -234,7 +234,7 @@ string.islower()    # True
 string.isupper()    # False
 ```
 
-#### Counting and finding letters in text
+### <a name="4.3" class="anchor"></a> [Counting and finding letters in text](#4.3)
 
 ```python
 string.count('p', 0, len(string))
@@ -243,7 +243,7 @@ string.find('t', 1, len(string))
 # 3
 ```
 
-#### Removing whitespace from string
+### <a name="4.4" class="anchor"></a> [Removing whitespace from string](#4.4)
 
 ```python
 string = '    some text    '
@@ -257,7 +257,7 @@ string.strip()      # 'some text'
 
 ## <a name="5" class="anchor"></a> [Data structures](#5)
 
-#### Lists
+### <a name="5.1" class="anchor"></a> [Lists](#5.1)
 
 Lists are mutable.
 
@@ -294,14 +294,14 @@ list.sort()
 # [-2, 200, [1.0, 0.0], 'ADD', 'NULL', 'RANDOM']
 ```
 
-#### Create list from a string
+### <a name="5.2" class="anchor"></a> [Create list from a string](#5.2)
 
 ```python
 list_string = list('100B')
 # ['1', '0', '0', 'B']
 ```
 
-#### Tuples
+### <a name="5.3" class="anchor"></a> [Tuples](#5.3)
 
 Tuples are immutable.
 
@@ -323,14 +323,14 @@ tuple = tuple_one + tuple_two
 # (1.0, 'String', 4, 'Alpha', 'Bravo', (1, 0))
 ```
 
-#### Create tuple from a list
+### <a name="5.4" class="anchor"></a> [Create tuple from a list](#5.4)
 
 ```python
 tuple_list = tuple([100, 'B'])
 # (100, 'B')
 ```
 
-#### Dictionaries
+### <a name="5.5" class="anchor"></a> [Dictionaries](#5.5)
 
 Dictionaries are key-value pairs.
 
@@ -382,7 +382,7 @@ del dict['Cole']
 # True
 ```
 
-#### Create dictionary from a list of tuples
+### <a name="5.6" class="anchor"></a> [Create dictionary from a list of tuples](#5.6)
 
 ```python
 dict_list_tuples = dict([(1, "x"), (2, "y"), (3, "z")])
@@ -393,7 +393,7 @@ dict_list_tuples
 # {1: 'x', 2: 'y', 3: 'z'}
 ```
 
-#### Sets
+### <a name="5.7" class="anchor"></a> [Sets](#5.7)
 
 Sets are unordered collections.
 
@@ -462,7 +462,7 @@ set_c > set_a
 
 ## <a name="6" class="anchor"></a> [Conditionals](#6)
 
-#### If-Else
+### <a name="6.1" class="anchor"></a> [If-Else](#6.1)
 
 ```python
 a = 1.0
@@ -481,14 +481,14 @@ else:
     pass
 ```
 
-#### Single line expressions
+### <a name="6.2" class="anchor"></a> [Single line expressions](#6.2)
 
 ```python
 c = (a / b) if a != 0 else a
 # 0.2
 ```
 
-#### Logical Operators
+### <a name="6.3" class="anchor"></a> [Logical Operators](#6.3)
 
 Booleans.
 
@@ -516,7 +516,7 @@ Numbers.
 
 ## <a name="7" class="anchor"></a> [Loops](#7)
 
-#### For
+### <a name="7.1" class="anchor"></a> [For](#7.1)
 
 ```python
 numbers = [1, 2, 3, 4]
@@ -537,7 +537,7 @@ for i in range(10):
         pass
 ```
 
-#### Using for-loops and dictionaries
+### <a name="7.2" class="anchor"></a> [Using for-loops and dictionaries](#7.2)
 
 ```python
 dict = { 'Alpha': 1, 'Beta': 2 }
@@ -558,7 +558,7 @@ for key, value in dict.items():
     # ('Beta', 2)
 ```
 
-#### While
+### <a name="7.3" class="anchor"></a> [While](#7.3)
 
 ```python
 a = 0
@@ -722,7 +722,7 @@ with open('path/to/file.txt', 'w') as file:
 
 ## <a name="11" class="anchor"></a> [Modules](#11)
 
-#### Datetime
+### <a name="11.1" class="anchor"></a> [Datetime](#11.1)
 
 ```python
 from datetime import datetime
@@ -757,7 +757,7 @@ difference.days
 # 12
 ```
 
-#### Math
+### <a name="11.2" class="anchor"></a> [Math](#11.2)
 
 ```python
 import math
