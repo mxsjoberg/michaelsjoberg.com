@@ -57,7 +57,7 @@ class PagesController < ApplicationController
     end
   end
   # ----------------------------------------------
-  # GET /post
+  # GET /post/:post
   # ----------------------------------------------
   def post
     @route_path = "post"
@@ -67,7 +67,12 @@ class PagesController < ApplicationController
     # render post
     unless (@post.nil?)
       @file = @post + '.md'
-      @post_details = File.readlines(Rails.public_path + 'posts/' + @file).first(4) # array
+      # join files in two folders
+      @files = Dir.glob(Rails.public_path + 'posts/*.md') + Dir.glob(Rails.public_path + 'programming/*.md')
+      # get file in files
+      @file = @files.select { |file| file.include? @file }.first
+      # @post_details = File.readlines(Rails.public_path + 'posts/' + @file).first(4) # array
+      @post_details = File.readlines(@file).first(4) # array
       # post details
       @title = @post_details[0].strip
       @author = @post_details[1].strip
@@ -91,57 +96,6 @@ class PagesController < ApplicationController
         end
       end
     end
-  end
-  # ----------------------------------------------
-  # GET /programming
-  # ----------------------------------------------
-  def programming
-    @route_path = "programming"
-    @meta_title = $author
-    # OLD
-    # params
-    @category = params[:category]
-    @group = params[:group]
-    @file = params[:file]
-    # programming.json
-    @programming = JSON.parse(File.read(Rails.public_path + 'programming.json'))
-    unless (@file.nil?)
-      @meta_title = @file.titleize + " in " + @category.titleize
-      # define file properties
-      @path = @programming[@category][@group]["path"]
-      @url = @programming[@category][@group]["url"]
-      @format = @programming[@category][@group]["format"]
-      # get raw file content from github
-      begin
-        @file_content = HTTParty.get(@path + "#{@group}/#{@file}" + @format).parsed_response
-      rescue
-        @file_content = nil
-      end
-    end
-    # NEW
-    @dir_programming = []
-    Dir.glob(Rails.public_path + 'programming/*.md') do |filename|
-      next if filename.include? 'OLD'
-      @post_details = File.readlines(filename).first(5) # array
-      # draft
-      next if @post_details[0].include? '<'
-      # post details
-      @title = @post_details[0].strip
-      @author = @post_details[1].strip
-      @date = @post_details[2].strip
-      @updated = @post_details[3].strip
-      @category = @post_details[4].strip
-      @filename = filename.split('/').last.split('.').first
-      @dir_programming.push({ 
-        title: @title,
-        author: @author,
-        date: @date,
-        updated: @updated,
-        category: @category,
-        filename: @filename
-      })
-    end
-    @dir_programming.sort! { |a, b| Date.parse(b[:date]) <=> Date.parse(a[:date]) }
   end
   # ----------------------------------------------
   # GET /writing
@@ -265,6 +219,57 @@ class PagesController < ApplicationController
       end
       @dir_posts.sort! { |a, b| Date.parse(b[:date]) <=> Date.parse(a[:date]) }
     end
+  end
+  # ----------------------------------------------
+  # GET /programming
+  # ----------------------------------------------
+  def programming
+    @route_path = "programming"
+    @meta_title = $author
+    # OLD
+    # params
+    @category = params[:category]
+    @group = params[:group]
+    @file = params[:file]
+    # programming.json
+    @programming = JSON.parse(File.read(Rails.public_path + 'programming.json'))
+    unless (@file.nil?)
+      @meta_title = @file.titleize + " in " + @category.titleize
+      # define file properties
+      @path = @programming[@category][@group]["path"]
+      @url = @programming[@category][@group]["url"]
+      @format = @programming[@category][@group]["format"]
+      # get raw file content from github
+      begin
+        @file_content = HTTParty.get(@path + "#{@group}/#{@file}" + @format).parsed_response
+      rescue
+        @file_content = nil
+      end
+    end
+    # NEW
+    @dir_programming = []
+    Dir.glob(Rails.public_path + 'programming/*.md') do |filename|
+      next if filename.include? 'OLD'
+      @post_details = File.readlines(filename).first(5) # array
+      # draft
+      next if @post_details[0].include? '<'
+      # post details
+      @title = @post_details[0].strip
+      @author = @post_details[1].strip
+      @date = @post_details[2].strip
+      @updated = @post_details[3].strip
+      @category = @post_details[4].strip
+      @filename = filename.split('/').last.split('.').first
+      @dir_programming.push({ 
+        title: @title,
+        author: @author,
+        date: @date,
+        updated: @updated,
+        category: @category,
+        filename: @filename
+      })
+    end
+    @dir_programming.sort! { |a, b| Date.parse(b[:date]) <=> Date.parse(a[:date]) }
   end
   # ----------------------------------------------
   # private
