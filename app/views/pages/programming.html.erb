@@ -28,28 +28,6 @@
         <input id="search" class="pl-3" name="search" placeholder="Search" type="text" data-list=".list" autocomplete="off">
       </div>
     </div>
-    <!-- writing -->
-    <div class="row justify-content-center mt-5">
-      <div class="col-12 col-lg-<%= @size %>">
-        <div class="row list">
-          <% @dir_programming.each do |post| %>
-          <!-- post:meta -->
-          <li class="list-item no-bullet col-12">
-            <!-- post:date -->
-            <!-- <p class="text-small text-muted mb-0">
-              <%= Date.parse(post[:date]).strftime("%b -%d, %Y").gsub("-0", "").gsub("-", "") %>
-            </p> -->
-            <!-- post:title -->
-            <p>
-              <a href="post/<%= post[:filename] %>" data-turbolinks="true">
-                <%= post[:title] %>
-              </a>
-            </p>
-          </li>
-          <% end %>
-        </div>
-      </div>
-    </div>
     <!-- list -->
     <% @programming.keys.each do |category| %>
     <div class="row justify-content-center">
@@ -59,6 +37,23 @@
         <h3 class="font-weight-bold pb-0">
           <a href="#<%= category %>" data-turbolinks="true"><%= category.titleize %></a>
         </h3>
+      </div>
+      <!-- posts -->
+      <div class="col-12 col-lg-<%= @size %> mt-3">
+        <div class="row list">
+          <% @dir_programming.each do |post| %>
+          <% if post[:category].downcase == category %>
+          <!-- post:meta -->
+          <li class="list-item no-bullet col-12">
+            <p>
+              <a href="post/<%= post[:filename] %>" data-turbolinks="true">
+                <%= post[:title] %>
+              </a>
+            </p>
+          </li>
+          <% end %>
+          <% end %>
+        </div>
       </div>
       <!-- group -->
       <div class="col-12 col-lg-<%= @size %>">
