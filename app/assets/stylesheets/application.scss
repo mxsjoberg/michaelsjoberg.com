@@ -702,6 +702,10 @@ li.list-item.no-bullet {
     margin                  : 0 !important;
 }
 
+#toc .list-item.subitem a {
+    font-weight             : $FONT_WEIGHT_400;
+}
+
 #toc .col-12.list-item:last-child {
     margin-bottom           : 0!important;
 }
