@@ -1,7 +1,7 @@
 <% @time_to_read = @words / 75 %>
 <!-- intro -->
 <div class="row justify-content-center">
-  <div class="col-12 col-lg-<%= @size %> text-center">
+  <div class="col-12 col-lg-<%= @size %>">
     <p class="h1">
       <a href="/<%= @route_path %>/<%= @post %>" data-turbolinks="true"><%= @title %></a>
     </p>
@@ -11,9 +11,9 @@
       <!-- time to read -->
       <span class="pl-3"><%= @time_to_read %> min read</span>
       <!-- updated -->
-      <% unless Date.parse(@date) == Date.parse(@updated) %>
+      <!-- <% unless Date.parse(@date) == Date.parse(@updated) %>
         <a href="https://github.com/mixmaester/michaelsjoeberg.com/commits/main/public/posts/<%= @post %>.md" target="_blank" class="pl-3">Updated on <%= Date.parse(@updated).strftime("%b %d, %Y").gsub("-0", "").gsub("-", "") %></a></span>
-      <% end %>
+      <% end %> -->
     </p>
   </div>
 </div>
