@@ -2,6 +2,8 @@ Lecture notes on security engineering, part 2: Programs and processes
 Michael Sjöberg
 Aug 28, 2022
 May 27, 2023
+C
+Lecture Notes
 
 ## <a name="1" class="anchor"></a> [File permissions](#1)
 
@@ -62,13 +64,13 @@ A typical local attack exploit vulnerabilities in SUID-root programs to obtain r
 
 A remote attack is more difficult to perform but more powerful as there no need to require prior access to system.
 
-#### Environment attacks
+### <a name="3.1" class="anchor"></a> [Environment attacks](#3.1)
 
 An environment attack can occur when applications invoke external commands to carry out tasks, such as using `system()` to execute some command, `popen()` to open a process, or `execlp()` and `execvp()` to use the `PATH` environment variable to locate applications.
 
 A `PATH` substitution attack use commands without a complete path, where attacker modifies the `PATH` variable to run a script, or the `HOME` variable to control execution of commands, such as accessing files.
 
-#### Input argument attacks
+### <a name="3.2" class="anchor"></a> [Input argument attacks](#3.2)
 
 An input argument attack can occur when applications are supplied arguments via some input (command-line, web forms). The user-provided input can be used to inject commands such as `./program "; rm -rf /"`, which would call `program` and then delete everything. It is also possible to traverse directories, such as `..`-attack, overflow buffer, and perform format string attacks.
 
@@ -77,7 +79,7 @@ To avoid bad inputs:
 - always check size when copied into buffers, use library functions such as `snprintf` to limit size to `n`
 - always sanitize user-provided input, such as excluding known bad inputs, defining allowed input, or escaping special characters
 
-#### File access attacks
+### <a name="3.3" class="anchor"></a> [File access attacks](#3.3)
 
 A file access attack can occur when applications create or use files, so always check that file exist and that it is not a symbolic link.
 
@@ -99,7 +101,7 @@ if (access("file", W_OK) == 0) {
 }
 ```
 
-#### Buffer overflow attacks
+### <a name="3.4" class="anchor"></a> [Buffer overflow attacks](#3.4)
 
 A buffer overflow attack can occur when applications try to store more elements in a buffer, which is a set of memory locations, than it can contain. Applications written in Java, Python, and C# are less likely to suffer from buffer overflow attacks as they have built-in overflow detection, but C and C++ do not.
 
