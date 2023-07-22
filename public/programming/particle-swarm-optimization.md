@@ -1,19 +1,15 @@
 Particle Swarm Optimization
 Michael Sjöberg
 Jan 16, 2023
-May 28, 2023
+Jul 23, 2023
 Python
 Computational-Intelligence
 
-## <a name="1" class="anchor"></a> [Introduction](#1)
+In this post, we'll implement particle swarm optimization (PSO) in Python.
 
-In this post, we'll implement particle swarm optimization (PSO) in Python. Here's a good definition of PSO from [Wikipedia](https://en.wikipedia.org/wiki/Particle_swarm_optimization):
+## <a name="2" class="anchor"></a> [PSO](#2)
 
-> In computational science, particle swarm optimization (PSO) is a computational method that optimizes a problem by iteratively trying to improve a candidate solution with regard to a given measure of quality. It solves a problem by having a population of candidate solutions, here dubbed particles, and moving these particles around in the search-space according to simple mathematical formula over the particle's position and velocity. Each particle's movement is influenced by its local best known position, but is also guided toward the best known positions in the search-space, which are updated as better positions are found by other particles. This is expected to move the swarm toward the best solutions.
-
-## <a name="2" class="anchor"></a> [The algorithm](#2)
-
-The starting particles are randomly placed in the solution space.
+First, generate a swarm where starting particles are randomly placed in the solution space.
 
 ```python
 def generate_swarm(x_0, n_par):
@@ -48,11 +44,11 @@ def generate_swarm(x_0, n_par):
     return swarm
 ```
 
-Basically, this function generates a swarm of particles. It takes two arguments, `x_0`, which is the starting position of the swarm (initial guess), and `n_par`, which is the number of particles in the swarm.
+Basically, what this function does is to generate a swarm of particles. It takes two arguments, `x_0`, which is the starting position of the swarm (initial guess), and `n_par`, which is the number of particles in the swarm.
 
-#### Updating velocity
+### <a name="1.1" class="anchor"></a> [Updating velocity](#1.1)
 
-The velocity of each particle is updated based on its current position, local best position that the particle has encountered so far, and global best position that has been encountered by other particles.
+The velocity of each particle is updated based on its current position, local best position (best position that the particle encountered so far), and global best position (best position encountered by all particles).
 
 ```python
 def update_velocity(velocity, position, position_best, global_pos):
@@ -67,9 +63,9 @@ def update_velocity(velocity, position, position_best, global_pos):
     return velocity
 ```
 
-The variables `r_1` and `r_2` are used to introduce randomness into the movement, which is useful to prevent getting stuck in local optima.
+The variables `r_1` and `r_2` are used to introduce randomness into the movement of the particles, this is useful to prevent getting stuck in local optima.
 
-The configuration constants `weight`, `c_1`, and `c_2`, represent **constant inertia weight**, **cognitive constant**, and **social constant**, which are used to influence the relative movement of particles in the solution space.
+The configuration constants `weight`, `c_1`, and `c_2`, represent **constant inertia weight**, **cognitive constant**, and **social constant**, which are used to influence the relative movement of particles.
 
 ```python
 # constant inertia weight
@@ -82,9 +78,9 @@ c_2 = 2
 
 The `weight` constant is used to control balance between current velocity and previous velocity, `c_1` is used to control influence of local best position on movement (higher value is more likely to move towards local best), `c_2` is used to control influence of global best position on movement (higher value is more likely to move towards global best).
 
-#### Updating positions
+### <a name="1.2" class="anchor"></a> [Updating positions](#1.2)
 
-Nothing fancy here, the new position is updated by adding the velocity to the current position.
+The new position is updated by adding the velocity to the current position.
 
 ```python
 def update_position(position, velocity):
@@ -92,11 +88,11 @@ def update_position(position, velocity):
     return position
 ```
 
-#### Updating local and global best
+### <a name="1.3" class="anchor"></a> [Updating local and global best](#1.3)
 
-The local and global best is updated if the current position gives a better error (cost) than the previous best.
+The local and global best positions are updated if the current position gives a better error (cost) than the previous.
 
-The below function moves the swarm of particles through one iteration. It takes four arguments, `f`, which is the cost function to be minimized, `swarm`, which is the list of particles, `bounds`, which adds constraints the search space, and `global_best` and `global_pos`, which are the best error and position found so far by all particles.
+The `iterate_swarm` function moves the swarm of particles through one iteration. It takes four arguments, `f`, which is the cost function to be minimized, `swarm`, which is the list of particles, `bounds`, which adds constraints to the search space, and `global_best` and `global_pos`, which are the best error and position found so far by all particles.
 
 ```python
 def iterate_swarm(f, swarm, bounds=None, global_best=-1, global_pos=-1):
@@ -141,20 +137,18 @@ def iterate_swarm(f, swarm, bounds=None, global_best=-1, global_pos=-1):
     return swarm, round(global_best, 2), [round(pos, 2) for pos in global_pos]
 ```
 
-Basically, this function iterates over each particle in the swarm, updates local best position and error if better than previous best, and updates the global best position and error if the particle's position yields a better result than the current global best.
-
-The velocity and position are updated using the `update_velocity` and `update_position` functions defined earlier. If bounds are specified, the position is checked to ensure it is within the bounds. Finally, the function returns the updated swarm, the global best error, and the global best position.
+Basically, what this function does is to iterate over each particle in the swarm, update local and global best positions and errors if better than previous. If bounds are specified, the position is checked to ensure it is within the bounds. The function returns the updated swarm, the global best error, and the global best position.
 
 ## <a name="3" class="anchor"></a> [Testing](#3)
 
-In the below examples, the maximum number of iterations is set to `50`, which should be enough in our case, and random seed is set to `42` (consistent result given same configuration variables).
+In the below examples, the maximum number of iterations is set to `50`, which should be enough in our case, but feel free to update the code used for testing to stop when converged. The random seed is set to `42` (to get consistent result given the same configuration variables).
 
 ```python
 MAX_ITERATIONS = 50
 random.seed(1234)
 ```
 
-### Single variable with bounds
+### <a name="3.1" class="anchor"></a> [Single variable with bounds](#3.1)
 
 In this example, the cost function is `x[0] ** 5 - 3 * x[0] ** 4 + 5`, where `x`-range is `[0, 4]` (note that `x: [x_1, x_2, ..., x_n]` represent `x`, `y`, `z`, and so on).
 
@@ -184,7 +178,7 @@ for i in range(MAX_ITERATIONS):
 assert (global_best, global_pos) == (-14.91, [2.39])
 ```
 
-### Multiple variables no bounds
+### <a name="3.2" class="anchor"></a> [Multiple variables no bounds](#3.2)
 
 In this example, the cost function is `-(5 + 3 * x[0] - 4 * x[1] - x[0] ** 2 + x[0] * x[1] - x[1] ** 2)` with no bounds.
 
