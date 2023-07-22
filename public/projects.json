@@ -4,11 +4,11 @@
     //     "url": "https://github.com/miqqeio/hlwasm"
     // },
     "Hackerman.AI": {
-        "description": "Level up your coding skills with AI-generated programs (Python)",
+        "description": "Level up your coding skills with AI-generated programs (Python, Render)",
         "url": "https://hackerman.ai"
     },
     "Stockstack": {
-        "description": "Distraction-free stock market research (Python, Vue.js)",
+        "description": "Distraction-free stock market research (Python, Vue.js, MongoDB, AWS)",
         "url": "https://trystockstack.com"
     },
     "Attefall": {
@@ -28,7 +28,7 @@
         "url": "https://github.com/mixmaester/pas2wat"
     },
     "EQZEN": {
-        "description": "Collaborative portfolio tracker application (Python)"
+        "description": "Collaborative portfolio tracker application (Python, AWS)"
     },
     "GiveTrees": {
         "description": "Mobile application to plant trees (Lua)"
@@ -41,7 +41,7 @@
         "url": "https://anonchat.sjoberg.dev"
     },
     "Doolio": {
-        "description": "Interactive online resume (PHP)"
+        "description": "Interactive online resume (PHP, LAMP)"
     },
     "Adventures of Puffy": {
         "description": "Mobile game for iOS (Lua)"
