@@ -8,6 +8,5 @@ Rails.application.routes.draw do
     get "/projects"                                     => "pages#projects", as: "projects"
     get "/projects/attefall"                            => "pages#attefall", as: "attefall"
     get "/writing"                                      => "pages#writing", as: "writing"
-    # get "/writing/:post"                                => "pages#writing", as: "post"
     get "/post/:post"                                   => "pages#post", as: "post"
 end
