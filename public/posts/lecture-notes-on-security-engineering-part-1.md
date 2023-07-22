@@ -2,16 +2,19 @@ Lecture notes on security engineering, part 1: Introduction
 Michael Sjöberg
 Aug 27, 2022
 May 28, 2023
+C
+Lecture Notes
 
 This is the first post in a series of lecture notes on security engineering, based on the postgraduate-level course with the same name at King's College London. These notes cover most of the topics, but not as deep and without assignments, and are primarily intended as a reference for myself.
 
-## <a name="1" class="anchor"></a> [Computer programs and compilation](#1)
+## <a name="1" class="anchor"></a> [Computer programs](#1)
 
 A computer program is a sequence of bits, and organized as 8-bit bytes, where one byte is 8-bits and each byte represent some text character (ASCII standard). Most programs are developed in a high-level programming language, then compiled, or translated, into an object file, which is executed by a process, and finally terminated.
 
 An object file contains application and libraries, such as program code in binary format, relocation information, which are things that need to be fixed once loaded into memory, symbol information as defined by object or imported, and optional debugging information. Interpreted languages are typically translated into an intermediate format.
 
-#### Compilation system
+### <a name="1.1" class="anchor"></a> [Compilation](#1.1)
+
 
 ```c
 /* hello.c */
@@ -58,7 +61,7 @@ The compilation process (note that most program code in this post refer to progr
 
 A linker is used to resolve references to external objects, such as variables and functions (e.g. `printf`). Static linking is performed at compile-time and dynamic linking is performed at run-time.
 
-#### Tools
+### <a name="1.2" class="anchor"></a> [Tools](#1.2)
 
 Useful tools for working with programs from a systems perspective:
 
@@ -82,7 +85,7 @@ A modern computer is organized as an assemble of buses, I/O devices, main memory
 - main memory is a temporary storage device that holds program and data when executed by the processor, physically, it is a collection of dynamic random-access memory (DRAM) chips, and logically, it is a linear array of bytes with its own unique address (array index)
 - processor, or central processing unit (CPU), is the engine that interprets and executes the machine-level instructions stored in the main memory
 
-#### CPU
+### <a name="2.2" class="anchor"></a> [CPU](#2.2)
 
 The CPU has a word size storage device (register) called program counter (PC) that points at some instruction in main memory. Instructions are executed in a strict sequence, which is to read and interpret the instruction as pointed to by program counter, perform operation (as per the instruction), and then update the counter to point to next instruction (note that each instruction has its own unique address).
 
@@ -113,7 +116,7 @@ The different levels of memory is also referred to as [memory hierarchy](https:/
 
 An operating system provides services to programs. The services are used via abstractions to make it easier to manipulate low-level devices and protect the hardware.
 
-#### Shell
+### <a name="4.1" class="anchor"></a> [Shell](#4.1)
 
 A shell provides an interface to the operating system via the command-line (or library functions):
 
@@ -136,19 +139,19 @@ A shell command is a command-line program and `system()` is a library function t
 
 For more shell commands, see [List of Unix commands](https://en.wikipedia.org/wiki/List_of_Unix_commands).
 
-#### System calls
+### <a name="4.2" class="anchor"></a> [System calls](#4.2)
 
 A system call is a function executed by the operating system, such as accessing hard drive and creating processes. System calls use shell commands to implement functions and used by programs to request services from the operating system.
 
 In the C programming language, system commands such as `write`, is wrapped in some other function, such as `printf`.
 
-#### Processes
+### <a name="4.3" class="anchor"></a> [Processes](#4.3)
 
 A process is an abstraction for processor, main memory, or I/O devices, and represent a running program. Its context is the state information the process needs to run. The processor switch between multiple running programs such as shell and some program using context switching, which saves the state of current process and restores the state of some new process. A thread is multiple execution units within a process with access to the same code and global data. 
 
 A **kernel** is a collection of code and data structures that is always in memory. It is used to manage all processes and called using system call instructions, or `syscall`, which transfers control to the kernel when the program need some action done by the operating system, such as read or write to file.
 
-#### Virtual memory
+### <a name="4.4" class="anchor"></a> [Virtual memory](#4.4)
 
 A virtual memory is an abstraction for main memory and local disks. It provides each program with a virtual address space to make it seem as programs have exclusive use of memory:
 
@@ -158,7 +161,7 @@ A virtual memory is an abstraction for main memory and local disks. It provides 
 - **stack** is at top of user-section of the virtual address space and used by compiler to implement function calls, it expands and contracts its size dynamically at run-time so that stack grows with each function call and contracts on return
 - **kernel virtual memory** is at top of the virtual memory space and reserved for kernel, programs must call kernel to read or write in this space
 
-#### Files
+### <a name="4.5" class="anchor"></a> [Files](#4.5)
 
 A file is an abstraction for I/O devices and provides a uniform view of devices. Most input and output in a system is reading and writing to files.
 
