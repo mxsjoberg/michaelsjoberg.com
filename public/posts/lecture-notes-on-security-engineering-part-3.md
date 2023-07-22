@@ -2,6 +2,8 @@ Lecture notes on security engineering, part 3: Assembly
 Michael Sjöberg
 Aug 29, 2022
 May 27, 2023
+C
+Lecture Notes
 
 ## <a name="1" class="anchor"></a> [Assembly basics](#1)
 
@@ -25,7 +27,7 @@ In most assembly-like languages, an instruction has the form `mnemonic <source>,
 
 - labels represent symbols at current address, so `number: .byte 42` is same as `char number = 42;` in the C programming language
 
-#### Registers
+### <a name="1.1" class="anchor"></a> [Registers](#1.1)
 
 A register is a memory location on the CPU and prefixed with `%`. There are general-purpose registers, which includes stack pointer `%esp`, frame pointer `%ebp`, and instruction pointer `%eip`, and flags registers:
 
@@ -81,7 +83,7 @@ section .data
 
 It is often easier to explore assembly programs in emulators, such as [nasm Online Compiler](https://rextester.com/l/nasm_online_compiler) or [Compiler Explorer](https://godbolt.org/).
 
-#### Data transfer
+### <a name="2.1" class="anchor"></a> [Data transfer](#2.1)
 
 Data transfer instructions are used to move data between registers, memory, and stack.
 
@@ -99,7 +101,7 @@ push <source>
 pop <destination>
 ```
 
-#### Binary arithmetic
+### <a name="2.2" class="anchor"></a> [Binary arithmetic](#2.2)
 
 Binary arithmetic instriuctions are used to perform arithmetic operations on binary data.
 
@@ -120,7 +122,7 @@ dec <destination>
 neg <destination>
 ```
 
-#### Logical operators
+### <a name="2.3" class="anchor"></a> [Logical operators](#2.3)
 
 Logical operator instructions are used to perform logical operations on binary data.
 
@@ -138,7 +140,7 @@ xor <source>, <destination>
 not <destination>
 ```
 
-#### Unconditional branches
+### <a name="2.4" class="anchor"></a> [Unconditional branches](#2.4)
 
 Unconditional branch instructions are used to change the flow of execution.
 
@@ -156,7 +158,7 @@ ret
 int <const>
 ```
 
-#### Conditional branches
+### <a name="2.5" class="anchor"></a> [Conditional branches](#2.5)
 
 Conditional branch instructions are used to change the flow of execution based on the value of the flags register.
 
@@ -178,7 +180,7 @@ cmp $0, %eax
 jns <label>
 ```
 
-#### Other instructions
+### <a name="2.6" class="anchor"></a> [Other instructions](#2.6)
 
 Other common instructions, such as `lea` and `nop`.
 
