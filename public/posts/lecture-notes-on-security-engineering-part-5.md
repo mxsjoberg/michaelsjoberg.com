@@ -2,6 +2,8 @@ Lecture notes on security engineering, part 5: Secure system design
 Michael Sjöberg
 Sep 1, 2022
 May 27, 2023
+C
+Lecture Notes
 
 ## <a name="1" class="anchor"></a> [Hardware and software solutions](#1)
 
@@ -15,7 +17,7 @@ A secure system design favor simplicity, such as fail-safe defaults (key lengths
 
 Layers of security can be used to further secure systems, such as firewall, encrypting data at rest, using type-safe programming languages, and logging relevant operational information.
 
-#### Tainted flow analysis
+### <a name="1.1" class="anchor"></a> [Tainted flow analysis](#1.1)
 
 Trusting unvalidated inputs is the root cause of many attacks, such as a program getting unsafe input, or tainted data, from a user and assuming it is safe, or untainted:
 
@@ -46,7 +48,7 @@ In tainted flow analysis, such as [Taint checking](https://en.wikipedia.org/wiki
     f(a); /* function assume untainted, and input is tainted, so illegal flow */
     ```
 
-#### Tracking tainted data in programs
+### <a name="1.2" class="anchor"></a> [Tracking tainted data in programs](#1.2)
 
 Below is an example tainted flow analysis on vulnerable program at each line of execution (`tainted` label can be introduced as type or annotation).
     
@@ -71,5 +73,3 @@ Buffer overflow attacks can sometimes be prevented using programming languages w
 - randomized addresses and instructions, such as [ASLR](https://en.wikipedia.org/wiki/Address_space_layout_randomization), which can be used to randomize address space layout (instructions can also be encrypted in memory and decrypted before execution, but substantial overhead)
 
 For further reading, see [Return-oriented programming (ROP)](https://en.wikipedia.org/wiki/Return-oriented_programming).
-
-
