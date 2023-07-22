@@ -4,7 +4,7 @@
   <!-- intro -->
   <div class="row justify-content-center">
     <div class="col-12 col-lg-<%= @size %> text-center">
-      <p class="mb-0">Tools that I use to build things</p>
+      <p class="mb-0">My stack</p>
     </div>
   </div>
   <!-- stack -->
@@ -13,9 +13,6 @@
         <div class="row list">
           <% @stack.keys.each do |category| %>
           <!-- header -->
-          <!-- <li class="col-12 text-center">
-            <p class="font-weight-bold my-3 px-3 py-2"><%= category.titleize %></p>
-          </li> -->
           <% @stack[category].keys.each do |item| %>
           <!-- item -->
           <li class="col-12">
