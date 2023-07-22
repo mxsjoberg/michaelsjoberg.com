@@ -1,7 +1,7 @@
-Particle Swarm Optimization in Python
+<!-- Particle Swarm Optimization in Python
 Michael Sjöberg
 Jan 16, 2023
-May 28, 2023
+May 28, 2023 -->
 
 ## <a name="1" class="anchor"></a> [Introduction](#1)
 
