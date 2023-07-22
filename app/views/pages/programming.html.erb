@@ -1,4 +1,4 @@
-<% @size = 12 %>
+<% @size = 8 %>
 
 <% if @file_content == nil %>
 <div class="row justify-content-center hidden-until-lg fixed mb-5">
@@ -22,14 +22,86 @@
     <%= render 'file_content', locals: { size: @size } %>
   <!-- otherwise -->
   <% else %>
-    <!-- header -->
+    <% @dir_programming_grouped.keys.each do |language| %>
     <div class="row justify-content-center">
-      <div class="col-12 col-lg-<%= @size %> mt-3">
-        <input id="search" class="pl-3" name="search" placeholder="Search" type="text" data-list=".list" autocomplete="off">
+      <!-- language -->
+      <div class="col-12 col-lg-<%= @size %> mb-3">
+        <a name="<%= language %>" class="anchor-2"></a>
+        <h3 class="font-weight-bold pb-0">
+          <a href="#<%= language %>" data-turbolinks="true"><%= language.titleize %></a>
+        </h3>
       </div>
+      <!-- category -->
+      <div class="col-12 col-lg-<%= @size %>">
+        <div class="container-fluid">
+          <div class="row list">
+            <% @dir_programming_grouped[language].keys.each do |category| %>
+            <!-- header -->
+            <li class="list_header background--grey col-12 mb-3">
+              <a name="<%= language %>_<%= category.gsub('-', '_') %>" class="anchor-2"></a>
+              <p class="mt-2 mb-2"><%= category.titleize %></p>
+            </li>
+            <!-- links -->
+            <div class="container-fluid">
+              <div class="row list">
+                <% @dir_programming_grouped[language][category].each do |post| %>
+                  <a href="post/<%= post[:filename] %>" data-turbolinks="true" class="col-12">
+                    <li class="list-item mb-3">
+                      <span><%= post[:title] %></span>
+                    </li>
+                  </a>
+                <% end %>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <!-- LEGACY -->
+      <% if true %>
+      <div class="col-12 col-lg-<%= @size %>">
+        <div class="container-fluid">
+          <div class="row list">
+            <% @programming[language.downcase].keys.each do |category| %>
+            <!-- header -->
+            <li class="list_header background--grey col-12 my-3">
+              <a name="<%= language.downcase %>_<%= category.gsub('-', '_') %>" class="anchor-2"></a>
+              <p class="mt-2 mb-2"><%= category.titleize %></p>
+            </li>
+            <!-- list items -->
+            <div class="container-fluid">
+              <div class="row list">
+                <div id="programming_wrapper" class="col-12 <% if ['basics', 'data-science'].include? category %>split-columns<% end %> p-0">
+                <!-- intro file at top -->
+                <% if @programming[language.downcase][category]["files"].include? "intro" %>
+                  <a href="/<%= @route_path %>/<%= language.downcase %>/<%= category %>/intro" data-turbolinks="true" class="col-12">
+                    <li class="list-item mb-3">
+                      <span><%= "READ ME FIRST" %></span>
+                    </li>
+                  </a>
+                  <% @programming[language.downcase][category]["files"].delete("intro") %>
+                <% end %>
+                <% @programming[language.downcase][category]["files"].sort!.each do |file| %>
+                  <!-- file -->
+                  <a href="/<%= @route_path %>/<%= language.downcase %>/<%= category %>/<%= file %>" data-turbolinks="true" class="col-12">
+                    <li class="list-item mb-3">
+                      <span><%= file.titleize %></span>
+                    </li>
+                  </a>
+                <% end %>
+              </div>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <% end %>
     </div>
+    <% end %>
     <!-- list -->
     <% @programming.keys.each do |category| %>
+    <% if category != 'python' %>
     <div class="row justify-content-center">
       <!-- category -->
       <div class="col-12 col-lg-<%= @size %> mt-3">
@@ -39,19 +111,19 @@
         </h3>
       </div>
       <!-- posts -->
-      <div class="col-12 col-lg-<%= @size %> mt-3">
+      <div class="col-12 col-lg-<%= @size %> mb-3">
         <div class="row list">
           <% @dir_programming.each do |post| %>
-          <% if post[:category].downcase == category %>
-          <!-- post:meta -->
-          <li class="list-item no-bullet col-12">
-            <p>
-              <a href="post/<%= post[:filename] %>" data-turbolinks="true">
-                <%= post[:title] %>
-              </a>
-            </p>
-          </li>
-          <% end %>
+            <% if post[:language].downcase == category %>
+            <!-- post:meta -->
+            <li class="list-item no-bullet col-12">
+              <p>
+                <a href="post/<%= post[:filename] %>" data-turbolinks="true">
+                  <%= post[:title] %>
+                </a>
+              </p>
+            </li>
+            <% end %>
           <% end %>
         </div>
       </div>
@@ -61,14 +133,13 @@
           <div class="row list">
             <% @programming[category].keys.each do |group| %>
             <!-- header -->
-            <li class="list_header background--grey col-12 my-3">
+            <li class="list_header background--grey col-12 mb-3">
               <a name="<%= category %>_<%= group.gsub('-', '_') %>" class="anchor-2"></a>
               <p class="mt-2 mb-2"><%= group.titleize %></p>
             </li>
-
             <!-- list items -->
             <div class="container-fluid">
-              <div class="row list border-solid--grey pt-3">
+              <div class="row list">
                 <div id="programming_wrapper" class="col-12 split-columns p-0">
                 <!-- intro file at top -->
                 <% if @programming[category][group]["files"].include? "intro" %>
@@ -95,6 +166,7 @@
         </div>
       </div>
     </div>
+    <% end %>
     <% end %>
   <% end %>
 </div>
