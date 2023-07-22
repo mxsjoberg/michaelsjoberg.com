@@ -64,8 +64,8 @@ $(document).on('turbolinks:load', function() {
     window.onscroll = function() {
         try {
             // back to top
-            var scrollLimit = 600;
-            if (window.scrollY >= scrollLimit) {
+            // var scrollLimit = 600;
+            if (window.scrollY >= 600) {
                 $('#back-to-top').removeClass('d-none');
                 $('#scroll-percent-wrapper').removeClass('d-none');
             } else {
@@ -81,8 +81,15 @@ $(document).on('turbolinks:load', function() {
                 body = document.body,
                 st = 'scrollTop',
                 sh = 'scrollHeight';
-
             var percent = (height[st]||body[st]) / ((height[sh]||body[sh]) - height.clientHeight) * 100;
+            // toc
+            if (window.scrollY >= 450) {
+                $('#toc').css('position', 'fixed');
+                $('#toc').css('top', '0');
+            } else {
+                $('#toc').css('position', 'absolute');
+                $('#toc').css('top', 'auto');
+            }
         
             document.getElementById('scroll-percent').textContent = Math.round(percent);
         } catch {
