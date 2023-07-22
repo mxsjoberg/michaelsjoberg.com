@@ -14,7 +14,7 @@
           <% @courses.keys.each do |year| %>
           <!-- header -->
           <li class="col-12 text-center">
-            <p class="font-weight-bold <% if @courses.keys.first != year %>my-3<% else %>mb-3<% end %>"><%= year %></p>
+            <p class="text-muted <% if @courses.keys.first != year %>my-3<% else %>mb-3<% end %>"><%= year %></p>
           </li>
           <% @courses[year].keys.each do |course| %>
           <!-- course -->
