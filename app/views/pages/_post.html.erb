@@ -10,6 +10,12 @@
       <span><%= Date.parse(@date).strftime("%b %d, %Y").gsub("-0", "").gsub("-", "") %></span>
       <!-- time to read -->
       <span class="pl-3"><%= @time_to_read %> min read</span>
+      <!-- programming language -->
+      <% if @language != 'None' %>
+      <span class="pl-3"><%= @language.titleize %></span>
+      <% end %>
+      <!-- category -->
+      <span class="pl-3"><%= @category.titleize %></span>
       <!-- updated -->
       <!-- <% unless Date.parse(@date) == Date.parse(@updated) %>
         <a href="https://github.com/mixmaester/michaelsjoeberg.com/commits/main/public/posts/<%= @post %>.md" target="_blank" class="pl-3">Updated on <%= Date.parse(@updated).strftime("%b %d, %Y").gsub("-0", "").gsub("-", "") %></a></span>
