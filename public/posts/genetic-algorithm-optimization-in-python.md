@@ -1,7 +1,7 @@
-Genetic Algorithm Optimization in Python
+<!-- Genetic Algorithm Optimization in Python
 Michael Sjöberg
 Jan 05, 2023
-May 28, 2023
+May 28, 2023 -->
 
 ## <a name="1" class="anchor"></a> [Genetic algorithms](#1)
 
