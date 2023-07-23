@@ -68,4 +68,4 @@ print(output)
 #  [0.03501066]]
 ```
 
-#### <a href="https://github.com/mixmaester/programming/blob/master/python/compilers/shunting-yard-algorithm.py" target="_blank">View on Github</a>
+#### <a href="https://github.com/mixmaester/programming/blob/master/python/machine-learning/backpropagation.py" target="_blank">View on Github</a>
