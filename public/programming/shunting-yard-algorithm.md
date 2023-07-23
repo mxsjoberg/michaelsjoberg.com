@@ -6,7 +6,12 @@ Python
 Compilers
 
 ```python
-# https://en.wikipedia.org/wiki/Shunting_yard_algorithm
+# Shunting Yard Algorithm is a method for parsing
+# mathematical expressions specified in infix
+# notation
+
+# https://en.wikipedia.org/wiki/Shunting-yard_algorithm
+
 PRECEDENCE = { 'func': 3, '^': 2, '/': 1, '*': 1, '+': 0, '-': 0 }
 
 def parse(input_):
@@ -15,9 +20,6 @@ def parse(input_):
     tokens = list(input_)
     while len(tokens) > 0:
         char = tokens[0]
-        # whitespace
-        # if char.isspace():
-        #     pass
         # number
         if char.isnumeric():
             output.append(char)
@@ -29,7 +31,7 @@ def parse(input_):
                 function.append(tokens[i])
                 i += 1
             operator.append(('func', ''.join(function)))
-            # skip
+            # advance
             tokens = tokens[i - 1:]
         # operator
         if char in ['+', '-', '*', '/', '^']:
@@ -60,7 +62,6 @@ def parse(input_):
                 else:
                     break
         tokens = tokens[1:]
-
     # pop operators
     while len(operator) > 0:
         op = operator.pop()
@@ -73,12 +74,6 @@ def parse(input_):
 
 assert parse("3 + 4 * 2 / (1 - 5) ^2 ^3") == "3 4 2 * 1 5 - 2 3 ^ ^ / +"
 assert parse("sin(max(2, 3) / 3 * pi)") == "2 3 max 3 / pi * sin"
-
-print(parse("3 + 4 * 2 / (1 - 5) ^2 ^3"))
-# 3 4 2 * 1 5 - 2 3 ^ ^ / +
-
-print(parse("sin(max(2, 3) / 3 * pi)"))
-# 2 3 max 3 / pi * sin
 ```
 
 #### <a href="https://github.com/mixmaester/programming/blob/master/python/compilers/shunting-yard-algorithm.py" target="_blank">View on Github</a>
