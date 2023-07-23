@@ -2,8 +2,8 @@ Lecture notes on security engineering, part 4: The stack
 Michael Sjöberg
 Aug 30, 2022
 May 27, 2023
-C
-Lecture-Notes
+
+
 
 ## <a name="1" class="anchor"></a> [Stack layout](#1)
 
