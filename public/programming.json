@@ -89,13 +89,11 @@
                 "dijkstra-shortest-path-algorithm",
                 "erlang-b-formula",
                 "fermats-last-theorem",
-                "genetic-algorithm-optimization",
                 "gradient-descent-algorithm",
                 "graphs",
                 "mrjob-word-counting",
                 "prim-minimum-spanning-tree-algorithm",
-                "recursion",
-                "shunting-yard-algorithm"
+                "recursion"
             ]
         }
     },
