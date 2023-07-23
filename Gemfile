@@ -19,7 +19,6 @@ gem 'uglifier', '~> 4.2'
 gem 'httparty'
 # gem 'net-smtp'
 
-
 # jQuery
 gem 'jquery-rails'
 # Bootstrap
