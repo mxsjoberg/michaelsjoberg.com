@@ -88,7 +88,7 @@ class PagesController < ApplicationController
       @lines = File.readlines(Rails.public_path + 'posts/' + @file).drop(6)
       @all_lines = @lines.join
       # override meta title
-      @meta_title = @title
+      @meta_title = @title + ' in ' + @language
       # count words
       @words = 0
       @lines.drop(6).each do |line|
