@@ -173,3 +173,5 @@ for i in range(MAX_ITERATIONS):
     )
 assert (global_best, global_pos) == (-9.33, [0.67, -1.67])
 ```
+
+#### <a href="https://github.com/mixmaester/programming/blob/master/python/CI/particle-swarm-optimisation.py" target="_blank">View on Github</a>
