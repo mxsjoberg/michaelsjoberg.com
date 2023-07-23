@@ -239,3 +239,5 @@ print_as_table(current_population)
 #   2  [0, 0, 0, 0, 1, 1, 1, 1]  [10.0, 7.0]     65.000
 #   3  [0, 0, 0, 0, 1, 1, 1, 1]  [10.0, 7.0]     65.000
 ```
+
+#### <a href="https://github.com/mixmaester/programming/blob/master/python/CI/genetic-algorithm-optimization.py" target="_blank">View on Github</a>
