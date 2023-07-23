@@ -2,8 +2,8 @@ Crafting the language of play, part 1: Introduction and operator precedence
 Michael Sjöberg
 May 29, 2023
 May 29, 2023
-Python
-Programming Languages
+
+
 
 This is the first post in a series of posts on implementing the new non-trivial programming language, PlayCode. It is open source and all code is available [here](https://github.com/mixmaester/playcode).
 
