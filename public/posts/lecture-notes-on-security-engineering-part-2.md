@@ -2,8 +2,8 @@ Lecture notes on security engineering, part 2: Programs and processes
 Michael Sjöberg
 Aug 28, 2022
 May 27, 2023
-C
-Lecture-Notes
+
+
 
 ## <a name="1" class="anchor"></a> [File permissions](#1)
 
