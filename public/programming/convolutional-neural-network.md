@@ -5,7 +5,7 @@ Jul 24, 2023
 Python
 Machine-Learning
 
-A convolutional neural network implemented using Keras (Tensorflow).
+A convolutional neural network for classifying MNIST data using Keras (Tensorflow).
 
 ```python
 # https://en.wikipedia.org/wiki/Convolutional_neural_network
