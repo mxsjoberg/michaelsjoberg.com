@@ -5,13 +5,16 @@ Jul 23, 2023
 Python
 Computational-Intelligence
 
-```python
-# PSO is a population-based stochastic optimization technique
-# inspired by social behavior of bird flocking or fish schooling.
-# It is used to find an optimal solution to a problem by
-# iteratively moving particles through the solution space.
+PSO is a population-based stochastic optimization technique inspired by social behavior of bird flocking or fish schooling. It is used to find an optimal solution to a problem by iteratively moving particles through the solution space.
 
+```python
+# https://en.wikipedia.org/wiki/Particle_swarm_optimization
 import random
+
+random.seed(42)
+
+# feel free to change this to stop at convergence
+MAX_ITERATIONS = 50
 
 # constant inertia weight
 weight = 0.5
@@ -26,7 +29,6 @@ def generate_swarm(x_0, n_par):
     x_0 (list)              : initial position
     n_par (int)             : number of particles
     """
-
     dimensions = len(x_0)
     swarm = []
     # generate particles
@@ -64,7 +66,6 @@ def update_velocity(velocity, position, position_best, global_pos):
     position_best (float)   : best position
     global_pos (float)      : global best position
     """
-
     # random bias
     r_1 = random.random()
     r_2 = random.random()
@@ -81,7 +82,6 @@ def update_position(position, velocity):
     position (float)        : particle position
     velocity (float)        : particle velocity
     """
-
     position = position + velocity
     return position
 
@@ -94,8 +94,6 @@ def iterate_swarm(f, swarm, bounds=None, global_best=-1, global_pos=-1):
     global_best (float)     : global best error
     global_pos (float)      : global best position
     """
-
-    # iterate particles and evaluate cost function
     for j in range(0, len(swarm)):
         dimensions = swarm[j]["dimensions"]
         position = swarm[j]["position"]
@@ -134,10 +132,9 @@ def iterate_swarm(f, swarm, bounds=None, global_best=-1, global_pos=-1):
                 position[i] = bounds[i][0]
     # return
     return swarm, round(global_best, 2), [round(pos, 2) for pos in global_pos]
+```
 
-MAX_ITERATIONS = 50
-random.seed(42)
-
+```python
 # minimize x^5 - 3x^4 + 5 over [0, 4]
 def f(x): return x[0] ** 5 - 3 * x[0] ** 4 + 5
 # reset global
@@ -155,7 +152,9 @@ for i in range(MAX_ITERATIONS):
         global_pos=global_pos
     )
 assert (global_best, global_pos) == (-14.91, [2.39])
+```
 
+```python
 # minimize -(5 + 3x - 4y - x^2 + x y - y^2)
 def f(x): return -(5 + 3 * x[0] - 4 * x[1] - x[0] ** 2 + x[0] * x[1] - x[1] ** 2)
 # reset global
@@ -173,5 +172,3 @@ for i in range(MAX_ITERATIONS):
     )
 assert (global_best, global_pos) == (-9.33, [0.67, -1.67])
 ```
-
-#### <a href="https://github.com/mixmaester/programming/blob/master/python/computational-intelligence/particle-swarm-optimisation.py" target="_blank">View on Github</a>
