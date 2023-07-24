@@ -1,7 +1,7 @@
 <% @time_to_read = @words / 75 %>
 <!-- intro -->
 <div class="row justify-content-center">
-  <div class="col-12 <% if @language == '' %>col-lg-<%= @size %><% end %>">
+  <div class="col-12 <% if @language == '' %>col-lg-<%= @size %><% end %> text-center">
     <p class="h1">
       <a href="/<%= @route_path %>/<%= @post %>" data-turbolinks="true"><%= @title %></a>
     </p>
@@ -9,7 +9,9 @@
       <!-- date -->
       <span><%= Date.parse(@date).strftime("%b %d, %Y").gsub("-0", "").gsub("-", "") %></span>
       <!-- time to read -->
-      <span class="pl-3"><%= @time_to_read %> min read</span>
+      <% if @language == '' %>
+        <span class="pl-3"><%= @time_to_read %> min read</span>
+      <% end %>
       <!-- programming language -->
       <% if @language %>
         <!-- <span class="pl-3"><%= @language.titleize %></span> -->
