@@ -57,20 +57,20 @@ class PagesController < ApplicationController
     end
   end
   # ----------------------------------------------
-  # GET /post/:post
+  # GET /posts/:post
   # ----------------------------------------------
-  def post
-    @route_path = "post"
+  def posts
+    @route_path = "posts"
     @meta_title = $author
     # params
     @post = params[:post]
+    # join posts in two folders
+    @posts = Dir.glob(Rails.public_path + 'posts/*.md') + Dir.glob(Rails.public_path + 'programming/*.md')
     # render post
     unless (@post.nil?)
       @file = @post + '.md'
-      # join files in two folders
-      @files = Dir.glob(Rails.public_path + 'posts/*.md') + Dir.glob(Rails.public_path + 'programming/*.md')
-      # get file in files
-      @file = @files.select { |file| file.include? @file }.first
+      # get file in posts
+      @file = @posts.select { |file| file.include? @file }.first
       # @post_details = File.readlines(Rails.public_path + 'posts/' + @file).first(4) # array
       @post_details = File.readlines(@file).first(6)
       # post details
@@ -97,6 +97,32 @@ class PagesController < ApplicationController
           @words += 1
         end
       end
+    else
+      @dir_posts = []
+      @posts.each do |filename|
+        next if filename.include? 'OLD'
+        @post_details = File.readlines(filename).first(6)
+        # draft
+        next if @post_details[0].include? '<'
+        # post details
+        @title = @post_details[0].strip
+        @author = @post_details[1].strip
+        @date = @post_details[2].strip
+        @updated = @post_details[3].strip
+        @language = @post_details[4].strip
+        @category = @post_details[5].strip
+        @filename = filename.split('/').last.split('.').first
+        @dir_posts.push({ 
+          title: @title,
+          author: @author,
+          date: @date,
+          updated: @updated,
+          language: @language,
+          category: @category,
+          filename: @filename
+        })
+      end
+      @dir_posts.sort! { |a, b| Date.parse(b[:date]) <=> Date.parse(a[:date]) }
     end
   end
   # ----------------------------------------------
