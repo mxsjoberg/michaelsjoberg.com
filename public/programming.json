@@ -47,13 +47,10 @@
             "url": "https://github.com/michaelsjoeberg/programming/blob/master/python/",
             "format": ".py",
             "files": [
-                "backpropagation",
-                "delta-learning-algorithm",
                 "keras-convolutional-neural-network",
                 "keras-multilayer-perceptron",
                 "linear-threshold-unit",
-                "sklearn-k-nearest-neighbors-classifier",
-                "widrow-hoff-learning-algorithm"
+                "sklearn-k-nearest-neighbors-classifier"
             ]
         },
         "project-euler-problems": {
