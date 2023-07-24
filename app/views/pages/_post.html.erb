@@ -3,7 +3,7 @@
 <div class="row justify-content-center">
   <div class="col-12 <% if @language == '' %>col-lg-<%= @size %><% end %> text-center">
     <p class="h1">
-      <a href="/<%= @route_path %>/<%= @post %>" data-turbolinks="true"><%= @title %><% if !@title.include? @language %> in <%= @language %><% end %></a>
+      <a href="/<%= @route_path %>/<%= @post %>" data-turbolinks="true"><%= @title %></a>
     </p>
     <p class="mb-0 text-small text-muted">
       <!-- date -->
