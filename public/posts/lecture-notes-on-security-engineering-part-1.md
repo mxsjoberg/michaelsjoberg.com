@@ -1,4 +1,4 @@
-Lecture notes on security engineering, part 1: Introduction
+Lecture notes on Security Engineering – Part 1: Introduction
 Michael Sjöberg
 Aug 27, 2022
 May 28, 2023
