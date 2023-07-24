@@ -1,0 +1,48 @@
+<% @size = 8 %>
+<% year = 0 %>
+
+<div class="container">
+  <!-- post -->
+  <% if @post != nil %>
+    <%= render 'post', locals: { size: @size } %> 
+  <!-- otherwise -->
+  <% else %>
+  <!-- intro -->
+  <!-- <div class="row justify-content-center">
+    <div class="col-12 col-lg-<%= @size %> text-center">
+      <p class="mb-0">List of writings on various topics</p>
+    </div>
+  </div> -->
+  <!-- post -->
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-<%= @size %>">
+      <div class="row list">
+        <% @dir_posts.each do |post| %>
+        <% if post[:date].last(4) != year %>
+          <% year = post[:date].last(4) %>
+          <!-- year -->
+          <% if post[:date].last(4).to_s != Time.new.year.to_s%>
+          <li class="col-12">
+            <p class="text-muted mb-3"><%= year %></p>
+          </li>
+          <% end %>
+        <% end %>
+        <!-- post:meta -->
+        <li class="list-item no-bullet col-12">
+          <!-- post:date -->
+          <!-- <p class="text-small text-muted mb-0">
+            <%= Date.parse(post[:date]).strftime("%b -%d, %Y").gsub("-0", "").gsub("-", "") %>
+          </p> -->
+          <!-- post:title -->
+          <p>
+            <a href="/<%= @route_path %>/<%= post[:filename] %>" data-turbolinks="true">
+              <%= post[:title] %>
+            </a>
+          </p>
+        </li>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
