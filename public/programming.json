@@ -1,17 +1,5 @@
 {
     "python": {
-        "data-science": {
-            "path": "https://raw.githubusercontent.com/michaelsjoeberg/programming/master/python/",
-            "url": "https://github.com/michaelsjoeberg/programming/blob/master/python/",
-            "format": ".py",
-            "files": [
-                "numpy-arrays",
-                "numpy-indexing",
-                "numpy-masking",
-                "numpy-operations",
-                "pandas-series"
-            ]
-        },
         "project-euler-problems": {
             "path": "https://raw.githubusercontent.com/michaelsjoeberg/programming/master/python/",
             "url": "https://github.com/michaelsjoeberg/programming/blob/master/python/",
