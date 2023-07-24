@@ -5,10 +5,6 @@
             "url": "https://github.com/michaelsjoeberg/programming/blob/master/python/",
             "format": ".py",
             "files": [
-                "binary-trees",
-                "combinations",
-                "enumerate",
-                "k-dimensional-trees",
                 "numpy-arrays",
                 "numpy-indexing",
                 "numpy-masking",
