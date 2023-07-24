@@ -1,6 +1,13 @@
 <% @size = 8 %>
 
 <% if @file_content == nil %>
+<!-- intro -->
+<div class="row justify-content-center">
+  <div class="col-12 col-lg-<%= @size %> text-center mb-5">
+    <p class="mb-0">List of short posts on programming topics <span class="text-muted">|</span> <a href="/posts" data-turbolinks="true">browse all posts</a></p>
+  </div>
+</div>
+<!-- programing languages -->
 <div class="row justify-content-center hidden-until-lg fixed mb-5">
   <div class="col-12 p-0">
     <nav class="navbar navbar-expand-md p-0">
