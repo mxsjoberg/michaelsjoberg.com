@@ -5,13 +5,10 @@ Jul 23, 2023
 Python
 Computational-Intelligence
 
-```python
-# BGA is a metaheuristic optimization algorithm inspired
-# by the process of natural selection. It is a
-# population-based algorithm that uses a genetic
-# representation of the decision variables to search for
-# the optimal solution.
+BGA is a metaheuristic optimization algorithm inspired by the process of natural selection. It is a population-based algorithm that uses a genetic representation of the decision variables to search for the optimal solution.
 
+```python
+# https://en.wikipedia.org/wiki/Genetic_algorithm
 import random
 import math
 # https://pypi.org/project/tabulate/
@@ -190,7 +187,9 @@ def update_population(f, current_population, offsprings, keep, x_range, y_range,
         current_population[i][0] = i
 
     return current_population
+```
 
+```python
 M_BITS = 4
 N_POP = 4
 N_KEEP = 2
@@ -239,5 +238,3 @@ print_as_table(current_population)
 #   2  [0, 0, 0, 0, 1, 1, 1, 1]  [10.0, 7.0]     65.000
 #   3  [0, 0, 0, 0, 1, 1, 1, 1]  [10.0, 7.0]     65.000
 ```
-
-#### <a href="https://github.com/mixmaester/programming/blob/master/python/computational-intelligence/genetic-algorithm-optimization.py" target="_blank">View on Github</a>
