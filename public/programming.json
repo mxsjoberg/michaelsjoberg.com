@@ -41,15 +41,6 @@
                 "numpy-operations",
                 "pandas-series"
             ]
-        }, 
-        "machine-learning": {
-            "path": "https://raw.githubusercontent.com/michaelsjoeberg/programming/master/python/",
-            "url": "https://github.com/michaelsjoeberg/programming/blob/master/python/",
-            "format": ".py",
-            "files": [
-                "keras-multilayer-perceptron",
-                "sklearn-k-nearest-neighbors-classifier"
-            ]
         },
         "project-euler-problems": {
             "path": "https://raw.githubusercontent.com/michaelsjoeberg/programming/master/python/",
