@@ -1,6 +1,6 @@
 Backpropagation
 Michael Sjöberg
-Jul 24, 2023
+Jun 18, 2021
 Jul 24, 2023
 Python
 Machine-Learning
