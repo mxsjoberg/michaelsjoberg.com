@@ -1,4 +1,4 @@
-Crafting the language of play, part 1: Introduction and operator precedence
+Crafting the Language of Play – Part 1: Introduction and operator precedence
 Michael Sjöberg
 May 29, 2023
 May 29, 2023
