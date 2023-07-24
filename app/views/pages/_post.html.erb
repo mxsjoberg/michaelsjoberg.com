@@ -75,6 +75,12 @@
     <%= CommonMarker.render_html(@all_lines, [:UNSAFE, :GITHUB_PRE_LANG], [:table, :autolink]).html_safe %>
   </div>
 </div>
+<!-- browse all posts -->
+<div class="row justify-content-center mt-3">
+  <div class="col-12 col-lg-<%= @size %> text-center">
+    <p class="mb-0"><a href="/posts" data-turbolinks="true">Browse all posts</a></p>
+  </div>
+</div>
 <!-- scroll-percent-wrapper -->
 <button id="scroll-percent-wrapper" class="d-none text-muted btn btn-primary no-hover" style="position:fixed;bottom:1rem;left:1rem;cursor:default;z-index:1000;">
   <i style="font-style:normal;line-height:1;"><span id="scroll-percent"></span>%</i>
