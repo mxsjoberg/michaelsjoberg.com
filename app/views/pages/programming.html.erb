@@ -52,7 +52,7 @@
             <div class="container-fluid">
               <div class="row list">
                 <% @dir_programming_grouped[language][category].each do |post| %>
-                  <a href="post/<%= post[:filename] %>" data-turbolinks="true" class="col-12">
+                  <a href="posts/<%= post[:filename] %>" data-turbolinks="true" class="col-12">
                     <li class="list-item mb-3">
                       <span><%= post[:title] %></span>
                     </li>
@@ -125,7 +125,7 @@
             <!-- post:meta -->
             <li class="list-item no-bullet col-12">
               <p>
-                <a href="post/<%= post[:filename] %>" data-turbolinks="true">
+                <a href="posts/<%= post[:filename] %>" data-turbolinks="true">
                   <%= post[:title] %>
                 </a>
               </p>
