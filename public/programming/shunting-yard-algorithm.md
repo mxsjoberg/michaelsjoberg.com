@@ -5,11 +5,9 @@ Jul 23, 2023
 Python
 Compilers
 
-```python
-# Shunting Yard Algorithm is a method for parsing
-# mathematical expressions specified in infix
-# notation
+Shunting Yard Algorithm is a method for parsing mathematical expressions specified in infix notation.
 
+```python
 # https://en.wikipedia.org/wiki/Shunting-yard_algorithm
 
 PRECEDENCE = { 'func': 3, '^': 2, '/': 1, '*': 1, '+': 0, '-': 0 }
@@ -71,9 +69,9 @@ def parse(input_):
             output.append(op)
 
     return ' '.join(output)
+```
 
+```python
 assert parse("3 + 4 * 2 / (1 - 5) ^2 ^3") == "3 4 2 * 1 5 - 2 3 ^ ^ / +"
 assert parse("sin(max(2, 3) / 3 * pi)") == "2 3 max 3 / pi * sin"
 ```
-
-#### <a href="https://github.com/mixmaester/programming/blob/master/python/compilers/shunting-yard-algorithm.py" target="_blank">View on Github</a>
