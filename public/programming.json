@@ -36,8 +36,7 @@
                 "gradient-descent-algorithm",
                 "graphs",
                 "mrjob-word-counting",
-                "prim-minimum-spanning-tree-algorithm",
-                "recursion"
+                "prim-minimum-spanning-tree-algorithm"
             ]
         }
     },
