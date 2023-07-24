@@ -1,31 +1,5 @@
 {
     "python": {
-        "basics": {
-            "path": "https://raw.githubusercontent.com/michaelsjoeberg/programming/master/python/",
-            "url": "https://github.com/michaelsjoeberg/programming/blob/master/python/",
-            "format": ".py",
-            "files": [
-                "arithmetic-operators",
-                "classes",
-                "date-and-time",
-                "dictionaries",
-                "exceptions",
-                "files",
-                "for-loop",
-                "functions",
-                "if-else",
-                "intro",
-                "lists",
-                "logical-operators",
-                "mathematical-operators",
-                "regular-expression",
-                "sets",
-                "strings",
-                "tuples",
-                "variables",
-                "while-loop"
-            ]
-        },
         "data-science": {
             "path": "https://raw.githubusercontent.com/michaelsjoeberg/programming/master/python/",
             "url": "https://github.com/michaelsjoeberg/programming/blob/master/python/",
