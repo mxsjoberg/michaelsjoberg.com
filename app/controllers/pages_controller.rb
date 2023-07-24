@@ -87,8 +87,11 @@ class PagesController < ApplicationController
       end
       @lines = File.readlines(Rails.public_path + 'posts/' + @file).drop(6)
       @all_lines = @lines.join
-      # override meta title
-      @meta_title = @title + ' in ' + @language
+      # override title and meta title
+      if !@title.include? @language
+        @title = @title + ' in ' + @language
+      end
+      @meta_title = @title
       # count words
       @words = 0
       @lines.drop(6).each do |line|
@@ -112,6 +115,9 @@ class PagesController < ApplicationController
         @language = @post_details[4].strip
         @category = @post_details[5].strip
         @filename = filename.split('/').last.split('.').first
+        # if @language
+        #   @title = @title + ' in ' + @language
+        # end
         @dir_posts.push({ 
           title: @title,
           author: @author,
