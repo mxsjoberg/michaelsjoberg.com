@@ -1,4 +1,4 @@
-Lecture notes on security engineering, part 5: Secure system design
+Lecture notes on Security Engineering – Part 5: Secure system design
 Michael Sjöberg
 Sep 1, 2022
 May 27, 2023
