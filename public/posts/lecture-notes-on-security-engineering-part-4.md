@@ -1,4 +1,4 @@
-Lecture notes on security engineering, part 4: The stack
+Lecture notes on Security Engineering – Part 4: The stack
 Michael Sjöberg
 Aug 30, 2022
 May 27, 2023
