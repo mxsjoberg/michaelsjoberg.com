@@ -1,6 +1,6 @@
 .DS_Store
 BACKUP_*
-*OLD*
+*OLD_*
 README_PRIVATE.md
 
 # Ignore bundler config.
