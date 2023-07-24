@@ -1,4 +1,4 @@
-Lecture notes on security engineering, part 2: Programs and processes
+Lecture notes on Security Engineering – Part 2: Programs and processes
 Michael Sjöberg
 Aug 28, 2022
 May 27, 2023
