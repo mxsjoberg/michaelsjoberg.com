@@ -1,4 +1,4 @@
-Lecture notes on security engineering, part 3: Assembly
+Lecture notes on Security Engineering – Part 3: Assembly
 Michael Sjöberg
 Aug 29, 2022
 May 27, 2023
