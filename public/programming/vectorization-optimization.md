@@ -5,6 +5,8 @@ Jul 25, 2023
 Python
 Compilers
 
+Vectorization optimization is a technique for optimizing programs by transforming sequential operations into parallel operations.
+
 ```python
 import numpy as np
 import timeit
